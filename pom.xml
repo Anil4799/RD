@@ -121,6 +121,7 @@
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
 						<configuration>
+						<destFile>${sonar.jacoco.reportPaths}</destFile>
 							<append>true</append>
 						</configuration>
 
