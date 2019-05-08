@@ -12,4 +12,9 @@
     <param-name>ERROR_PAGE</param-name>
     <param-value>/error.jsp</param-value>
   </context-param>
+  <context-param>
+    <param-name>HOME_PAGE</param-name>
+    <param-value>/home.jsp</param-value>
+  </context-param>
+  
 </web-app>
