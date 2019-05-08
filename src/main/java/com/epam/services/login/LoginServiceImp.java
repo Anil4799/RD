@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.epam.dao.LoginDAOImp;
 import com.epam.utils.DBManager;
 
 public class LoginServiceImp implements LoginService {
@@ -13,7 +14,7 @@ public class LoginServiceImp implements LoginService {
 	@Override
 	public int login(String email, String password) {
 		// TODO Auto-generated method stub
-		Connection con = DBManager.getConnection();
+		/*Connection con = DBManager.getConnection();
 		Statement stmt;
 		ResultSet rs;
 		try {
@@ -24,7 +25,7 @@ public class LoginServiceImp implements LoginService {
 	        }
 		} catch (SQLException e) { // TODO Auto-generated catch block 
 			e.printStackTrace();
-		}
-		return 0;
+		}*/
+		return new LoginDAOImp().login(email,password);
 	}
 }

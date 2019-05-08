@@ -1,6 +1,7 @@
 <%@page import="javax.swing.event.MenuListener"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
+<%@page import="com.epam.services.login.*"%>
 <%@page session="true" %>
 
 <!DOCTYPE html>
@@ -61,16 +62,14 @@
     left: 30cm;
     
 }
-   
-   
-   
-   
-    </style>
+ </style>
    
  </head> 
  
  <body>
- 	<h1>Hello</h1>  
+ 	<h1>Hello</h1>
+ 	<% ArrayList<Menu> menu = (ArrayList<Menu>) request.getAttribute("menuList");%>
+ 	<!--  iterate ArrayList -->  
  </body>
 </html>
    

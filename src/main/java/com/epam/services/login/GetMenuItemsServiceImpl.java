@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import com.epam.utils.DBManager;
 
 public class GetMenuItemsServiceImpl implements GetMenuItemsService {
-	ArrayList<Menu> menu;
+	//ArrayList<Menu> menu;
 	@Override
 	public ArrayList<Menu> getMenuItems(int id) {
 		// TODO Auto-generated method stub
-		menu = new ArrayList<Menu>();
+		ArrayList<Menu> menu = new ArrayList<Menu>();
 		Connection con = DBManager.getConnection();
 		Statement stmt;
 		ResultSet rs;
