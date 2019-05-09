@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.epam.dao.Mentor;
+import com.epam.utils.DBManager;
 
 /**
  * Servlet implementation class Test
@@ -24,11 +25,9 @@ import com.epam.dao.Mentor;
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	 @Resource(name = "jdbc/abc")
-	 DataSource ds;
+	 //@Resource(name = "jdbc/abc")
+	 //DataSource ds;
        
-   
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Mentor> mentorList = new ArrayList<Mentor>();
@@ -36,7 +35,7 @@ public class Test extends HttpServlet {
 		{
 			
 			
-			Connection con=ds.getConnection();
+			Connection con=DBManager.getConnection();
 			Statement stmt=con.createStatement();
 			String sql="SELECT * FROM mentor_info";
 			ResultSet rs=stmt.executeQuery(sql);
