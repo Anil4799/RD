@@ -16,18 +16,18 @@ import org.mockito.MockitoAnnotations;
  */
 class TestCalculatorServiceImpl {
 	
-	@InjectMocks
-	private CalculatorServiceImpl calculatorService;
-
-	@BeforeEach
-	void init() {
-		MockitoAnnotations.initMocks(this);
-	}
-	
-	@Test
-	void testAdd() {
-		assertEquals(3, calculatorService.add(1, 2));
-		
-	}
+//	@InjectMocks
+//	private CalculatorServiceImpl calculatorService;
+//
+//	@BeforeEach
+//	void init() {
+//		MockitoAnnotations.initMocks(this);
+//	}
+//	
+//	@Test
+//	void testAdd() {
+//		assertEquals(3, calculatorService.add(1, 2));
+//		
+//	}
 
 }
