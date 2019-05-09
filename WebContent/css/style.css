@@ -1,0 +1,142 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	background-color: #f2f2f2;
+	font-family: 'Oswald', sans-serif !important;
+	font-size: 16px;
+	
+}
+header {
+	width: 100%;
+}
+header nav.navbar {
+	width: 100%;
+	height: auto;
+	border: 0;
+	border-radius: 0;
+	background-color: #4d4d4d;
+	padding: 0;
+}
+header nav.navbar div.container-fluid {
+	/*width: 72%;
+	height: 100%;*/
+	 padding-right: 0px; 
+	 padding-left: 0px; 
+	margin-right: 150px;
+}
+header nav.navbar div.container-fluid div.navbar-header {
+	font-family: 'Oswald', sans-serif !important;
+}
+header nav.navbar div.container-fluid div.navbar-header a.navbar-brand {
+	display: block;
+	background-color: #4db8ff;
+	color: #ffffff;
+	font-size: 1.500em;
+	text-transform: uppercase;
+	height: 70px;
+	width: 150px;
+	text-align: center;
+	line-height: 1.3em;
+	 padding-top: 0; 
+	padding-bottom: 0; 
+	 margin-right: 0; 
+}
+header nav.navbar div.container-fluid div.navbar-header a.navbar-brand small {
+	display: block;
+	font-size: 1em;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.active {
+	background:#262626; 
+	color:#000;
+}
+
+.navbar-nav > li.nav-item {
+	display: block;
+	height: 70px;
+	margin-left: 15px;
+}
+
+.navbar-nav > li > a {
+		
+		font-size: 1em;
+		text-transform: uppercase;
+		color: #fff !important;
+		line-height: 50px;
+}
+
+
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:visited,
+.navbar-nav > li > a:focus,
+.navbar-nav > li > a:active { 
+	background: #5CB85C; 
+}
+
+.navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
+		background-color: #15b09b;
+}
+
+.navbar-nav > li > a:active {
+		background-color: #5CB85C;
+}
+
+.nav-item .active {
+	background-color: #5CB85C;
+}
+
+@media (max-width: 468px) {
+		.navbar {
+				height: 70px;
+		}
+}
+
+.add-on .input-group-btn > .btn {
+	border-left-width:0;left:-2px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+ box-shadow:none;
+ -webkit-box-shadow:none; 
+ border-color:#cccccc; 
+}
+
+.page_info {
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+}
+
+.page_title {
+	font-size: 1.5em;
+	text-transform: uppercase;
+	color: #000 !important;
+	line-height: 50px;
+	margin-left: 30px;
+}
+
+.footer{
+
+		position: fixed;
+
+		left: 0;
+ 		 bottom: 0;
+
+		width: 100%;
+
+		height: 50px;
+
+		background-color: #404040;
+
+	}

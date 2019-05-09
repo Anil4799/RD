@@ -73,6 +73,26 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.h-thurow</groupId>
+		    <artifactId>tomcat8jndi</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-dbcp</artifactId>
+    <version>9.0.19</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+<dependency>
+    <groupId>jstl</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
 
 	</dependencies>
 
@@ -140,6 +160,9 @@
 				</executions>
 
 			</plugin>
+			
+			
+			
 		</plugins>
 	</build>
 
