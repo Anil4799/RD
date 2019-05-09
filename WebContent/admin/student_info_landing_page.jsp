@@ -45,7 +45,34 @@
       <td>${eee.batch}</td>
       <td>${eee.coreSkill}</td>
       <td>${eee.mentor}</td>
+      <td>Reddy</td>
+      <td>Reddy</td>
       <td>${eee.status}</td>
+      <td><div class="btn-group" dropdown>
+            
+		            <button type="button" class="fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		          
+		                 <ul class="dropdown-menu" role="menu">
+		                 	<c:choose>
+								  <c:when test="${eee.status == 'active'}">
+								     <li><a class="dropdown-item" href="#">View</a></li>
+					                <li><a class="dropdown-item" href="#">Edit</a></li>
+					                <li><a class="dropdown-item" href="#">Deactivate</a></li>
+								  </c:when>
+								  <c:otherwise>
+								    <li><a class="dropdown-item" href="#">View</a></li>
+					                <li><a class="dropdown-item" href="#">Activate</a></li>
+								  </c:otherwise>
+								</c:choose>
+
+					              				               					             
+					            </ul>
+					             
+					            </button>     
+					           
+					            
+					 </div></td>
+
     </tr>
   </c:forEach>
   </tbody>
