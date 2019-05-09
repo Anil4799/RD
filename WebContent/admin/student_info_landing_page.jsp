@@ -4,7 +4,7 @@
   <%@ include file="/common/header.jspf" %>
   
     <div class="page_info">
-		<p class="page_title">Student Info - Landing Page</p>
+		<p class="page_title">Mentor Info - Landing Page</p>
 	</div>
     
     <div class="container">
@@ -29,21 +29,19 @@
   <thead>
     <tr>
       <th scope="col">NAME</th>
-      <th scope="col">BATCHID</th>
-      <th scope="col">CORE SKILLS</th>
-      <th scope="col">MENTOR</th>
+      <th scope="col">TECHNOLOGY STREAM</th>
       <th scope="col">STATUS</th>
       <th scope="col">ACTION</th>
     </tr>
   </thead>
   <tbody>
   
-  <c:forEach items="${ml}" var="eee" >
+  <c:forEach items="${mentors}" var="eee" >
   
    <tr>
-      <th scope="row">${eee.name}</th>
-      <td>${eee.mentor}</td>
-      <td>Reddy</td>
+      <th scope="row">${eee.mentor_name}</th>
+      <td>${eee.technology_stream}</td>
+      <td>${eee.status}</td>
     </tr>
          
   </c:forEach>
