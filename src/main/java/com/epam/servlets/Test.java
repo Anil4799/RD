@@ -24,11 +24,6 @@ import com.epam.utils.DBManager;
 @WebServlet("/Test")
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	// @Resource(name = "jdbc/abc")
-	// DataSource ds;
-       
-   
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
