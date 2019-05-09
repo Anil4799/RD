@@ -23,7 +23,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.services.CalculatorService;
 import com.epam.services.login.LoginService;
 import com.epam.services.login.Menu;
 import com.epam.servlets.login.LoginServlet;
@@ -78,7 +77,7 @@ class TestLoginServlet {
 	@DisplayName("Test doPost() Method...!!")
 
 	@Test
-	public void testDoPostMethod() throws ServletException, IOException {
+	public void testDoPostMethodAdmin() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("test_admin1@epam.com");
 		when(request.getParameter("password")).thenReturn("testadmin");
 		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(1);
@@ -88,6 +87,81 @@ class TestLoginServlet {
 		when(request.getServletContext()).thenReturn(context);
 		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
 		when(context.getInitParameter(ConstantsUtility.HOME_PAGE)).thenReturn("/home.jsp");
+		servlet.doPost(request, response);
+		verify(rd).forward(request, response);
+
+	}
+	@Test
+	public void testDoPostMethodMentor() throws ServletException, IOException {
+		when(request.getParameter("email")).thenReturn("test_mentor1@epam.com");
+		when(request.getParameter("password")).thenReturn("testmentor");
+		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(2);
+		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
+		doNothing().when(session).setAttribute("eamil","test_mentor1@epam.com");
+		doNothing().when(session).setAttribute("password","testmentor");
+		when(request.getServletContext()).thenReturn(context);
+		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
+		when(context.getInitParameter(ConstantsUtility.HOME_PAGE)).thenReturn("/home.jsp");
+		servlet.doPost(request, response);
+		verify(rd).forward(request, response);
+
+	}
+	@Test
+	public void testDoPostMethodAdminError() throws ServletException, IOException {
+		when(request.getParameter("email")).thenReturn("test_admin2@epam.com");
+		when(request.getParameter("password")).thenReturn("testadmin123");
+		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(0);
+		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
+		doNothing().when(session).setAttribute("eamil","test_admin2@epam.com");
+		doNothing().when(session).setAttribute("password","testadmin123");
+		when(request.getServletContext()).thenReturn(context);
+		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
+		when(context.getInitParameter(ConstantsUtility.LOGIN_PAGE)).thenReturn("/login.jsp");
+		servlet.doPost(request, response);
+		verify(rd).forward(request, response);
+
+	}
+	@Test
+	public void testDoPostMethodMentorError() throws ServletException, IOException {
+		when(request.getParameter("email")).thenReturn("test_mentor2@epam.com");
+		when(request.getParameter("password")).thenReturn("testmentor123");
+		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(0);
+		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
+		doNothing().when(session).setAttribute("eamil","test_mentor2@epam.com");
+		doNothing().when(session).setAttribute("password","testmentor123");
+		when(request.getServletContext()).thenReturn(context);
+		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
+		when(context.getInitParameter(ConstantsUtility.LOGIN_PAGE)).thenReturn("/login.jsp");
+		servlet.doPost(request, response);
+		verify(rd).forward(request, response);
+
+	}
+	@Test
+	public void testDoPostMethodUserEmptyUserName() throws ServletException, IOException {
+		when(request.getParameter("email")).thenReturn("");
+		when(request.getParameter("password")).thenReturn("testmentor123");
+		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(0);
+		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
+		doNothing().when(session).setAttribute("eamil","");
+		doNothing().when(session).setAttribute("password","testmentor123");
+		when(request.getServletContext()).thenReturn(context);
+		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
+		when(context.getInitParameter(ConstantsUtility.LOGIN_PAGE)).thenReturn("/login.jsp");
+		servlet.doPost(request, response);
+		verify(rd).forward(request, response);
+
+	}
+	@Test
+	public void testDoPostMethodUserEmptyPassword() throws ServletException, IOException {
+		when(request.getParameter("email")).thenReturn("test_mentor2@epam.com");
+		when(request.getParameter("password")).thenReturn("");
+		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(0);
+		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
+		doNothing().when(session).setAttribute("eamil","test_mentor2@epam.com");
+		doNothing().when(session).setAttribute("password","");
+		when(request.getServletContext()).thenReturn(context);
+		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
+		when(context.getInitParameter(ConstantsUtility.LOGIN_PAGE)).thenReturn("/login.jsp");
 		servlet.doPost(request, response);
 		verify(rd).forward(request, response);
 
