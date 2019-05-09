@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
 import com.epam.services.login.GetMenuItemsServiceImpl;
 import com.epam.services.login.LoginServiceImp;
 import com.epam.services.login.Menu;
-import com.epam.servlets.CalculatorServlet;
 import com.epam.utils.ConstantsUtility;
 
 /**
@@ -29,6 +28,7 @@ public class LoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	HttpSession session;
     public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -45,38 +45,40 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//LOGGER.debug("Entered into Servlet...............");
 		String pageUrl = null;
 		try {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		int id = new LoginServiceImp().login(email, password);
-		
-		if(id!=0) { 
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.HOME_PAGE);
-			//Get MenuList
-			ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(id);
-			request.setAttribute("menuList", menuList);
-			//Set Session
-			HttpSession session = request.getSession();
-			session.setAttribute("email", email);
-			session.setAttribute("password", password);
-		}
-		else
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
-		} catch (NumberFormatException nEx) {
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			int id = new LoginServiceImp().login(email, password);
+			
+			if(id!=0) { 
+				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.HOME_PAGE);
+				//Get MenuList
+				ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(id);
+				request.setAttribute("menuList", menuList);
+				//Set Session
+				session = request.getSession();
+				session.setAttribute("email", email);
+				session.setAttribute("password", password);
+			}
+			else {
+				request.setAttribute("loginFail", "User Name or Password is incorrect");
+				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
+			}
+		} catch (Exception e) {
+			//pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			//LOGGER.error(nEx.getMessage());
-			request.setAttribute("errorMsg", nEx.getMessage());
+			request.setAttribute("errorMsg", e.getMessage());
 		}
 		
 		
 		
 		request.getRequestDispatcher(pageUrl).forward(request, response);
 		//LOGGER.debug("Exit from Servlet...............");
-		doGet(request, response);
+		//doGet(request, response);
 	}
 
 }

@@ -13,5 +13,6 @@ public class ConstantsUtility {
 	public static final String RESULT_PAGE_FOR_CALCULATOR = "RESULT_PAGE_FOR_CALCULATOR";
 	public static final String ERROR_PAGE = "ERROR_PAGE";
 	public static final String HOME_PAGE="HOME_PAGE";
+	public static final String LOGIN_PAGE="LOGIN_PAGE";
 
 }

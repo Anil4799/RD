@@ -4,17 +4,22 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import com.epam.services.login.Menu;
 import com.epam.utils.DBManager;
 
 public class LoginDAOImp implements LoginDAO {
-	
+	public Connection con;
+	Statement stmt;
+	ResultSet rs;
+	public LoginDAOImp() {
+		// TODO Auto-generated constructor stub
+		con = DBManager.getConnection();
+	}
 	@Override
 	public int login(String email, String password) {
 		// TODO Auto-generated method stub
-		Connection con = DBManager.getConnection();
-		Statement stmt;
-		ResultSet rs;
 		try {
 			stmt = con.createStatement();
 			rs= stmt.executeQuery("select * from userinfo where email = '"+email+"' and password ='"+password+"'"); 
@@ -26,5 +31,23 @@ public class LoginDAOImp implements LoginDAO {
 		}
 		return 0;
 	}
+	@Override
+	public ArrayList<Menu> getMenuItems(int id) {
+		// TODO Auto-generated method stub
+		ArrayList<Menu> menu = new ArrayList<Menu>();
+		try {
+			stmt = con.createStatement();
+			rs= stmt.executeQuery("select * from menu where menuid in (select menuid from rolewithmenu where roleid="+id+")"); 
+	        while(rs.next()) {
+	        	menu.add(new Menu(rs.getString(2),rs.getString(3)));
+	        }
+	        
+		} catch (SQLException e) { // TODO Auto-generated catch block 
+			e.printStackTrace();
+		}
+		return menu;
+	}
+	
+	
 
 }

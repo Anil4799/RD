@@ -2,6 +2,7 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.*"%>
 <%@page import="com.epam.services.login.*"%>
+<%@page import="com.epam.servlets.login.*"%>
 <%@page session="true" %>
 
 <!DOCTYPE html>
@@ -67,9 +68,41 @@
  </head> 
  
  <body>
- 	<h1>Hello</h1>
  	<% ArrayList<Menu> menu = (ArrayList<Menu>) request.getAttribute("menuList");%>
- 	<!--  iterate ArrayList -->  
+ 	<!--  iterate ArrayList --> 
+ 	<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1;">
+   <ul class="tabs  primary_nav">
+   		<li style="padding: 0.5em; background-color: #23CAEB; color: #fff; text-decoration: none;"> 
+            RD ADMIN PORTAL 
+        </li>
+		<% for (int i=0;i<menu.size();i++) { 
+		Menu items = (Menu)menu.get(i); %>
+        <li class="tabs_item">
+            <a href=<%=items.getMenuPagePath()%> class="tabs_link"> <%=items.getMenuName()%> </a>
+        </li>       
+     	<%}%> 
+        <li class="tabs_item">
+            <input class="tabs_item" type="text"  placeholder="Search.." name="search" class="round" style="background:#454545;">
+        </li>
+        <li>
+        <form id="logoutform">
+        		<button type="submit"  onclick="logout()" align="center"> Logout</button>
+        </form>
+        </li>              
+   </ul>
+  </div>
+  <div>
+  	<p id="demo"></p>
+  </div>
+  
+   <script>
+  	function logout() {
+  		 document.getElementById("logoutform").action="./LogoutServlet";
+  		 document.getElementById("logoutform").method = "POST";
+  		 document.getElementById("logoutform").submit();
+		
+	}
+  </script>
  </body>
 </html>
    

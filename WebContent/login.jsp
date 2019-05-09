@@ -83,7 +83,7 @@ border-radius: 3px;
 </style>
 </head>
 <body bgcolor="#D3D3D3">
-
+<%String loginFail=(String)request.getAttribute("loginFail"); %>
 <div class="topnav" >
   <a class="active" href="#home" style="font-family:Oswald;">RD ADMIN<br> PORTAL</a>
    <div class="topnav-right"  style="padding: 2px 3px; color:black">
@@ -123,13 +123,23 @@ border-radius: 3px;
 <tr align="center" height="60" valign="top"><td>
   <button type="submit"  class="btn">Login</button>
 </td></tr>
-<tr align="center" height="60" valign="top"><td><font color="#b3b3ff"> <a href="forgotpassword.html" style="text-decoration:none">Forgot Password</a></font></td></tr>
+<tr align="center" height="60" valign="top">
+ <td>
+  <font color="#b3b3ff"> 
+   <a href="forgotpassword.html" style="text-decoration:none">Forgot Password</a>
+  </font>
+ </td>
+</tr>
+<tr align="center" height="60" valign="top"><td>
+  <%if(loginFail!=null) {%>
+		<%=loginFail%>
+	<%} %>
+</td></tr>
 </table>
 </form>
 
 </div>
 <div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:black">
-  </div>
-
+ </div>
 </body>
 </html>
