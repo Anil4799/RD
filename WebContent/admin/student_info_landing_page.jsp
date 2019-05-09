@@ -38,14 +38,15 @@
   </thead>
   <tbody>
   
-  <c:forEach items="${ml}" var="eee" >
+ <c:forEach items="${students}" var="eee" >
   
    <tr>
       <th scope="row">${eee.name}</th>
+      <td>${eee.batch}</td>
+      <td>${eee.coreSkill}</td>
       <td>${eee.mentor}</td>
-      <td>Reddy</td>
+      <td>${eee.status}</td>
     </tr>
-         
   </c:forEach>
   </tbody>
 </table>

@@ -3,7 +3,7 @@ package com.epam.servlets;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.epam.dao.Mentor;
+
 import com.epam.dao.Student;
 import com.epam.services.StudentInfoService;
 import com.epam.services.StudentInfoServiceImpl;
+import com.epam.utils.DBManager;
 
 /**
  * Servlet implementation class AllStudentListServlet
@@ -27,8 +28,8 @@ import com.epam.services.StudentInfoServiceImpl;
 public class AllStudentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	 @Resource(name = "jdbc/abc")
-	 DataSource ds;
+	 //@Resource(name = "jdbc/abc")
+	// DataSource ds;
 	 private StudentInfoService studentInfoService = new StudentInfoServiceImpl();
        
     
@@ -38,7 +39,7 @@ public class AllStudentListServlet extends HttpServlet {
 		{
 			
 			
-			Connection con=ds.getConnection();
+			Connection con=DBManager.getConnection();
 			studentList=studentInfoService.getAllStudentDetails(con);
 						
 		}
