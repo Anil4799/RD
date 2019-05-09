@@ -1,6 +1,5 @@
 package com.epam.servlets;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
@@ -82,8 +81,10 @@ class TestLoginServlet {
 		when(request.getParameter("password")).thenReturn("testadmin");
 		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(1);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
-		doNothing().when(session).setAttribute("eamil","test_admin1@epam.com");
+		when(request.getSession(true)).thenReturn(session);
+		doNothing().when(session).setAttribute("email","test_admin1@epam.com");
 		doNothing().when(session).setAttribute("password","testadmin");
+		when(session.getAttribute("email")).thenReturn("test_admin1@epam.com");
 		when(request.getServletContext()).thenReturn(context);
 		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
 		when(context.getInitParameter(ConstantsUtility.HOME_PAGE)).thenReturn("/home.jsp");

@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
-
 import com.epam.services.login.GetMenuItemsServiceImpl;
 import com.epam.services.login.LoginServiceImp;
 import com.epam.services.login.Menu;
@@ -22,63 +20,69 @@ import com.epam.utils.ConstantsUtility;
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-	//private static final Logger LOGGER = Logger.getLogger(CalculatorServlet.class);
+	// private static final Logger LOGGER =
+	// Logger.getLogger(CalculatorServlet.class);
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	HttpSession session;
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	HttpSession session;
+
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//LOGGER.debug("Entered into Servlet...............");
+		// LOGGER.debug("Entered into Servlet...............");
 		String pageUrl = null;
 		try {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-			int id = new LoginServiceImp().login(email, password);
-			
-			if(id!=0) { 
-				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.HOME_PAGE);
-				//Get MenuList
-				ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(id);
-				request.setAttribute("menuList", menuList);
-				//Set Session
-				session = request.getSession();
-				session.setAttribute("email", email);
-				session.setAttribute("password", password);
-			}
-			else {
-				request.setAttribute("loginFail", "User Name or Password is incorrect");
+			if(email.length()==0||password.length()==0) {
+				request.setAttribute("loginFail", "User Name or Password is required");
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
 			}
-		} catch (Exception e) {
-			//pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
-			//LOGGER.error(nEx.getMessage());
-			request.setAttribute("errorMsg", e.getMessage());
+			else{
+				int id = new LoginServiceImp().login(email, password);
+				if (id != 0) {
+					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.HOME_PAGE);
+					// Get MenuList
+					ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(id);
+					request.setAttribute("menuList", menuList);
+					// Set Session
+					session = request.getSession(true);
+					session.setAttribute("email", email);
+					System.out.println(session.getAttribute("email"));
+				} else {
+					request.setAttribute("loginFail", "User Name or Password is incorrect");
+					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
+				}
+			}
+			} catch (Exception e) {
+				// request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
+				// LOGGER.error(nEx.getMessage());
+				request.setAttribute("errorMsg", e.getMessage());
 		}
-		
-		
-		
 		request.getRequestDispatcher(pageUrl).forward(request, response);
-		//LOGGER.debug("Exit from Servlet...............");
-		//doGet(request, response);
+		// LOGGER.debug("Exit from Servlet...............");
+		// doGet(request, response);
 	}
 
 }

@@ -36,14 +36,11 @@ public class LogoutServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//System.out.print("In LogoutServlet");
-		//response.sendRedirect("login.jsp");
 		HttpSession session = request.getSession();
 		if(session!=null) {
 			session.setAttribute("eamil", null);
-			session.setAttribute("password", null);
 			session.invalidate();
 			String pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
 			request.getRequestDispatcher(pageUrl).forward(request, response);
