@@ -44,7 +44,37 @@
       <td>${batch.start_date}</td>
       <td>${batch.end_date}</td>
       <td>${batch.status}</td>
-      <td><i class="fa fa-cog" aria-hidden="true"></i></td>
+      <td><div class="btn-group" dropdown>
+            
+		            <button type="button" class="fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		          
+		                 <ul class="dropdown-menu" role="menu">
+		                 	
+								
+								
+								<c:choose>
+									  <c:when test="${batch.status == 'In Progress'}">
+									    <li><a class="dropdown-item" href="#">View</a></li>
+						                <li><a class="dropdown-item" href="#">Edit</a></li>
+						                <li><a class="dropdown-item" href="#">Mark Complete</a></li>
+									  </c:when>
+									  <c:when test="${batch.status == 'Not Started'}">
+									     <li><a class="dropdown-item" href="#">View</a></li>
+							                <li><a class="dropdown-item" href="#">Edit</a></li>
+							                <li><a class="dropdown-item" href="#">Start Progress</a></li>
+									  </c:when>
+									  <c:otherwise>
+									    <li><a class="dropdown-item" href="#">View</a></li>
+									  </c:otherwise>
+									</c:choose>
+
+					              				               					             
+					            </ul>
+					             
+					            </button>     
+					           
+					            
+					 </div></td>
     </tr>
          
   </c:forEach>

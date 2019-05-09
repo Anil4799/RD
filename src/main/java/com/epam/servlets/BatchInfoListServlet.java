@@ -48,6 +48,7 @@ public class BatchInfoListServlet extends HttpServlet {
 		}
 		
 		request.getRequestDispatcher(pageUrl).forward(request, response);
+		LOGGER.debug(batchList.size());
 		LOGGER.debug("Exit from Servlet...............");
 	}
 
