@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
 
 import com.epam.dao.Student;
 import com.epam.services.StudentInfoService;
 import com.epam.services.StudentInfoServiceImpl;
+import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
 /**
@@ -31,25 +33,32 @@ public class AllStudentListServlet extends HttpServlet {
 	 //@Resource(name = "jdbc/abc")
 	// DataSource ds;
 	 private StudentInfoService studentInfoService = new StudentInfoServiceImpl();
-       
+	 private static final Logger LOGGER = Logger.getLogger( AllStudentListServlet.class);
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Student> studentList =null;
+		LOGGER.debug("Enter into servlet......");
+		String pageUrl=null;
 		try
 		{
 			
 			
 			Connection con=DBManager.getConnection();
 			studentList=studentInfoService.getAllStudentDetails(con);
+			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO);
+			request.setAttribute("students", studentList);
 						
 		}
 		catch(Exception e)
 		{
-			response.getWriter().append("Connection failed"+ e.getMessage()).append(request.getContextPath());
+			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
+			request.setAttribute("errorMsg", e.getMessage());
+			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
 		}
 		
-		request.setAttribute("students", studentList);
+	
 		request.getRequestDispatcher("admin/student_info_landing_page.jsp").forward(request, response);
+		LOGGER.debug("Exit from servlet");
 	}
 
 	
