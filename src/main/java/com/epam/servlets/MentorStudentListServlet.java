@@ -15,31 +15,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.epam.dao.Mentor;
-import com.epam.dao.Student;
-import com.epam.services.StudentInfoService;
-import com.epam.services.StudentInfoServiceImpl;
+
+import com.epam.dao.MentorStudent;
+import com.epam.services.MentorStudentInfoService;
+import com.epam.services.MentorStudentInfoServiceImpl;
+import com.epam.utils.DBManager;
 
 /**
  * Servlet implementation class AllStudentListServlet
  */
-@WebServlet("/studentList")
-public class AllStudentListServlet extends HttpServlet {
+@WebServlet("/mentorstudentList")
+public class MentorStudentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	 @Resource(name = "jdbc/abc")
-	 DataSource ds;
-	 private StudentInfoService studentInfoService = new StudentInfoServiceImpl();
+	 //@Resource(name = "jdbc/abc")
+	 //DataSource ds;
+	 private MentorStudentInfoService studentInfoService = new MentorStudentInfoServiceImpl();
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Student> studentList =null;
+		List<MentorStudent> studentList =null;
 		try
 		{
 			
 			
-			Connection con=ds.getConnection();
-			studentList=studentInfoService.getAllStudentDetails(con);
+			Connection con=DBManager.getConnection();
+			studentList=studentInfoService.MentorStudentDetails(con);
 						
 		}
 		catch(Exception e)
@@ -48,7 +49,7 @@ public class AllStudentListServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("students", studentList);
-		request.getRequestDispatcher("admin/student_info_landing_page.jsp").forward(request, response);
+		request.getRequestDispatcher("admin/MentorStudentInfoLandingPage.jsp").forward(request, response);
 	}
 
 	
