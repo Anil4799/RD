@@ -43,7 +43,8 @@
    <tr>
       <th scope="row">${eee.name}</th>
       <td>${eee.mentor}</td>
-      <td>Reddy</td>
+      <td>Reddy<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+</td>
     </tr>
          
   </c:forEach>
