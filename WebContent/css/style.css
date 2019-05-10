@@ -140,3 +140,23 @@ header nav.navbar div.container-fluid div.navbar-header a.navbar-brand small {
 		background-color: #404040;
 
 	}
+	
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
+ input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }

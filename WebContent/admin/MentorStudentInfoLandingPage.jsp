@@ -12,17 +12,15 @@
    
 		<table class="table">
 		<tr>
-		<td><input type="text"></td>
-		<td><input type="text"></td>
+		<td><input type="text" class="form-control" placeholder="First Name"></td>
+		<td><input type="text"  class="form-control" placeholder="Last Name"></td>
 		<td>
-			<select>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
+			<select required class="form-control">
+			  <option value="" disabled selected>BatchID</option>
 			</select>
-			<i class="fa fa-search" aria-hidden="true"></i>
 			
 		</td>
+		
 		</tr>
 		</table>
 		
@@ -47,7 +45,7 @@
       <td>${eee.status}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu" role="menu">
 		                 	<c:choose>
