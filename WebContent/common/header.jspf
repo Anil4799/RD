@@ -48,7 +48,7 @@
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="/admin-portal/mentorList">Mentor
 								Info</a></li>
-						<li class="nav-item active"><a class="nav-link" href="/admin-portal/batchInfo">Batch
+						<li class="nav-item"><a class="nav-link" href="/admin-portal/batchInfo">Batch
 								Info</a></li>
 						<li class="nav-item"><a class="nav-link" href="/admin-portal/mentorstudentList">Reports/MentorStudentList</a>
 						</li>

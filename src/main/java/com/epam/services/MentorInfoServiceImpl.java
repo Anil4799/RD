@@ -22,7 +22,9 @@ public class MentorInfoServiceImpl implements MentorInfoService {
 		{
 
 			Statement stmt=con.createStatement();
-			String sql="SELECT * FROM Mentor_Info";
+			String sql="SELECT * FROM Mentor_Info ORDER BY\r\n" + 
+					" email_id DESC\r\n" + 
+					"LIMIT 10;";
 			ResultSet rs=stmt.executeQuery(sql);
 			if(rs!=null)
 			{

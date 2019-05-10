@@ -17,7 +17,9 @@ public class BatchInfoServiceImpl implements BatchInfoService {
 		List<Batch> batchList = new ArrayList<Batch>();
 		try
 		{
-			String sql="SELECT * FROM batch_info";
+			String sql="SELECT * FROM batch_info ORDER BY\r\n" + 
+					" batch_id DESC\r\n" + 
+					"LIMIT 10;";
 			PreparedStatement pstmt=con.prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
 			if(rs!=null)

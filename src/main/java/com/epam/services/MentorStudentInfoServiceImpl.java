@@ -19,7 +19,9 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 		try
 		{
 
-			PreparedStatement ps = con.prepareStatement("select * from student_personal_info, student__additional_info where student_personal_info.email_id = student__additional_info.email_id;");
+			PreparedStatement ps = con.prepareStatement("select * from student_personal_info, student__additional_info where student_personal_info.email_id = student__additional_info.email_id ORDER BY\r\n" + 
+					" batch_id DESC\r\n" + 
+					"LIMIT 10;");
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs!=null)
