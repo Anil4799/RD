@@ -41,8 +41,8 @@ public class Test extends HttpServlet {
 			while(rs.next())
 			{
 				Mentor m=new Mentor();
-				m.setName(rs.getString("email_id"));
-				m.setMentor(rs.getString("name"));
+				//m.setName(rs.getString("email_id"));
+				//m.setMentor(rs.getString("name"));
 				//m.setStatus(rs.getString("status"));
 				mentorList.add(m);
 			}

@@ -17,7 +17,7 @@
 		  <tbody>
 		    <tr>
 		      <th scope="row">1</th>
-		      <td>Admin User - Student Info Landing page</td>
+		      <td>Admin User - Mentor Info Landing page</td>
 		      <td><a href="admin/student_info_landing_page.jsp"  class="btn btn-info" role="button">Click Here</td>
 		    </tr>
 		  </tbody>

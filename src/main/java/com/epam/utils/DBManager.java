@@ -7,12 +7,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
+import com.epam.services.MentorInfoServiceImpl;
+
 /**
  * @author Durga_Adimulam
  *
  */
 public class DBManager {
-
+	private static final Logger LOGGER = Logger.getLogger( DBManager.class);
 	public static Connection getConnection() {
 		Connection connection = null;
 		
@@ -24,7 +28,7 @@ public class DBManager {
             		ApplicationProperties.getPropertyValue("db.password"));
         }
         catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error("Exception occured in MentorInfo = {}", e);
         }
 		
 		return connection;
