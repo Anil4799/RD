@@ -117,6 +117,7 @@ function validateForm() {
             //document.getElementById("mentor_added_message").style.display = "block";
               //document.getElementById("add_student_info").action="./MentorServlet";
             //document.getElementById("add_student_info").method = "POST";
+    		document.getElementById("success_message").style.display = "block";
             document.getElementById("add_student_info").submit();
         }
     

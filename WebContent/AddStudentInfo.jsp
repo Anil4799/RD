@@ -53,6 +53,19 @@
 				text-align: center;
 				cursor: pointer;
 			}
+			.success_message{
+				height: 40px; 
+				border-radius: 5px 5px 5px 5px;
+				font-size: 14px;
+				color: #006400;
+				background-color: #98FB98;
+				display: none;
+				position: absolute;
+				top: 60px;
+				left: 500px;
+				z-index: 5;
+				padding: 10px 30px 20px 30px;
+			}
 </style>
 <script src="StudentJS.js"></script>
 <body style="font-family: Oswald, sans-serif;">
@@ -66,7 +79,9 @@
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+		<div class="success_message" id="success_message">
+			Student Added Successfully
+		</div>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav">
                 <!--<a href="#" class="nav-item nav-link" style="background-color:#38bdbd">RD ADMIN PORTAL</a>-->
