@@ -1,10 +1,11 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
   <%@ include file="/common/header.jspf" %>
   
     <div class="page_info">
-		<p class="page_title">Mentor Info - Landing Page</p>
+		<p class="page_title">Mentor Student Info - Landing Page</p>
 	</div>
     
     <div class="container">
@@ -27,22 +28,32 @@
 		
 		<table class="table">
   <thead>
+  <!-- Code to change in jsp according to servlet page -->
     <tr>
       <th scope="col">NAME</th>
+<<<<<<< HEAD:WebContent/admin/student_info_landing_page.jsp
       <th scope="col">TECHNOLOGY STREAM</th>
+=======
+      <th scope="col">BATCHID</th>
+      <th scope="col">CORE SKILLS</th>
+>>>>>>> origin/EPMRDINFDP-32:WebContent/admin/MentorStudentInfoLandingPage.jsp
       <th scope="col">STATUS</th>
       <th scope="col">ACTION</th>
     </tr>
   </thead>
   <tbody>
   
+<<<<<<< HEAD:WebContent/admin/student_info_landing_page.jsp
 <<<<<<< HEAD
+=======
+>>>>>>> origin/EPMRDINFDP-32:WebContent/admin/MentorStudentInfoLandingPage.jsp
  <c:forEach items="${students}" var="eee" >
   
    <tr>
       <th scope="row">${eee.name}</th>
       <td>${eee.batch}</td>
       <td>${eee.coreSkill}</td>
+<<<<<<< HEAD:WebContent/admin/student_info_landing_page.jsp
       <td>${eee.mentor}</td>
       <td>Reddy</td>
       <td>Reddy</td>
@@ -72,6 +83,9 @@
 					            
 					 </div></td>
 
+=======
+      <td>${eee.status}</td>
+>>>>>>> origin/EPMRDINFDP-32:WebContent/admin/MentorStudentInfoLandingPage.jsp
     </tr>
   </c:forEach>
   </tbody>

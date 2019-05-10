@@ -50,7 +50,7 @@
 								Info</a></li>
 						<li class="nav-item active"><a class="nav-link" href="#">Batch
 								Info</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Reports</a>
+						<li class="nav-item"><a class="nav-link" href="/admin-portal/mentorstudentList">Reports/MentorStudentList</a>
 						</li>
 					</ul>
 					<form class="form-inline my-2 my-lg-0">
