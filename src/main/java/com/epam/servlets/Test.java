@@ -24,10 +24,7 @@ import com.epam.utils.DBManager;
 @WebServlet("/Test")
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	 //@Resource(name = "jdbc/abc")
-	 //DataSource ds;
-       
+
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Mentor> mentorList = new ArrayList<Mentor>();
@@ -46,7 +43,7 @@ public class Test extends HttpServlet {
 				Mentor m=new Mentor();
 				m.setName(rs.getString("email_id"));
 				m.setMentor(rs.getString("name"));
-				m.setStatus(rs.getString("status"));
+				//m.setStatus(rs.getString("status"));
 				mentorList.add(m);
 			}
 			}
