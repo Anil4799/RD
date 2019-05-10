@@ -92,7 +92,8 @@ public class StudentServlet extends HttpServlet {
 		
 		if(result)
 		{
-			 RequestDispatcher rd=request.getRequestDispatcher("student_info_landing_page.jsp");  
+			request.setAttribute("Result", true);
+			 RequestDispatcher rd=request.getRequestDispatcher("AddStudentInfo.jsp");  
 		        rd.forward(request, response);	
 		}
 		else{  
