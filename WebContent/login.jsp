@@ -114,7 +114,7 @@ body {
 	<div class="topnav" bgcolor="#5A5C5F" >
   		<a class="active" href="#home" style="font-family:Oswald;">RD ADMIN<br> PORTAL</a>
    		<div class="topnav-right"  style="padding: 2px 3px; color:black">
-			<img src="training.png" height="41px" width="30px"></img>
+			<img src="training.png" ></img>
   		</div>
 	</div>
 	<div style="padding-left:16px"></div>
@@ -132,7 +132,7 @@ body {
 	 			<tr valign="center" >
 					<td align="center" height="60" valign="bottom" colspan="2"> 
 			    		<div class="input-container" ><i class="fa fa-user icon" ></i>
-							<input  type="text" placeholder="raj@epam.com" name="email" color="blue"  style="background-color: #e6f5ff;width:100%">
+							<input  type="text" placeholder="Email" name="email" color="blue"  style="background-color: #e6f5ff;width:100%">
   			    		</div>
 					</td>
 				</tr>
@@ -140,7 +140,7 @@ body {
 					<td colspan="2">  
 						<div class="input-container">
 	    					<i class="fa fa-lock icon"></i>
-	    					<input  type="password" placeholder="*********" name="password"  style="background-color: #e6f5ff;width:100%">
+	    					<input  type="password" placeholder="password" name="password"  style="background-color: #e6f5ff;width:100%">
  					 	</div>
 					<td>
 				</tr>
