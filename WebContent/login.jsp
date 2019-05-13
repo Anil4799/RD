@@ -31,6 +31,7 @@
    					return true;
 
 		}
+		
 </script>
 <style>
 body {
@@ -97,7 +98,7 @@ body {
   color: white;
   padding: 10px 15px;
   border: none;
-border-radius: 3px;
+  border-radius: 3px;
 
  
  
@@ -108,9 +109,9 @@ border-radius: 3px;
 
 </style>
 </head>
-<body bgcolor="#D3D3D3">
+<body bgcolor="#D3D3D3" >
 	<%String loginFail=(String)request.getAttribute("loginFail"); %>
-	<div class="topnav" >
+	<div class="topnav" bgcolor="#5A5C5F" >
   		<a class="active" href="#home" style="font-family:Oswald;">RD ADMIN<br> PORTAL</a>
    		<div class="topnav-right"  style="padding: 2px 3px; color:black">
 			<img src="training.png" height="41px" width="30px"></img>
@@ -121,8 +122,8 @@ border-radius: 3px;
 		<form name="myForm" action="LoginServlet" onsubmit="return validateForm()" method="post" >
 			<table style="position: fixed; left: 30%;top: 30%;"  height=40% width= 40%  bgcolor="white" cellspacing=0 cellpadding=0 border=0>
 				<tr>
-					<td bgcolor="black" height="30">&nbsp;<font color="#fff" size="3px" align="left">&nbsp;Sign In</font></td>
-					<td bgcolor="black" height="30" align="right">
+					<td bgcolor="#5A5C5F" height="30">&nbsp;<font color="#fff" size="3px" align="left">&nbsp;Sign In</font></td>
+					<td bgcolor="#5A5C5F" height="30" align="right">
 						<font color="#23CAEB" size="5px" style="font-family:Oswald;">&lt;</font>
 						<font color="white" style="font-family:Oswald;" size="5px">epam</font>
 						<font color="#23CAEB" size="5px" style="font-family:Oswald;"> &gt;</font>&nbsp;
@@ -153,16 +154,17 @@ border-radius: 3px;
 				</tr>
 				<tr align="center" height="30" valign="top">
 					<td colspan="2" style="color:red;font-size:15px;font-family:Oswald;">
-						<div id="loginstatus" style="color:red;font-size:15px;font-family:Oswald;"></div>
-						<%if(loginFail!=null) {%>
-						<%=loginFail%>
-						<%} %>
+						<div id="loginstatus" style="color:red;font-size:15px;font-family:Oswald;">
+							<%if(loginFail!=null) {%>
+							<%=loginFail%>
+							<%} %>
+						</div>						
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-<div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:black">
+<div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F">
 </div>
 </body>
 </html>

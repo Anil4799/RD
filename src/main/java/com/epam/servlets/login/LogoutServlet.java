@@ -38,9 +38,9 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		if(session!=null) {
-			session.setAttribute("eamil", null);
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.setAttribute("email", null);
 			session.invalidate();
 			String pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
 			request.getRequestDispatcher(pageUrl).forward(request, response);

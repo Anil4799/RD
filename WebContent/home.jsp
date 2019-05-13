@@ -9,182 +9,141 @@
 <html>
 	<head>
 	 	<meta charset="ISO-8859-1">
-	 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	 	<title>Home</title>
-	  	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	  	<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-	  
-	  	<style type="text/css">
-	  		a:hover {
-			  	background-color:#000;
-			  	color: #23CAEB;
-  			}
-  			.active {
-  				background-color: #23CAEB;
-  				color: white;
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		<title>Home</title>
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+		<link rel="stylesheet" href="AddStudentInfoCSSWithBootstrap.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  	<style>
+			  .container-custom{width:100%; font-family:Oswald;}
+			  .nopad{padding:0;}
+			  .navbar{background-color:#5a5c5f; padding: 0;}
+			  .navbar .nav-link,.navbar-brand{color:#fff !important; padding:15px 25px !important; font-size:1rem; margin: 0}
+			  .nav-link-img{color:#fff !important; padding:2px 2px !important; margin: 0}
+			  .navbar .nav-link:hover{background-color:#000; color:#00ccff !important;}
+			  .navbar .user-icon:hover{color:#fff !important;}
+			  .form-inline{margin:0;}
+			  .search-input{color:#fff !important;background-color: #737171;border-radius: 19px !important; border-color:#737171;}
+			  .search-btn{z-index:4 !important;background-color:#737171; border: 0 !important;border-radius: 19px !important;position: absolute !important; right: 0;padding: 11px;}
+			  .search-input.form-control:focus{background-color:#737171; box-shadow:none; border-color:#737171;}
+			  .btn-secondary:hover, .btn-secondary:active{background-color:#737171 !important; box-shadow:none; border-color:#737171;border-radius: 19px !important;}
+			  .btn-secondary.focus, .btn-secondary:focus{box-shadow: none;}
+			  .user-icon .fa-user{padding: 4px;}
+			  .required {color: red;}
+			  .btn-save{border-radius: 5px 5px 5px 5px; padding: 5px 5px 5px 5px; width: 60px; height: 28px; float: right; margin: 3px;	text-align: center; background: rgb(92,184,92);  float: right; font-family: Oswald, sans-serif; color: white;}
+			  .btn-back{border-radius: 5px 5px 5px 5px; padding: 5px 5px 5px 5px;  background: rgb(216,220,222);  width: 60px; height: 28px; float: right; margin: 3px;	text-align: center;  float: right;  font-family: Oswald, sans-serif;}
+			  .active {  background-color: black;  color:#00ccff;}
+			  .label_color{color:rgb(178,178,178);}
+			  .search-btn {
+				    z-index: 4 !important;
+				    background-color: #737171;
+				    border: 0 !important;
+				    border-radius: 19px !important;
+				    position: absolute !important;
+				    right: 0;
+				    padding: 6px 12px;
+			   }
+			  .dropdown-item {
+				    display: block;
+				    width: 100%;
+				    padding: 2px;
+				    clear: both;
+				    font-weight: 400;
+				    color: white;
+				    text-align: center;
+				    white-space: nowrap;
+				    background-color: transparent;
+				    border: 0;
+				}
+				.dropdown-menu {
+				    /* position: absolute; */
+				    top: 100%;
+				    left: 0;
+				    z-index: 1000;
+				    display: none;
+				    float: left;
+				    min-width: 5rem;
+				    padding: .5rem 0;
+				    margin: .125rem 0 0;
+				    font-size: 1rem;
+				    color: #212529;
+				    text-align: left;
+				    list-style: none;
+				    background-color: black;
+				    background-clip: padding-box;
+				    border: 1px solid rgba(0,0,0,.15);
+				    border-radius: .25rem;
+				}
+				.dropdown-item:focus, .dropdown-item:hover {
+			    	color: white;
+			    	text-decoration: none;
+			    	background-color: black;
+				}
+		</style>
+		<script>
+		  	function logout() {
+		  		 document.getElementById("logoutform").action="./LogoutServlet";
+		  		 document.getElementById("logoutform").method = "POST";
+		  		 document.getElementById("logoutform").submit();
+		  		 
+				
 			}
-			.dropdown {
-  				float: right;
-  				overflow: hidden;
-			}
-
-			.dropdown .dropbtn {
-  				font-size: 16px;  
-  				border: none;
-  				outline: none;
-			  	color: white;
-			  	padding: 14px 16px;
-			  	background-color: inherit;
-			  	font-family: inherit;
-			  	margin: 0;
-			}
-			.dropdown:hover .dropdown-content {
-  				display: block;
-			}
-			.dropdown-content {
-			  	display: none;
-			  	position: absolute;
-			  	background-color: #f9f9f9;
-			  	min-width: 5px;
-			  	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			  	z-index: 1;
-			}
-			.dropdown-content a {
-				float: none;
-			  	color: black;
-			  	padding: 12px 16px;
-			  	text-decoration: none;
-			  	display: block;
-			  	text-align: left;
-			}
-			.navbar {
-  				overflow: hidden;
-  				background-color: #000;
-			}
-			.navbar a {
-  				float: left;
-			  	font-size: 16px;
-			  	color: white;
-			  	text-align: center;
-			  	padding: 14px 16px;
-			  	text-decoration: none;
-			s}
-			
-			.navbar a:hover, .dropdown:hover .dropbtn {
-  				background-color: black;
-			}
-	   		.tabs {
-	       		margin:  0;
-	       		padding: 0;
-	       		list-style: none;
-	       		display: table;
-	       		table-layout: fixed; 
-	       		width: 100%;
-	   		}
-	  		.tabs_item {
-	   			display: table-cell; 
-	   		}
-	  
-	      	.tabs_link {
-	          	display: block; 
-	      	}
-	      	
-	   		.primary_nav {
-	       		text-align: center;
-	       		border-radius: 1px;
-	       		overflow: hidden; 
-	   		}
-	  
-	      	.primary_nav a {
-	        	padding: 0.5em;
-				background-color: #454545;
-	            color: #fff;
-	            text-decoration: none;
-	      	}
-	  
-	      	.primary_nav a:hover {
-	          	background-color: #000;
-	          	color: #23CAEB;
-	      	}  
-	      	.round {
-	    		
-			    border-radius: 15px;
-			    border: 1px #000 solid;
-			    padding: 5px;
-			    
-			    top: 0.5cm;
-			    left: 17cm;
-			       
-			}
-			.roundbutton {
-    			width: 2%;
-			    border-radius: 14px;
-			    border: 0px #000 solid;
-			    border-color:white;
-			    background-color:white;
-			    padding: 4px 0px 10px 0px;
-			    position: absolute;
-			    top: 0.51cm;
-			    left: 19.85cm;
-			}
-		</style>	   
+		  	
+		    window.history.forward();
+		    function noBack() { window.history.forward(); }
+		
+		  	
+	  	</script>	   
 	</head> 
  
-	<body>
-		<% ArrayList<Menu> menu = (ArrayList<Menu>) request.getAttribute("menuList");%>
-	 	<!--  iterate ArrayList --> 
-	 	<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1;">
-	   	<ul class="tabs  primary_nav">
-	   		<li style="padding: 0.5em; background-color: #23CAEB; color: #fff; text-decoration: none;"> 
-	            RD ADMIN PORTAL 
-	        </li>
-			<% for (int i=0;i<menu.size();i++) { 
-			Menu items = (Menu)menu.get(i); %>
-	        <li class="tabs_item">
-	            <a href=<%=items.getMenuPagePath()%> class="tabs_link"> <%=items.getMenuName()%> </a>
-	        </li>       
-	     	<%}%> 
-	        <li class="tabs_item">
-	            <input type="text"  class="tabs_link round" placeholder="Search" name="search" style="background:#454545;">
-	        </li>
-	        <li>
-		        <div class="dropdown">
-		    		<button class="dropbtn">
-		    			<img  src="userlogout.png" height=26% width=26% >
-		      			<i class="fa fa-caret-down"></i>
-		    		</button>
-		    		<div class="dropdown-content">
-		      			<a href="#">LOGOUT</a>
-		    		</div> 
-		  		</div>
-		  	</li>
-		  	<li>
-		        <form id="logoutform">
-		        		<button type="submit"  onclick="logout()"> Logout</button>
-		        </form>
-	        </li>
-	        <li>
-	        	<img  style="float:right; padding-top:2px;padding-right:2px" src="training.png" height=4% width=3% >       
-	        </li>
-	        
-	   </ul>
-	  </div>
-	  <div>
-	  	<p id="demo"></p>
-	  </div>
-	  
-	   <script>
-	  	function logout() {
-	  		 document.getElementById("logoutform").action="./LogoutServlet";
-	  		 document.getElementById("logoutform").method = "POST";
-	  		 document.getElementById("logoutform").submit();
-			
-		}
-	  </script>
-	 </body>
+	<body style="font-family: Oswald, sans-serif;onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+		<div>
+		 	<!-- Get Menu from GetMentServlet -->
+			<% ArrayList<Menu> menu = (ArrayList<Menu>) request.getAttribute("menuList");%>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad">
+	    		<nav class="navbar navbar-expand-md navbar-light">
+		        	<a class="navbar-brand" style="background-color:#00ccff">RD ADMIN<br>PORTAL</a>
+		        	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		            <span class="navbar-toggler-icon"></span>
+		        	</button>
+		
+		        	<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+		            	<div class="navbar-nav">		                
+			                <% for (int i=0;i<menu.size();i++) { 
+							Menu items = (Menu)menu.get(i); %>	      
+		            		<a href=<%=items.getMenuPagePath()%> class="nav-item nav-link"> <%=items.getMenuName()%> </a>
+		             	    <%}%>		                
+		            	</div> 
+			            <form class="form-inline">
+			                <div class="input-group">                    
+			                    <input type="text" class="search-input form-control">
+			                    <div class="input-group-append">
+			                        <button type="button" class="search-btn btn btn-secondary"><i class="fa fa-search"></i></button>
+			                    </div>
+			                </div>
+			            </form>
+			            <div class="navbar-nav">
+			                <div class="nav-item dropdown">
+			                  <a href="#" class="nav-link dropdown-toggle user-icon" data-toggle="dropdown"><i class="fa fa-fw fa-user"></i></a>
+			                  
+			                  <form id="logoutform" class="dropdown-menu">
+					        		<button class="dropdown-item dropdown-item:focus dropdown-item:hover" type="submit"  onclick="logout()"> Logout</button>
+					        	</form>            
+			              	</div>		              
+		            	</div>
+		        	</div>
+		        	<img style="float: left;padding: 0px; "src="training.png" class="nav-item nav-link-img" height=3% width=3%>
+	   	 		</nav>
+	  		</div>
+  			<p id="demo"></p>
+  		</div>
+  		<div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>	  
+	  </body>
 </html>
    

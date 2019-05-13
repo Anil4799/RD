@@ -32,12 +32,12 @@ public class LoginDAOImp implements LoginDAO {
 		return 0;
 	}
 	@Override
-	public ArrayList<Menu> getMenuItems(int id) {
+	public ArrayList<Menu> getMenuItems(int roleid) {
 		// TODO Auto-generated method stub
 		ArrayList<Menu> menu = new ArrayList<Menu>();
 		try {
 			stmt = con.createStatement();
-			rs= stmt.executeQuery("select * from menu where menuid in (select menuid from rolewithmenu where roleid="+id+")"); 
+			rs= stmt.executeQuery("select * from menu where menuid in (select menuid from rolewithmenu where roleid="+roleid+")"); 
 	        while(rs.next()) {
 	        	menu.add(new Menu(rs.getString(2),rs.getString(3)));
 	        }
