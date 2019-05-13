@@ -12,8 +12,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.epam.dao.MentorStudent;
-import com.epam.dao.MentorStudent;
+import com.epam.dao.mentor.MentorStudent;
+import com.epam.services.mentor.MentorStudentInfoServiceImpl;
 import com.epam.utils.DBManager;
 
 class AllMentorStudentListServletTest {

@@ -6,7 +6,7 @@
     
      <footer class=footer>
 
- 	<center><div>EPAM India</div></center>
+<div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>
 
  </footer>
     

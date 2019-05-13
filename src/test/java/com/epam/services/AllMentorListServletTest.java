@@ -12,18 +12,19 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.epam.dao.Mentor;
+import com.epam.dao.admin.AdminMentor;
+import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.utils.DBManager;
 
 class AllMentorListServletTest {
 	static DBManager db;
-	static MentorInfoServiceImpl mentor;
+	static AdminMentorInfoServiceImpl mentor;
 	static Connection con=null;
-	List<Mentor> lsactual=null;
+	List<AdminMentor> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
-		mentor=new MentorInfoServiceImpl();
+		mentor=new AdminMentorInfoServiceImpl();
 		db=new DBManager();
 	}
      
@@ -47,7 +48,7 @@ class AllMentorListServletTest {
 	@Test
 	void test2()
 	{   lsactual =mentor.getAllMentorDetails(DBManager.getConnection());
-		Mentor m= lsactual.get(1);
+		AdminMentor m= lsactual.get(1);
 		String email_id=null;
 		String mentor_name=null;
 		String mentorship_start_date=null;
