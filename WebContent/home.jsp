@@ -28,7 +28,7 @@
 			  .nav-link-img{color:#fff !important; padding:2px 2px !important; margin: 0}
 			  .navbar .nav-link:hover{background-color:#000; color:#00ccff !important;}
 			  .navbar .user-icon:hover{color:#fff !important;}
-			  .form-inline{margin:0;}
+			  .form-inline{margin:0; position: relative;}
 			  .search-input{color:#fff !important;background-color: #737171;border-radius: 19px !important; border-color:#737171;}
 			  .search-btn{z-index:4 !important;background-color:#737171; border: 0 !important;border-radius: 19px !important;position: absolute !important; right: 0;padding: 11px;}
 			  .search-input.form-control:focus{background-color:#737171; box-shadow:none; border-color:#737171;}
@@ -138,7 +138,7 @@
 			              	</div>		              
 		            	</div>
 		        	</div>
-		        	<img style="float: left;padding: 0px; "src="training.png" class="nav-item nav-link-img" height=3% width=3%>
+		        	<img style="float: left;padding: 0px; "src="training.png" class="nav-item nav-link-img">
 	   	 		</nav>
 	  		</div>
   			<p id="demo"></p>
