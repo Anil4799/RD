@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.epam.services.MentorInfoServiceImpl;
 
 /**
  * @author Durga_Adimulam
