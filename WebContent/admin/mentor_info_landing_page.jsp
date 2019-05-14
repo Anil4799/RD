@@ -23,7 +23,7 @@
 		<i class="fa fa-search" aria-hidden="true"></i>
 		</td>
 		<td><div class="button">
-			<button class="btn btn-success"> ADD NEW MENTOR</button>
+			<a href="/admin-portal/admin/AddMentorInfo.jsp" class="btn btn-success"> ADD NEW MENTOR</a>
 			</div></td> 
 		</tr>
 		</table>

@@ -5,6 +5,8 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	   <%@page import="com.epam.utils.*" %>
+    <%@page import="java.sql.* "%>
 
 
 <!doctype html>
@@ -23,7 +25,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/admin-portal/css/style.css">
 <script src="/admin-portal/js/main.js"></script>
+
 <script src="/admin-portal/js/StudentJS.js"></script>
+
+<link rel="stylesheet" href="/admin-portal/css/add_mentor_info.css" /> 
+<script src="/admin-portal/js/add_mentor.js"></script>
+
 
 <title>Landing Page</title>
 
