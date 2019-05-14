@@ -13,6 +13,29 @@
   </body>
   
   <script>
+		$("#mentor_name").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#mentor_email").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#mentorship_start_date").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#max_no_of_mentees").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#mentor_status").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});	
+	</script>	
+  
+  <script>
 		$("#batch_id").keypress(function(){
 			  if($(this).val().length>=1){}
 			 	 $(this).removeClass('txtbrcolr');
