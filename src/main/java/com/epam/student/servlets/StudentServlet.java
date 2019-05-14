@@ -1,6 +1,7 @@
 package com.epam.student.servlets;
 
 import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,8 +55,9 @@ public class StudentServlet extends HttpServlet {
 		String gender = request.getParameter("gender");
 		long contactNumber =Long.parseLong(request.getParameter("contactNumber"));
 		String personalLocation = request.getParameter("personalLocation");
-		
-		String collegeName = request.getParameter("collegeName");
+		String collegeNameAndLocation = request.getParameter("collegeName");
+		String collegeName = collegeNameAndLocation.substring(0,collegeNameAndLocation.indexOf("$"));
+		System.out.println("collegeName==========\n\n"+collegeName+"\n\n");
 		String collegeLocation = request.getParameter("collegeLocation");
 		String graduation = request.getParameter("graduation");
 		String graduationSpeciality = request.getParameter("graduationSpeciality");
@@ -69,6 +71,7 @@ public class StudentServlet extends HttpServlet {
 		String preferredStudentStream = request.getParameter("preferredStudentStream");
 		String assignedStream = request.getParameter("assignedStream");
 		date1 = request.getParameter("dateOfJoining");
+		
 		
 		try{
 			dateOfJoining = format.parse(date1);
@@ -88,7 +91,7 @@ public class StudentServlet extends HttpServlet {
 				dateOfJoining, mentorName, assignedLocation, relocation, status);
 		
 		result = studentService.addStudentDetails(studentBean);
-		//System.out.println(result);
+		System.out.println(result);
 		
 		if(result)
 		{

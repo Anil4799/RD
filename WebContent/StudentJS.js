@@ -36,7 +36,7 @@ function validateForm() {
         document.forms["add_student_info"]["email"].classList.remove("txtbrcolr");
     }
     if(date_of_birth == null || date_of_birth == ""){
-        message += "Date of birth cannot be empty<br/>" + "\n";
+        message += "Date of Birth cannot be empty<br/>" + "\n";
         $("#dateOfBirth").addClass('txtbrcolr');
     }
     else{
@@ -62,7 +62,7 @@ function validateForm() {
     
     if(batch_id == null || batch_id == "no_value")
     {
-        message += "Batch ID cannot be empty<br/>" + "\n";
+        message += "BatchId cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["batchId"].classList.add("txtbrcolr");
     }
     else{
@@ -70,7 +70,7 @@ function validateForm() {
     }
     if(employee_type == null || employee_type == "no_value")
     {
-        message += "employeeType cannot be empty<br/>" + "\n";
+        message += "Employee Type cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["employeeType"].classList.add("txtbrcolr");
     }
     else{
@@ -78,7 +78,7 @@ function validateForm() {
     }
     if(core_skill == null || core_skill == "no_value")
     {
-        message += "coreSkill cannot be empty<br/>" + "\n";
+        message += "Core Skill cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["coreSkill"].classList.add("txtbrcolr");
     }
     else{
@@ -86,14 +86,14 @@ function validateForm() {
     }
     if(relocation == null || relocation == "no_value")
     {
-        message += "relocation cannot be empty<br/>" + "\n";
+        message += "Relocation cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["relocation"].classList.add("txtbrcolr");
     }
     else{
         $("#relocation").removeClass('txtbrcolr');
     } if(status == null || status == "no_value")
     {
-        message += "status cannot be empty<br/>" + "\n";
+        message += "Status cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["status"].classList.add("txtbrcolr");
     }
     else{
@@ -129,3 +129,18 @@ function closeAlertPopup(){
 function gotoStudentLandingPage(){
     window.location = 'StudentInfoLandingPage.jsp';
 }
+
+
+function setLocation()
+{
+ var collegeNameLocation = document.add_student_info.collegeName.value;
+ var collegeName1 = collegeNameLocation.substring(0, collegeNameLocation.indexOf("$"));
+// alert(collegeName1);
+ var location = collegeNameLocation.substring(collegeNameLocation.indexOf("$") + 1);
+ //alert(location + "===" + collegeName);
+ //document.add_student_info.collegeName.value = collegeName1;
+ document.add_student_info.collegeLocation.value = location;
+ 
+}
+
+

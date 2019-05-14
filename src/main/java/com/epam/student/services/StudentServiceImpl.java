@@ -35,13 +35,14 @@ public class StudentServiceImpl implements StudentService {
 			
 			int numberOfRowsInserted = preparedStatement.executeUpdate();
 			
-			
+			System.out.println("\n===== record inserted into student_personal_info table");
 			
 			 
 			
 			preparedStatement = connection.prepareStatement("insert into student_educational_info values(?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, studentBean.getEmail());
 			preparedStatement.setString(2, studentBean.getCollegeName());
+			
 			preparedStatement.setString(3, studentBean.getCollegeLocation());
 			preparedStatement.setString(4, studentBean.getGraduation());
 			preparedStatement.setString(5, studentBean.getGraduationSpeciality());
@@ -49,6 +50,7 @@ public class StudentServiceImpl implements StudentService {
 			preparedStatement.setInt(7, studentBean.getGraduationMarks());
 			preparedStatement.setInt(8, studentBean.getTwelveth());
 			preparedStatement.setInt(9, studentBean.getTenth());
+			System.out.println("=======\n\n"+studentBean.getCollegeName()+"\n\n");
 			
 			int numberOfRowsInserted1 = preparedStatement.executeUpdate();
 			

@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.epam.utils.DBManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -199,15 +203,27 @@
 			 <div  style="padding: 5%; ">
 				
 				<div class="card">
-  					<h5 class="card-header">EDUCATIONAL INFO</h5>
+  					<h5 class="card-header">EDUCATIONAL DETAILS</h5>
   					<div class="card-body label_color">
   					<div>
+  						
   						College:
   						<span style="float:right;" >
-  							<select name="collegeName" class="form-control form-control-sm" style="width:195px">
-							<option value="MLRIT">MLRIT</option>
-							<option value="BVRIT">BVRIT</option>
-							<option value="CU">CU</option>
+  							<select name="collegeName" class="form-control form-control-sm" style="width:195px" onchange="setLocation(this.value)" >
+  						<option value="no_value"></option>
+  						<% Connection connection = DBManager.getConnection();
+  						String collegeName = null, collegeLocation = "";
+  						PreparedStatement preparedStatement = connection.prepareStatement("select college_name, location from student_college_info");
+  						ResultSet resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							collegeName = resultSet.getString("college_name");
+  						
+  						%>
+  						
+							<option value="<%=collegeName+"$"+resultSet.getString("Location")%>"><%=collegeName %></option>
+							<% } %>
 							</select>
   						</span>
   					</div>
@@ -215,7 +231,8 @@
     				<div>
     					Location:
     					<span style="float:right;" >
-    					<input name="collegeLocation" type="text" class="form-control form-control-sm" size="30"/>
+    					
+    					<input name="collegeLocation" type="text" class="form-control form-control-sm" size="30" value="<%=collegeLocation %>"/>
     					</span>
     				</div>
 					<br>
@@ -258,7 +275,7 @@
 					
 					<br>
 					<div>
-					10th +2 Marks:
+					10th + 2 Marks:
 					<span style="float:right;">
 					<input name="twelveth" type="text" class="form-control form-control-sm" size="30"/>
 					</span>
@@ -297,9 +314,20 @@
 						<span style="float:right;">
 						<select name="employeeType" id="employeeType" class="form-control form-control-sm" style="width:195px" required>
 						<option value="no_value"></option>
-							<option value="fte">FTE</option>
-							<option value="internship">Internship</option>
-						</select>
+						<% 
+  						String employee_type = "";
+  						 preparedStatement = connection.prepareStatement("select Employee_Type from employee_type");
+  						 resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							employee_type = resultSet.getString("employee_type");
+  						
+  						%>
+  						
+							<option value="<%=employee_type%>"><%=employee_type %></option>
+							<% } %>
+							</select>
 						</span>
 						</div>
 						
@@ -309,12 +337,20 @@
 						<span style="float:right;">
 						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm" style="width:195px" required>
 						<option value="no_value"></option>
-							<option value="python">Python</option>
-							<option value="java">Java</option>
-							<option value=".net">.Net</option>
-							<option value="javascript">Javascript</option>
-							<option value="php">PHP</option>
-						</select>
+						<% 
+  						String skill = "";
+  						 preparedStatement = connection.prepareStatement("select Skill_Name from core_skill");
+  						 resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							skill = resultSet.getString("Skill_Name");
+  						
+  						%>
+  						
+							<option value="<%=skill	%>"><%=skill %></option>
+							<% } %>
+							</select>
 						</span>
 						</div>
 						<br>
@@ -323,13 +359,20 @@
 						<span style="float:right;">
 						<select name="preferredStudentStream" class="form-control form-control-sm" style="width:195px">
 						<option value="no_value"></option>
-							<option value="java">Java</option>
-							<option value=".net">.Net</option>
-							<option value="sdet">SDET - Software Development Engineer in Testing</option>
-							<option value="salesforce">Salesforce</option>
-							<option value="bigData">Big-Data</option>
-							<option value="dep">DEP - [Digital Experience Practice]</option>
-						</select>
+						<% 
+  						String streamName = "";
+  						 preparedStatement = connection.prepareStatement("select Stream_Name from technical_stream");
+  						 resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							streamName = resultSet.getString("Stream_Name");
+  						
+  						%>
+  						
+							<option value="<%=streamName	%>"><%=streamName %></option>
+							<% } %>
+							</select>
 						</span>
 						</div>
 						
@@ -339,19 +382,26 @@
 						<span style="float:right;" >
 						<select name="assignedStream" class="form-control form-control-sm" style="width:195px">
 						<option value="no_value"></option>
-							<option value="java">Java</option>
-							<option value=".net">.Net</option>
-							<option value="sdet">SDET - Software Development Engineer in Testing</option>
-							<option value="salesforce">Salesforce</option>
-							<option value="bigData">Big-Data</option>
-							<option value="dep">DEP - [Digital Experience Practice]</option>
-						</select>
+						<% 
+  						//String streamName = "";
+  						 preparedStatement = connection.prepareStatement("select Stream_Name from technical_stream");
+  						 resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							streamName = resultSet.getString("Stream_Name");
+  						
+  						%>
+  						
+							<option value="<%=streamName	%>"><%=streamName %></option>
+							<% } %>
+							</select>
 						</span>
 						</div>
 						
 						<br>
 						<div>
-						Date of Joining:
+						Date of Joining:<span class="required">*</span>
 						<span style="float:right;" >
 						<input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm" style="width:195px"/>
 						</span>
@@ -362,6 +412,7 @@
 						Mentor:
 						<span style="float:right;" >
 						<select name="mentorName" class="form-control form-control-sm" style="width:195px">
+						<option value="no_value"></option>
 							<option value="Durga">Durga</option>
 							<option value="Revathi">Revathi</option>
 						</select>
@@ -373,10 +424,21 @@
 						Assigned Location:
 						<span style="float:right;" >
 						<select name="assignedLocation" class="form-control form-control-sm" style="width:195px">
-							<option value="Hyderabad" >Hyderabad</option>
-							<option value="pune">Pune</option>
-							<option value="banglore">Bangalore</option>
-						</select>
+							<option value="no_value"></option>
+						<% 
+  						String assignedLocation = "";
+  						 preparedStatement = connection.prepareStatement("select Assigned_Location from assigned_location");
+  						 resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							assignedLocation = resultSet.getString("Assigned_Location");
+  						
+  						%>
+  						
+							<option value="<%=assignedLocation	%>"><%=assignedLocation %></option>
+							<% } %>
+							</select>
 						</span>
 						</div>
 						
@@ -385,8 +447,9 @@
 						Relocation:<span class="required">*</span>
 						<span style="float:right;" >
 						<select name="relocation" id="relocation" class="form-control form-control-sm" style="width:195px" required>
-							<option value="Hyderabad">Hyderabad</option>
-							<option value="Pune">Pune</option>
+							<option value="no_value"></option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
 						</select>
 						</span>
 						</div>
@@ -396,11 +459,21 @@
 						Status:<span class="required">*</span>
 						<span style="float:right;" >
 						<select name="status" id="status" class="form-control form-control-sm" style="width:195px" required>
-							<option value="active">Active</option>
-							<option value="terminated">Terminated</option>
-							<option value="resigned_fte">Resigned as FTE</option>
-							<option value="resigned_intern">Resigned as Intern</option>
-						</select>
+							<option value="no_value"></option>
+						<% 
+  						String employeeStatus = "";
+  						 preparedStatement = connection.prepareStatement("select Employee_Status from Employee_Status");
+  						 resultSet = preparedStatement.executeQuery();
+  						while(resultSet.next())
+  						{
+  							// collegeName = resultSet.getString(1);
+  							employeeStatus = resultSet.getString("Employee_Status");
+  						
+  						%>
+  						
+							<option value="<%=employeeStatus	%>"><%=employeeStatus %></option>
+							<% } %>
+							</select>
 						</span>
 						</div>
  		   		</div>
