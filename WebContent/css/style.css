@@ -9,7 +9,7 @@ html,
 body {
 	background-color: #f2f2f2;
 	font-family: 'Oswald', sans-serif !important;
-	font-size: 16px;
+	font-size: 14px;
 	
 }
 header {
@@ -160,3 +160,32 @@ option {
   input[type="date"]:valid:before {
     content: "";
   }
+  
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    font-family: Oswald;
+    }
+    .table thead th {
+
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: bold;
+
+}
+table td, .table th {
+
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    font-weight: normal;
+
+}

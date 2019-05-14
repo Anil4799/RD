@@ -28,7 +28,7 @@ class AllStudentListServletTest {
 	}
      
 	@Test
-	 void test1() throws SQLException {
+	 void test1() throws Exception {
 		
 	    con=DBManager.getConnection();
 		Statement stmt=con.createStatement();
@@ -43,29 +43,6 @@ class AllStudentListServletTest {
 	 lsactual =student.getAllStudentDetails(DBManager.getConnection());
 		assertEquals(expected, lsactual.size());
 			
-	}
-	@Test
-	void test2()
-	{   lsactual =student.getAllStudentDetails(DBManager.getConnection());
-	Student s= lsactual.get(1);
-	String name=null;
-	String batch=null;
-	String coreSkill=null;
-	String mentor=null;
-	String status=null;
-		name=s.getName();
-		batch=s.getBatch();
-		coreSkill=s.getcoreSkill();
-		mentor=s.getMentor();
-		status=s.getStatus();
-		
-		assertNotNull(name);
-		assertNotNull(batch);
-		assertNotNull(coreSkill);
-		assertNotNull(mentor);
-		assertNotNull(status);
-		
-		
 	}
 	
 

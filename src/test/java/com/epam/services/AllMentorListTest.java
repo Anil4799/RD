@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import com.epam.dao.Mentor;
 import com.epam.utils.DBManager;
 
-class AllMentorListServletTest {
+class AllMentorListTest {
 	static DBManager db;
 	static MentorInfoServiceImpl mentor;
 	static Connection con=null;
@@ -28,7 +28,7 @@ class AllMentorListServletTest {
 	}
      
 	@Test
-	 void test1() throws SQLException {
+	 void test1() throws Exception {
 		
 	    con=DBManager.getConnection();
 		Statement stmt=con.createStatement();
@@ -44,33 +44,7 @@ class AllMentorListServletTest {
 		assertEquals(expected, lsactual.size());
 			
 	}
-	@Test
-	void test2()
-	{   lsactual =mentor.getAllMentorDetails(DBManager.getConnection());
-		Mentor m= lsactual.get(1);
-		String email_id=null;
-		String mentor_name=null;
-		String mentorship_start_date=null;
-		String 	mentorship_end_date=null;
-		String max_no_of_mentees=null;
-		String technology_stream=null;
-		String status=null;
-		email_id=m.getEmail_id();
-		mentor_name=m.getMentor_name();
-		mentorship_start_date=m.getMentorship_start_date();
-		mentorship_end_date=m.getMentorship_end_date();
-		max_no_of_mentees=m.getMax_no_of_mentees();
-		technology_stream=m.getTechnology_stream();
-		status=m.getStatus();
-		assertNotNull(email_id);
-		assertNotNull(mentor_name);
-		assertNotNull(mentorship_start_date);
-		assertNotNull(mentorship_end_date);
-		assertNotNull(max_no_of_mentees);
-		assertNotNull(technology_stream);
-		assertNotNull(status);
-		
-	}
+	
 	
 
 }

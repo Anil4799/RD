@@ -17,7 +17,7 @@ import com.epam.services.MentorInfoServiceImpl;
  */
 public class DBManager {
 	private static final Logger LOGGER = Logger.getLogger( DBManager.class);
-	public static Connection getConnection() {
+	public static Connection getConnection() throws Exception {
 		Connection connection = null;
 		
 		try
@@ -29,6 +29,7 @@ public class DBManager {
         }
         catch (SQLException | ClassNotFoundException e) {
             LOGGER.error("Exception occured in MentorInfo = {}", e);
+            throw e;
         }
 		
 		return connection;
