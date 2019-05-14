@@ -12,36 +12,31 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>		
 		<style type="text/css">
-			.tabs {
-			    margin:  0px;
-			    padding: 0px;
-			    list-style: none;
-			    display: table;
-			    table-layout: fixed; 
-			    width: 100%;	  
+			
+			#dialogoverlay{
+				display: none;
+				opacity: .1;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				background: #000;
+				width: 100%;
+				z-index: 10;
 			}
-		    .tabs_item {
-		        display: table-cell; 
-		        //width: 250px;       
-		    }
-		    .tabs_link {
-		        display: block; 
-		    }
-			.primary_nav {
-			    text-align: center;
-			    border-radius: 4px;
-			    overflow: hidden;	    	    
-			}
-		    .primary_nav a {
-		           padding: 0.5em;
-		           background-color: #454545;
-		           color: #fff;
-		           text-decoration: none;
-		    }		
-		    .primary_nav a:hover {
-		        background-color: #000;
-		        color: #23CAEB;
-		    }
+			#dialogbox{
+				display: none;
+				position: fixed;
+				background: WHITE;
+				border-radius:7px; 
+				width:400px;
+				z-index: 10;
+			}		
+			
+			#dialogbox > div{ background:#FFF; margin:8px; }
+			#dialogbox > div > #dialogboxhead{ background: WHITE; font-size:14x; padding:10px; }
+			#dialogbox > div > #dialogboxbody{ background:WHITE; padding:20px; }
+			#dialogbox > div > #dialogboxfoot{ background: WHITE; padding:10px; text-align:right; }
+		    
 		    .backbutton, .savebutton{
 		    	font-size: 12px;
 		    	border-radius: 5px 5px 5px 5px;
@@ -127,95 +122,114 @@
 			}
 		
 			function validateForm() {
-				var message = "RD Portal Says"+"\n\n\n";
+				var message = "";
 				var batch_id=document.forms["batch_info_form"]["batch_id"].value;
 				var batch_start_date=document.getElementById("batch_start_date").value;
 				var batch_end_date=document.getElementById("batch_end_date").value;
 				var batch_status=document.getElementById("batch_status").value;
 				var default_id="";
-				if(batch_id == default_id)
-				{
-					message += "batch id is auto generated and cannot be empty" + "\n";
-					$("#batch_id").addClass('txtbrcolr');
-			
-				}
-			else
-				{
-					$("#batch_id").removeClass('txtbrcolr');
-				}
+				
 			if(batch_start_date == null || batch_start_date == ""){
-					message += "batch_start_date cannot be empty" + "\n";
+					message += "Start Date cannot be empty" + "<br>";
 					$("#batch_start_date").addClass('txtbrcolr');
 				}
 			else{
 					$("#batch_start_date").removeClass('txtbrcolr');
 				}
-			
+			if(batch_id == default_id)
+			{
+				message += "BatchId cannot be empty" + "<br>";
+				$("#batch_id").addClass('txtbrcolr');
+		
+			}
+		else
+			{
+				$("#batch_id").removeClass('txtbrcolr');
+			}
 				
 				if(message.length > 17 ){
-					alert(message);
+					customAlertIdGenerated(message);
+					
 				}	
 				else
 					{						
 						
 						saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status);
+						
 					}
 				
 				
 			}
 			
-function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status) {
-	var params = "?batch_id="+ batch_id+ "&batch_start_date="+batch_start_date + "&batch_end_date=" + batch_end_date
-	  + "&batch_status="+batch_status;
-	var xhttp;
+			function customAlertIdAdded(message){
+				var batch_added_message = document.getElementById('batch_added_message');	 					        	        
+				document.getElementById('batch_added_message').innerHTML = message;
+				batch_added_message.style.display = "block";
+				setTimeout(function () {document.getElementById('batch_added_message').style.display='none'}, 1000);
+				setTimeout(function () {
+					
+					batchInfoLandingPgae()}, 500);								
+			}
+			
+			
+			
+			function customAlertIdGenerated(message){
+				var winW = window.innerWidth;
+	       		var winH = window.innerHeight;
+		        var dialogoverlay = document.getElementById('dialogoverlay');
+		        var dialogbox = document.getElementById('dialogbox');
+		        dialogoverlay.style.display = "block";
+		        dialogoverlay.style.height = winH+"px";
+		        dialogbox.style.left = (winW/2) - (550 * .4)+"px";
+		        dialogbox.style.top = "10px";
+		        dialogbox.style.display = "block";
+		        
+		        document.getElementById('dialogboxhead').innerHTML = "&nbsp;&nbsp;&nbsp;RD Portal Says <br>";
+		        document.getElementById('dialogboxbody').innerHTML = message;
+		        document.getElementById('dialogboxfoot').innerHTML = '<span style="background-color:#58D68D ; color: #FFF; font-size: 12px; border-radius: 5px 5px 5px 5px;  padding: 5px 5px 5px 5px; width: 60px; height: 30px; float: right; margin: 8px; text-align: center; cursor: pointer;" onclick="customOk()">OK</span>';
+				}
+		        function customOk(){
+		        	
+		    		document.getElementById('dialogbox').style.display = "none";
+		    		document.getElementById('dialogoverlay').style.display = "none";
+				
+		        }
+
+			
+		function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status) {
+			var params = "?batch_id="+ batch_id+ "&batch_start_date="+batch_start_date + "&batch_end_date=" + batch_end_date
+			  + "&batch_status="+batch_status;
+			var xhttp;
 	
-	if (window.XMLHttpRequest) {
-	    xhttp = new XMLHttpRequest();
-	  } else {
-	    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	  }
+			if (window.XMLHttpRequest) {
+	 		   xhttp = new XMLHttpRequest();
+	  		} else {
+	 			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	  		}
 	
-	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	      alert(this.responseText);
-	    }
+		  xhttp.onreadystatechange = function() {
+	   	 if (this.readyState == 4 && this.status == 200) {
+	       		customAlertIdAdded(this.responseText);
+	   	 }
 	  };
-	  xhttp.open("GET", "./SaveBatchInfoServlet"+ params, true);
-	  xhttp.send();
-}
+	 		 xhttp.open("GET", "./SaveBatchInfoServlet"+ params, true);
+	  		xhttp.send();
+		}
 	</script>
 	</head>
 	<body>
 		  <div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
-		<div id="batch_added_message" class="batch_added_message" style="padding: 7px 10px 5px 40px;">
-			Batch Added Successfully
-		</div>
-		<!-- <div>
-			<ul class="tabs  primary_nav">
-				    <li class="rd_admin_tab"> 
-				        RD ADMIN PORTAL
-				    </li>
-				    <li class="tabs_item">
-				        <a href="#" class="tabs_link">STUDENT INFO</a>
-				    </li>
-				    <li class="tabs_item">
-				        <a href="#" class="tabs_link">MENTOR INFO</a>
-				    </li>
-				     <li class="tabs_item">
-				        <a href="#" class="tabs_link">BATCH INFO</a>
-				    </li>
-				    <li class="tabs_item">
-				        <a href="#" class="tabs_link">REPORTS</a>
-				    </li>
-				    <li class="tabs_item">
-				        <a href="#" class="tabs_link">SEARCH</a>
-				    </li>
-				    <li class="tabs_item">
-				        <a href="#" class="tabs_link">LOGOUT</a>
-				    </li>				   			   
-			</ul>
+		  <div id="dialogoverlay"></div>
+			<div id="dialogbox">
+  				<div>
+    				<div id="dialogboxhead"></div>
+   					<div id="dialogboxbody"></div>
+    				<div id="dialogboxfoot"></div>
+ 				</div>
 			</div>
-		-->	
+			<div id="batch_added_message" class="batch_added_message" style="padding: 7px 10px 5px 40px;">
+			
+			</div>
 			<div class="add_batch_head">ADD BATCH</div>
 			<div>
 				<div>	
@@ -242,7 +256,7 @@ function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_stat
 								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" /></td>
 							</tr>
 							<tr>
-								<td class="form_lable">Batch ID: <span class="required">*</span></td>
+								<td class="form_lable">BatchID: <span class="required">*</span></td>
 								<td><input type="text" id="batch_id" name="batch_id" class="form-control form-control-sm" size="30" required readonly placeholder="AUTO-GENERATED"/></td>
 							</tr>
 							
@@ -280,6 +294,8 @@ function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_stat
 			 	 $(this).removeClass('txtbrcolr');
 			});	
 		
+		$('#batch_status').attr("disabled", true);
+		
 		$("#batch_start_date").change(function(){
 			var v =document.getElementById('batch_start_date').value;
 			var xhttp;
@@ -295,9 +311,10 @@ function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_stat
 			  xhttp.onreadystatechange = function() {
 			    if (this.readyState == 4 && this.status == 200) {
 			      document.getElementById('batch_id').value = this.responseText;
+			      $("#batch_id").removeClass('txtbrcolr');
 			    }
 			  };
-			  xhttp.open("GET", "./BatchIdControllerServlet?batch_start_date="+v, true);
+			  xhttp.open("GET", "./BatchInfoServlet?batch_start_date="+v, true);
 			  xhttp.send();
 					
 			

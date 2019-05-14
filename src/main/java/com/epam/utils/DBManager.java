@@ -15,18 +15,25 @@ public class DBManager {
 
 	public static Connection getConnection() {
 		Connection connection = null;
-		
-		try
-        {
+
+		try {
 			Class.forName(ApplicationProperties.getPropertyValue("db.driver"));
-            connection = DriverManager.getConnection(ApplicationProperties.getPropertyValue("db.host"), 
-            		ApplicationProperties.getPropertyValue("db.user"), 
-            		ApplicationProperties.getPropertyValue("db.password"));
-        }
-        catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-		
+			connection = DriverManager.getConnection(ApplicationProperties.getPropertyValue("db.host"),
+					ApplicationProperties.getPropertyValue("db.user"),
+					ApplicationProperties.getPropertyValue("db.password"));
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		return connection;
+	}
+
+	public static void closeConnection(Connection connection) {
+		try {
+			if (connection != null)
+				connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
