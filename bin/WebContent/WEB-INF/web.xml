@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>RD Admin Portal</display-name>
+  <welcome-file-list>
+    <welcome-file>inputForm.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_CALCULATOR</param-name>
+    <param-value>/resultPageForCalculator.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>ERROR_PAGE</param-name>
+    <param-value>/error.jsp</param-value>
+  </context-param>
+</web-app>

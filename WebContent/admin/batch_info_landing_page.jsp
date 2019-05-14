@@ -20,7 +20,7 @@
 <i class="fa fa" aria-hidden="true"></i></td>
 		
 		<td><div class="button">
-			<button class="btn btn-success"> ADD NEW BATCH</button>
+			<a href="admin/AddBatch.jsp" class="btn btn-success"> ADD NEW BATCH</a>
 			</div></td> 
 		</tr>
 		</table>

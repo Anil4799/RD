@@ -11,4 +11,47 @@
  </footer>
     
   </body>
+  
+  <script>
+		$("#batch_id").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#batch_start_date").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+	
+		
+		$("#batch_status").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});	
+		
+		$('#batch_status').attr("disabled", true);
+		
+		$("#batch_start_date").change(function(){
+			var v =document.getElementById('batch_start_date').value;
+			var xhttp;
+			
+			if (window.XMLHttpRequest) {
+			    // code for modern browsers
+			    xhttp = new XMLHttpRequest();
+			  } else {
+			    // code for IE6, IE5
+			    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			      document.getElementById('batch_id').value = this.responseText;
+			      $("#batch_id").removeClass('txtbrcolr');
+			    }
+			  };
+			  xhttp.open("GET", "/admin-portal/BatchInfoServlet?batch_start_date="+v, true);
+			  xhttp.send();
+					
+		});	
+		
+	</script>
 </html>

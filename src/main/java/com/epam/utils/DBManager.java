@@ -18,9 +18,8 @@ public class DBManager {
 	private static final Logger LOGGER = Logger.getLogger( DBManager.class);
 	public static Connection getConnection() {
 		Connection connection = null;
-		
-		try
-        {
+
+		try {
 			Class.forName(ApplicationProperties.getPropertyValue("db.driver"));
             connection = DriverManager.getConnection(ApplicationProperties.getPropertyValue("db.host"), 
             		ApplicationProperties.getPropertyValue("db.user"), 
@@ -31,5 +30,14 @@ public class DBManager {
         }
 		
 		return connection;
+	}
+
+	public static void closeConnection(Connection connection) {
+		try {
+			if (connection != null)
+				connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

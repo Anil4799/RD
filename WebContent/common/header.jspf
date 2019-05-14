@@ -18,6 +18,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/admin-portal/css/style.css">
+<script src="/admin-portal/js/main.js"></script>
 
 <title>Landing Page</title>
 
