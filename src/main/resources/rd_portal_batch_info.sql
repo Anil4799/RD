@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: localhost    Database: rd_portal
+-- Host: 127.0.0.1    Database: rd_portal
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -30,7 +30,8 @@ CREATE TABLE `batch_info` (
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `status` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`year_num`,`quarter_num`,`batch_num`)
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`SerialNo`,`year_num`,`quarter_num`,`batch_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +41,6 @@ CREATE TABLE `batch_info` (
 
 LOCK TABLES `batch_info` WRITE;
 /*!40000 ALTER TABLE `batch_info` DISABLE KEYS */;
-INSERT INTO `batch_info` VALUES (1,'qqq',1,'1','2019-03-03','2019-06-06','completed'),(2,'www',1,'2','2019-03-03','2019-04-03','in progress'),(3,'rrr',2,'1','2019-07-03','2019-09-03','not started');
 /*!40000 ALTER TABLE `batch_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 12:16:16
+-- Dump completed on 2019-05-14 15:53:52

@@ -17,7 +17,7 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 		List<AdminBatch> batchList = new ArrayList<AdminBatch>();
 		try
 		{
-			String sql="SELECT * FROM batch_info LIMIT 5;";
+			String sql="SELECT * FROM batch_info ORDER BY Serial_Num DESC LIMIT 5;";
 			PreparedStatement pstmt=con.prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
 			if(rs!=null)

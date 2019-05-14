@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: localhost    Database: rd_admin
+-- Host: 127.0.0.1    Database: rd_portal
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -36,7 +36,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'STUDENT INFO','jps/studentinfo.jsp'),(2,'MENTOR INFO','jsp/mentorinfo.jsp'),(3,'BATCH INFO','jsp/batchinfo.jsp'),(4,'REPORTS','jsp/reports.jsp'),(5,'FEEDBACK','jsp/feedback.jsp'),(6,'TIMESHEET','jsp/timesheet.jsp');
+INSERT INTO `menu` VALUES (1,'STUDENT INFO','studentList'),(2,'MENTOR INFO','mentorList'),(3,'BATCH INFO','batchInfo'),(4,'REPORTS','reports'),(5,'FEEDBACK','jsp/feedback.jsp'),(6,'TIMESHEET','jsp/timesheet.jsp');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-09 16:22:24
+-- Dump completed on 2019-05-14 15:53:50
