@@ -38,7 +38,7 @@
 								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" /></td>
 							</tr>
 							<tr>
-								<td class="form_lable">BatchID: <span class="required">*</span></td>
+								<td class="form_lable">BatchId: <span class="required">*</span></td>
 								<td><input type="text" id="batch_id" name="batch_id" class="form-control form-control-sm" size="30" required readonly placeholder="AUTO-GENERATED"/></td>
 							</tr>
 							
