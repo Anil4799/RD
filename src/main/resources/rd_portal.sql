@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `batch_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `batch_info` (
-  `batch_num` int(11) NOT NULL,
-  `batch_id` varchar(20) NOT NULL,
-  `year_num` int(11) NOT NULL,
-  `quarter_num` varchar(10) NOT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`year_num`,`quarter_num`,`batch_num`)
+  `Batch_Num` int(11) NOT NULL,
+  `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Year_Num` int(11) NOT NULL,
+  `Quarter_Num` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Start_Date` date DEFAULT NULL,
+  `End_Date` date DEFAULT NULL,
+  `Status` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`Year_Num`,`Quarter_Num`,`Batch_Num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,7 @@ CREATE TABLE `batch_info` (
 
 LOCK TABLES `batch_info` WRITE;
 /*!40000 ALTER TABLE `batch_info` DISABLE KEYS */;
-INSERT INTO `batch_info` VALUES (1,'RD-Q1-2019-B1',2019,'Q1','2019-01-01','2019-12-31','Completed'),(1,'RD-Q2-2019-B1',2019,'Q2','2019-05-10','2019-09-10','Completed'),(2,'RD-Q2-2019-B2',2019,'Q2','2019-05-10','2019-08-10','Completed'),(3,'RD-Q2-2019-B3',2019,'Q2','2019-05-10','2019-09-10','In Progress'),(1,'RD-Q3-2019-B1',2019,'Q3','2019-07-10','2019-06-10','In Progress'),(2,'RD-Q3-2019-B2',2019,'Q3','2019-09-11','2019-12-31','Not Started');
+INSERT INTO `batch_info` VALUES (1,'RD-Q2-2015-B1',2015,'Q2','2015-05-14','2019-12-31','Not Started'),(1,'RD-Q1-2019-B1',2019,'Q1','2019-01-01','2019-12-31','Not Started'),(1,'RD-Q2-2019-B1',2019,'Q2','2019-05-01','2019-12-31','Not Started'),(1,'RD-Q3-2019-B1',2019,'Q3','2019-09-13','2019-11-13','Not Started');
 /*!40000 ALTER TABLE `batch_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,15 +53,16 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 11:30:01
+-- Dump completed on 2019-05-14 11:35:55
+=======================================
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `batch_id_proc`(IN start_date DATE, OUT batch_id VARCHAR(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `batch_id_proc`(IN Start_Date DATE, OUT Batch_Id NVARCHAR(200))
 BEGIN
 
-  DECLARE quarter_proc VARCHAR(255);
-  DECLARE quarter_temp VARCHAR(255);
+  DECLARE quarter_proc NVARCHAR(200);
+  DECLARE quarter_temp NVARCHAR(200);
   DECLARE bnum_temp INT;
-    SET @month_proc= (SELECT MONTH(start_date));
+    SET @month_proc= (SELECT MONTH(Start_Date));
     IF (@month_proc>=1 AND @month_proc<=3) THEN
      SET quarter_proc = 'Q1';
     ELSEIF (@month_proc>=4 AND @month_proc<=6) THEN
@@ -71,9 +72,9 @@ BEGIN
     ELSEIF (@month_proc>=10 AND @month_proc<=12) THEN
      SET quarter_proc = 'Q4';
     END IF;	
-   SET @year_proc=(SELECT YEAR(start_date));
+   SET @year_proc=(SELECT YEAR(Start_Date));
 
-   SELECT count(*) INTO @temp FROM batch_info where year_num=@year_proc and quarter_num=quarter_proc;
+   SELECT count(*) INTO @temp FROM batch_info where Year_Num=@year_proc and Quarter_Num=quarter_proc;
 
    IF( @temp>=1) THEN
 	SET bnum_temp=@temp+1;
@@ -81,14 +82,14 @@ BEGIN
       SET bnum_temp=1;				
    END IF;
  	
-   SELECT CONCAT('RD-',quarter_proc,'-',@year_proc,'-B',bnum_temp) into batch_id;
-  
- END
- 
+   SELECT CONCAT('RD-',quarter_proc,'-',@year_proc,'-B',bnum_temp) into Batch_Id;
 
- 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN bnum INT, IN batch_id varchar(255), IN  year_num INT, IN quart_num varchar(255),IN start_date DATE, IN end_date DATE,IN batch_status varchar(255))
+   
+ END
+=======================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN Batch_Num INT, IN Batch_Id nvarchar(200), IN  Year_Num INT, IN Quarter_Num nvarchar(200),IN Start_Date DATE, IN End_Date DATE,IN Batch_Status nvarchar(200))
 BEGIN
 
-insert into batch_info values(bnum,batch_id,year_num,quart_num,start_date,end_date,batch_status);
+insert into batch_info values(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Batch_Status);
 END
