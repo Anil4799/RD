@@ -6,12 +6,21 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
    <context-param>
-    <param-name>HOME_PAGE</param-name>
+    <param-name>ADMIN_HOME_PAGE</param-name>
     <param-value>studentList</param-value>
+  </context-param>
+   <context-param>
+    <param-name>MENTOR_HOME_PAGE</param-name>
+    <param-value>mentorstudentList</param-value>
   </context-param>
   <context-param>
     <param-name>LOGIN_PAGE</param-name>
     <param-value>/login.jsp</param-value>
+  </context-param>
+  
+   <context-param>
+    <param-name>RESULT_PAGE_FOR_REPORTS</param-name>
+    <param-value>/report/report.jsp</param-value>
   </context-param>
   
   
@@ -21,12 +30,16 @@
   </context-param>
   <context-param>
     <param-name>RESULT_PAGE_FOR_STUDENT_INFO</param-name>
-    <param-value>/student_info_landing_page.jsp</param-value>
+    <param-value>/admin/student_info_landing_page.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_MENTOR_INFO</param-name>
+    <param-value>/admin/mentor_info_landing_page.jsp</param-value>
   </context-param>
   <context-param>
     <param-name>RESULT_PAGE_FOR_MENTORSTUDENT_INFO</param-name>
-    <param-value>/MentorStudentInfoLandingPage.jsp</param-value>
-  </context-param>
+    <param-value>/mentor/MentorStudentInfoLandingPage.jsp</param-value>
+  </context-param>                                                
   <context-param>
     <param-name>ERROR_PAGE</param-name>
     <param-value>/error.jsp</param-value>

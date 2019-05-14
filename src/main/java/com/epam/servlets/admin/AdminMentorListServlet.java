@@ -59,7 +59,7 @@ public class AdminMentorListServlet extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("admin/mentor_info_landing_page.jsp").forward(request, response);
+		request.getRequestDispatcher(pageUrl).forward(request, response);
 		LOGGER.debug("Exit from servlet");
 	}
 

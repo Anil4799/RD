@@ -87,7 +87,7 @@ class TestLoginServlet {
 		when(session.getAttribute("email")).thenReturn("test_admin1@epam.com");
 		when(request.getServletContext()).thenReturn(context);
 		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
-		when(context.getInitParameter(ConstantsUtility.HOME_PAGE)).thenReturn("/home.jsp");
+		when(context.getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE)).thenReturn("/home.jsp");
 		servlet.doPost(request, response);
 		verify(rd).forward(request, response);
 
@@ -102,7 +102,7 @@ class TestLoginServlet {
 		doNothing().when(session).setAttribute("password","testmentor");
 		when(request.getServletContext()).thenReturn(context);
 		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
-		when(context.getInitParameter(ConstantsUtility.HOME_PAGE)).thenReturn("/home.jsp");
+		when(context.getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE)).thenReturn("/home.jsp");
 		servlet.doPost(request, response);
 		verify(rd).forward(request, response);
 

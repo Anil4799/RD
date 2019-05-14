@@ -27,9 +27,7 @@ import com.epam.utils.DBManager;
 @WebServlet("/studentList")
 public class AdminStudentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	 //@Resource(name = "jdbc/abc")
-	// DataSource ds;
+
 	 private AdminStudentInfoService studentInfoService = new AdminStudentInfoServiceImpl();
 	 private static final Logger LOGGER = Logger.getLogger( AdminStudentListServlet.class);
     
@@ -56,7 +54,7 @@ public class AdminStudentListServlet extends HttpServlet {
 		}
 		
 	
-		request.getRequestDispatcher("admin/student_info_landing_page.jsp").forward(request, response);
+		request.getRequestDispatcher(pageUrl).forward(request, response);
 		LOGGER.debug("Exit from servlet");
 	}
 
