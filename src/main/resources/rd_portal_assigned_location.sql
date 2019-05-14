@@ -1,8 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
-
 -- Host: 127.0.0.1    Database: rd_portal
-
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -18,38 +16,25 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `student_educational_info`
+-- Table structure for table `assigned_location`
 --
 
-DROP TABLE IF EXISTS `student_educational_info`;
+DROP TABLE IF EXISTS `assigned_location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `student_educational_info` (
-
-  `Email_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `College_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
-  `College_Loc` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
-  `Graduation` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
-  `Graduation_Stream` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
-  `Passed_Out_Year` int(10) unsigned DEFAULT '0',
-  `Graduation_Marks` int(10) unsigned DEFAULT '0',
-  `Inter_Marks` int(10) unsigned DEFAULT '0',
-  `Ssc_Marks` int(10) unsigned DEFAULT '0',
-  KEY `Email_Id` (`Email_Id`),
-  KEY `College_Name` (`College_Name`),
-  CONSTRAINT `student_educational_info_ibfk_1` FOREIGN KEY (`Email_Id`) REFERENCES `student_personal_info` (`Email_Id`),
-  CONSTRAINT `student_educational_info_ibfk_2` FOREIGN KEY (`College_Name`) REFERENCES `student_college_info` (`College_Name`)
-
+CREATE TABLE `assigned_location` (
+  `Assigned_Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `student_educational_info`
+-- Dumping data for table `assigned_location`
 --
 
-LOCK TABLES `student_educational_info` WRITE;
-/*!40000 ALTER TABLE `student_educational_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `student_educational_info` ENABLE KEYS */;
+LOCK TABLES `assigned_location` WRITE;
+/*!40000 ALTER TABLE `assigned_location` DISABLE KEYS */;
+INSERT INTO `assigned_location` VALUES ('Hyderbad'),('Pune'),('Bangalore');
+/*!40000 ALTER TABLE `assigned_location` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -62,4 +47,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-05-14 15:53:46
-

@@ -1,4 +1,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.epam.utils.DBManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -19,6 +23,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/admin-portal/css/style.css">
 <script src="/admin-portal/js/main.js"></script>
+<script src="/admin-portal/js/StudentJS.js"></script>
 
 <title>Landing Page</title>
 

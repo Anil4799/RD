@@ -25,7 +25,7 @@
 		</td>
 		<td><div class="button">
 		
-			<button class="btn btn-success"> ADD NEW STUDENT</button>
+			<a href="/admin-portal/admin/AddStudentInfo.jsp" class="btn btn-success"> ADD NEW STUDENT</a>
 			</div></td> 
 		</tr>
 		</table>

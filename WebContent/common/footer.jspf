@@ -6,7 +6,7 @@
     
      <footer class=footer>
 
-<div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>
+<div style="position: fixed; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>
 
  </footer>
     
@@ -53,5 +53,51 @@
 					
 		});	
 		
+	</script>
+	<script>
+		$("#firstName").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#email").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#dateOfBirth").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#gender").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#personalLocation").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#batchId").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#employeeType").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#coreSkill").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#relocation").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#status").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#dateOfJoining").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
 	</script>
 </html>

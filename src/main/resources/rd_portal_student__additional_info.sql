@@ -1,6 +1,10 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
+<<<<<<< HEAD
 -- Host: localhost    Database: rd_portal
+=======
+-- Host: 127.0.0.1    Database: rd_portal
+>>>>>>> remotes/origin/EPMRDINFDP-2
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -23,18 +27,20 @@ DROP TABLE IF EXISTS `student__additional_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `student__additional_info` (
-  `email_id` varchar(45) NOT NULL DEFAULT '',
-  `batch_id` varchar(45) NOT NULL DEFAULT '',
-  `emp_type` varchar(45) NOT NULL DEFAULT '',
-  `core_skill` varchar(45) NOT NULL DEFAULT '',
-  `preferred_student_stream` varchar(45) NOT NULL DEFAULT '',
-  `assigned_stream` varchar(45) NOT NULL DEFAULT '',
-  `date_of_joining` date NOT NULL DEFAULT '0000-00-00',
-  `mentor_name` varchar(45) NOT NULL DEFAULT '',
-  `assigned_location` varchar(45) NOT NULL DEFAULT '',
-  `relocation` varchar(45) NOT NULL DEFAULT '',
-  `status` varchar(45) NOT NULL DEFAULT '',
-  PRIMARY KEY (`email_id`)
+
+  `Email_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Emp_Type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Core_Skill` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Preferred_Student_Stream` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `Assigned_Stream` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `Date_Of_Joining` date NOT NULL DEFAULT '0000-00-00',
+  `Mentor_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `Assigned_Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `Relocation` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Status` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  KEY `Email_Id` (`Email_Id`),
+  CONSTRAINT `student__additional_info_ibfk_1` FOREIGN KEY (`Email_Id`) REFERENCES `student_personal_info` (`Email_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,7 +50,10 @@ CREATE TABLE `student__additional_info` (
 
 LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
+
 INSERT INTO `student__additional_info` VALUES ('a@b.c','lk76','temp','java','cse','cse','2015-11-03','ABC','HYD','pune','inactive'),('b@b.c','lk76','temp','java','cse','cse','2015-01-03','CBA','RNC','RNC','inactive');
+=======
+
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +66,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 11:46:30
+
+-- Dump completed on 2019-05-14 15:53:48

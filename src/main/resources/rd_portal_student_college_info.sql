@@ -1,6 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: localhost    Database: rd_portal
+
+-- Host: 127.0.0.1    Database: rd_portal
+
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -23,9 +25,10 @@ DROP TABLE IF EXISTS `student_college_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `student_college_info` (
-  `college_name` varchar(45) NOT NULL DEFAULT '',
-  `location` varchar(45) NOT NULL DEFAULT '',
-  PRIMARY KEY (`college_name`)
+
+  `College_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`College_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,6 +38,10 @@ CREATE TABLE `student_college_info` (
 
 LOCK TABLES `student_college_info` WRITE;
 /*!40000 ALTER TABLE `student_college_info` DISABLE KEYS */;
+
+=======
+INSERT INTO `student_college_info` VALUES ('BVRIT','Nizampet'),('Chitkara','Chandigarh'),('MLRIT','Gandimaisamma'),('VNRIT','Bachupally');
+
 /*!40000 ALTER TABLE `student_college_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +54,6 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 11:46:30
+
+-- Dump completed on 2019-05-14 15:53:47
+
