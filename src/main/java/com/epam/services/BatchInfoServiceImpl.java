@@ -1,9 +1,10 @@
 package com.epam.services;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,13 @@ public class BatchInfoServiceImpl implements BatchInfoService {
 		List<Batch> batchList = new ArrayList<Batch>();
 		try
 		{
-			String sql="SELECT * FROM batch_info ORDER BY\r\n" + 
+			/* String sql="SELECT * FROM batch_info ORDER BY\r\n" + 
 					" batch_id DESC\r\n" + 
-					"LIMIT 10;";
-			PreparedStatement pstmt=con.prepareStatement(sql);
-			ResultSet rs=pstmt.executeQuery();
+					"LIMIT 10;";*/
+			
+			String sql = "call batch();";
+			CallableStatement cs=con.prepareCall(sql);
+			ResultSet rs=cs.executeQuery();
 			if(rs!=null)
 			{
 			while(rs.next())

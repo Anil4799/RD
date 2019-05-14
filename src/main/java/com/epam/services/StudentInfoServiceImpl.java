@@ -1,9 +1,9 @@
 package com.epam.services;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.SQLException;
+import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,21 +16,20 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 	public List<Student> getAllStudentDetails(Connection con) {
 		
 		List<Student> studentList = new ArrayList<Student>();
+		
 		try
 		{
-
-			PreparedStatement ps = con.prepareStatement("select * from student_personal_info, student__additional_info where student_personal_info.email_id = student__additional_info.email_id ORDER BY\r\n" + 
-					" batch_id DESC\r\n" + 
-					"LIMIT 10;");
-			ResultSet rs = ps.executeQuery();
+			String sql="call student();";
+			CallableStatement cs= con.prepareCall(sql);
+			ResultSet rs = cs.executeQuery();
 			
 			if(rs!=null)
 			{
 			while(rs.next())
 			{
 				Student student=new Student();
-				String fname=rs.getString(1);
-				String lname=rs.getString(2);
+				String fname=rs.getString("first_name");
+				String lname=rs.getString("last_name");
 				String name=fname+" "+lname;
 				student.setName(name);
 				student.setBatch(rs.getString("batch_id"));
@@ -39,13 +38,16 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 				student.setStatus(rs.getString("status"));	
 				studentList.add(student);
 			}
+			
 			}
-
-						
+			
+			
 		}
+			
 		catch(Exception e)
 		{
-			studentList=null;
+			//studentList=null;
+			e.getMessage();
 		}
 		
 		return studentList;
