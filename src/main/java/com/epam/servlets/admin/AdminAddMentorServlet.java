@@ -22,10 +22,10 @@ import com.epam.utils.DBManager;
  * Servlet implementation class BatchInfoListServlet
  */
 @WebServlet("/addMentor")
-public class AdminAddMentoeServlet extends HttpServlet {
+public class AdminAddMentorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private static final Logger LOGGER = Logger.getLogger(AdminAddMentoeServlet.class);
+	private static final Logger LOGGER = Logger.getLogger(AdminAddMentorServlet.class);
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
@@ -33,7 +33,7 @@ public class AdminAddMentoeServlet extends HttpServlet {
 		try
 		{
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADD_PAGE_FOR_MENTOR_INFO);
-			request.setAttribute("pageState", "BATCH INFO");
+			request.setAttribute("pageState", "MENTOR INFO");
 
 		}
 		catch(Exception e)

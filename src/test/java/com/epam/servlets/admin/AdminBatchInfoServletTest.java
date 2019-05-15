@@ -81,7 +81,7 @@ class AdminBatchInfoServletTest {
 		when(request.getServletContext()).thenReturn(context);
 		//doNothing().when(request).setAttribute("result", 3);
 		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO)).thenReturn("/batch/batch_info_landing_page.jsp");
-		servlet.doPost(request, response);
+		servlet.doGet(request, response);
 		verify(rd).forward(request, response);
 
 	}
@@ -89,15 +89,13 @@ class AdminBatchInfoServletTest {
 	@Test
 	public void testException() throws ServletException, IOException {
 		
-		
-		
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(request.getServletContext()).thenReturn(context);
 		//doNothing().when(request).setAttribute("result", 3);
 		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO)).thenReturn("/batch/batch_info_landing_page.jsp");
 		when(context.getInitParameter(ConstantsUtility.ERROR_PAGE)).thenReturn("/error.jsp");
 		doNothing().when(request).setAttribute("errorMsg", "Exception occured");
-		servlet.doPost(request, response);
+		servlet.doGet(request, response);
 		verify(rd).forward(request, response);
 		
 	}

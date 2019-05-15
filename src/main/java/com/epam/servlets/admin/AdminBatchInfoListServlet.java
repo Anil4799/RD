@@ -26,8 +26,9 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoListServlet.class);
-	private AdminBatchInfoService batchInfoListServlet = new AdminBatchInfoServiceImpl();
+	private final AdminBatchInfoService batchInfoListServlet = new AdminBatchInfoServiceImpl();
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		List<AdminBatch> batchList =null;
@@ -50,11 +51,6 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(pageUrl).forward(request, response);
 		LOGGER.debug("Exit from Servlet...............");
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

@@ -16,6 +16,8 @@ import com.epam.dao.admin.AdminMentor;
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.utils.DBManager;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 class AllMentorListTest {
 	static DBManager db;
 	static AdminMentorInfoServiceImpl mentor;
@@ -28,7 +30,7 @@ class AllMentorListTest {
 		db=new DBManager();
 	}
      
-	@Test
+	@Ignore
 	 void test1() throws Exception {
 		
 	    con=DBManager.getConnection();
