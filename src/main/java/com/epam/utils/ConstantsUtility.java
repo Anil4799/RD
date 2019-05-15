@@ -20,6 +20,7 @@ public class ConstantsUtility {
 	public static final String LOGIN_PAGE="LOGIN_PAGE";
 	public static final String RESULT_PAGE_FOR_REPORTS="RESULT_PAGE_FOR_REPORTS";
 	public static final String ADD_PAGE_FOR_BATCH_INFO="ADD_PAGE_FOR_BATCH_INFO";
+	public static final String ADD_PAGE_FOR_MENTOR_INFO="ADD_PAGE_FOR_MENTOR_INFO";
 
 
 }

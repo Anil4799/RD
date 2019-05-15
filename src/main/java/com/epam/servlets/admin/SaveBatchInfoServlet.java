@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.services.batch.BatchService;
+import com.epam.services.batch.BatchInfoServiceImpl;
 
 /**
  * Servlet implementation class SaveBatchInfoServlet
@@ -29,7 +29,7 @@ public class SaveBatchInfoServlet extends HttpServlet {
 
 		String tokens[];
 		PrintWriter printWriter = response.getWriter();
-
+		BatchInfoServiceImpl batchInfoServiceImpl=new BatchInfoServiceImpl();
 		String startDate = request.getParameter("batch_start_date");
 		String endDate = request.getParameter("batch_end_date");
 		if (endDate.contentEquals(""))
@@ -46,7 +46,7 @@ public class SaveBatchInfoServlet extends HttpServlet {
 		String quarter = tokens[1];
 
 		try {
-			String result = BatchService.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status);
+			String result = batchInfoServiceImpl.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status);
 			printWriter.println(result);
 		} catch (SQLException sqlException) {
 			sqlException.printStackTrace();

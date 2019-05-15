@@ -1,8 +1,9 @@
 package com.epam.services.admin;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +22,13 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 		try
 		{
 
-			Statement stmt=con.createStatement();
-			String sql="SELECT * FROM Mentor_Info ORDER BY\r\n" + 
+			/* String sql="SELECT * FROM Mentor_Info ORDER BY\r\n" + 
 					" email_id DESC\r\n" + 
 					"LIMIT 10;";
-			ResultSet rs=stmt.executeQuery(sql);
+					*/
+			String sql = "call mentor();";
+			CallableStatement cs= con.prepareCall(sql);
+			ResultSet rs=cs.executeQuery(sql);
 			if(rs!=null)
 			{
 			while(rs.next())
@@ -40,8 +43,9 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 				mentor.setStatus(rs.getString("status"));
 				mentorList.add(mentor);
 			}
+			
 			}
-						
+					
 		}
 		catch(Exception e)
 		{
