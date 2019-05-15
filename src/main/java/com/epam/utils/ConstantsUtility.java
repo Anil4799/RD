@@ -19,6 +19,7 @@ public class ConstantsUtility {
 	public static final String MENTOR_HOME_PAGE="MENTOR_HOME_PAGE";
 	public static final String LOGIN_PAGE="LOGIN_PAGE";
 	public static final String RESULT_PAGE_FOR_REPORTS="RESULT_PAGE_FOR_REPORTS";
+	public static final String ADD_PAGE_FOR_BATCH_INFO="ADD_PAGE_FOR_BATCH_INFO";
 
 
 }

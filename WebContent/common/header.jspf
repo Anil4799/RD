@@ -65,7 +65,7 @@
 		        	<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 		            	<div class="navbar-nav">
 		            	<c:forEach items="${menuList}" var="menu" >
-		            		<a href='${menu.menuPagePath}' class="nav-item nav-link ${pageState==menu.menuName ? 'active':''}"> ${menu.menuName} </a>
+		            		<a href='/admin-portal/${menu.menuPagePath}' class="nav-item nav-link ${pageState==menu.menuName ? 'active':''}"> ${menu.menuName} </a>
 		            	</c:forEach>		                
 		            	</div> 
 			            <form class="form-inline">
