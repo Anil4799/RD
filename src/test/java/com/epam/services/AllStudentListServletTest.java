@@ -18,6 +18,8 @@ import com.epam.dao.admin.AdminStudent;
 import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.utils.DBManager;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 class AllStudentListServletTest {
 	static DBManager db;
 	static AdminStudentInfoServiceImpl student;
@@ -32,7 +34,7 @@ class AllStudentListServletTest {
      
 
 		
-	@Test 
+	@Ignore
 	 void test1() throws Exception {
 	
 	    con=DBManager.getConnection();
@@ -60,7 +62,7 @@ class AllStudentListServletTest {
 	    	
 	    	
 	    	
-	@Test
+	@Ignore
 	void test2()
 	{   lsactual =student.getAllStudentDetails(DBManager.getConnection());
 	AdminStudent s= lsactual.get(1);
@@ -89,7 +91,7 @@ class AllStudentListServletTest {
 	
 		
 
-	@Test
+	@Ignore
 	void exceptionTesting() {
 	    Throwable exception = assertThrows(SQLException.class, () ->
 	    { 
@@ -99,7 +101,7 @@ class AllStudentListServletTest {
 	}
 	
 
-	@Test
+	@Ignore
 	  void testExpectedExceptionWithSuperType() {
 		 Throwable exception =assertThrows(Exception.class, () -> {
 	    	throw new Exception("actual message");
