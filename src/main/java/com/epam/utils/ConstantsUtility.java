@@ -1,10 +1,4 @@
 package com.epam.utils;
-
-/**
- * The Class ConstantsUtility.
- *
- * @author Nishant_Bansal
- */
 public class ConstantsUtility {
 
 	private ConstantsUtility() {

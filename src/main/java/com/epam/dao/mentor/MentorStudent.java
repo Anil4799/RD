@@ -1,36 +1,42 @@
 package com.epam.dao.mentor;
 
 public class MentorStudent {
-	String name;
-	String batch;
-	String coreSkill;
-	String status;
-	
+	String mentorStudentName;
+	String mentorStudentBatch;
+	String mentorStudentCoreSkill;
+	String mentorStudentStatus;
+	String mentorStudentEmailId;
 	
 	public String getName() {
-		return name;
+		return  mentorStudentName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String  mentorStudentName) {
+		this.mentorStudentName =  mentorStudentName;
 	}
 	public String getBatch() {
-		return batch;
+		return mentorStudentBatch;
 	}
-	public void setBatch(String batch) {
-		this.batch = batch;
+	public void setBatch(String mentorStudentBatch) {
+		this.mentorStudentBatch = mentorStudentBatch;
 	}
-	public String getcoreSkill() {
-		return coreSkill;
+	public String getCoreSkill() {
+		return mentorStudentCoreSkill;
 	}
-	public void setCoreSkill(String coreSkill) {
-		this.coreSkill = coreSkill;
+	public void setCoreSkill(String mentorStudentCoreSkill) {
+		this.mentorStudentCoreSkill = mentorStudentCoreSkill;
 	}
 	
 	public String getStatus() {
-		return status;
+		return mentorStudentStatus;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatus(String mentorStudentStatus) {
+		this.mentorStudentStatus = mentorStudentStatus;
+	}
+	public String getEmail() {
+		return mentorStudentEmailId;
+	}
+	public void setEmail(String mentorStudentEmailId) {
+		this.mentorStudentEmailId = mentorStudentEmailId;
 	}
 	
 	

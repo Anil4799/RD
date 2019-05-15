@@ -27,39 +27,24 @@ class Mentor_Student_List_Test {
 	}
      
 	@Test
-	 void test1() throws Exception {
-		
-	    con=DBManager.getConnection();
-		Statement stmt=con.createStatement();
-		String sql="select * from student_personal_info, student__additional_info where student_personal_info.email_id = student__additional_info.email_id";
-		ResultSet rs=stmt.executeQuery(sql);
-	    int expected=0;
-	    while(rs.next())
-	    {
-	    	expected++;
-	    }
-		
-	 lsactual =mentorstudent.MentorStudentDetails(DBManager.getConnection());
-		assertEquals(expected, lsactual.size());
-			
-	}
-	@Test
-	void test2() throws Exception
-	{   lsactual =mentorstudent.MentorStudentDetails(DBManager.getConnection());
+	void test1() throws Exception
+	{  
+	lsactual =mentorstudent.mentorStudentDetails(DBManager.getConnection(),  "ab@gmail.com");
 	MentorStudent s= lsactual.get(1);
 	String name=null;
 	String batch=null;
 	String coreSkill=null;
-	
+	String email=null;
 	String status=null;
 		name=s.getName();
 		batch=s.getBatch();
-		coreSkill=s.getcoreSkill();
+		coreSkill=s.getCoreSkill();
 		status=s.getStatus();
+		email = s.getEmail();
 		assertNotNull(name);
 		assertNotNull(batch);
 		assertNotNull(coreSkill);
-		
+		assertNotNull(email);
 		assertNotNull(status);
 		
 		
