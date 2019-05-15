@@ -65,7 +65,7 @@ class AdminStudentServletInfoTest {
 		when(request.getServletContext()).thenReturn(context);
 		//doNothing().when(request).setAttribute("mentors", mentorList);
 		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO)).thenReturn("/admin/student_info_landing_page.jsp");
-		servlet.doPost(request, response);
+		servlet.doGet(request, response);
 		verify(rd).forward(request, response);
 	}
 	@Test
@@ -76,7 +76,7 @@ class AdminStudentServletInfoTest {
 		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO)).thenReturn("/admin/student_info_landing_page.jsp");
 		when(context.getInitParameter(ConstantsUtility.ERROR_PAGE)).thenReturn("/error.jsp");
 		doNothing().when(request).setAttribute("error Msg", "Exception Occured");
-		servlet.doPost(request, response);
+		servlet.doGet(request, response);
 		verify(rd).forward(request, response);
 	}
 
