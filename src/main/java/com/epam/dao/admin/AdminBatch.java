@@ -2,49 +2,50 @@ package com.epam.dao.admin;
 
 public class AdminBatch {
 	
-	private int batch_num;
-	private String batch_id;
-	private int year_num;
-	private String quarter_num;
-	private String start_date;
-	private String end_date;
+	private int batchnum;
+	private String batchid;
+	private int yearnum;
+	private String quarternum;
+	private String startdate;
+	private String enddate;
 	private String status;
 	
-	public int getBatch_num() {
-		return batch_num;
+	
+	public int getBatchNum() {
+		return batchnum;
 	}
-	public void setBatch_num(int batch_num) {
-		this.batch_num = batch_num;
+	public void setBatchNum(int batchnum) {
+		this.batchnum = batchnum;
 	}
-	public String getBatch_id() {
-		return batch_id;
+	public String getBatchId() {
+		return batchid;
 	}
-	public void setBatch_id(String batch_id) {
-		this.batch_id = batch_id;
+	public void setBatchId(String batchid) {
+		this.batchid = batchid;
 	}
-	public int getYear_num() {
-		return year_num;
+	public int getYearNum() {
+		return yearnum;
 	}
-	public void setYear_num(int year_num) {
-		this.year_num = year_num;
+	public void setYearNum(int yearnum) {
+		this.yearnum = yearnum;
 	}
-	public String getQuarter_num() {
-		return quarter_num;
+	public String getQuarterNum() {
+		return quarternum;
 	}
-	public void setQuarter_num(String quarter_num) {
-		this.quarter_num = quarter_num;
+	public void setQuarterNum(String quarternum) {
+		this.quarternum = quarternum;
 	}
-	public String getStart_date() {
-		return start_date;
+	public String getStartDate() {
+		return startdate;
 	}
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
+	public void setStartDate(String startdate) {
+		this.startdate = startdate;
 	}
-	public String getEnd_date() {
-		return end_date;
+	public String getEndDate() {
+		return enddate;
 	}
-	public void setEnd_date(String end_date) {
-		this.end_date = end_date;
+	public void setEnd_date(String enddate) {
+		this.enddate = enddate;
 	}
 	public String getStatus() {
 		return status;

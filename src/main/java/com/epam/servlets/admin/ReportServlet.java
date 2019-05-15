@@ -1,5 +1,4 @@
 package com.epam.servlets.admin;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
@@ -18,9 +17,6 @@ import com.epam.services.admin.AdminBatchInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
-/**
- * Servlet implementation class BatchInfoListServlet
- */
 @WebServlet("/reports")
 public class ReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
