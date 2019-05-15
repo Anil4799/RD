@@ -21,9 +21,6 @@ import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
-/**
- * Servlet implementation class AllStudentListServlet
- */
 @WebServlet("/studentList")
 public class AdminStudentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
