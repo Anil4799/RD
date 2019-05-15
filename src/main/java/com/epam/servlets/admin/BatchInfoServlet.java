@@ -1,4 +1,4 @@
-package com.epam.servlets;
+package com.epam.servlets.admin;
 
 
 import javax.servlet.annotation.WebServlet;
