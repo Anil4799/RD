@@ -35,76 +35,139 @@ public class StudentServlet extends HttpServlet {
     }
 
 	/**
+	 * @throws IOException 
+	 * @throws ServletException 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Date dateOfBirth = null, dateOfJoining = null;
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
-		String date1 = request.getParameter("dateOfBirth");	
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		try{
-			dateOfBirth = format.parse(date1);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		String email = request.getParameter("email");
-		String gender = request.getParameter("gender");
-		long contactNumber =Long.parseLong(request.getParameter("contactNumber"));
-		String personalLocation = request.getParameter("personalLocation");
-		String collegeNameAndLocation = request.getParameter("collegeName");
-		String collegeName = collegeNameAndLocation.substring(0,collegeNameAndLocation.indexOf("$"));
-		System.out.println("collegeName==========\n\n"+collegeName+"\n\n");
-		String collegeLocation = request.getParameter("collegeLocation");
-		String graduation = request.getParameter("graduation");
-		String graduationSpeciality = request.getParameter("graduationSpeciality");
-		int yearOfPassedOut = Integer.parseInt(request.getParameter("yearOfPassedOut"));
-		int graduationMarks =Integer.parseInt(request.getParameter("graduationMarks"));
-		int twelveth =Integer.parseInt(request.getParameter("twelveth"));
-		int tenth =Integer.parseInt(request.getParameter("tenth"));
-		String batchId = request.getParameter("batchId");
-		String employeeType = request.getParameter("employeeType");
-		String coreSkill = request.getParameter("coreSkill");
-		String preferredStudentStream = request.getParameter("preferredStudentStream");
-		String assignedStream = request.getParameter("assignedStream");
-		date1 = request.getParameter("dateOfJoining");
-		
-		
-		try{
-			dateOfJoining = format.parse(date1);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		String mentorName = request.getParameter("mentorName");
-		String assignedLocation = request.getParameter("assignedLocation");
-		String relocation = request.getParameter("relocation");
-		String status = request.getParameter("status");
-		
-		StudentBean studentBean = new StudentBean(firstName, lastName, dateOfBirth, email, gender, contactNumber,
-				personalLocation, collegeName, collegeLocation, graduation,
-				graduationSpeciality, yearOfPassedOut, graduationMarks, twelveth, tenth,
-				batchId, employeeType, coreSkill, preferredStudentStream, assignedStream,
-				dateOfJoining, mentorName, assignedLocation, relocation, status);
-		
-		result = studentService.addStudentDetails(studentBean);
-		System.out.println(result);
-		
-		if(result)
+    
+public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		try {
+			 
+			  Date dateOfBirth = null, dateOfJoining = null;
+			  String firstName = request.getParameter("firstName");
+			  String lastName = request.getParameter("lastName");
+			  String date1 = request.getParameter("dateOfBirth"); 
+			  
+			  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			  try{
+			   dateOfBirth = format.parse(date1);
+			  }
+			  catch(Exception e){
+			   e.printStackTrace();
+			  }
+			  String email = request.getParameter("email");
+			  String gender = request.getParameter("gender");
+			  long contactNumber;
+			  String mobileNumber = request.getParameter("contactNumber");
+			  if(!mobileNumber.equals(""))
+			  {
+			   contactNumber =Long.parseLong(mobileNumber);
+			  } else {
+			   contactNumber = 0;
+			  }
+			  String personalLocation = request.getParameter("personalLocation");
+			  String collegeNameAndLocation = request.getParameter("collegeName");
+			  System.out.println("\n collegeNameAndLocation ="+ collegeNameAndLocation + "\n");
+			  String collegeName = "";
+			  if(!collegeNameAndLocation.equals(""))
+			  {
+			   collegeName = collegeNameAndLocation.substring(0,collegeNameAndLocation.indexOf("$"));
+			  }
+			  String collegeLocation = request.getParameter("collegeLocation");
+			  if(collegeLocation.equals(""))
+			  {
+			   collegeLocation = "";
+			  }
+			  String graduation = request.getParameter("graduation");
+			  if(graduation.equals(""))
+			  {
+			   graduation = "";
+			  }
+			  
+			  
+			  String graduationSpeciality = request.getParameter("graduationSpeciality");
+			  if(graduationSpeciality.equals("NULL"))
+			  {
+			   graduationSpeciality = "";
+			  }
+			  
+			  
+			  String yearOfPassedOut = request.getParameter("yearOfPassedOut");
+			  int yearOfPassedOut1 = 0;
+			  if(!yearOfPassedOut.equals("")) {
+			   yearOfPassedOut1 = Integer.parseInt(yearOfPassedOut);
+			  }
+			  String graduationMarks = request.getParameter("graduationMarks");
+			  int graduationMarks1 =0 ;
+			  if(!graduationMarks.equals(""))
+			  {
+			   graduationMarks1 = Integer.parseInt(graduationMarks);
+			  }
+			  
+			  
+			  String twelveth = request.getParameter("twelveth");
+			  int twelvethMarks =0 ;
+			  if(!twelveth.equals(""))
+			  {
+			   twelvethMarks = Integer.parseInt(twelveth);
+			  }
+			  
+			  String tenth = request.getParameter("tenth");
+			  int tenthMarks =0 ;
+			  if(!tenth.equals(""))
+			  {
+			   tenthMarks = Integer.parseInt(tenth);
+			  }
+			  
+			  String batchId = request.getParameter("batchId");
+			  String employeeType = request.getParameter("employeeType");
+			  String coreSkill = request.getParameter("coreSkill");
+			  String preferredStudentStream = request.getParameter("preferredStudentStream");
+			  if(preferredStudentStream.equals("NULL"))
+			  {
+			   preferredStudentStream ="";
+			  } 
+			  String assignedStream = request.getParameter("assignedStream");
+			  if(assignedStream.equals("NULL"))
+			  {
+			   assignedStream ="";
+			  }
+			  date1 = request.getParameter("dateOfJoining");
+			  
+			  
+			  try{
+			   dateOfJoining = format.parse(date1);
+			  }
+			  catch(Exception e){
+			   e.printStackTrace();
+			  }
+			  String mentorName = request.getParameter("mentorName");
+			  if(mentorName.equals("NULL"))
+			  {
+			   mentorName ="";
+			  }
+			  String assignedLocation = request.getParameter("assignedLocation");
+			  
+			  String relocation = request.getParameter("relocation");
+			  String status = request.getParameter("status");
+			  
+			  StudentBean studentBean = new StudentBean(firstName, lastName, dateOfBirth, email, gender, contactNumber,
+			    personalLocation, collegeName, collegeLocation, graduation,
+			    graduationSpeciality, yearOfPassedOut1, graduationMarks1, twelvethMarks, tenthMarks,
+			    batchId, employeeType, coreSkill, preferredStudentStream, assignedStream,
+			    dateOfJoining, mentorName, assignedLocation, relocation, status);
+			  
+			  result = studentService.addStudentDetails(studentBean);
+		}catch(Exception e)
 		{
-			request.setAttribute("Result", true);
-			 RequestDispatcher rd=request.getRequestDispatcher("AddStudentInfo.jsp");  
-		        rd.forward(request, response);	
+			 request.getRequestDispatcher("RegFailure.jsp").include(request, response);;  
+		      
 		}
-		else{  
-	       
-	        RequestDispatcher rd=request.getRequestDispatcher("RegFailure.jsp");  
-	        rd.include(request, response);
-		
+		if(result) {
+		request.getRequestDispatcher("admin/student_added_successfully.jsp").forward(request, response);; 
+		} else {
+			request.getRequestDispatcher("RegFailure.jsp").include(request, response);;  
+		}
 	}
-
-	}
+	
 }

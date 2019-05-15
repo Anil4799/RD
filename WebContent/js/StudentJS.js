@@ -42,7 +42,7 @@ function studentValidateForm() {
     else{
         $("#dateOfBirth").removeClass('txtbrcolr');
     }
-    if(gender == null || gender == "no_value")
+    if(gender == null || gender == "no_value" || gender =="NULL")
     {
         message += "Gender cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["gender"].classList.add("txtbrcolr");
@@ -60,7 +60,7 @@ function studentValidateForm() {
 	   $("#personalLocation").removeClass('txtbrcolr');
        }
     
-    if(batch_id == null || batch_id == "no_value")
+    if(batch_id == null || batch_id == "no_value" || batch_id =="NULL")
     {
         message += "BatchId cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["batchId"].classList.add("txtbrcolr");
@@ -68,7 +68,7 @@ function studentValidateForm() {
     else{
         $("#batchId").removeClass('txtbrcolr');
     }
-    if(employee_type == null || employee_type == "no_value")
+    if(employee_type == null || employee_type == "no_value" || employee_type =="NULL")
     {
         message += "Employee Type cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["employeeType"].classList.add("txtbrcolr");
@@ -76,7 +76,7 @@ function studentValidateForm() {
     else{
         $("#employeeType").removeClass('txtbrcolr');
     }
-    if(core_skill == null || core_skill == "no_value")
+    if(core_skill == null || core_skill == "no_value" || core_skill =="NULL")
     {
         message += "Core Skill cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["coreSkill"].classList.add("txtbrcolr");
@@ -84,14 +84,14 @@ function studentValidateForm() {
     else{
         $("#coreSkill").removeClass('txtbrcolr');
     }
-    if(relocation == null || relocation == "no_value")
+    if(relocation == null || relocation == "no_value" || relocation =="NULL")
     {
         message += "Relocation cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["relocation"].classList.add("txtbrcolr");
     }
     else{
         $("#relocation").removeClass('txtbrcolr');
-    } if(status == null || status == "no_value")
+    } if(status == null || status == "no_value" || status =="NULL")
     {
         message += "Status cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["status"].classList.add("txtbrcolr");
@@ -107,27 +107,28 @@ function studentValidateForm() {
         $("#dateOfJoining").removeClass('txtbrcolr');
     }
     if(message.length > 0 ){
-        //alert(message);
         document.getElementById("message_info").innerHTML = message;
         document.getElementById("alert_popup").style.display = "block";
-    }    
-    else
-        {                        
-            //document.getElementById("mentor_info_form").reset();
-            //document.getElementById("mentor_added_message").style.display = "block";
-              //document.getElementById("add_student_info").action="./MentorServlet";
-            //document.getElementById("add_student_info").method = "POST";
-    		document.getElementById("success_message").style.display = "block";
-            document.getElementById("add_student_info").submit();
-        }
-    
-
+        var elements = add_student_info.elements;
+		for (var i = 0, len = elements.length; i < len; ++i) {
+			elements[i].disabled = true;
+		}
+    } else{
+    	document.getElementById("add_student_info").action="/admin-portal/StudentServlet";
+	    document.getElementById("add_student_info").method = "POST";
+	    document.getElementById("add_student_info").submit();
+    }   
+   
 }
 function closeAlertPopup(){
     document.getElementById("alert_popup").style.display = "none";
+    var elements = add_student_info.elements;
+	for (var i = 0, len = elements.length; i < len; ++i) {
+		elements[i].disabled = false;
+	}
 }
-function gotoStudentLandingPage(){
-    window.location = 'StudentInfoLandingPage.jsp';
+function gotoStudentLandingPage(){   
+	document.location.href = '/admin-portal/studentList';	
 }
 
 
@@ -135,10 +136,7 @@ function setLocation()
 {
  var collegeNameLocation = document.add_student_info.collegeName.value;
  var collegeName1 = collegeNameLocation.substring(0, collegeNameLocation.indexOf("$"));
-// alert(collegeName1);
  var location = collegeNameLocation.substring(collegeNameLocation.indexOf("$") + 1);
- //alert(location + "===" + collegeName);
- //document.add_student_info.collegeName.value = collegeName1;
  document.add_student_info.collegeLocation.value = location;
  
 }

@@ -7,7 +7,11 @@ body
 	text-transform: uppercase;
 	
 }
-
+.container {
+    max-width: 100%;
+    padding-right:0%;
+    padding-left:0%;
+}
 .container-custom{width:100%; font-family:Oswald;}
 			  .nopad{padding:0;}
 			  .navbar{background-color:#5a5c5f; padding: 0;}
@@ -201,4 +205,16 @@ option {
 				position: absolute;
 				left: 500px;
 				top: 60px;"			
-			}		  			
+			}	
+			.student_added_message{
+		height: 40px;
+		width: 250px;
+		border-radius: 5px 5px 5px 5px;
+		background-color: #DFF0D8;
+		color: #008000;
+		display: block;
+		position: absolute;
+		left: 500px;
+		top: 60px;
+		z-index:10px;		
+	}		  			
