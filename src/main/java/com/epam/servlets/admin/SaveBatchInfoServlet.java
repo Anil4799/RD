@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.services.batch.BatchInfoServiceImpl;
 
 /**
@@ -18,16 +20,17 @@ import com.epam.services.batch.BatchInfoServiceImpl;
 @WebServlet("/SaveBatchInfoServlet")
 public class SaveBatchInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(SaveBatchInfoServlet.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		String tokens[];
+try {
+		String[] tokens;
 		PrintWriter printWriter = response.getWriter();
 		BatchInfoServiceImpl batchInfoServiceImpl=new BatchInfoServiceImpl();
 		String startDate = request.getParameter("batch_start_date");
@@ -45,11 +48,12 @@ public class SaveBatchInfoServlet extends HttpServlet {
 		int year = Integer.parseInt(tokens[2]);
 		String quarter = tokens[1];
 
-		try {
+	
 			String result = batchInfoServiceImpl.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status);
 			printWriter.println(result);
+			
 		} catch (SQLException sqlException) {
-			sqlException.printStackTrace();
+			LOGGER.debug("EXCEPTION OCCURRED in SaveBatchInfoServlet.java");
 		}
 
 	}
