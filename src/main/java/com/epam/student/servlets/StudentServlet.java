@@ -67,7 +67,11 @@ public class StudentServlet extends HttpServlet {
 		String personalLocation = request.getParameter("personalLocation");
 		String collegeNameAndLocation = request.getParameter("collegeName");
 		String collegeName = "";
-		if(!collegeNameAndLocation.equals(""))
+		if(!collegeNameAndLocation.contains("$"))
+		{
+			collegeName = collegeNameAndLocation;
+		}
+		else if(!collegeNameAndLocation.equals(""))
 		{
 			collegeName = collegeNameAndLocation.substring(0,collegeNameAndLocation.indexOf('$'));
 		}
