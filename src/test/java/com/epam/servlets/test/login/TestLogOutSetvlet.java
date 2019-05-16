@@ -1,4 +1,4 @@
-package com.epam.servlets;
+package com.epam.servlets.test.login;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;

@@ -39,9 +39,10 @@ body {
 	color: #00ccff !important;
 }
 
-.navbar .user-icon:hover {
-	color: #fff !important;
-}
+.navbar .user-icon:hover{
+ 	color:#fff !important;
+ 	background-color:#5a5c5f;
+ }
 
 .form-inline {
 	margin: 0;
@@ -617,10 +618,10 @@ table.b, table tr.b, table td.b {
     padding: .25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #212529;
+    color: #fff;
     text-align: inherit;
     white-space: nowrap;
-    background-color: #fff;
+    background-color: black;
     border: 0;
     font-family: Oswald;
     }
@@ -639,4 +640,10 @@ table td, .table th {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     font-weight: normal; 
- 
+}
+.nav-link-full{
+	position: relative;
+	top: 0px;
+	height: 66px;
+	line-height: 2.9em; 
+}
