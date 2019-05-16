@@ -1,12 +1,6 @@
 package com.epam.servlets.admin;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
@@ -16,15 +10,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.rowset.serial.SerialException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.Answer;
-
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.servlets.admin.AdminMentorListServlet;
 

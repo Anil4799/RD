@@ -1,11 +1,11 @@
 package com.epam.services.admin;
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
-
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,27 +23,23 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 
 	@Override
 	public List<AdminBatch> getAllBatchsList(Connection con) {
-		
+		String sql="call batch();";
 		List<AdminBatch> batchList = new ArrayList<AdminBatch>();
-		CallableStatement cs=null;
-		try
+
+
+		try(CallableStatement cs=con.prepareCall(sql);ResultSet rs=cs.executeQuery();)
 		{
 
-			String sql = "call batch();";
-			cs=con.prepareCall(sql);
-			ResultSet rs=cs.executeQuery();
-
-			
 			while(rs.next())
 			{
 				AdminBatch batch=new AdminBatch();
-				batch.setBatch_id(rs.getString("batch_id"));
-				batch.setBatch_num(rs.getInt("batch_num"));
+				batch.setBatchId(rs.getString("batch_id"));
+				batch.setBatchNum(rs.getInt("batch_num"));
 				batch.setEnd_date(rs.getString("end_date"));
-				batch.setQuarter_num(rs.getString("quarter_num"));
-				batch.setStart_date(rs.getString("start_date"));
+				batch.setQuarterNum(rs.getString("quarter_num"));
+				batch.setStartDate(rs.getString("start_date"));
 				batch.setStatus(rs.getString("status"));
-				batch.setYear_num(rs.getInt("year_num"));
+				batch.setYearNum(rs.getInt("year_num"));
 				
 				batchList.add(batch);
 			}
@@ -53,13 +49,7 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 		catch(Exception e)
 		{
 			batchList=null;
-		}
-		finally {
-			try {
-				cs.close();
-			} catch (SQLException e) {
-				
-			}
+		
 		}
 		
 		return batchList;
@@ -84,4 +74,4 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 //		}
 //	}
 
-}
+		}

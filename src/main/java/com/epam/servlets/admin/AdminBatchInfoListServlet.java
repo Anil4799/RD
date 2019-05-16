@@ -1,18 +1,18 @@
 package com.epam.servlets.admin;
-
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 
+import org.apache.log4j.Logger;
 import com.epam.dao.admin.AdminBatch;
 import com.epam.dao.admin.BatchAction;
 import com.epam.services.MenuActionItemService;
@@ -22,9 +22,6 @@ import com.epam.services.admin.AdminBatchInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
-/**
- * Servlet implementation class BatchInfoListServlet
- */
 @WebServlet("/batchInfo")
 public class AdminBatchInfoListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -61,9 +58,15 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
 		}
-		
+		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
+		}
+		catch(UnknownHostException e)
+		{
+			LOGGER.error(e.getMessage());
+		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
+
 
 }

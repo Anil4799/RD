@@ -18,8 +18,8 @@
 					<table class="getwidth">
 						<tr>
 							<td align="right">
-								<span class="savebutton" style="background-color:#58D68D ; color: #FFF" onClick="batchValidateForm()">SAVE</span>
-								<span class="backbutton"  onClick="batchInfoLandingPgae()">BACK</span>
+								<span class="savebutton" style="background-color:#5CB85C ; font-size=14px; color: #FFF" onClick="batchValidateForm()">SAVE</span>
+								<span class="backbutton" style="font-size=14px;" onClick="batchInfoLandingPgae()">BACK</span>
 							</td>
 						</tr>
 					</table>						
@@ -30,14 +30,14 @@
 						<table>
 							
 							<tr>
-								<td class="form_lable">Start Date: <span class="required">*</span></td>
+							  	<td class="form_lable">Start Date: <span class="required">*</span></td>
 								<td><input type="date" id="batch_start_date" name="batch_start_date" class="form-control form-control-sm" size="30" required/></td>
 							</tr>
 							<tr>
 								<td class="form_lable">End Date: </td>
 								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" /></td>
-							</tr>
-							<tr>
+							</tr>  
+														<tr>
 								<td class="form_lable">BatchId: <span class="required">*</span></td>
 								<td><input type="text" id="batch_id" name="batch_id" class="form-control form-control-sm" size="30" required readonly placeholder="AUTO-GENERATED"/></td>
 							</tr>

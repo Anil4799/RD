@@ -23,14 +23,21 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
 <link rel="stylesheet" href="/admin-portal/css/style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+<script src="/admin-portal/js/add_mentor.js"></script>
 <script src="/admin-portal/js/main.js"></script>
 
 
-<script src="/admin-portal/js/StudentJS.js"></script>
-
 <link rel="stylesheet" href="/admin-portal/css/add_mentor_info.css" /> 
-<script src="/admin-portal/js/add_mentor.js"></script>
+
 
 
 <!-- new links for date -->
@@ -79,8 +86,11 @@ $(function(){
 		  	
 	  	</script>	
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link rel="stylesheet" href="/admin-portal/css/style.css">
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 

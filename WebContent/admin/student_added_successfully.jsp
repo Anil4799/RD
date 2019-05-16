@@ -1,10 +1,15 @@
 <%@ include file="/common/header.jspf" %> 
 <script src="/admin-portal/js/StudentJS.js"></script>
 
-
 <div class="container container-custom" style="text-transform: none; max-width=100%">
+	
  
+  
   <!---Body--->  
+  <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad"> -->
+  	<div  class="student_added_message" style="padding: 7px 10px 5px 40px; height: 40px;width: 250px;border-radius: 5px 5px 5px 5px;background-color: #DFF0D8;	color: #008000;	display: block;	position: absolute;	left: 500px;top: 60px;z-index: 10;"	>
+			Student Added Successfully
+	</div>
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background: white;">
 	<font size="+2">ADD STUDENT</font>
 	</div>
@@ -18,7 +23,7 @@
 		</div>
 	<form action ="StudentServlet" name="add_student_info" id="add_student_info" method="post">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235);">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" >
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad">
 			<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" name="save"  onClick="studentValidateForm()">SAVE</span>
 			<span class="backbutton" onClick="gotoStudentLandingPage()">BACK</span>
 		</div>
@@ -31,37 +36,37 @@
   					<div class="card-body label_color">
   					<div>
     					<span>First Name:<span class="required">*</span></span>
-    					<span style="float:right;width:34%">
-    					<input name="firstName"  id="firstName" type="text"  class="form-control form-control-sm"  />
+    					<span style="float:right;">
+    					<input name="firstName"  id="firstName" type="text"  class="form-control form-control-sm" size="30" />
     					</span>
 					</div>
 					<br>
 					<div>
-						<span>Last Name:<span class="required">*</span></span>
-						<span style="float:right;width:34%">
-						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm"  />
+						Last Name:<span class="required">*</span>
+						<span style="float:right;">
+						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm" size="30" />
 						</span>
 					</div>
 					<br>
 					<div>
 						Date of Birth:<span class="required">*</span>
-						<span style="float:right;width:34%">
-						 <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  />
+						<span style="float:right;">
+						<input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  size="30"/>
 						</span>
 					</div>
 					<br>
 					<div>
 						Email:<span class="required">*</span>
-						<span style="float:right;width:34%">
-						<input name="email" id="email"  type="email" class="form-control form-control-sm" />
+						<span style="float:right;">
+						<input name="email" id="email"  type="email" class="form-control form-control-sm" size="30"/>
 						</span>
 					</div>
 					
 					<br>
 					<div>
 						Gender:<span class="required">*</span>
-						<span style="float:right; width:34%" >
-						<select name="gender" id="gender" class="form-control form-control-sm"  required>
+						<span style="float:right;">
+						<select name="gender" id="gender" class="form-control form-control-sm"  style="width:195px" required>
 						<option value="no_value"></option>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
@@ -71,15 +76,15 @@
 					<br>
 					<div>
 						Contact Number:
-						<span style="float:right;width:34%">
-						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" />
+						<span style="float:right;">
+						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" size="30"/>
 						</span>
 					</div>
 					<br>
 					<div>
 					Location:<span class="required">*</span>
-					<span style="float:right;width:34%">
-					<input name="personalLocation" id="personalLocation" type="text" class="form-control form-control-sm" />
+					<span style="float:right;">
+					<input name="personalLocation" id="personalLocation" type="text" class="form-control form-control-sm" size="30"/>
 					</span>
 					</div>
     				
@@ -94,15 +99,16 @@
   					<div>
   						
   						College:
-  						<span style="float:right;width:34%" >
-  							<select name="collegeName" class="form-control form-control-sm" on change="setLocation(this.value)" >
-  						 
+  						<span style="float:right;" >
+  							<select name="collegeName" class="form-control form-control-sm" style="width:195px" onchange="setLocation(this.value)" >
+  						<option value="no_value"></option>
   						<% Connection connection = DBManager.getConnection();
   						String collegeName = null, collegeLocation = "";
   						PreparedStatement preparedStatement = connection.prepareStatement("select college_name, location from student_college_info");
   						ResultSet resultSet = preparedStatement.executeQuery();
   						while(resultSet.next())
   						{
+  							// collegeName = resultSet.getString(1);
   							collegeName = resultSet.getString("college_name");
   						
   						%>
@@ -115,26 +121,26 @@
   					<br>
     				<div>
     					Location:
-    					<span style="float:right;width:34%" >
+    					<span style="float:right;" >
     					
-    					<input name="collegeLocation" type="text" class="form-control form-control-sm"  value="<%=collegeLocation %>"/>
+    					<input name="collegeLocation" type="text" class="form-control form-control-sm" size="30" value="<%=collegeLocation %>"/>
     					</span>
     				</div>
 					<br>
 					
 					<div>
 					Graduation:
-					<span style="float:right;width:34%" >
-					<input name="graduation" type="text" class="form-control form-control-sm" />
+					<span style="float:right;" >
+					<input name="graduation" type="text" class="form-control form-control-sm" size="30"/>
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					Graduation Speciality:
-					<span style="float:right;width:34%" >
-					<select name="graduationSpeciality" class="form-control form-control-sm"  >
-					<option value="NULL"></option>
+					<span style="float:right;" >
+					<select name="graduationSpeciality" class="form-control form-control-sm" style="width:195px" >
+					<option value="no_value"></option>
 						<option value="ece">ECE</option>
 						<option value="cse">CSE</option>
 						<option value="it">IT</option>
@@ -145,31 +151,31 @@
 					<br>
 					<div>
 					Year of Passed Out:
-					<span style="float:right;width:34%">
-					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" />
+					<span style="float:right;">
+					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" size="30"/>
 					</span>
 					
 					</div>
 					<br>
 					<div>
 					Graduation Marks:
-					<span style="float:right;width:34%">
-					<input name="graduationMarks" type="text"  class="form-control form-control-sm" />
+					<span style="float:right;">
+					<input name="graduationMarks" type="text"  class="form-control form-control-sm" size="30"/>
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					10th + 2 Marks:
-					<span style="float:right;width:34%">
-					<input name="twelveth" type="text" class="form-control form-control-sm"/>
+					<span style="float:right;">
+					<input name="twelveth" type="text" class="form-control form-control-sm" size="30"/>
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
-					<span style="float:right;width:34%">
-					<input name="tenth" type="text" class="form-control form-control-sm" />
+					<span style="float:right;">
+					<input name="tenth" type="text" class="form-control form-control-sm" size="30"/>
 					</span>
 					</div>
 					
@@ -185,38 +191,31 @@
   					<div class="card-body label_color">
   					<div>
   						BatchId:<span class="required">*</span>
-				        <span style="float:right;width:34%">
-					        <select name="batchId" id="batchId" class="form-control form-control-sm"  required>
-					       <option value="NULL"></option>
-					      <%
-					        String batchId = "";
-					         preparedStatement = connection.prepareStatement("select Batch_Id from batch_info");
-					         resultSet = preparedStatement.executeQuery();
-					        while(resultSet.next())
-					        {
-					         batchId = resultSet.getString("Batch_Id");
-					        
-					        %>
-					       <option value="<%=batchId%>"><%=batchId %></option>
-					       <% } %>
-					       </select>
-        				</span>
+  						<span style="float:right;">
+  						<select name="batchId" id="batchId" class="form-control form-control-sm" style="width:195px" required>
+							<option value="no_value"></option>
+							<option value="">RD-Q1-2019-B1</option>
+							<option value="">RD-Q1-2019-B2</option>
+						</select>
+  						</span>
   					</div>
 						<br>
 						<div>
 						Employee Type:<span class="required">*</span>
-						<span style="float:right;width:34%">
-						<select name="employeeType" id="employeeType" class="form-control form-control-sm"  required>
-						<option value="NULL"></option>
+						<span style="float:right;">
+						<select name="employeeType" id="employeeType" class="form-control form-control-sm" style="width:195px" required>
+						<option value="no_value"></option>
 						<% 
   						String employee_type = "";
   						 preparedStatement = connection.prepareStatement("select Employee_Type from employee_type");
   						 resultSet = preparedStatement.executeQuery();
   						while(resultSet.next())
   						{
+  							
   							employee_type = resultSet.getString("employee_type");
   						
   						%>
+  						
 							<option value="<%=employee_type%>"><%=employee_type %></option>
 							<% } %>
 							</select>
@@ -226,15 +225,16 @@
 						<br>
 						<div>
 						Core Skill:<span class="required">*</span>
-						<span style="float:right;width:34%">
-						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm"  required>
-						<option value="NULL"></option>
+						<span style="float:right;">
+						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm" style="width:195px" required>
+						<option value="no_value"></option>
 						<% 
   						String skill = "";
   						 preparedStatement = connection.prepareStatement("select Skill_Name from core_skill");
   						 resultSet = preparedStatement.executeQuery();
   						while(resultSet.next())
   						{
+  							// collegeName = resultSet.getString(1);
   							skill = resultSet.getString("Skill_Name");
   						
   						%>
@@ -247,9 +247,9 @@
 						<br>
 						<div>
 						Preferred Student Stream:
-						<span style="float:right;width:34%">
-						<select name="preferredStudentStream" class="form-control form-control-sm" >
-						<option value="NULL"></option>
+						<span style="float:right;">
+						<select name="preferredStudentStream" class="form-control form-control-sm" style="width:195px">
+						<option value="no_value"></option>
 						<% 
   						String streamName = "";
   						 preparedStatement = connection.prepareStatement("select Stream_Name from technical_stream");
@@ -270,10 +270,11 @@
 						<br>
 						<div>
 						Assigned Stream:
-						<span style="float:right;width:34%" >
-						<select name="assignedStream" class="form-control form-control-sm" >
-						<option value="NULL"></option>
+						<span style="float:right;" >
+						<select name="assignedStream" class="form-control form-control-sm" style="width:195px">
+						<option value="no_value"></option>
 						<% 
+  						//String streamName = "";
   						 preparedStatement = connection.prepareStatement("select Stream_Name from technical_stream");
   						 resultSet = preparedStatement.executeQuery();
   						while(resultSet.next())
@@ -292,49 +293,41 @@
 						<br>
 						<div>
 						Date of Joining:<span class="required">*</span>
-						<span style="float:right;width:34%" >
-						<input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />
+						<span style="float:right;" >
+						<input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  size="30"/>
 						</span>
 						</div>
 						
 						<br>
 						<div>
 						Mentor:
-					      <span style="float:right;width:34%" >
-						      <select name="mentorName" class="form-control form-control-sm" >
-						      <option value="NULL"></option>
-						       <%
-						       String Mentor_Name = "";
-						         preparedStatement = connection.prepareStatement("select Mentor_Name, Email_Id from mentor_info");
-						         resultSet = preparedStatement.executeQuery();
-						        while(resultSet.next())
-						        {
-						         Mentor_Name = resultSet.getString("Mentor_Name");
-						        
-						        %>
-						        
-						       <option value="<%=Mentor_Name %>"><%=Mentor_Name %></option>
-						       <% } %>
-						       </select>
-					      </span>
+						<span style="float:right;" >
+						<select name="mentorName" class="form-control form-control-sm" style="width:195px">
+						<option value="no_value"></option>
+							<option value="Durga">Durga</option>
+							<option value="Revathi">Revathi</option>
+						</select>
+						</span>
 						</div>
 						
 						<br>
 						<div>
 						Assigned Location:
-						<span style="float:right;width:34%" >
-						<select name="assignedLocation" class="form-control form-control-sm" >
-							
+						<span style="float:right;" >
+						<select name="assignedLocation" class="form-control form-control-sm" style="width:195px">
+							<option value="no_value"></option>
 						<% 
   						String assignedLocation = "";
   						 preparedStatement = connection.prepareStatement("select Assigned_Location from assigned_location");
   						 resultSet = preparedStatement.executeQuery();
   						while(resultSet.next())
   						{
+  							// collegeName = resultSet.getString(1);
   							assignedLocation = resultSet.getString("Assigned_Location");
   						
   						%>
-  						<option value="<%=assignedLocation	%>"><%=assignedLocation %></option>
+  						
+							<option value="<%=assignedLocation	%>"><%=assignedLocation %></option>
 							<% } %>
 							</select>
 						</span>
@@ -343,8 +336,8 @@
 						<br>
 						<div>
 						Relocation:<span class="required">*</span>
-						<span style="float:right;width:34%" >
-						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
+						<span style="float:right;" >
+						<select name="relocation" id="relocation" class="form-control form-control-sm" style="width:195px" required>
 							<option value="no_value"></option>
 							<option value="yes">Yes</option>
 							<option value="no">No</option>
@@ -355,15 +348,16 @@
 						<br>
 						<div>
 						Status:<span class="required">*</span>
-						<span style="float:right;width:34%" >
-						<select name="status" id="status" class="form-control form-control-sm"  required>
-							
+						<span style="float:right;" >
+						<select name="status" id="status" class="form-control form-control-sm" style="width:195px" required>
+							<option value="no_value"></option>
 						<% 
   						String employeeStatus = "";
   						 preparedStatement = connection.prepareStatement("select Employee_Status from Employee_Status");
   						 resultSet = preparedStatement.executeQuery();
   						while(resultSet.next())
   						{
+  							// collegeName = resultSet.getString(1);
   							employeeStatus = resultSet.getString("Employee_Status");
   						
   						%>
@@ -381,5 +375,11 @@
 </form>
  	
 </div>
+<script>
+	function gotoStudentInfo(){
+		window.location = "/admin-portal/studentList";
+	}
+	setTimeout(gotoStudentInfo, 1000);
+</script>
 
 <%@ include file="/common/footer.jspf"%>

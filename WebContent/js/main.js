@@ -74,7 +74,7 @@
 		        
 		        document.getElementById('dialogboxhead').innerHTML = "&nbsp;&nbsp;&nbsp;RD Portal Says <br>";
 		        document.getElementById('dialogboxbody').innerHTML = message;
-		        document.getElementById('dialogboxfoot').innerHTML = '<span style="background-color:#58D68D ; color: #FFF; font-size: 12px; border-radius: 5px 5px 5px 5px;  padding: 5px 5px 5px 5px; width: 60px; height: 30px; float: right; margin: 8px; text-align: center; cursor: pointer;" onclick="customOk()">OK</span>';
+		        document.getElementById('dialogboxfoot').innerHTML = '<span style="background-color:#5CB85C ; color: #FFF; font-size: 12px; border-radius: 5px 5px 5px 5px;  padding: 5px 5px 5px 5px; width: 60px; height: 30px; float: right; margin: 8px; text-align: center; cursor: pointer;" onclick="customOk()">OK</span>';
 				}
 		        function customOk(){
 		        	

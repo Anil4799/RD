@@ -1,22 +1,34 @@
 
-DROP TABLE IF EXISTS `batch_info`;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `batch_info` (
-  `Batch_Num` int(11) NOT NULL,
-  `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Year_Num` int(11) NOT NULL,
-  `Quarter_Num` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Start_Date` date DEFAULT NULL,
-  `End_Date` date DEFAULT NULL,
-  `Status` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`Year_Num`,`Quarter_Num`,`Batch_Num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `batch_info` VALUES (1,'RD-Q2-2015-B1',2015,'Q2','2015-05-14','2019-12-31','Not Started'),(1,'RD-Q1-2019-B1',2019,'Q1','2019-01-01','2019-12-31','Not Started'),(1,'RD-Q2-2019-B1',2019,'Q2','2019-05-01','2019-12-31','Not Started'),(1,'RD-Q3-2019-B1',2019,'Q3','2019-09-13','2019-11-13','Not Started');
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `batch_id_proc`(IN Start_Date DATE, OUT Batch_Id NVARCHAR(200))
+BEGIN
 
-DROP TABLE IF EXISTS `assigned_location`;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `assigned_location` (
-  `Assigned_Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  DECLARE quarter_proc NVARCHAR(200);
+  DECLARE quarter_temp NVARCHAR(200);
+  DECLARE bnum_temp INT;
+    SET @month_proc= (SELECT MONTH(Start_Date));
+    IF (@month_proc>=1 AND @month_proc<=3) THEN
+     SET quarter_proc = 'Q1';
+    ELSEIF (@month_proc>=4 AND @month_proc<=6) THEN
+     SET quarter_proc = 'Q2';
+    ELSEIF (@month_proc>=7 AND @month_proc<=9) THEN
+     SET quarter_proc = 'Q3';
+    ELSEIF (@month_proc>=10 AND @month_proc<=12) THEN
+     SET quarter_proc = 'Q4';
+    END IF;	
+   SET @year_proc=(SELECT YEAR(Start_Date));
+
+   SELECT count(*) INTO @temp FROM batch_info where Year_Num=@year_proc and Quarter_Num=quarter_proc;
+
+   IF( @temp>=1) THEN
+	SET bnum_temp=@temp+1;
+   ELSE
+      SET bnum_temp=1;				
+   END IF;
+ 	
+   SELECT CONCAT('RD-',quarter_proc,'-',@year_proc,'-B',bnum_temp) into Batch_Id;
+
+   
+ END
 

@@ -1,10 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
---
-<<<<<<< HEAD
--- Host: localhost    Database: rd_portal
-=======
--- Host: 127.0.0.1    Database: rd_portal
->>>>>>> remotes/origin/EPMRDINFDP-2
+
+
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -52,7 +48,7 @@ LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
 
 INSERT INTO `student__additional_info` VALUES ('a@b.c','lk76','temp','java','cse','cse','2015-11-03','ABC','HYD','pune','inactive'),('b@b.c','lk76','temp','java','cse','cse','2015-01-03','CBA','RNC','RNC','inactive');
-=======
+
 
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
