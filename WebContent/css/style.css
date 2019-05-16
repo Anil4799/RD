@@ -6,6 +6,87 @@ body {
 	background-color: #EBEBEB;
 	text-transform: uppercase;
 }
+.container {
+    max-width: 100%;
+    padding-right:0%;
+    padding-left:0%;
+}
+.container-custom{width:100%; font-family:Oswald;}
+			  .nopad{padding:0;}
+			  .navbar{background-color:#5a5c5f; padding: 0;}
+			  .navbar .nav-link,.navbar-brand{color:#fff !important; padding:15px 25px !important; font-size:1rem; margin: 0}
+			  .nav-link-img{color:#fff !important; padding:2px 2px !important; margin: 0}
+			  .navbar .nav-link:hover{background-color:#000; color:#00ccff !important;}
+			  .navbar .user-icon:hover{color:#fff !important;}
+			  .form-inline{margin:0;}
+			  .search-input{color:#fff !important;background-color: #737171;border-radius: 19px !important; border-color:#737171;}
+			  .search-btn{z-index:4 !important;background-color:#737171; border: 0 !important;border-radius: 19px !important;position: absolute !important; right: 0;padding: 11px;}
+			  .search-input.form-control:focus{background-color:#737171; box-shadow:none; border-color:#737171;}
+			  .btn-secondary:hover, .btn-secondary:active{background-color:#737171 !important; box-shadow:none; border-color:#737171;border-radius: 19px !important;}
+			  .btn-secondary.focus, .btn-secondary:focus{box-shadow: none;}
+			  .user-icon .fa-user{padding: 4px;}
+			  .required {color: red;}
+			  .btn-save{border-radius: 5px 5px 5px 5px; padding: 5px 5px 5px 5px; width: 60px; height: 28px; float: right; margin: 3px;	text-align: center; background: rgb(92,184,92);  float: right; font-family: Oswald, sans-serif; color: white;}
+			  .btn-back{border-radius: 5px 5px 5px 5px; padding: 5px 5px 5px 5px;  background: rgb(216,220,222);  width: 60px; height: 28px; float: right; margin: 3px;	text-align: center;  float: right;  font-family: Oswald, sans-serif;}
+			  .active {  background-color: black;  color:#00ccff;}
+			  .label_color{color:rgb(178,178,178);}
+			  .search-btn {
+				    z-index: 4 !important;
+				    background-color: #737171;
+				    border: 0 !important;
+				    border-radius: 19px !important;
+				    position: absolute !important;
+				    right: 0;
+				    padding: 6px 12px;
+			   }
+			  .dropdown-item {
+				    display: block;
+				    width: 100%;
+				    padding: 2px;
+				    clear: both;
+				    font-weight: 400;
+				    color: white;
+				    text-align: center;
+				    white-space: nowrap;
+				    background-color: transparent;
+				    border: 0;
+				}
+				.dropdown-menu {
+				    /* position: absolute; */
+				    top: 100%;
+				    left: 0;
+				    z-index: 1000;
+				    display: none;
+				    float: left;
+				    min-width: 5rem;
+				    padding: .5rem 0;
+				    margin: .125rem 0 0;
+				    font-size: 1rem;
+				    color: #212529;
+				    text-align: left;
+				    list-style: none;
+				    background-color: black;
+				    background-clip: padding-box;
+				    border: 1px solid rgba(0,0,0,.15);
+				    border-radius: .25rem;
+				}
+				.dropdown-item:focus, .dropdown-item:hover {
+			    	color: white;
+			    	text-decoration: none;
+			    	background-color: black;
+				}
+				.page_info{
+				  background-color: #ffffff;
+				  height: 35px;
+				  vertical-align: middle;
+				}
+				.page_title{
+					padding-top: 5px;
+					margin-left: 20px;
+					
+				}
+	
+
 
 .container-custom {
 	width: 100%;
@@ -186,6 +267,7 @@ body {
 	margin-left: 20px;
 }
 
+>>>>>>> branch 'Sprint-1' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
 select:required:invalid {
 	color: gray;
 }
@@ -208,139 +290,6 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	content: "";
 }
 
-#dialogoverlay {
-	display: none;
-	opacity: .1;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	background: #000;
-	width: 100%;
-	z-index: 10;
-}
-
-#dialogbox {
-	display: none;
-	position: fixed;
-	background: WHITE;
-	border-radius: 7px;
-	width: 400px;
-	z-index: 10;
-}
-
-#dialogbox>div {
-	background: #FFF;
-	margin: 8px;
-}
-
-#dialogbox>div>#dialogboxhead {
-	background: WHITE;
-	font-size: 14x;
-	padding: 10px;
-}
-
-#dialogbox>div>#dialogboxbody {
-	background: WHITE;
-	padding: 20px;
-}
-
-#dialogbox>div>#dialogboxfoot {
-	background: WHITE;
-	padding: 10px;
-	text-align: right;
-}
-
-.backbutton, .savebutton {
-	font-size: 12px;
-	border-radius: 5px 5px 5px 5px;
-	background: #D8DCDE;
-	padding: 5px 5px 5px 5px;
-	width: 60px;
-	height: 28px;
-	float: right;
-	margin: 3px;
-	text-align: center;
-	cursor: pointer;
-}
-
-.batch_info_title {
-	font-size: 17px;
-	border-radius: 5px 5px 5px 5px;
-	background: #fff;
-	padding: 5px 5px 5px 15px;
-	height: 30px;
-	margin: 3px;
-}
-
-.add_batch_head {
-	font-size: 20px;
-	padding-left: 20px;
-	border-radius: 5px 5px 5px 5px;
-	margin: 3px;
-	background-color: #fff;
-	height: 30px;
-}
-
-.form_lable {
-	width: 300px;
-	padding-left: 100px;
-	font-size: 14px;
-	color: #909497;
-}
-
-.required {
-	color: #e32;
-	content: " *";
-	display: inline;
-}
-
-.batch_info_form {
-	font-size: 12px;
-	border-radius: 5px 5px 5px 5px;
-	background: #fff;
-	padding: 5px 5px 5px 15px;
-	margin: 3px;
-}
-
-.page_footer {
-	height: 40px;
-	background-color: #454545;
-}
-
-.rd_admin_tab {
-	background-color: #23CAEB;
-	color: #fff;
-	display: table-cell;
-}
-
-table.b, table tr.b, table td.b {
-	border-collapse: collapse;
-	border-spacing: 0;
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-.getwidth {
-	width: 100%
-}
-
-.txtbrcolr {
-	border-color: red;
-}
-
-.batch_added_message {
-	height: 40px;
-	width: 250px;
-	border-radius: 5px 5px 5px 5px;
-	background-color: #DFF0D8;
-	color: #008000;
-	display: none;
-	position: absolute;
-	left: 500px;
-	top: 60px;
-	"
-}
 
 .backbutton, .savebutton {
 	font-size: 12px;
@@ -611,7 +560,238 @@ table.b, table tr.b, table td.b {
   background: #50A2C9;
 }
 
+
+#dialogoverlay{
+				display: none;
+				opacity: .1;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				background: #000;
+				width: 100%;
+				z-index: 10;
+			}
+			#dialogbox{
+				display: none;
+				position: fixed;
+				background: WHITE;
+				border-radius:7px; 
+				width:400px;
+				z-index: 10;
+			}		
+			
+			#dialogbox > div{ background:#FFF; margin:8px; }
+			#dialogbox > div > #dialogboxhead{ background: WHITE; font-size:14x; padding:10px; }
+			#dialogbox > div > #dialogboxbody{ background:WHITE; padding:20px; }
+			#dialogbox > div > #dialogboxfoot{ background: WHITE; padding:10px; text-align:right; }
+		    #batch_start_date, #batch_end_date, #batch_status, #batch_id{
+		    	height:40px;
+		    }
+		    .backbutton, .savebutton{
+		    font-family: 'Oswald', sans-serif;
+		    	font-size: 14px;
+		    	border-radius: 5px 5px 5px 5px;
+				background:  #D8DCDE;
+				padding: 5px 5px 5px 5px;				
+				width: 60px;
+				height: 32px;
+				float: right;
+				margin: 3px;
+				text-align: center;
+				cursor: pointer;
+				
+			}
+			
+			.batch_info_title{
+		    	font-size: 17px;
+		    	border-radius: 5px 5px 5px 5px;
+				background: #fff;
+				padding: 5px 5px 5px 15px;				
+				height: 40px;	
+				margin-left: 15px;
+				margin-right: 15px;
+											
+			}  	
+			.add_batch_head{
+				font-size: 24px; 
+				padding-left: 15px;
+				border-radius: 5px 5px 5px 5px;
+				margin: 0px;
+				background-color: #fff;
+				/*height: 32px;*/
+			}
+			.form_lable{
+				width: 200px;
+				padding-left: 0px;
+				font-size: 14px;
+				color: #909497;
+				height:50px;
+			}
+			.required{
+				color: #e32;
+				content: " *";
+				display: inline; 
+			}
+			.batch_info_form{
+		    	font-size: 14px;
+		    	border-radius: 5px 5px 5px 5px;
+				background: #fff;
+				padding: 5px 5px 5px 35px;	
+				margin-top:5px;
+				margin-left: 15px;
+				margin-right: 15px;												
+			} 
+			.page_footer{
+				height: 40px; 
+				background-color: #454545;
+				
+			}
+			.rd_admin_tab{		
+				background-color: #23CAEB;
+				color: #fff;	
+				display: table-cell; 		             
+			}
+			table.b, table tr.b, table td.b	{ 
+				border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; border: 0; 
+			}
+			.getwidth{
+				
+				width:97%;
+				
+			}
+			.txtbrcolr
+			{
+				border-color: red;
+			} 		
+			.batch_added_message{
+				height: 40px;
+				width: 250px;
+				border-radius: 5px 5px 5px 5px;
+				background-color: #DFF0D8;
+				color: #008000;
+				display: none;
+				position: absolute;
+				left: 500px;
+				top: 60px;"			
+			}		
+			#batch_status, #batch_id{
+			background-color: #EBEBEB;
+			color:#545454;
+			}
+
   
+
+  #dialogoverlay{
+				display: none;
+				opacity: .1;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				background: #000;
+				width: 100%;
+				z-index: 10;
+			}
+			#dialogbox{
+				display: none;
+				position: fixed;
+				background: WHITE;
+				border-radius:7px; 
+				width:400px;
+				z-index: 10;
+			}		
+			
+			#dialogbox > div{ background:#FFF; margin:8px; }
+			#dialogbox > div > #dialogboxhead{ background: WHITE; font-size:14x; padding:10px; }
+			#dialogbox > div > #dialogboxbody{ background:WHITE; padding:20px; }
+			#dialogbox > div > #dialogboxfoot{ background: WHITE; padding:10px; text-align:right; }
+		    
+		    .backbutton, .savebutton{
+		    	font-size: 12px;
+		    	border-radius: 5px 5px 5px 5px;
+				background:  #D8DCDE;
+				padding: 5px 5px 5px 5px;				
+				width: 60px;
+				height: 28px;
+				float: right;				
+				margin: 3px;
+				text-align: center;
+				cursor: pointer;
+			}
+			.batch_info_title{
+		    	font-size: 17px;
+		    	border-radius: 5px 5px 5px 5px;
+				background: #fff;
+				padding: 5px 5px 5px 15px;				
+				height: 30px;	
+				margin: 3px;							
+			}  	
+			.add_batch_head{
+				font-size: 20px; 
+				padding-left: 20px;
+				border-radius: 5px 5px 5px 5px;
+				margin: 3px;
+				background-color: #fff;
+				height: 30px;
+			}
+			.form_lable{
+				width: 300px;
+				padding-left: 100px;
+				font-size: 14px;
+				color: #909497;
+			}
+			.required{
+				color: #e32;
+				content: " *";
+				display: inline; 
+			}
+			.batch_info_form{
+		    	font-size: 12px;
+		    	border-radius: 5px 5px 5px 5px;
+				background: #fff;
+				padding: 5px 5px 5px 15px;	
+				margin: 3px;												
+			} 
+			.page_footer{
+				height: 40px; 
+				background-color: #454545;
+			}
+			.rd_admin_tab{		
+				background-color: #23CAEB;
+				color: #fff;	
+				display: table-cell; 		             
+			}
+			table.b, table tr.b, table td.b	{ 
+				border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; border: 0; 
+			}
+			.getwidth{width:100%}
+			.txtbrcolr
+			{
+				border-color: red;
+			} 		
+			.batch_added_message{
+				height: 40px;
+				width: 250px;
+				border-radius: 5px 5px 5px 5px;
+				background-color: #DFF0D8;
+				color: #008000;
+				display: none;
+				position: absolute;
+				left: 500px;
+				top: 60px;"			
+			}	
+			.student_added_message{
+		height: 40px;
+		width: 250px;
+		border-radius: 5px 5px 5px 5px;
+		background-color: #DFF0D8;
+		color: #008000;
+		display: block;
+		position: absolute;
+		left: 500px;
+		top: 60px;
+		z-index:10px;		
+	}		  			
+
 .dropdown-item {
     display: block;
     width: 100%;
@@ -640,6 +820,7 @@ table td, .table th {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     font-weight: normal; 
+
 }
 .nav-link-full{
 	position: relative;
@@ -647,3 +828,33 @@ table td, .table th {
 	height: 66px;
 	line-height: 2.9em; 
 }
+
+
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: #f2f2f2;
+} 
+.ddmf{
+  font-family: 'Oswald';
+  font-Size:14;
+   font-color:#f2f2f2;
+   background:#ffffff;
+   
+  }
+  
+.xyz{
+	background: #EBEBEB;
+	border-color:#EBEBEB;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: #ebebeb;
+} 
+
+ 
+
+

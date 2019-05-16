@@ -17,7 +17,7 @@ import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
-class Mentor_Info_Test {
+class MentorInfoTest {
 	static DBManager db;
 	static AdminMentorInfoServiceImpl mentor;
 	static Connection con=null;
@@ -58,12 +58,12 @@ class Mentor_Info_Test {
 		String max_no_of_mentees=null;
 		String technology_stream=null;
 		String status=null;
-		email_id=m.getEmail_id();
-		mentor_name=m.getMentor_name();
-		mentorship_start_date=m.getMentorship_start_date();
-		mentorship_end_date=m.getMentorship_end_date();
-		max_no_of_mentees=m.getMax_no_of_mentees();
-		technology_stream=m.getTechnology_stream();
+		email_id=m.getEmailid();
+		mentor_name=m.getMentorName();
+		mentorship_start_date=m.getMentorshipStartDate();
+		mentorship_end_date=m.getMentorShipEnddate();
+		max_no_of_mentees=m.getMaxnoOfMentees();
+		technology_stream=m.getTechnologyStream();
 		status=m.getStatus();
 		assertNotNull(email_id);
 		assertNotNull(mentor_name);

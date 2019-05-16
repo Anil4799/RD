@@ -16,7 +16,7 @@ import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
-class Mentor_Student_List_Test {
+class MentorStudentListTest {
 	static DBManager db;
 	static MentorStudentInfoServiceImpl mentorstudent;
 	static Connection con=null;
