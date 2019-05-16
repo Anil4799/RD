@@ -48,9 +48,9 @@
     
         <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
-		                 <ul class="dropdown-menu" role="menu">
+		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	<c:choose>
 								  <c:when test="${eee.status == 'active'}">
 								     <li><a class="dropdown-item" href="#">View</a></li>

@@ -28,7 +28,7 @@ class Mentor_Student_List_Test {
 		db=new DBManager();
 	}
      
-	@Ignore
+	@Test
 	 void test1() throws Exception {
 		
 	    con=DBManager.getConnection();

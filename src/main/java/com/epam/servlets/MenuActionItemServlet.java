@@ -1,4 +1,4 @@
-package com.epam.servlets.admin;
+package com.epam.servlets;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,23 +19,28 @@ import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminBatchInfoService;
 import com.epam.services.admin.AdminBatchInfoServiceImpl;
+import com.epam.servlets.admin.AdminBatchInfoListServlet;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
 /**
- * Servlet implementation class BatchInfoListServlet
+ * Servlet implementation class MenuActionItemServlet
  */
-@WebServlet("/batchInfo")
-public class AdminBatchInfoListServlet extends HttpServlet {
+@WebServlet("/actionMenus")
+public class MenuActionItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoListServlet.class);
-	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
 	HttpSession session;
+       
+   
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		List<AdminBatch> batchList =null;
 		List<BatchAction> actionList =null;
@@ -48,22 +53,17 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			int role= 1;
 			int status=1;
 			actionList=menuActionItemService.getMenuActionList(con,role);
-			batchList=batchInfoListService.getAllBatchsList(con);
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
-			request.setAttribute("batchs", batchList);
 			request.setAttribute("actions", actionList);
-			request.setAttribute("pageState", "BATCH INFO");
 
 		}
 		catch(Exception e)
 		{
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
 		}
 		
-		request.getRequestDispatcher(pageUrl).forward(request, response);
 		LOGGER.debug("Exit from Servlet...............");
 	}
-
 }
+
+

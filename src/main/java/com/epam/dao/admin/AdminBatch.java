@@ -1,5 +1,8 @@
 package com.epam.dao.admin;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AdminBatch {
 	
 	private int batch_num;
@@ -38,7 +41,7 @@ public class AdminBatch {
 		return start_date;
 	}
 	public void setStart_date(String start_date) {
-		this.start_date = start_date;
+	        this.start_date = dateFormat(start_date);
 	}
 	public String getEnd_date() {
 		return end_date;
@@ -51,6 +54,23 @@ public class AdminBatch {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public  String dateFormat(String dd) {
+		String d = "";
+		try {
+		String date_s =dd;
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dt.parse(date_s);
+        SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-yyyy");
+        d= dt1.format(date);
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		return d;
 	}
 	
 	
