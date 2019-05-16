@@ -23,57 +23,31 @@ import com.epam.services.mentor.MentorService;
 public class MentorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MentorServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-			
-			PrintWriter out = res.getWriter();
 			try {
-				String status = addMentor(req);
-				//System.out.println(status);
-				
+				MentorBean mentor = addMentor(req);
+				MentorService service=new MentorService();
+				String status = service.addMentor(mentor);
+			
 				if(status.equals("success")) {
 					res.sendRedirect("/admin-portal/admin/displayMentor.jsp");					
 				}
-				
 						
 				if(status.equals("invalid"))
-					res.sendRedirect("Invalid.jsp");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
+					res.sendRedirect("/admin-portal/admin/error.jsp");
+			} catch (Exception e) {
+				
 				e.printStackTrace();
 			}
 			
 			
 			
-			}
+	}
+
+	public MentorBean addMentor(HttpServletRequest req) throws ParseException {
 		
-	
-
-	
-
-	public String addMentor(HttpServletRequest req) throws SQLException, ParseException {
-		// TODO Auto-generated method stub
 		MentorBean mentor = new MentorBean();
 		
 		mentor.setName(req.getParameter("mentor_name"));
@@ -82,18 +56,17 @@ public class MentorServlet extends HttpServlet {
 		String mentor_s_date=req.getParameter("mentor_start_date");
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date mysqlmentor_s_date=sdf.parse(mentor_s_date);
-		//Date add_s_date=Date.valueOf(mentor_s_date);
-		System.out.println(mysqlmentor_s_date);
+		
+	
 		String  mentor_e_date=req.getParameter("mentor_end_date");
 		java.util.Date mysqlmentor_e_date=sdf.parse(mentor_e_date);
-		//Date add_e_date=Date.valueOf( mentor_e_date);
+		
 		mentor.setMentorStartDate(mysqlmentor_s_date);
 		mentor.setMentorEndDate(mysqlmentor_e_date);
 		mentor.setMaxNoOfMentees(Integer.parseInt(req.getParameter("max_noof_mentees")));
 		mentor.setTechnologyStream(req.getParameter("mentor_technology"));
 		
-		MentorService service=new MentorService();
-		return service.addMentor(mentor);
+		return mentor;
 		
 		
 		
