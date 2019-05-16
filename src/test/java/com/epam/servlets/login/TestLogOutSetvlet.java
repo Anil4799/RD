@@ -1,13 +1,11 @@
-package com.epam.servlets;
+package com.epam.servlets.login;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -23,11 +21,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
-import com.epam.services.login.LoginService;
-import com.epam.services.login.Menu;
-import com.epam.servlets.login.LoginServlet;
-import com.epam.servlets.login.LogoutServlet;
 import com.epam.utils.ConstantsUtility;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
@@ -75,10 +68,9 @@ class TestLogOutSetvlet {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@DisplayName("Test doPost() Method...!!")
-
-	@Ignore
+	@Test
 	public void testDoPostMethodLogout() throws ServletException, IOException {
-		when(request.getSession()).thenReturn(session);
+		when(request.getSession(false)).thenReturn(session);
 		doNothing().when(session).setAttribute("email",null);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(request.getServletContext()).thenReturn(context);

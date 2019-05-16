@@ -18,16 +18,20 @@ body {
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #464547; 
+  height: 77.5px;
+  line-height: 1.65em; 
+   
 }
 
 .topnav a {
   float: left;
   color:  #23CAEB;
   text-align: center;
-  padding: 5px 7px;
+  padding: 16px 25px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 16px;
+  font-family:Oswald;
 }
 
 .topnav a:hover {
@@ -36,7 +40,7 @@ body {
 }
 
 .topnav a.active {
-  background-color: #00ccff;
+  background-color: #39C2D7;
   color: white;
 }
 
@@ -86,12 +90,9 @@ body {
   background: green;
   }
 
-
-
-
-  .container {
+.container {
   height: 200px;
-  
+  margin-top:10%;
  
 }
 .footer {
@@ -105,36 +106,39 @@ body {
   text-align: center;
 }
 
+.nav-link-full{
+	position: relative;
+	top: 0px;
+	height: 66px;
+	line-height: 2.9em; 
+}
   </style>
 <script>
-   function validateForm() 
-        {
-              var email= document.forms["myForm"]["email"].value;
-              var password=document.forms["myForm"]["password"].value;
-              if (email == "" || password== "") {
-                    document.getElementById("loginstatus").innerHTML = "User Name or Password is required";
-                    document.forms["myForm"]["email"].placeholder="Email / Login ID";
-                    document.forms["myForm"]["password"].placeholder="Password";
-                    document.forms["myForm"]["email"].value="";
-                    document.forms["myForm"]["password"].value="";
-                        return false;
-                      }
-            
-            else 
-                       return true;
-
-        }
+   function validateForm() {
+	   var email= document.forms["myForm"]["email"].value;
+	   var password=document.forms["myForm"]["password"].value;
+	   if (email == "" || password== "") {
+	         document.getElementById("loginstatus").innerHTML = "User Name or Password is required";
+	         document.forms["myForm"]["email"].placeholder="Email / Login ID";
+	         document.forms["myForm"]["password"].placeholder="Password";
+	         document.forms["myForm"]["email"].value="";
+	         document.forms["myForm"]["password"].value="";
+	             return false;
+	   }
+	   return true;
+	}
         
   </script>
 <body>
-<%String loginFail=(String)request.getAttribute("loginFail"); %>
-    <div class="topnav" bgcolor="#5A5C5F" >
-          <a class="active" href="#home" style="font-family:Oswald;font-size:16px;background: #39C2DF;width: 100px;border-color:#CCCCCC">RD ADMIN<br> PORTAL</a>
-           <div class="topnav-right"   color:black;">
-            <img src="training.png" height="54px" width="40px"  ></img>
+	<%String loginFail=(String)request.getAttribute("loginFail"); %>
+    <div class="topnav ">
+          <a class="active" href="#home">RD ADMIN<br>&nbsp;PORTAL</a>
+          <div class="topnav-right">
+            	<img src="training.png" height="78px" width="60px"  ></img>
           </div>
     </div>
-<br><br><br><br>
+    
+
 <div class="container vertical-center" >
   <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 loginbox"> 
     <div class="panel panel-info" > 
@@ -182,13 +186,13 @@ body {
             </div>
             <br>
            <div id="loginstatus" align="center" style="color:red;font-size:15px;font-family:Oswald;">
-            <%if(loginFail!=null) {%>
-                              <%=loginFail%>
-                              <script type="text/javascript">
-                                document.forms["myForm"]["email"].placeholder="Email / Login ID";
-                                document.forms["myForm"]["password"].placeholder="Password";
-                              </script>
-                            <%} %>
+            	<%if(loginFail!=null) {%>
+                	<%=loginFail%>
+                    <script type="text/javascript">
+                    	document.forms["myForm"]["email"].placeholder="Email / Login ID";
+                        document.forms["myForm"]["password"].placeholder="Password";
+                   	</script>
+               	<%} %>
             </div> 
            
         </div> 
