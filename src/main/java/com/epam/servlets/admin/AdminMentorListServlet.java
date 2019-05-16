@@ -1,20 +1,14 @@
 package com.epam.servlets.admin;
-
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.AdminMentor;
@@ -23,19 +17,16 @@ import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
-
-/**
- * Servlet implementation class AllMentorListServlet
- */
 @WebServlet("/mentorList")
 public class AdminMentorListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger( AdminMentorListServlet.class);
-	private  AdminMentorInfoService allmentorlistservlet=new AdminMentorInfoServiceImpl();
 	
-	 private AdminMentorInfoService mentorInfoService = new AdminMentorInfoServiceImpl();
-       
-    
+
+	 private static final AdminMentorInfoService mentorInfoService = new AdminMentorInfoServiceImpl();
+
+
+     @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Enter into servlet......");
 		List<AdminMentor> mentorList =null;
@@ -58,15 +49,14 @@ public class AdminMentorListServlet extends HttpServlet {
 			
 		}
 		
-		
+		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
+		}
+		catch(UnknownHostException e)
+		{
+			LOGGER.error("Exception occured in MentorInfo = {}", e);
+		}
 		LOGGER.debug("Exit from servlet");
-	}
-
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

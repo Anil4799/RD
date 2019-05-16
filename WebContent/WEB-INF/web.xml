@@ -49,4 +49,8 @@
     <param-name>ADD_PAGE_FOR_BATCH_INFO</param-name>
     <param-value>/admin/AdminAddBatch.jsp</param-value>
   </context-param>
+   <context-param>
+    <param-name>ADD_PAGE_FOR_MENTOR_INFO</param-name>
+    <param-value>/admin/AddMentorInfo.jsp</param-value>
+  </context-param>
 </web-app>

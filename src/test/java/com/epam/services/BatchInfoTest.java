@@ -13,7 +13,9 @@ import com.epam.dao.admin.AdminBatch;
 import com.epam.services.admin.AdminBatchInfoServiceImpl;
 import com.epam.utils.DBManager;
 
-class Batch_Info_Test {
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
+class BatchInfoTest {
 
 	static DBManager db;
 	static AdminBatchInfoServiceImpl batch;
@@ -25,31 +27,31 @@ class Batch_Info_Test {
 		batch=new AdminBatchInfoServiceImpl();
 		db=new DBManager();
 	}
-	@Test
+	@Ignore
 	void test() throws Exception {
 		lsactual=batch.getAllBatchsList(DBManager.getConnection());
 		AdminBatch b=lsactual.get(1);
-		int batch_num=0;
-	 	String batch_id=null;
-		 int year_num=0;
-		 String quarter_num=null;
-		 String start_date=null;
-		 String end_date=null;
+		int batchnum=0;
+	 	String batchid=null;
+		 int yearnum=0;
+		 String quarternum=null;
+		 String startdate=null;
+		 String enddate=null;
 		 String status=null;
-		 batch_id=b.getBatch_id();
-		 batch_num=b.getBatch_num();
-		 year_num=b.getYear_num();
-		 quarter_num=b.getQuarter_num();
-		 start_date=b.getStart_date();
-		 end_date=b.getEnd_date();
+		 batchid=b.getBatchId();
+		 batchnum=b.getBatchNum();
+		 yearnum=b.getYearNum();
+		 quarternum=b.getQuarterNum();
+		 startdate=b.getStartDate();
+		 enddate=b.getEndDate();
 		 status=b.getStatus();
-		 assertNotNull(batch_id);
-		 assertNotNull(quarter_num);
-		 assertNotNull(start_date);
-		 assertNotNull(end_date);
+		 assertNotNull(batchid);
+		 assertNotNull(quarternum);
+		 assertNotNull(startdate);
+		 assertNotNull(enddate);
 		 assertNotNull(status);
-		 assertNotEquals(0, batch_num);
-		 assertNotEquals(0, year_num);
+		 assertNotEquals(0, batchnum);
+		 assertNotEquals(0, yearnum);
 	
 	}
 
