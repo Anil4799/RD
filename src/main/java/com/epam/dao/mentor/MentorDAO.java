@@ -19,7 +19,7 @@ public class MentorDAO {
 		try {
 		Connection con = DBManager.getConnection();
 	
-		 ps = con.prepareStatement("insert into Mentor_info (email_id, name, mentorship_start_date, mentorship_end_date, max_no_of_mentees, technology_stream, status) values(?,?,?,?,?,?,?)");
+		 ps = con.prepareStatement("insert into Mentor_info (Email_Id, Mentor_name, mentorship_start_date, mentorship_end_date, max_no_mentees, technology_stream, status) values(?,?,?,?,?,?,?)");
 		
 		ps.setString(1,mentor.getEmail());
 		ps.setString(2, mentor.getName());
