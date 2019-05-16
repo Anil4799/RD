@@ -1,7 +1,4 @@
 package com.epam.servlets.admin;
-
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.io.IOException;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
@@ -12,14 +9,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.rowset.serial.SerialException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.servlets.admin.AdminStudentListServlet;
 import com.epam.utils.ConstantsUtility;
@@ -65,7 +59,7 @@ class AdminStudentServletInfoTest {
 		when(request.getServletContext()).thenReturn(context);
 		//doNothing().when(request).setAttribute("mentors", mentorList);
 		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO)).thenReturn("/admin/student_info_landing_page.jsp");
-		servlet.doPost(request, response);
+		servlet.doGet(request, response);
 		verify(rd).forward(request, response);
 	}
 	@Test
@@ -76,7 +70,7 @@ class AdminStudentServletInfoTest {
 		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO)).thenReturn("/admin/student_info_landing_page.jsp");
 		when(context.getInitParameter(ConstantsUtility.ERROR_PAGE)).thenReturn("/error.jsp");
 		doNothing().when(request).setAttribute("error Msg", "Exception Occured");
-		servlet.doPost(request, response);
+		servlet.doGet(request, response);
 		verify(rd).forward(request, response);
 	}
 

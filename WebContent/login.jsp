@@ -1,30 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-        function validateForm() 
-        {
-              var email= document.forms["myForm"]["email"].value;
-              var password=document.forms["myForm"]["password"].value;
-              if (email == ""||password == "") {
-                    document.getElementById("loginstatus").innerHTML = "User Name or Password is required";
-                    document.forms["myForm"]["email"].placeholder="Email / Login ID";
-                    document.forms["myForm"]["password"].placeholder="Password";
-                    document.forms["myForm"]["email"].value="";
-                    document.forms["myForm"]["password"].value="";
-                        return false;
-              }
-            
-              return true;
+<head> 
+  <title>Login Template</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="css/custom.css"> 
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
 
-        }
-        
-</script>
+</head> 
 <style>
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -96,70 +82,125 @@ body {
 }
 
 .btn:hover {
-  opacity: 1;
+   color: white;
+  background: green;
+  }
 
-</style>
-</head>
-<body bgcolor="#D3D3D3" >
-   <%String loginFail=(String)request.getAttribute("loginFail"); %>
+
+
+
+  .container {
+  height: 200px;
+  
+ 
+}
+.footer {
+  height: 50px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #5A5C5F;
+  color: white;
+  text-align: center;
+}
+
+  </style>
+<script>
+   function validateForm() 
+        {
+              var email= document.forms["myForm"]["email"].value;
+              var password=document.forms["myForm"]["password"].value;
+              if (email == "" || password== "") {
+                    document.getElementById("loginstatus").innerHTML = "User Name or Password is required";
+                    document.forms["myForm"]["email"].placeholder="Email / Login ID";
+                    document.forms["myForm"]["password"].placeholder="Password";
+                    document.forms["myForm"]["email"].value="";
+                    document.forms["myForm"]["password"].value="";
+                        return false;
+                      }
+            
+            else 
+                       return true;
+
+        }
+        
+  </script>
+<body>
+<%String loginFail=(String)request.getAttribute("loginFail"); %>
     <div class="topnav" bgcolor="#5A5C5F" >
           <a class="active" href="#home" style="font-family:Oswald;font-size:16px;background: #39C2DF;width: 100px;border-color:#CCCCCC">RD ADMIN<br> PORTAL</a>
            <div class="topnav-right"   color:black;">
             <img src="training.png" height="54px" width="40px"  ></img>
           </div>
     </div>
-    <div style="padding-left:16px"></div>
-    <div>
-        <form name="myForm" action="LoginServlet" onsubmit="return validateForm()" method="post" >
-            <table style="position: fixed; left: 30%;top: 30%;"  height=40% width= 40%  bgcolor="white" cellspacing=0 cellpadding=0 border=0>
-                <tr>
-                    <td bgcolor="#231f20" height="30">&nbsp;<font color="#fff" font-size="14px" align="left" >&nbsp;Sign In</font></td>
-                    <td bgcolor="#231f20" height="30" align="right">
-                       <img src="epamlogo.png" height="35px" width="60px"  ></img>
-                       
-                    </td>
-                </tr>  
-                 <tr valign="center" >
-                    <td align="center" height="60" valign="bottom" colspan="2"> 
-                        <div class="input-container" ><i class="fa fa-user icon" ></i>
-                            <input  type="text"  placeholder="Email / Login ID" name="email" color="blue"  style="background-color: #e6f5ff;font-family:Oswald;width:100%;">
-                          </div>
-                    </td>
-                </tr>
-                  <tr align="center" height="60" valign="top">
-                    <td colspan="2">  
-                        <div class="input-container">
-                            <i class="fa fa-lock icon"></i>
-                            <input  type="password" placeholder="Password" font-color="#DEE0E2" name="password"  style="font-family:Oswald;background-color: #e6f5ff;width:100%;">
-                          </div>
-                    <td>
-                </tr>
-                <tr align="center" height="60" valign="top">
-                    <td colspan="2">
-                        <button type="submit"  class="btn" style="font-size:14px">Login</button>
-                    </td>
-                </tr>
-                <tr align="center" height="60" valign="top">
-                    <td colspan="2"><font color="#b3b3ff" style="font-family:Oswald" font-size=14><a href="#" style="text-decoration:none;">Forgot Password</a></font></td>
-                </tr>
-                <tr align="center" height="30" valign="top">
-                    <td colspan="2" style="color:red;font-size:15px;font-family:Oswald;">
-                        <div id="loginstatus" style="color:red;font-size:15px;font-family:Oswald;">
-                           <%if(loginFail!=null) {%>
+<br><br><br><br>
+<div class="container vertical-center" >
+  <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 loginbox"> 
+    <div class="panel panel-info" > 
+
+      <div class="panel-heading" style="background: #231f20;font-family:Oswald;"> 
+        <div  color="black"> <font color="white"> Sign In</font>  <img src="epamlogo.png" height="29px"  align="right"></img></div> 
+      
+      </div> 
+
+      <div class="panel-body panel-pad"> 
+        
+          <form name="myForm"  action="LoginServlet" onsubmit="return validateForm()" method="post"  class="form-horizontal" >
+            <div class="form-group" > 
+            <!-- Button --> 
+             
+            </div>  
+   
+            <div class="input-group margT25" style="padding-left: 70px"> 
+              <span class="input-group-addon" >
+                <i class="glyphicon glyphicon-user"></i>
+              </span> 
+
+              <input id="login-username" type="text" class="form-control" name="email" value=""  placeholder="Email / Login ID" style="background-color: #e6f5ff;font-family:Oswald;width:80%;z-index: 0;"> 
+           
+          </div>
+            <br>
+            <div class="input-group margT25" style="padding-left: 70px"> 
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+              <input  type="password" placeholder="Password" class="form-control"   font-color="#DEE0E2" name="password"  style="font-family:Oswald;background-color: #e6f5ff;width:80%;z-index: 0;">
+             
+            </div> 
+          <br>
+            <div class="form-group margT10"> 
+            <!-- Button --> 
+           <div align="center">  
+            <button type="submit"  class="btn btn-success"  style="font-size:14px;font-family:Oswald;"> Login
+           </button>
+         
+              
+            </div>
+            </form> 
+            <br>
+            <div align="center">
+              <font  style="font-family:Oswald" font-size=14><a href="#" style="text-decoration:none;color="#b3b3ff">Forgot Password</a></font>
+            </div>
+            <br>
+           <div id="loginstatus" align="center" style="color:red;font-size:15px;font-family:Oswald;">
+            <%if(loginFail!=null) {%>
                               <%=loginFail%>
                               <script type="text/javascript">
                                 document.forms["myForm"]["email"].placeholder="Email / Login ID";
                                 document.forms["myForm"]["password"].placeholder="Password";
                               </script>
                             <%} %>
-                        </div>                        
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-<div style="position: absolute; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F">
+            </div> 
+           
+        </div> 
+      </div> 
+    </div> 
+   
+        </form> 
+      </div> 
+    </div> 
+  </div> 
+</div> 
 </div>
-</body>
+<div class="footer">&nbsp;</div>
+</body> 
 </html>
-

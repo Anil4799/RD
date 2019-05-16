@@ -15,7 +15,7 @@ import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
-class Batch_Info_Test {
+class BatchInfoTest {
 
 	static DBManager db;
 	static AdminBatchInfoServiceImpl batch;
