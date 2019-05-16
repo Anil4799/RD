@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: rd_portal
+-- Host: localhost    Database: rd_portal
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -33,7 +33,7 @@ CREATE TABLE `employee_status` (
 
 LOCK TABLES `employee_status` WRITE;
 /*!40000 ALTER TABLE `employee_status` DISABLE KEYS */;
-INSERT INTO `employee_status` VALUES ('Active'),('Terminated'),('Resigned as FTE'),('Resigned as Intern');
+INSERT INTO `employee_status` VALUES ('active'),('terminated'),('resigned as fte'),('resigned as intern');
 /*!40000 ALTER TABLE `employee_status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -46,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-14 15:53:45
+-- Dump completed on 2019-05-16 18:40:13

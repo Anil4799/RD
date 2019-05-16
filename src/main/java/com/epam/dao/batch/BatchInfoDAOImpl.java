@@ -51,12 +51,12 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			java.sql.Date edDate = java.sql.Date.valueOf(endDate);
 			statement.setDate("Start_Date", stDate);
 			statement.setDate("End_Date", edDate);
-			statement.setString("Batch_Status", status);
+			statement.setString("Status", status);
 			rowsCount = statement.executeUpdate();
 			
 		} catch (Exception e) 
 		{
-			LOGGER.debug("EXCEPTION OCCURED ...");
+			LOGGER.debug(e.getMessage());
 		} 
 		finally {
 			statement.close();
