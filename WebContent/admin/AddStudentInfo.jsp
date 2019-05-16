@@ -37,7 +37,7 @@
 					</div>
 					<br>
 					<div>
-						Last Name:<span class="required">*</span>
+						<span>Last Name:<span class="required">*</span></span>
 						<span style="float:right;width:34%">
 						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm"  />
 						</span>

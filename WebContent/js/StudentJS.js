@@ -1,7 +1,7 @@
 function studentValidateForm() {
     var message = "";
     var first_name=document.forms["add_student_info"]["firstName"].value;
-    var last_name=document.forms["add_student_info"]["lastName"].value;
+    var last_name=$("#lastName").val();
     var email = document.forms["add_student_info"]["email"].value;
     var gender = $("#gender").val();
     var date_of_birth=document.forms["add_student_info"]["dateOfBirth"].value;
@@ -23,11 +23,12 @@ function studentValidateForm() {
     }
     if(last_name == null || last_name == ""){
         message += "Last Name cannot be empty<br/>" + "\n";
-        document.forms["add_student_info"]["lastName"].classList.add("txtbrcolr");
+        $("#lastName").addClass("txtbrcolr");
     }
     else{
-        document.forms["add_student_info"]["lastName"].classList.remove("txtbrcolr");
+    	$("#lastName").removeClass("txtbrcolr");
     }
+    
     if(email == null || email == "")
     {
         message += "Email cannot be empty<br/>" + "\n";

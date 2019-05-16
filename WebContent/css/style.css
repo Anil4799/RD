@@ -266,7 +266,7 @@ body {
 	margin-left: 20px;
 }
 
->>>>>>> branch 'Sprint-1' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
+
 select:required:invalid {
 	color: gray;
 }
@@ -819,5 +819,31 @@ table td, .table th {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     font-weight: normal; 
+
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: #f2f2f2;
+} 
+.ddmf{
+  font-family: 'Oswald';
+  font-Size:14;
+   font-color:#f2f2f2;
+   background:#ffffff;
+   
+  }
+  
+.xyz{
+	background: #EBEBEB;
+	border-color:#EBEBEB;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: #ebebeb;
+} 
+
  
 

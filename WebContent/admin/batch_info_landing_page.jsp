@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
+
   
     <div class="page_info">
 		<p class="page_title">Batch Info - Landing Page</p>
@@ -52,6 +53,7 @@
   </thead>
   <tbody>
   
+  
   <c:forEach items="${batchs}" var="batch" >
   
    <tr>
@@ -61,20 +63,26 @@
       <td>${batch.status}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
-		                 <ul class="dropdown-menu" role="menu">
-		                 	<c:choose>
-								  <c:when test="${eee.status == 'active'}">
-								     <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Edit</a></li>
-					                <li><a class="dropdown-item" href="#">Deactivate</a></li>
-								  </c:when>
-								  <c:otherwise>
-								    <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Activate</a></li>
-								  </c:otherwise>
-								</c:choose>
+		                 <ul class="dropdown-menu ddmf" role="menu">
+		                 
+		 
+		                 	
+			                 	 <c:forEach items="${actions}" var="action" >
+			                 	 <c:choose>
+			 
+			                 	 	<c:when test="${batch.status == action.status}">
+			                
+	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+	   									
+	   							    </c:when>
+	   							    <c:otherwise>
+								    	
+								 	</c:otherwise>
+								 </c:choose>
+	    						
+							</c:forEach>
 
 					              				               					             
 					            </ul>

@@ -46,7 +46,7 @@
 								<td class="form_lable">Status: <span class="required">*</span></td>
 								<td>
 									<select name="batch_status" id="batch_status" class="form-control form-control-sm" required>
-										<option selected="selected">Not Started</option>
+										<option selected="selected" value="not started">Not Started</option>
 										<option>In Progress</option>
 										<option>Completed</option>
 									</select>

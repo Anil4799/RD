@@ -1,12 +1,11 @@
 package com.epam.student.servlet;
 
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -19,11 +18,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.services.login.Menu;
 import com.epam.student.beans.StudentBean;
 import com.epam.student.services.StudentServiceImpl;
 import com.epam.student.servlets.StudentServlet;
-import com.epam.utils.ConstantsUtility;
+
 
 
 class StudentServletTest {
@@ -89,7 +87,9 @@ class StudentServletTest {
 		when( request.getParameter("assignedLocation")).thenReturn("Hyderabad");
 		when( request.getParameter("relocation")).thenReturn("Yes");
 		when( request.getParameter("status")).thenReturn("Active");
-		StudentBean studentBean=new StudentBean("vijay", "kumar", Date.valueOf("2009-05-05"), "vijay4yyq56006@gmail.com", "male", 894173,"chna", "BVRIT", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
+
+		StudentBean studentBean=new StudentBean("vijay", "kumar", Date.valueOf("2009-05-05"), "vijay4566@gmail.com", "male", 894173,"chna", "BVRIT", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
+
 		when(serviceimp.addStudentDetails(studentBean)).thenReturn(true);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(request.getServletContext()).thenReturn(context);				
