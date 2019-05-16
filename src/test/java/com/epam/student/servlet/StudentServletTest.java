@@ -67,11 +67,11 @@ class StudentServletTest {
 		when(request.getParameter("firstName")).thenReturn("vijay");
 	    when( request.getParameter("lastName")).thenReturn("kumar");
 		when(request.getParameter("dateOfBirth")).thenReturn("2019-05-20");	
-		when(request.getParameter("email")).thenReturn("vijay456@gmail.com");
+		when(request.getParameter("email")).thenReturn("vijay45syys678@gmail.com");
 		when( request.getParameter("gender")).thenReturn("male");
 		when(request.getParameter("contactNumber")).thenReturn("894173127");
 		when(request.getParameter("personalLocation")).thenReturn("chna");
-		when( request.getParameter("collegeName")).thenReturn("CU");
+		when( request.getParameter("collegeName")).thenReturn("BVRIT");
 		when(request.getParameter("collegeLocation")).thenReturn("chan");
 		when( request.getParameter("graduation")).thenReturn("BE");
 		when( request.getParameter("graduationSpeciality")).thenReturn("CSE");
@@ -89,24 +89,13 @@ class StudentServletTest {
 		when( request.getParameter("assignedLocation")).thenReturn("Hyderabad");
 		when( request.getParameter("relocation")).thenReturn("Yes");
 		when( request.getParameter("status")).thenReturn("Active");
-		StudentBean studentBean=new StudentBean("vijay", "kumar", Date.valueOf("2009-05-05"), "vijay4566@gmail.com", "male", 894173,"chna", "CU", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
+		StudentBean studentBean=new StudentBean("vijay", "kumar", Date.valueOf("2009-05-05"), "vijay4yyq56006@gmail.com", "male", 894173,"chna", "BVRIT", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
 		when(serviceimp.addStudentDetails(studentBean)).thenReturn(true);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(request.getServletContext()).thenReturn(context);				
 		when(request.getRequestDispatcher("admin/student_added_successfully.jsp")).thenReturn(rd);
 		servlet.doPost(request, response);
 		verify(rd).forward(request, response);
-
-//		doNothing().when(session).setAttribute("email","test_admin1@epam.com");
-//		doNothing().when(session).setAttribute("password","testadmin");
-//		when(session.getAttribute("email")).thenReturn("test_admin1@epam.com");
-//		when(request.getServletContext()).thenReturn(context);
-//		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
-//		when(context.getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE)).thenReturn("/home.jsp");
-//		servlet.doPost(request, response);
-//		verify(rd).forward(request, response);
-
-
 
 		
 	}
