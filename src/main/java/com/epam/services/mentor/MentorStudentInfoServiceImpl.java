@@ -1,57 +1,41 @@
 package com.epam.services.mentor;
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
-
 import java.sql.ResultSet;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import com.epam.dao.mentor.MentorStudent;
-
 
 public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 
 	@Override
-	public List<MentorStudent> MentorStudentDetails(Connection con) {
+	public List<MentorStudent> mentorStudentDetails(Connection con, String mentorEmailId) {
 		
-		List<MentorStudent> studentList = new ArrayList<MentorStudent>();
-		try
+		List<MentorStudent> studentList = new ArrayList<>();
+		
+		String sql = "call mentorStudent('"+mentorEmailId+"');";
+		try(CallableStatement cs= con.prepareCall(sql);ResultSet rs = cs.executeQuery();)
 		{
-			/*
-			PreparedStatement ps = con.prepareStatement("select * from student_personal_info, student__additional_info where student_personal_info.email_id = student__additional_info.email_id ORDER BY\r\n" + 
-					" batch_id DESC\r\n" + 
-					"LIMIT 10;");
-			*/
-			String sql = "call mentorStudent();";
-			CallableStatement cs= con.prepareCall(sql);
-			ResultSet rs = cs.executeQuery();
-			
-			if(rs!=null)
-			{
 			while(rs.next())
 			{
 				MentorStudent student=new MentorStudent();
-				String fname=rs.getString("first_name");
-				String lname=rs.getString("last_name");
-				String name=fname+" "+lname;
+				String emailId = rs.getString("email_id");
+				String firstName=rs.getString("first_name");
+				String lastName=rs.getString("last_name");
+				String name=firstName+" "+lastName;
 				student.setName(name);
 				student.setBatch(rs.getString("batch_id"));
 				student.setCoreSkill(rs.getString("core_skill"));
 				student.setStatus(rs.getString("status"));	
+				student.setEmail(emailId);
 				studentList.add(student);
 			}
-			}
-
-						
 		}
 		catch(Exception e)
 		{
 			studentList=null;
 		}
 		
-		return studentList;
+	return studentList;
 	}
-
 }

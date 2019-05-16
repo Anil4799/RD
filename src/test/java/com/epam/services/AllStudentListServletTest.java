@@ -73,7 +73,7 @@ class AllStudentListServletTest {
 	String status=null;
 		name=s.getName();
 		batch=s.getBatch();
-		coreSkill=s.getcoreSkill();
+		coreSkill=s.getCoreSkill();
 		mentor=s.getMentor();
 		status=s.getStatus();
 		

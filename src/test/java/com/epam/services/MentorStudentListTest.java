@@ -16,7 +16,7 @@ import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
-class Mentor_Student_List_Test {
+class MentorStudentListTest {
 	static DBManager db;
 	static MentorStudentInfoServiceImpl mentorstudent;
 	static Connection con=null;
@@ -28,6 +28,7 @@ class Mentor_Student_List_Test {
 		db=new DBManager();
 	}
      
+
 	@Ignore
 	 void test1() throws Exception {
 		
@@ -41,27 +42,22 @@ class Mentor_Student_List_Test {
 	    	expected++;
 	    }
 		
-	 lsactual =mentorstudent.MentorStudentDetails(DBManager.getConnection());
-		assertEquals(expected, lsactual.size());
-			
-	}
-	@Ignore
-	void test2() throws Exception
-	{   lsactual =mentorstudent.MentorStudentDetails(DBManager.getConnection());
+	
 	MentorStudent s= lsactual.get(1);
 	String name=null;
 	String batch=null;
 	String coreSkill=null;
-	
+	String email=null;
 	String status=null;
 		name=s.getName();
 		batch=s.getBatch();
-		coreSkill=s.getcoreSkill();
+		coreSkill=s.getCoreSkill();
 		status=s.getStatus();
+		email = s.getEmail();
 		assertNotNull(name);
 		assertNotNull(batch);
 		assertNotNull(coreSkill);
-		
+		assertNotNull(email);
 		assertNotNull(status);
 		
 		

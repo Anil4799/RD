@@ -1,6 +1,4 @@
 package com.epam.servlets.admin;
-
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
@@ -8,9 +6,6 @@ import com.epam.services.batch.BatchInfoServiceImpl;
 
 import java.io.*;
 
-/**
- * Servlet implementation class ControllerServlet
- */
 @WebServlet("/BatchInfoServlet")
 public class BatchInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
