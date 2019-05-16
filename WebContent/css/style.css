@@ -289,139 +289,6 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	content: "";
 }
 
-#dialogoverlay {
-	display: none;
-	opacity: .1;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	background: #000;
-	width: 100%;
-	z-index: 10;
-}
-
-#dialogbox {
-	display: none;
-	position: fixed;
-	background: WHITE;
-	border-radius: 7px;
-	width: 400px;
-	z-index: 10;
-}
-
-#dialogbox>div {
-	background: #FFF;
-	margin: 8px;
-}
-
-#dialogbox>div>#dialogboxhead {
-	background: WHITE;
-	font-size: 14x;
-	padding: 10px;
-}
-
-#dialogbox>div>#dialogboxbody {
-	background: WHITE;
-	padding: 20px;
-}
-
-#dialogbox>div>#dialogboxfoot {
-	background: WHITE;
-	padding: 10px;
-	text-align: right;
-}
-
-.backbutton, .savebutton {
-	font-size: 12px;
-	border-radius: 5px 5px 5px 5px;
-	background: #D8DCDE;
-	padding: 5px 5px 5px 5px;
-	width: 60px;
-	height: 28px;
-	float: right;
-	margin: 3px;
-	text-align: center;
-	cursor: pointer;
-}
-
-.batch_info_title {
-	font-size: 17px;
-	border-radius: 5px 5px 5px 5px;
-	background: #fff;
-	padding: 5px 5px 5px 15px;
-	height: 30px;
-	margin: 3px;
-}
-
-.add_batch_head {
-	font-size: 20px;
-	padding-left: 20px;
-	border-radius: 5px 5px 5px 5px;
-	margin: 3px;
-	background-color: #fff;
-	height: 30px;
-}
-
-.form_lable {
-	width: 300px;
-	padding-left: 100px;
-	font-size: 14px;
-	color: #909497;
-}
-
-.required {
-	color: #e32;
-	content: " *";
-	display: inline;
-}
-
-.batch_info_form {
-	font-size: 12px;
-	border-radius: 5px 5px 5px 5px;
-	background: #fff;
-	padding: 5px 5px 5px 15px;
-	margin: 3px;
-}
-
-.page_footer {
-	height: 40px;
-	background-color: #454545;
-}
-
-.rd_admin_tab {
-	background-color: #23CAEB;
-	color: #fff;
-	display: table-cell;
-}
-
-table.b, table tr.b, table td.b {
-	border-collapse: collapse;
-	border-spacing: 0;
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-.getwidth {
-	width: 100%
-}
-
-.txtbrcolr {
-	border-color: red;
-}
-
-.batch_added_message {
-	height: 40px;
-	width: 250px;
-	border-radius: 5px 5px 5px 5px;
-	background-color: #DFF0D8;
-	color: #008000;
-	display: none;
-	position: absolute;
-	left: 500px;
-	top: 60px;
-	"
-}
 
 .backbutton, .savebutton {
 	font-size: 12px;
@@ -691,6 +558,125 @@ table.b, table tr.b, table td.b {
 .datepicker tfoot tr th:hover {
   background: #50A2C9;
 }
+
+
+#dialogoverlay{
+				display: none;
+				opacity: .1;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				background: #000;
+				width: 100%;
+				z-index: 10;
+			}
+			#dialogbox{
+				display: none;
+				position: fixed;
+				background: WHITE;
+				border-radius:7px; 
+				width:400px;
+				z-index: 10;
+			}		
+			
+			#dialogbox > div{ background:#FFF; margin:8px; }
+			#dialogbox > div > #dialogboxhead{ background: WHITE; font-size:14x; padding:10px; }
+			#dialogbox > div > #dialogboxbody{ background:WHITE; padding:20px; }
+			#dialogbox > div > #dialogboxfoot{ background: WHITE; padding:10px; text-align:right; }
+		    #batch_start_date, #batch_end_date, #batch_status, #batch_id{
+		    	height:40px;
+		    }
+		    .backbutton, .savebutton{
+		    font-family: 'Oswald', sans-serif;
+		    	font-size: 14px;
+		    	border-radius: 5px 5px 5px 5px;
+				background:  #D8DCDE;
+				padding: 5px 5px 5px 5px;				
+				width: 60px;
+				height: 32px;
+				float: right;
+				margin: 3px;
+				text-align: center;
+				cursor: pointer;
+				
+			}
+			
+			.batch_info_title{
+		    	font-size: 17px;
+		    	border-radius: 5px 5px 5px 5px;
+				background: #fff;
+				padding: 5px 5px 5px 15px;				
+				height: 40px;	
+				margin-left: 15px;
+				margin-right: 15px;
+											
+			}  	
+			.add_batch_head{
+				font-size: 24px; 
+				padding-left: 15px;
+				border-radius: 5px 5px 5px 5px;
+				margin: 0px;
+				background-color: #fff;
+				/*height: 32px;*/
+			}
+			.form_lable{
+				width: 200px;
+				padding-left: 0px;
+				font-size: 14px;
+				color: #909497;
+				height:50px;
+			}
+			.required{
+				color: #e32;
+				content: " *";
+				display: inline; 
+			}
+			.batch_info_form{
+		    	font-size: 14px;
+		    	border-radius: 5px 5px 5px 5px;
+				background: #fff;
+				padding: 5px 5px 5px 35px;	
+				margin-top:5px;
+				margin-left: 15px;
+				margin-right: 15px;												
+			} 
+			.page_footer{
+				height: 40px; 
+				background-color: #454545;
+				
+			}
+			.rd_admin_tab{		
+				background-color: #23CAEB;
+				color: #fff;	
+				display: table-cell; 		             
+			}
+			table.b, table tr.b, table td.b	{ 
+				border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; border: 0; 
+			}
+			.getwidth{
+				
+				width:97%;
+				
+			}
+			.txtbrcolr
+			{
+				border-color: red;
+			} 		
+			.batch_added_message{
+				height: 40px;
+				width: 250px;
+				border-radius: 5px 5px 5px 5px;
+				background-color: #DFF0D8;
+				color: #008000;
+				display: none;
+				position: absolute;
+				left: 500px;
+				top: 60px;"			
+			}		
+			#batch_status, #batch_id{
+			background-color: #EBEBEB;
+			color:#545454;
+			}
 
   
 
