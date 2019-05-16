@@ -40,10 +40,8 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 		try
 		{
 			Connection con=DBManager.getConnection();
-			//session = request.getSession(true);
-			//int role= (int) session.getAttribute("role");
-			int role= 1;
-			int status=1;
+			session = request.getSession(true);
+			int role= (int) session.getAttribute("role");
 			actionList=menuActionItemService.getMenuActionList(con,role);
 			batchList=batchInfoListService.getAllBatchsList(con);
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
@@ -67,6 +65,12 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
+	
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
 
 
 }

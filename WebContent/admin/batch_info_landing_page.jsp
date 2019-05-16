@@ -57,9 +57,9 @@
   <c:forEach items="${batchs}" var="batch" >
   
    <tr>
-      <th scope="row">${batch.batch_id}</th>
-      <td>${batch.start_date}</td>
-      <td>${batch.end_date}</td>
+      <th scope="row">${batch.batchid}</th>
+      <td>${batch.startdate}</td>
+      <td>${batch.enddate}</td>
       <td>${batch.status}</td>
       <td><div class="btn-group" dropdown>
             

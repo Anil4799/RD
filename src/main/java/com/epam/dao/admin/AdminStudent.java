@@ -7,37 +7,38 @@ public class AdminStudent {
 	String studentMentor;
 	String studentStatus;
 	
-	
-	public String getName() {
+	public String getStudentName() {
 		return studentName;
 	}
-	public void setName(String studentName) {
+	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
-	public String getBatch() {
+	public String getStudentBatch() {
 		return studentBatch;
 	}
-	public void setBatch(String studentBatch) {
+	public void setStudentBatch(String studentBatch) {
 		this.studentBatch = studentBatch;
 	}
-	public String getCoreSkill() {
+	public String getStudentCoreSkill() {
 		return studentCoreSkill;
 	}
-	public void setCoreSkill(String studentCoreSkill) {
+	public void setStudentCoreSkill(String studentCoreSkill) {
 		this.studentCoreSkill = studentCoreSkill;
 	}
-	public String getMentor() {
+	public String getStudentMentor() {
 		return studentMentor;
 	}
-	public void setMentor(String studentMentor) {
+	public void setStudentMentor(String studentMentor) {
 		this.studentMentor = studentMentor;
 	}
-	public String getStatus() {
+	public String getStudentStatus() {
 		return studentStatus;
 	}
-	public void setStatus(String studentStatus) {
+	public void setStudentStatus(String studentStatus) {
 		this.studentStatus = studentStatus;
 	}
+	
+	
 	
 	
 }

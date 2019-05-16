@@ -14,51 +14,106 @@ public class AdminBatch {
 	private String status;
 	
 	
-	public int getBatchNum() {
+	
+	
+	public int getBatchnum() {
 		return batchnum;
 	}
-	public void setBatchNum(int batchnum) {
+
+
+
+
+	public void setBatchnum(int batchnum) {
 		this.batchnum = batchnum;
 	}
-	public String getBatchId() {
+
+
+
+
+	public String getBatchid() {
 		return batchid;
 	}
-	public void setBatchId(String batchid) {
+
+
+
+
+	public void setBatchid(String batchid) {
 		this.batchid = batchid;
 	}
-	public int getYearNum() {
+
+
+
+
+	public int getYearnum() {
 		return yearnum;
 	}
-	public void setYearNum(int yearnum) {
+
+
+
+
+	public void setYearnum(int yearnum) {
 		this.yearnum = yearnum;
 	}
-	public String getQuarterNum() {
+
+
+
+
+	public String getQuarternum() {
 		return quarternum;
 	}
-	public void setQuarterNum(String quarternum) {
+
+
+
+
+	public void setQuarternum(String quarternum) {
 		this.quarternum = quarternum;
 	}
-	public String getStartDate() {
+
+
+
+
+	public String getStartdate() {
 		return startdate;
 	}
 
-	public void setStartDate(String startdate) {
-		this.startdate = startdate;
 
+
+
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
 	}
-	public String getEndDate() {
+
+
+
+
+	public String getEnddate() {
 		return enddate;
 	}
-	public void setEnd_date(String enddate) {
+
+
+
+
+	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
+
+
+
+
 	public String getStatus() {
 		return status;
 	}
+
+
+
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
+
+
+
 	public  String dateFormat(String dd) {
 		String d = "";
 		try {

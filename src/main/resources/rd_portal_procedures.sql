@@ -32,10 +32,10 @@ BEGIN
  END
 
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN Batch_Num INT, IN Batch_Id nvarchar(200), IN  Year_Num INT, IN Quarter_Num nvarchar(200),IN Start_Date DATE, IN End_Date DATE,IN Batch_Status nvarchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN Batch_Num INT, IN Batch_Id nvarchar(200), IN  Year_Num INT, IN Quarter_Num nvarchar(200),IN Start_Date DATE, IN End_Date DATE,IN Status nvarchar(200))
 BEGIN
 
-insert into batch_info values(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Batch_Status);
+insert into batch_info(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Status) values(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Status);
 END
 
 
@@ -66,4 +66,10 @@ BEGIN
 select student_personal_info.first_name,student_personal_info.last_name ,student__additional_info.batch_id ,student__additional_info.core_skill,student__additional_info.mentor_name ,student__additional_info.status from student_personal_info, student__additional_info where student_personal_info.email_id = student__additional_info.email_id ORDER BY batch_id DESC LIMIT 10;
 END$$
 DELIMITER ;
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `menuAction`(in r int)
+BEGIN
+SELECT status.StatusName,menuactionitems.Status,menuactionitems.action FROM menuactionitems,status
+WHERE Role=r and status.StatusId=menuactionitems.Status;
+END
 
