@@ -43,21 +43,21 @@
   </thead>
   <tbody>
   
- <c:forEach items="${students}" var="eee" >
+ <c:forEach items="${students}" var="student" >
   
    <tr>
-      <th scope="row">${eee.name}</th>
-      <td>${eee.batch}</td>
-      <td>${eee.coreSkill}</td>
-      <td>${eee.mentor}</td>
-      <td>${eee.status}</td>
+      <th scope="row">${student.name}</th>
+      <td>${student.batch}</td>
+      <td>${student.coreSkill}</td>
+      <td>${student.mentor}</td>
+      <td>${student.status}</td>
       <td><div class="btn-group" dropdown>
             
 		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu" role="menu">
 		                 	<c:choose>
-								  <c:when test="${eee.status == 'active'}">
+								  <c:when test="${student.status == 'active'}">
 								     <li><a class="dropdown-item" href="#">View</a></li>
 					                <li><a class="dropdown-item" href="#">Edit</a></li>
 					                <li><a class="dropdown-item" href="#">Deactivate</a></li>

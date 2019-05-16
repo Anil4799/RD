@@ -4,9 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -18,7 +16,7 @@ import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
-class AllMentorStudentListServletTest {
+class Mentor_Student_List_Test {
 	static DBManager db;
 	static MentorStudentInfoServiceImpl mentorstudent;
 	static Connection con=null;
@@ -68,6 +66,5 @@ class AllMentorStudentListServletTest {
 		
 		
 	}
-	
 
 }

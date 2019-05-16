@@ -64,7 +64,7 @@ class StudentServletTest {
 		when(request.getParameter("firstName")).thenReturn("vijay");
 	    when( request.getParameter("lastName")).thenReturn("kumar");
 		when(request.getParameter("dateOfBirth")).thenReturn("2019-05-20");	
-		when(request.getParameter("email")).thenReturn("vijay656565@gmail.com");
+		when(request.getParameter("email")).thenReturn("vijay99@gmail.com");
 		when( request.getParameter("gender")).thenReturn("male");
 		when(request.getParameter("contactNumber")).thenReturn("894173127");
 		when(request.getParameter("personalLocation")).thenReturn("chna");
@@ -86,7 +86,7 @@ class StudentServletTest {
 		when( request.getParameter("assignedLocation")).thenReturn("Hyderabad");
 		when( request.getParameter("relocation")).thenReturn("Yes");
 		when( request.getParameter("status")).thenReturn("Active");
-		StudentBean studentBean=new StudentBean("Vanshita", "Baweja", Date.valueOf("2009-05-05"), "ytrewq@gmail.com", "female", 98765,"Chandigarh", "Chitkara", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
+		StudentBean studentBean=new StudentBean("vijay", "Kumar", Date.valueOf("2009-05-05"), "lll@gmail.com", "female", 98765,"Chandigarh", "Chitkara", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
 		when(serviceimp.addStudentDetails(studentBean)).thenReturn(true);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(request.getServletContext()).thenReturn(context);				

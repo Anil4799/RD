@@ -73,6 +73,7 @@ public class LoginServlet extends HttpServlet {
 					// Set Session
 					session = request.getSession(true);
 					session.setAttribute("email", email);
+					session.setAttribute("role", roleId);
 					session.setAttribute("menuList", menuList);
 				} else if(roleId == 2){ 
 					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE);

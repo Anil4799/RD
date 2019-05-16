@@ -8,11 +8,11 @@
   </welcome-file-list>
    <context-param>
     <param-name>ADMIN_HOME_PAGE</param-name>
-    <param-value>studentList</param-value>
+    <param-value>/admin/admin_dashboard.jsp</param-value>
   </context-param>
    <context-param>
     <param-name>MENTOR_HOME_PAGE</param-name>
-    <param-value>mentorstudentList</param-value>
+    <param-value>/mentor/mentor_dashboard.jsp</param-value>
   </context-param>
   <context-param>
     <param-name>LOGIN_PAGE</param-name>
@@ -44,5 +44,13 @@
   <context-param>
     <param-name>ERROR_PAGE</param-name>
     <param-value>/error.jsp</param-value>
+  </context-param>
+   <context-param>
+    <param-name>ADD_PAGE_FOR_BATCH_INFO</param-name>
+    <param-value>/admin/AdminAddBatch.jsp</param-value>
+  </context-param>
+   <context-param>
+    <param-name>ADD_PAGE_FOR_MENTOR_INFO</param-name>
+    <param-value>/admin/AddMentorInfo.jsp</param-value>
   </context-param>
 </web-app>

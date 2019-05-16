@@ -9,7 +9,7 @@
 			    document.getElementById("batch_info_form").submit();
 			}
 		
-			function validateForm() {
+			function batchValidateForm() {
 				var message = "";
 				var batch_id=document.forms["batch_info_form"]["batch_id"].value;
 				var batch_start_date=document.getElementById("batch_start_date").value;

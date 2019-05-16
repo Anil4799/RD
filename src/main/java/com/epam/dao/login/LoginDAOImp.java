@@ -26,7 +26,7 @@ public class LoginDAOImp implements LoginDAO {
 	        if(rs.next()) {
 	        	return rs.getInt(3);
 	        }
-		} catch (SQLException e) { // TODO Auto-generated catch block 
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return 0;

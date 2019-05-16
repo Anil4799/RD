@@ -1,9 +1,10 @@
 package com.epam.services.admin;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,19 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 		List<AdminBatch> batchList = new ArrayList<AdminBatch>();
 		try
 		{
-			String sql="SELECT * FROM batch_info ORDER BY Serial_Num DESC LIMIT 5;";
-			PreparedStatement pstmt=con.prepareStatement(sql);
-			ResultSet rs=pstmt.executeQuery();
+
+			//String sql="SELECT * FROM batch_info ORDER BY Serial_Num DESC LIMIT 5;";
+			//PreparedStatement pstmt=con.prepareStatement(sql);
+			//ResultSet rs=pstmt.executeQuery();
+
+			/* String sql="SELECT * FROM batch_info ORDER BY\r\n" + 
+					" batch_id DESC\r\n" + 
+					"LIMIT 10;";*/
+			
+			String sql = "call batch();";
+			CallableStatement cs=con.prepareCall(sql);
+			ResultSet rs=cs.executeQuery();
+
 			if(rs!=null)
 			{
 			while(rs.next())

@@ -8,21 +8,36 @@
 	</div>
     
     <div class="container">
-   
+
 		<table class="table">
-		
-		<tr>
-		
-		<td>
-			  <input placeholder="Start Date" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+				<tr>
+				<td>
+
+				
+		 <input id="startDate" width="276"  placeholder="Start Date" class="border-right-0"/>
+		 
+		    <script type="text/javascript" src="./js/date.js"></script>
+		 
+		 </td>
+		 <td>
+		 				
+		 <input id="endDate" width="276"  placeholder="End Date" class="border-right-0"/>
+		   <script type="text/javascript" src="./js/date.js"></script>
+		  		 
 		</td>
-		<td>			  <input placeholder="End Date" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
-<i class="fa fa" aria-hidden="true"></i></td>
+			
 		
+
 		<td><div class="button">
-			<a href="admin/AddBatch.jsp" class="btn btn-success"> ADD NEW BATCH</a>
+			<a href="addBatch" class="btn btn-success"> ADD NEW BATCH</a>
+
 			</div></td> 
+			
+		 
+			
 		</tr>
+		  
+		
 		</table>
 		
 		<table class="table">

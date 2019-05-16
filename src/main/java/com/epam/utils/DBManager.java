@@ -27,10 +27,10 @@ public class DBManager {
             		ApplicationProperties.getPropertyValue("db.user"), 
             		ApplicationProperties.getPropertyValue("db.password"));
         }
-        catch (SQLException | ClassNotFoundException e) {
+        catch (Exception e) {
 
             LOGGER.error("Exception occured in MentorInfo = {}", e);
-
+           // throw e;
         }
 		
 		return connection;

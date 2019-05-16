@@ -1,4 +1,5 @@
 
+
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `batch_id_proc`(IN Start_Date DATE, OUT Batch_Id NVARCHAR(200))
 BEGIN
@@ -30,10 +31,4 @@ BEGIN
 
    
  END
-=======================
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN Batch_Num INT, IN Batch_Id nvarchar(200), IN  Year_Num INT, IN Quarter_Num nvarchar(200),IN Start_Date DATE, IN End_Date DATE,IN Batch_Status nvarchar(200))
-BEGIN
-
-insert into batch_info values(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Batch_Status);
-END

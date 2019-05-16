@@ -1,6 +1,6 @@
 <%@ include file="/common/header.jspf" %> 
 
-		  <div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
+		  <div style="font-family: 'Oswald', sans-serif; text-transform : none; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
 		  <div id="dialogoverlay"></div>
 			<div id="dialogbox">
   				<div>
@@ -18,7 +18,7 @@
 					<table class="getwidth">
 						<tr>
 							<td align="right">
-								<span class="savebutton" style="background-color:#58D68D ; color: #FFF" onClick="validateForm()">SAVE</span>
+								<span class="savebutton" style="background-color:#58D68D ; color: #FFF" onClick="batchValidateForm()">SAVE</span>
 								<span class="backbutton"  onClick="batchInfoLandingPgae()">BACK</span>
 							</td>
 						</tr>

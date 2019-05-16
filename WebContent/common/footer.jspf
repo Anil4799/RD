@@ -6,7 +6,7 @@
     
      <footer class=footer>
 
-<div style="position: fixed; height: 50px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>
+<div style="position: fixed; height: 30px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>
 
  </footer>
     
@@ -58,7 +58,6 @@
 			var xhttp;
 			
 			if (window.XMLHttpRequest) {
-			    // code for modern browsers
 			    xhttp = new XMLHttpRequest();
 			  } else {
 			    // code for IE6, IE5
