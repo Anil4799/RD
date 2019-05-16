@@ -1,4 +1,4 @@
-package com.epam.servlets.test.login;
+package com.epam.servlets.login;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
@@ -77,7 +77,7 @@ class TestLoginServlet {
 	 */
 	@DisplayName("Test doPost() Method...!!")
 
-	@Ignore
+	@Test
 	public void testDoPostMethodAdmin() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("test_admin1@epam.com");
 		when(request.getParameter("password")).thenReturn("testadmin");
@@ -94,22 +94,24 @@ class TestLoginServlet {
 		verify(rd).forward(request, response);
 
 	}
-	@Ignore
+	@Test
 	public void testDoPostMethodMentor() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("test_mentor1@epam.com");
 		when(request.getParameter("password")).thenReturn("testmentor");
-		when(loginService.login("test_admin1@epam.com", "testadmin")).thenReturn(2);
+		when(loginService.login("test_mentor1@epam.com", "testmentor")).thenReturn(1);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
-		doNothing().when(session).setAttribute("eamil","test_mentor1@epam.com");
+		when(request.getSession(true)).thenReturn(session);
+		doNothing().when(session).setAttribute("email","test_mentor1@epam.com");
 		doNothing().when(session).setAttribute("password","testmentor");
+		when(session.getAttribute("email")).thenReturn("test_mentor1@epam.com");
 		when(request.getServletContext()).thenReturn(context);
 		doNothing().when(request).setAttribute("menuList", new ArrayList<Menu>().add(new Menu("abc","/abc")));
-		when(context.getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE)).thenReturn("/home.jsp");
+		when(context.getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE)).thenReturn("/home.jsp");
 		servlet.doPost(request, response);
 		verify(rd).forward(request, response);
 
 	}
-	@Ignore
+	@Test
 	public void testDoPostMethodAdminError() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("test_admin2@epam.com");
 		when(request.getParameter("password")).thenReturn("testadmin123");
@@ -124,7 +126,7 @@ class TestLoginServlet {
 		verify(rd).forward(request, response);
 
 	}
-	@Ignore
+	@Test
 	public void testDoPostMethodMentorError() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("test_mentor2@epam.com");
 		when(request.getParameter("password")).thenReturn("testmentor123");
@@ -139,7 +141,7 @@ class TestLoginServlet {
 		verify(rd).forward(request, response);
 
 	}
-	@Ignore
+	@Test
 	public void testDoPostMethodUserEmptyUserName() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("");
 		when(request.getParameter("password")).thenReturn("testmentor123");
@@ -154,7 +156,7 @@ class TestLoginServlet {
 		verify(rd).forward(request, response);
 
 	}
-	@Ignore
+	@Test
 	public void testDoPostMethodUserEmptyPassword() throws ServletException, IOException {
 		when(request.getParameter("email")).thenReturn("test_mentor2@epam.com");
 		when(request.getParameter("password")).thenReturn("");

@@ -34,58 +34,38 @@ public class LoginServlet extends HttpServlet {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageUrl = null;
 		String email=null;
 		String password=null;
-		try {
-			LOGGER.info("session..............." + session);
-			email = request.getParameter("email");
-			password = request.getParameter("password");
-			if(email.length()==0||password.length()==0) {
-				request.setAttribute("loginFail", "User Name or Password is required");
+		LOGGER.info("session..............." + session);
+		email = request.getParameter("email");
+		password = request.getParameter("password");
+		if(email.length()==0||password.length()==0) {
+			request.setAttribute("loginFail", "User Name or Password is required");
+			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
+		}else{
+			int roleId = new LoginServiceImp().login(email, password);
+			if (roleId == 1) {
+				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE);
+				ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(roleId);
+				session = request.getSession(true);
+				session.setAttribute("email", email);
+				session.setAttribute("role", roleId);
+				session.setAttribute("menuList", menuList);
+			} else if(roleId == 2){ 
+				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE);
+				ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(roleId);
+				session = request.getSession(true);
+				session.setAttribute("email", email);
+				session.setAttribute("menuList", menuList);
+			} else{
+				request.setAttribute("loginFail", "User Name or Password is incorrect");
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
+				session =null;
 			}
-			else{
-				int roleId = new LoginServiceImp().login(email, password);
-				if (roleId == 1) {
-					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE);
-					// Get MenuList
-					ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(roleId);
-					//request.setAttribute("menuList", menuList);
-					// Set Session
-					session = request.getSession(true);
-					session.setAttribute("email", email);
-					session.setAttribute("role", roleId);
-					session.setAttribute("menuList", menuList);
-				} else if(roleId == 2){ 
-					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE);
-					// Get MenuList
-					ArrayList<Menu> menuList = new GetMenuItemsServiceImpl().getMenuItems(roleId);
-					//request.setAttribute("menuList", menuList);
-					// Set Session
-					session = request.getSession(true);
-					session.setAttribute("email", email);
-					session.setAttribute("menuList", menuList);
-				}
-				else{
-					request.setAttribute("loginFail", "User Name or Password is incorrect");
-					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
-					session =null;
-				}
-			}
-		} catch (Exception e) {
-			LOGGER.info("Exception ..............." + e);
 		}
+		
 		LOGGER.info("session -2 ..............." + session);
 		if(session!=null)
 			request.getRequestDispatcher(pageUrl).forward(request, response);
