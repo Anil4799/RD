@@ -23,6 +23,7 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 			{   
 				AdminMentor mentor=new AdminMentor();
 				mentor.setEmailid("email_id");
+
 				mentor.setMentorname(rs.getString("Mentor_Name"));
 				mentor.setMentorshipstartdate(rs.getString("mentorship_start_date"));
 				mentor.setMentorshipenddate(rs.getString("mentorship_end_date"));

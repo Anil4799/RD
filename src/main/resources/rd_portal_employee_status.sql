@@ -33,7 +33,7 @@ CREATE TABLE `employee_status` (
 
 LOCK TABLES `employee_status` WRITE;
 /*!40000 ALTER TABLE `employee_status` DISABLE KEYS */;
-INSERT INTO `employee_status` VALUES ('Active'),('Terminated'),('Resigned as FTE'),('Resigned as Intern');
+INSERT INTO `employee_status` VALUES ('active'),('terminated'),('resigned as fte'),('resigned as intern');
 /*!40000 ALTER TABLE `employee_status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -17,15 +17,17 @@ public class StudentServiceImpl implements StudentService {
 	ResultSet resultSet=null ;
 	
 	private static final Logger LOGGER = Logger.getLogger(StudentServiceImpl.class);
-	Connection connection = DBManager.getConnection();
+	Connection connection = null;
 	int numberOfRowsInserted=0;
 	 int numberOfRowsInserted1=0;
 	 int numberOfRowsInserted2=0;
+	 
 	 String query = null;
 	
 	  public  int addPersonalInfo(StudentBean studentBean)
 	  {
 		  try {
+			   connection = DBManager.getConnection();
 			  query = "insert into student_personal_info(First_Name, Last_Name, Date_Of_Birth, Email_Id, Gender, Contact, Location) values(?,?,?,?,?,?,?)";
 				preparedStatement = connection.prepareStatement(query);
 				
@@ -56,6 +58,7 @@ public class StudentServiceImpl implements StudentService {
       public int addEducationalInfo(StudentBean studentBean)
       {
     	  try {
+    		  connection = DBManager.getConnection();
     		  query = "insert into student_educational_info(Email_Id, College_Name, College_Loc, Graduation, Graduation_Stream, Passed_Out_Year, Graduation_Marks, Inter_Marks, Ssc_Marks) values (?,?,?,?,?,?,?,?,?)";
   			preparedStatement = connection.prepareStatement(query);
   			preparedStatement.setString(1, studentBean.getEmail());
@@ -84,6 +87,7 @@ public class StudentServiceImpl implements StudentService {
       {
     	  
     	  try {
+    		  connection = DBManager.getConnection();
     		  query = "insert into  student__additional_info(Email_Id, Batch_Id, Emp_Type, Core_Skill, Preferred_Student_Stream, Assigned_Stream, Date_Of_Joining, Mentor_Name, Assigned_Location, Relocation, Status) values(?,?,?,?,?,?,?,?,?,?,?)";						
   			preparedStatement = connection.prepareStatement(query);
   			preparedStatement.setString(1, studentBean.getEmail());
@@ -118,7 +122,34 @@ public class StudentServiceImpl implements StudentService {
     		 LOGGER.debug(e.getMessage());
     		 return 0;
     	  }
-    	  finally {
+    	  
+    	  return numberOfRowsInserted2;
+      }
+      
+	public boolean addStudentDetails(StudentBean studentBean) {
+		try
+		{
+	             int numberofrow=addPersonalInfo(studentBean);
+	             int numberofrow1=addEducationalInfo(studentBean);
+	             int numberofrow2=addAddtionalInfo(studentBean);
+	            
+		    if((numberofrow>0)&& (numberofrow1>0)&& (numberofrow2>0))
+		    {
+		    	result = true;
+		    	
+		    }
+		    else
+		    {
+		    	result = false;
+		    	
+		    }
+		    
+		}
+		catch(Exception e)
+		{
+			 LOGGER.debug(e.getMessage()); 
+		}
+		finally {
   			try {
   				resultSet.close();
   				preparedStatementOne.close();
@@ -130,24 +161,7 @@ public class StudentServiceImpl implements StudentService {
   			
   			
   		}
-    	  return numberOfRowsInserted2;
-      }
-      
-	public boolean addStudentDetails(StudentBean studentBean) {
-		boolean result = false;
-		LOGGER.debug("Entered into StudentServiceImpl Class...............");
-	             int numberofrow=addPersonalInfo(studentBean);
-	             int numberofrow1=addEducationalInfo(studentBean);
-	             int numberofrow2=addAddtionalInfo(studentBean);
-		    if((numberofrow>0)&& (numberofrow1>0)&& (numberofrow2>0))
-		    {
-		    	result = true;
-		    }
-		    else
-		    {
-		    	result = false;
-		    }
-		    LOGGER.debug("Exit from StudentServiceImpl Class..............."); 
+		 LOGGER.debug("Exit from StudentServiceImpl Class..............."); 
 		    return result;
 	}}		
 			

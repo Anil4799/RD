@@ -11,11 +11,15 @@ import com.epam.utils.DBManager;
 
 public class MentorDAO {
 
-	public int createMentor(MentorBean mentor) throws SQLException
+	public int createMentor(MentorBean mentor) throws SQLException 
 	{
+		PreparedStatement ps=null;
+		
+		
+		try {
 		Connection con = DBManager.getConnection();
 	
-		PreparedStatement ps = con.prepareStatement("insert into Mentor_info values(?,?,?,?,?,?,?)");
+		 ps = con.prepareStatement("insert into Mentor_info (email_id, name, mentorship_start_date, mentorship_end_date, max_no_of_mentees, technology_stream, status) values(?,?,?,?,?,?,?)");
 		
 		ps.setString(1,mentor.getEmail());
 		ps.setString(2, mentor.getName());
@@ -24,8 +28,15 @@ public class MentorDAO {
 		ps.setInt(5, mentor.getMaxNoOfMentees());
 		ps.setString(6, mentor.getTechnologyStream());
 		ps.setString(7, mentor.getStatus());
-		int insert = ps.executeUpdate();
-		return insert;
+	
+		return ps.executeUpdate();
+		}
+		
+		
+		finally {
+			ps.close();
+			
+		}
 		
 	}
 	
