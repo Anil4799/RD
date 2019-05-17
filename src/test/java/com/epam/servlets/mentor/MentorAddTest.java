@@ -69,21 +69,13 @@ class MentorAddTest {
 	}
 
 	@SuppressWarnings("deprecation")
-	@Ignore
-	public void testDoPost() throws ServletException, IOException, ParseException, SQLException {
-
-		when(request.getParameter(anyString())).thenReturn("requestParams");
-		when(request.getParameter("mentor_start_date")).thenReturn("2019-05-05");
-		when(request.getParameter("mentor_end_date")).thenReturn("2019-05-20");
-		when(request.getParameter("max_noof_mentees")).thenReturn("5");
-		servlet.doPost(request, response);
-		verify(response).sendRedirect("/admin-portal/admin/displayMentor.jsp");
-	}
 
 	
-	@Ignore
-	public void testDoValidaton() throws ServletException, IOException, ParseException, SQLException {
-		when(request.getParameter(anyString())).thenReturn("requestParams");
+
+	
+	@Test
+	public void testDoValidaton() throws Exception {
+		when(request.getParameter(anyString())).thenReturn("requestara");
 		when(request.getParameter("mentor_start_date")).thenReturn("2019-05-05");
 		when(request.getParameter("mentor_end_date")).thenReturn("2019-05-20");
 		when(request.getParameter("max_noof_mentees")).thenReturn("5");
@@ -93,7 +85,7 @@ class MentorAddTest {
 	}
 	
 	@Test
-	public void testDoValidatonfail() throws ServletException, IOException, ParseException, SQLException {
+	public void testDoValidatonfail() throws Exception {
 		when(request.getParameter(anyString())).thenReturn(null);
 		when(request.getParameter("mentor_start_date")).thenReturn("2019-05-20");
 		when(request.getParameter("mentor_end_date")).thenReturn("2019-05-20");
