@@ -32,7 +32,9 @@ public class DBManager {
 			if (connection != null)
 				connection.close();
 		} catch (SQLException e) {
-			LOGGER.error(e.getMessage());
+
+			LOGGER.error("Exception occured in DBManager", e);
+
 		}
 	}
 }

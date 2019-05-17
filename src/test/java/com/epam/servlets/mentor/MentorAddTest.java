@@ -1,33 +1,23 @@
 package com.epam.servlets.mentor;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.anyObject;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.epam.mentor.bean.MentorBean;
 import com.epam.services.mentor.MentorService;
-import com.epam.utils.ConstantsUtility;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
@@ -68,14 +58,16 @@ class MentorAddTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
-	@SuppressWarnings("deprecation")
+
+
 
 	
 
 	
 	@Ignore
+
 	public void testDoValidaton() throws Exception {
-		when(request.getParameter(anyString())).thenReturn("requestara");
+		when(request.getParameter(anyString())).thenReturn("reqtrazs");
 		when(request.getParameter("mentor_start_date")).thenReturn("2019-05-05");
 		when(request.getParameter("mentor_end_date")).thenReturn("2019-05-20");
 		when(request.getParameter("max_noof_mentees")).thenReturn("5");

@@ -6,22 +6,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.epam.mentor.bean.MentorBean;
+import com.epam.servlets.mentor.MentorServlet;
 import com.epam.utils.DBManager;
 
 public class MentorDAO {
-
-	public int createMentor(MentorBean mentor) throws Exception 
+	private static final Logger LOGGER = Logger.getLogger( MentorDAO.class);
+	public int createMentor(MentorBean mentor) throws SQLException
 	{
 		
-		PreparedStatement ps=null;
+		
 		int result=0;
 		try {
 			
+			
 		Connection con = DBManager.getConnection();
 	
-		 ps = con.prepareStatement("insert into Mentor_info (Email_Id, Mentor_name, mentorship_start_date, mentorship_end_date, max_no_mentees, technology_stream, status) values(?,?,?,?,?,?,?)");
-		 if(ps!=null) {
+		PreparedStatement  ps = con.prepareStatement("insert into Mentor_info (Email_Id, Mentor_name, mentorship_start_date, mentorship_end_date, max_no_mentees, technology_stream, status) values(?,?,?,?,?,?,?)");
+		 
 		ps.setString(1,mentor.getEmail());
 		ps.setString(2, mentor.getName());
 		ps.setDate(3, new java.sql.Date((mentor.getMentorStartDate().getTime())));
@@ -31,24 +35,20 @@ public class MentorDAO {
 		ps.setString(7, mentor.getStatus());
 		result=ps.executeUpdate();
 		return result;
-		}
-		else {
-			{
-			return result;	
-			}
-		}
-		}
 		
-		
-		finally {
-			if(ps!=null) {
-			ps.close();
-			}
 		}
+		catch(Exception e)
+		{
+			
+			LOGGER.error(e.getMessage());
+		}
+		return result;
+		
+	}	
 		
 	}
 	
 	
 	
 	
-}
+
