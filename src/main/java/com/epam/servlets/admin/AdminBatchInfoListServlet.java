@@ -28,9 +28,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoListServlet.class);
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-	private static HttpSession session;
-
-
+	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
@@ -40,8 +38,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 		try
 		{
 			Connection con=DBManager.getConnection();
-			session = request.getSession(true);
-			int role= (int) session.getAttribute("role");
+			int role= (int) request.getSession(true).getAttribute("role");
 			actionList=menuActionItemService.getMenuActionList(con,role);
 			batchList=batchInfoListService.getAllBatchsList(con);
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
@@ -70,6 +67,10 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	  doGet(request, response);
+	  try {
+		doGet(request, response);
+	} catch (Exception e) {
+		LOGGER.debug(e.getMessage());
+	}
 	}
 }
