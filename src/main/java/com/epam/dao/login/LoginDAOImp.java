@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.epam.services.login.Menu;
-import com.epam.servlets.login.LoginServlet;
 import com.epam.utils.DBManager;
 
 public class LoginDAOImp implements LoginDAO {

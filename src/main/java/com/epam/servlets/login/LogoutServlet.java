@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.utils.ConstantsUtility;
 
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
 	private static final long serialVersionUID = 1L;
        
 	@Override
@@ -24,7 +27,7 @@ public class LogoutServlet extends HttpServlet {
 			try {
 				request.getRequestDispatcher(pageUrl).forward(request, response);
 			}catch(Exception e) {
-				
+				LOGGER.info("Exception..............." +e);
 			}
 		}
 	}
