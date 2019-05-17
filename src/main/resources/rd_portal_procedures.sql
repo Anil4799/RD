@@ -1,5 +1,5 @@
 
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `batch_id_proc`(IN Start_Date DATE, OUT Batch_Id NVARCHAR(200))
 BEGIN
 

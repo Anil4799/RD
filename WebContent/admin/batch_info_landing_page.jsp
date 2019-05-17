@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
+<script type="text/javascript" src="/admin-portal/js/date.js"></script>
+
 
   
     <div class="page_info">
@@ -15,15 +17,11 @@
 				<td>
 
 				
-		 <input id="startDate" width="276"  placeholder="Start Date" class="border-right-0"/>
-		 
-		    <script type="text/javascript" src="./js/date.js"></script>
-		 
+		 <input id="startDate" width="276"  placeholder="Start Date" class=".col-sm-4.date border-right-0"/>		 
 		 </td>
 		 <td>
-		 				
 		 <input id="endDate" width="276"  placeholder="End Date" class="border-right-0"/>
-		   <script type="text/javascript" src="./js/date.js"></script>
+		  
 		  		 
 		</td>
 			
@@ -98,5 +96,5 @@
 </table>
 
  </div>
-
+ 
 <%@ include file="/common/footer.jspf"%>
