@@ -30,7 +30,7 @@ public class MentorServiceTest {
 		Date d=sdf.parse(s);
 		MentorBean mb = new MentorBean();
 		mb.setName("chaitu");
-		mb.setEmail("z123dl@yahoo.com");
+		mb.setEmail("z3dyyl@yahoo.com");
 		mb.setMaxNoOfMentees(5); 
 		mb.setMentorEndDate(d);
 		mb.setMentorStartDate(d);
@@ -57,7 +57,7 @@ public class MentorServiceTest {
 		mb.setMentorEndDate(d);
 		mb.setMentorStartDate(d);
 		mb.setStatus(null);
-		mb.setTechnologyStream("cse");
+		mb.setTechnologyStream("java");
 		assertEquals("invalid",ms.addMentor(mb));
 	}
 	

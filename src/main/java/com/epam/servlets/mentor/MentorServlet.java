@@ -1,9 +1,8 @@
 package com.epam.servlets.mentor;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +13,11 @@ import com.epam.mentor.bean.MentorBean;
 import com.epam.services.mentor.MentorService;
 
 
+
 @WebServlet("/MentorServlet")
 public class MentorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final Logger LOGGER = Logger.getLogger(MentorServlet.class);  
     
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class MentorServlet extends HttpServlet {
 					res.sendRedirect("/admin-portal/admin/error.jsp");
 			} catch (Exception e) {
 				
-				e.printStackTrace();
+				LOGGER.debug("Exit from Servlet...............");
 			}
 			
 			
