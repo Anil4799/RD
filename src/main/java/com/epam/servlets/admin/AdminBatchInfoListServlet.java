@@ -30,6 +30,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
 	private static HttpSession session;
 
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
@@ -55,19 +56,20 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
 		}
-		try {
-		request.getRequestDispatcher(pageUrl).forward(request, response);
+
+		try
+		{
+			request.getRequestDispatcher(pageUrl).forward(request, response);
 		}
 		catch(Exception e)
 		{
-			LOGGER.error(e.getMessage());
+			LOGGER.debug("Exit from Servlet...............");
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	  doGet(request, response);
 	}
 }

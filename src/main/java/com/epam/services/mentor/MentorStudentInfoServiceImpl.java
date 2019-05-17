@@ -12,8 +12,6 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 	public List<MentorStudent> mentorStudentDetails(Connection con, String mentorEmailId) {
 		
 		List<MentorStudent> studentList = new ArrayList<>();
-		
-		//String sql = "call mentorStudent('"+mentorEmailId+"');";
 		String sql = "call mentorStudent(?);";
 		try(CallableStatement cs= con.prepareCall(sql);)
 		{
@@ -35,7 +33,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					studentList.add(student);
 				}
 			}
-			
+
 		}
 		catch(Exception e)
 		{

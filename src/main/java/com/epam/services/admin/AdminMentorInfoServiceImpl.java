@@ -13,7 +13,7 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 	@Override
 	public List<AdminMentor> getAllMentorDetails(Connection con) {
 		
-		List<AdminMentor> mentorList = new ArrayList<AdminMentor>();
+		List<AdminMentor> mentorList = new ArrayList<>();
 		String sql="call mentor();";
 		try(CallableStatement  cs= con.prepareCall(sql);ResultSet rs=cs.executeQuery(sql) )
 		{

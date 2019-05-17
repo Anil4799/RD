@@ -6,6 +6,7 @@ import java.util.List;
 import com.epam.dao.admin.AdminBatch;
 import com.epam.dao.admin.MenuAction;
 
+
 public interface AdminBatchInfoService {
 	
 	public List<AdminBatch> getAllBatchsList(Connection con);

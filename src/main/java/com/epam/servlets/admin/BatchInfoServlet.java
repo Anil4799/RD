@@ -26,8 +26,8 @@ public class BatchInfoServlet extends HttpServlet {
 				String batchId = batchInfoServiceImpl.generateBatchId(startDate);
 				printWriter.write(batchId);
 		
-		}catch(Exception e) {
-			LOGGER.debug("Exception occured in BatchInfoServlet.java......");;
+		}catch(Exception exception) {
+			LOGGER.error(exception.getMessage());
 		}
 		
 	}

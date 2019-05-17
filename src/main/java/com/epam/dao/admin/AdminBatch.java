@@ -123,14 +123,18 @@ public class AdminBatch {
 	public  String dateFormat(String oldDate) {
 		String newDate = "";
 		try {
+
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         Date date = dt.parse(oldDate);
+
         SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-yyyy");
         newDate= dt1.format(date);
 		}
 		catch(Exception e)
 		{
+
 			LOGGER.error(e.getMessage());
+
 		}
 		
 		return newDate;
