@@ -8,16 +8,22 @@ import com.epam.mentor.bean.MentorBean;
 
 public class MentorService {
 
-	public String addMentor(MentorBean mentor) throws SQLException
+	public String addMentor(MentorBean mentor) throws Exception
 	{
+		int addmentor=0;
 		if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMentorEndDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null)
-		
+		{
 		return "invalid";	
 		
-		
+		}
 		MentorDAO mdao=new MentorDAO();
-		mdao.createMentor(mentor);
+		addmentor=mdao.createMentor(mentor);
+		if(addmentor>0) 
 			return "success";
+		else
+			return "fail";
+		
+		
 		
 	}	
 		
