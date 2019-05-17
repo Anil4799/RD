@@ -13,7 +13,7 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 	@Override
 	public List<AdminBatch> getAllBatchsList(Connection con) {
 		String sql="call batch();";
-		List<AdminBatch> batchList = new ArrayList<AdminBatch>();
+		List<AdminBatch> batchList = new ArrayList<>();
 
 
 		try(CallableStatement cs=con.prepareCall(sql);ResultSet rs=cs.executeQuery();)

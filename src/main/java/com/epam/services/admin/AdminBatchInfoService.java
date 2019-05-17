@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.epam.dao.admin.AdminBatch;
-import com.epam.dao.admin.MenuAction;
-
 
 public interface AdminBatchInfoService {
 	
