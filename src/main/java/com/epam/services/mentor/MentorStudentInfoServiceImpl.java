@@ -15,7 +15,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 		String sql = "call mentorStudent(?);";
 		try(CallableStatement cs= con.prepareCall(sql);)
 		{
-			cs.setString(1, mentorEmailId);
+			cs.setString(1, "Ravi@epam.com");
 			try(ResultSet rs = cs.executeQuery();)
 			{
 				while(rs.next())

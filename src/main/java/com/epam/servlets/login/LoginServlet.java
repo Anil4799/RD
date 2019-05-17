@@ -3,6 +3,7 @@ package com.epam.servlets.login;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,14 +42,14 @@ public class LoginServlet extends HttpServlet implements Serializable {
 			int roleId = new LoginServiceImp().login(email, password);
 			if (roleId == 1) {
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE);
-				ArrayList<Menu> menuList = (ArrayList<Menu>) new MenuItemsServiceImpl().getMenuItems(roleId);
+				List<Menu> menuList = (ArrayList<Menu>) new MenuItemsServiceImpl().getMenuItems(roleId);
 				session = request.getSession(true);
 				session.setAttribute(ConstantsUtility.EMAIL, email);
 				session.setAttribute(ConstantsUtility.ROLE, roleId);
 				session.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			} else if(roleId == 2){ 
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE);
-				ArrayList<Menu> menuList = (ArrayList<Menu>) new MenuItemsServiceImpl().getMenuItems(roleId);
+				List<Menu> menuList = (ArrayList<Menu>) new MenuItemsServiceImpl().getMenuItems(roleId);
 				session = request.getSession(true);
 				session.setAttribute(ConstantsUtility.EMAIL, email);
 				session.setAttribute(ConstantsUtility.ROLE, roleId);

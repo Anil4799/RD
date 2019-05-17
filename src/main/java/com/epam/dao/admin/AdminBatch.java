@@ -2,10 +2,7 @@ package com.epam.dao.admin;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.apache.log4j.Logger;
-
-import com.epam.utils.DBManager;
 
 public class AdminBatch {
 	
