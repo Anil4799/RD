@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
 	private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	private static HttpSession session;
+	private HttpSession session;
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,14 +42,14 @@ public class LoginServlet extends HttpServlet implements Serializable {
 			int roleId = new LoginServiceImp().login(email, password);
 			if (roleId == 1) {
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE);
-				List<Menu> menuList = (ArrayList<Menu>) new MenuItemsServiceImpl().getMenuItems(roleId);
+				List<Menu> menuList = new MenuItemsServiceImpl().getMenuItems(roleId);
 				session = request.getSession(true);
 				session.setAttribute(ConstantsUtility.EMAIL, email);
 				session.setAttribute(ConstantsUtility.ROLE, roleId);
 				session.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			} else if(roleId == 2){ 
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE);
-				List<Menu> menuList = (ArrayList<Menu>) new MenuItemsServiceImpl().getMenuItems(roleId);
+				List<Menu> menuList = new MenuItemsServiceImpl().getMenuItems(roleId);
 				session = request.getSession(true);
 				session.setAttribute(ConstantsUtility.EMAIL, email);
 				session.setAttribute(ConstantsUtility.ROLE, roleId);
