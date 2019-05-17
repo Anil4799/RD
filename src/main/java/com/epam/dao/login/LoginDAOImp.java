@@ -1,50 +1,55 @@
 package com.epam.dao.login;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.epam.services.login.Menu;
 import com.epam.utils.DBManager;
 
 public class LoginDAOImp implements LoginDAO {
-	public Connection con;
-	Statement stmt;
-	ResultSet rs;
+	private Connection connection;
+	private ResultSet resultSet;
+	private PreparedStatement preparedStatements;
+	private String sql;
+	private List<Menu> menu;
 	public LoginDAOImp() {
-		// TODO Auto-generated constructor stub
-		con = DBManager.getConnection();
+		connection = DBManager.getConnection();
 	}
 	@Override
 	public int login(String email, String password) {
-		// TODO Auto-generated method stub
+		sql = "select * from userinfo where email = ? and password = ?;";
 		try {
-			stmt = con.createStatement();
-			rs= stmt.executeQuery("select * from userinfo where email = '"+email+"' and password ='"+password+"'"); 
-	        if(rs.next()) {
-	        	return rs.getInt(3);
+			preparedStatements = connection.prepareStatement(sql);
+			preparedStatements.setString(1, email);
+			preparedStatements.setString(2, password);
+			resultSet = preparedStatements.executeQuery();
+	        if(resultSet.next()) {
+	        	return resultSet.getInt(3);
 	        }
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		return 0;
 	}
 	@Override
-	public ArrayList<Menu> getMenuItems(int roleid) {
-		// TODO Auto-generated method stub
-		ArrayList<Menu> menu = new ArrayList<Menu>();
+	public List<Menu> getMenuItems(int roleId) {
+		menu = new ArrayList<>();
+		System.out.println(roleId);
+		sql = "select * from menu where menuid in (select menuid from rolewithmenu where roleid = ?);";
 		try {
-			stmt = con.createStatement();
-			rs= stmt.executeQuery("select * from menu where menuid in (select menuid from rolewithmenu where roleid="+roleid+")"); 
-	        while(rs.next()) {
-	        	menu.add(new Menu(rs.getString(2),rs.getString(3)));
+			preparedStatements = connection.prepareStatement(sql);
+			preparedStatements.setInt(1, roleId);
+			resultSet= preparedStatements.executeQuery();
+	        while(resultSet.next()) {
+	        	menu.add(new Menu(resultSet.getString(2),resultSet.getString(3)));
 	        }
 	        
-		} catch (SQLException e) { // TODO Auto-generated catch block 
-			e.printStackTrace();
+		} catch (SQLException e) {
 		}
+		System.out.println(menu);
 		return menu;
 	}
 	

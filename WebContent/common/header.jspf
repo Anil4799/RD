@@ -70,7 +70,6 @@
 
 <!-- Logout Script -->
 <script>
-<<<<<<< HEAD
 	function logout() {
 		document.getElementById("logoutform").action="./LogoutServlet";
 		document.getElementById("logoutform").method = "POST";
