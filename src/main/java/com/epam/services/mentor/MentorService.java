@@ -18,10 +18,7 @@ public class MentorService {
 		}
 		MentorDAO mdao=new MentorDAO();
 		addmentor=mdao.createMentor(mentor);
-		if(addmentor>0) 
-			return "success";
-		else
-			return "fail";
+		return "success";
 		
 		
 		

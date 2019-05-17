@@ -1,9 +1,7 @@
 package com.epam.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -30,7 +28,7 @@ public class MentorServiceTest {
 		Date d=sdf.parse(s);
 		MentorBean mb = new MentorBean();
 		mb.setName("chaitu");
-		mb.setEmail("z1ddl@yahoo.com");
+		mb.setEmail("zzzdl@yahoo.com");
 		mb.setMaxNoOfMentees(5); 
 		mb.setMentorEndDate(d);
 		mb.setMentorStartDate(d);

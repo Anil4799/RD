@@ -4,7 +4,6 @@ package com.epam.dao.mentor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import com.epam.mentor.bean.MentorBean;
 import com.epam.utils.DBManager;
@@ -32,19 +31,18 @@ public class MentorDAO {
 		result=ps.executeUpdate();
 		return result;
 		}
-		else {
-			{
-			return result;	
-			}
 		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			
 		}
-		
-		
 		finally {
 			if(ps!=null) {
 			ps.close();
 			}
 		}
+		return result;
 		
 	}
 	
