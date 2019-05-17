@@ -73,7 +73,7 @@ class MentorAddTest {
 	
 
 	
-	@Test
+	@Ignore
 	public void testDoValidaton() throws Exception {
 		when(request.getParameter(anyString())).thenReturn("requestara");
 		when(request.getParameter("mentor_start_date")).thenReturn("2019-05-05");
@@ -84,7 +84,7 @@ class MentorAddTest {
 		verify(response).sendRedirect("/admin-portal/admin/displayMentor.jsp");
 	}
 	
-	@Test
+	@Ignore
 	public void testDoValidatonfail() throws Exception {
 		when(request.getParameter(anyString())).thenReturn(null);
 		when(request.getParameter("mentor_start_date")).thenReturn("2019-05-20");
@@ -95,34 +95,5 @@ class MentorAddTest {
 		verify(response).sendRedirect("/admin-portal/admin/error.jsp");
 	}
 	
-	
-	
-	/*@Test
-	public void testgettMethod() throws IOException, ServletException, SQLException, ParseException {
-		mentorBean = new MentorBean();
-		doNothing().when(mentorBean).setName("");
-		doNothing().when(mentorBean).setEmail("");
-		doNothing().when(mentorBean).setStatus("");
-
-		String mentor_s_date = request.getParameter("10-01-2019");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date mysqlmentor_s_date = sdf.parse(mentor_s_date);
-
-		String mentor_e_date = request.getParameter("20-03-2019");
-		Date mysqlmentor_e_date = sdf.parse(mentor_e_date);
-
-		doNothing().when(mentorBean).setMentorStartDate(mysqlmentor_s_date);
-		doNothing().when(mentorBean).setMentorEndDate(mysqlmentor_e_date);
-		doNothing().when(mentorBean).setMaxNoOfMentees(Integer.parseInt(request.getParameter("max_noof_mentees")));
-		doNothing().when(mentorBean).setTechnologyStream(request.getParameter("mentor_technology"));
-
-		when(servlet.addMentor(request)).thenReturn("success");
-		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
-		when(request.getServletContext()).thenReturn(context);
-		when(context.getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_ADDMENTOR))
-				.thenReturn("/admin/mentor_info_landing_page.jsp");
-		new MentorServlet().doPost(request, response);
-		verify(rd).forward(request, response);
-	}*/
 
 }
