@@ -17,14 +17,12 @@ import javax.servlet.http.HttpSession;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.epam.services.login.LoginService;
 import com.epam.services.login.Menu;
-import com.epam.servlets.login.LoginServlet;
 import com.epam.utils.ConstantsUtility;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
