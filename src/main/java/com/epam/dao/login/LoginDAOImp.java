@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.services.login.Menu;
+import com.epam.servlets.login.LoginServlet;
 import com.epam.utils.DBManager;
 
 public class LoginDAOImp implements LoginDAO {
@@ -15,7 +18,7 @@ public class LoginDAOImp implements LoginDAO {
 	private ResultSet resultSet;
 	private PreparedStatement preparedStatements;
 	private String sql;
-	private List<Menu> menu;
+	private static final Logger LOGGER = Logger.getLogger(LoginDAOImp.class);
 	public LoginDAOImp() {
 		connection = DBManager.getConnection();
 	}
@@ -31,13 +34,13 @@ public class LoginDAOImp implements LoginDAO {
 	        	return resultSet.getInt(3);
 	        }
 		} catch (SQLException e) {
+			LOGGER.info("Exception..............." +e);
 		}
 		return 0;
 	}
 	@Override
 	public List<Menu> getMenuItems(int roleId) {
-		menu = new ArrayList<>();
-		System.out.println(roleId);
+		List<Menu> menu = new ArrayList<>();
 		sql = "select * from menu where menuid in (select menuid from rolewithmenu where roleid = ?);";
 		try {
 			preparedStatements = connection.prepareStatement(sql);
@@ -48,8 +51,8 @@ public class LoginDAOImp implements LoginDAO {
 	        }
 	        
 		} catch (SQLException e) {
+			LOGGER.info("Exception..............." +e);
 		}
-		System.out.println(menu);
 		return menu;
 	}
 	
