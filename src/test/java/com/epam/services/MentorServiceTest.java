@@ -14,7 +14,7 @@ import com.epam.mentor.bean.MentorBean;
 import com.epam.services.mentor.MentorService;
 
 
-class MentorServiceTest1 {
+public class MentorServiceTest {
 
 	static MentorService ms;
 	@BeforeAll
@@ -24,13 +24,13 @@ class MentorServiceTest1 {
 	}
 	
 	@Test
-	public void Testsucess() throws ParseException, SQLException {
+	public void Testsucess() throws Exception {
 		String s="12-11-2019";
 		SimpleDateFormat sdf=new SimpleDateFormat("MM-DD-YYYY");
 		Date d=sdf.parse(s);
 		MentorBean mb = new MentorBean();
 		mb.setName("chaitu");
-		mb.setEmail("z1112l@yahoo.com");
+		mb.setEmail("z1ddl@yahoo.com");
 		mb.setMaxNoOfMentees(5); 
 		mb.setMentorEndDate(d);
 		mb.setMentorStartDate(d);
@@ -46,7 +46,7 @@ class MentorServiceTest1 {
 	
 	
 	@Test
-	public void TestInsertInvalidNull() throws ParseException, SQLException {
+	public void TestInsertInvalidNull() throws Exception {
 		String s="12-11-2019";
 		SimpleDateFormat sdf=new SimpleDateFormat("MM-DD-YYYY");
 		Date d=sdf.parse(s);
