@@ -29,7 +29,7 @@ public class AdminStudentListServlet extends HttpServlet {
 	 private final AdminStudentInfoService studentInfoService = new AdminStudentInfoServiceImpl();
 	 private static final Logger LOGGER = Logger.getLogger( AdminStudentListServlet.class);
 		private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-		HttpSession session;
+		private static HttpSession session;
 
 
     
@@ -56,7 +56,13 @@ public class AdminStudentListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
 		}
+		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
+		}
+		catch(Exception e)
+		{
+			LOGGER.debug("Exit from servlet");
+		}
 		LOGGER.debug("Exit from servlet");
 	}
 

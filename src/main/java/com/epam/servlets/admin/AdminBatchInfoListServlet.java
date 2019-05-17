@@ -29,7 +29,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoListServlet.class);
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-	HttpSession session;
+	private static  HttpSession session;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,20 +56,17 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
 		}
-		try {
-		request.getRequestDispatcher(pageUrl).forward(request, response);
-		}
-		catch(UnknownHostException e)
+		try
 		{
-			LOGGER.error(e.getMessage());
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		}
+		catch(Exception e)
+		{
+			LOGGER.debug("Exit from Servlet...............");
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
 	
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
 	
 
 

@@ -13,9 +13,12 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 		
 		List<MentorStudent> studentList = new ArrayList<>();
 		
-		String sql = "call mentorStudent('"+mentorEmailId+"');";
-		try(CallableStatement cs= con.prepareCall(sql);ResultSet rs = cs.executeQuery();)
-		{
+		String sql = "call mentorStudent('?');";
+		try(CallableStatement cs= con.prepareCall(sql);)
+		{     
+			cs.setString(1, mentorEmailId);
+			try(ResultSet rs = cs.executeQuery();)
+			{
 			while(rs.next())
 			{
 				MentorStudent student=new MentorStudent();
@@ -29,6 +32,11 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 				student.setStatus(rs.getString("status"));	
 				student.setEmail(emailId);
 				studentList.add(student);
+			}
+			}
+			catch(Exception e)
+			{
+				studentList=null;
 			}
 		}
 		catch(Exception e)

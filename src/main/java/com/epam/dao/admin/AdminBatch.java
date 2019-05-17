@@ -117,15 +117,15 @@ public class AdminBatch {
 	public  String dateFormat(String dd) {
 		String d = "";
 		try {
-		String date_s =dd;
+		String dates =dd;
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
+        Date date = dt.parse(dates);
         SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-yyyy");
         d= dt1.format(date);
 		}
 		catch(Exception e)
 		{
-			
+			System.out.print(e.getMessage());
 		}
 		
 		return d;
