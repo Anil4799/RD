@@ -1,4 +1,9 @@
 <%@ include file="/common/header.jspf" %> 
+		<style type="text/css">
+			.batch_info_form td{
+				border: 0px;
+			}
+		</style>
 
 		  <div style="font-family: 'Oswald', sans-serif; text-transform : none; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
 		  <div id="dialogoverlay"></div>

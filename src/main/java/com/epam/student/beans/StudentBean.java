@@ -216,7 +216,9 @@ public class StudentBean {
 		this.status = status;
 	}
 	
-	
+	public StudentBean() {
+		
+	}
 	
 	
 }

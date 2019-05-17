@@ -4,27 +4,24 @@ import java.util.Date;
 
 public class MentorBean {
 
-	private String Name;
-	private String Email;
+	private String name;
+	private String email;
 	private Date mentorStartDate;
 	private Date mentorEndDate;
 	private int maxNoOfMentees;
 	private String technologyStream;
-	private String Status;
-
-	
+	private String status;
 	public String getName() {
-		
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public Date getMentorStartDate() {
 		return mentorStartDate;
@@ -45,19 +42,19 @@ public class MentorBean {
 		this.maxNoOfMentees = maxNoOfMentees;
 	}
 	public String getTechnologyStream() {
-		
 		return technologyStream;
 	}
 	public void setTechnologyStream(String technologyStream) {
 		this.technologyStream = technologyStream;
 	}
 	public String getStatus() {
-		
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
+
+	
 	
 	
 }

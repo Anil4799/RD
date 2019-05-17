@@ -1,6 +1,5 @@
 package com.epam.servlets.admin;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.AdminMentor;
@@ -25,7 +25,7 @@ public class AdminMentorListServlet extends HttpServlet {
 
 	 private static final AdminMentorInfoService mentorInfoService = new AdminMentorInfoServiceImpl();
 
-
+		
      @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Enter into servlet......");
@@ -52,7 +52,7 @@ public class AdminMentorListServlet extends HttpServlet {
 		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
 		}
-		catch(UnknownHostException e)
+		catch(Exception e)
 		{
 			LOGGER.error("Exception occured in MentorInfo = {}", e);
 		}

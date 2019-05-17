@@ -3,10 +3,10 @@ package com.epam.services;
 import java.sql.Connection;
 import java.util.List;
 
-import com.epam.dao.admin.BatchAction;
+import com.epam.dao.admin.MenuAction;
 
 public interface MenuActionItemService {
-	public List<BatchAction> getMenuActionList(Connection con,int role);
+	public List<MenuAction> getMenuActionList(Connection con,int role);
 
 
 }

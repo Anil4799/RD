@@ -1,11 +1,8 @@
 package com.epam.servlets.mentor;
-
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,14 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.epam.mentor.bean.MentorBean;
 import com.epam.services.mentor.MentorService;
 
-/**
- * Servlet implementation class MentorServlet
- */
+
 
 @WebServlet("/MentorServlet")
 public class MentorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final Logger LOGGER = Logger.getLogger(MentorServlet.class);  
     
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -39,7 +34,7 @@ public class MentorServlet extends HttpServlet {
 					res.sendRedirect("/admin-portal/admin/error.jsp");
 			} catch (Exception e) {
 				
-				e.printStackTrace();
+				LOGGER.debug("Exit from Servlet...............");
 			}
 			
 			
@@ -53,16 +48,16 @@ public class MentorServlet extends HttpServlet {
 		mentor.setName(req.getParameter("mentor_name"));
 		mentor.setEmail(req.getParameter("mentor_email"));
 		mentor.setStatus(req.getParameter("mentor_status"));
-		String mentor_s_date=req.getParameter("mentor_start_date");
+		String mentorstartdate=req.getParameter("mentor_start_date");
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		java.util.Date mysqlmentor_s_date=sdf.parse(mentor_s_date);
+		java.util.Date mysqlmentorstartdate=sdf.parse(mentorstartdate);
 		
 	
-		String  mentor_e_date=req.getParameter("mentor_end_date");
-		java.util.Date mysqlmentor_e_date=sdf.parse(mentor_e_date);
+		String  mentorenddate=req.getParameter("mentor_end_date");
+		java.util.Date mysqlmentorenddate=sdf.parse(mentorenddate);
 		
-		mentor.setMentorStartDate(mysqlmentor_s_date);
-		mentor.setMentorEndDate(mysqlmentor_e_date);
+		mentor.setMentorStartDate(mysqlmentorstartdate);
+		mentor.setMentorEndDate(mysqlmentorenddate);
 		mentor.setMaxNoOfMentees(Integer.parseInt(req.getParameter("max_noof_mentees")));
 		mentor.setTechnologyStream(req.getParameter("mentor_technology"));
 		

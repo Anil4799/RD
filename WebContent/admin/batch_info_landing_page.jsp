@@ -70,7 +70,7 @@
 			                 	 <c:forEach items="${actions}" var="action" >
 			                 	 <c:choose>
 			 
-			                 	 	<c:when test="${batch.status == action.status}">
+			                 	 	<c:when test="${batch.status == action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
