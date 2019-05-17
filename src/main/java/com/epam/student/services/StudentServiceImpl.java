@@ -13,7 +13,8 @@ import com.epam.utils.DBManager;
 public class StudentServiceImpl implements StudentService {
 
 	boolean result = false;
-	PreparedStatement preparedStatement = null, preparedStatementOne = null;
+	PreparedStatement preparedStatement = null;
+	PreparedStatement preparedStatementOne = null;
 	ResultSet resultSet=null ;
 	
 	private static final Logger LOGGER = Logger.getLogger(StudentServiceImpl.class);

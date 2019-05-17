@@ -30,7 +30,7 @@ public class DBManager {
 			if (connection != null)
 				connection.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error("Exception occured in DBManager", e);
 		}
 	}
 }

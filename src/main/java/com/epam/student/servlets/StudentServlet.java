@@ -198,7 +198,7 @@ public class StudentServlet extends HttpServlet {
 					request.getRequestDispatcher("RegFailure.jsp").include(request, response);  
 				}
 		}
-		catch( IOException | ServletException  e)
+		catch( Exception e)
 		{
 			 request.getRequestDispatcher("RegFailure.jsp").include(request, response);
 			 LOGGER.debug(e.getMessage());
