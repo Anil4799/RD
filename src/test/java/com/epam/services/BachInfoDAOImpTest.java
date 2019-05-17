@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import com.epam.dao.batch.BatchInfoDAOImpl;
 
-class TestBachInfoDAOImp {
+class BachInfoDAOImpTest {
   
 	BatchInfoDAOImpl batchindodao=new BatchInfoDAOImpl();
 	

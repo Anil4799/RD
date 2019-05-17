@@ -47,7 +47,7 @@
 								<td>
 									<select name="batch_status" id="batch_status" class="form-control form-control-sm" required>
 										<option selected="selected">Not Started</option>
-										<option>In Progress</option>
+										<option>Inprogress</option>
 										<option>Completed</option>
 									</select>
 								</td>
