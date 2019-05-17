@@ -1,6 +1,5 @@
 package com.epam.servlets.admin;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import com.epam.dao.admin.AdminBatch;
-import com.epam.dao.admin.BatchAction;
+import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminBatchInfoService;
@@ -29,13 +28,13 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoListServlet.class);
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-	HttpSession session;
+	private static HttpSession session;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		List<AdminBatch> batchList =null;
-		List<BatchAction> actionList =null;
+		List<MenuAction> actionList =null;
 		String pageUrl = null;
 		try
 		{
@@ -59,7 +58,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
 		}
-		catch(UnknownHostException e)
+		catch(Exception e)
 		{
 			LOGGER.error(e.getMessage());
 		}
@@ -68,9 +67,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
 	
-
-
+	  doGet(request, response);
+	}
 }

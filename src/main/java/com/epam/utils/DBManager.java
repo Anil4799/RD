@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 public class DBManager {
+	
+	
 
 	private static final Logger LOGGER = Logger.getLogger( DBManager.class);
 	public static Connection getConnection() {
@@ -30,7 +32,7 @@ public class DBManager {
 			if (connection != null)
 				connection.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage());
 		}
 	}
 }

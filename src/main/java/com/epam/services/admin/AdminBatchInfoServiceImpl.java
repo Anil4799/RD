@@ -12,7 +12,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.AdminBatch;
-import com.epam.dao.admin.BatchAction;
+import com.epam.dao.admin.MenuAction;
 import com.epam.servlets.admin.AdminBatchInfoListServlet;
 import com.epam.utils.DBManager;
 
