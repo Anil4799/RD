@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
+<script type="text/javascript" src="/admin-portal/js/date.js"></script>
+
 
   
     <div class="page_info">
@@ -15,15 +17,11 @@
 				<td>
 
 				
-		 <input id="startDate" width="276"  placeholder="Start Date" class="border-right-0"/>
-		 
-		    <script type="text/javascript" src="./js/date.js"></script>
-		 
+		 <input id="startDate" width="276"  placeholder="Start Date" class=".col-sm-4.date border-right-0"/>		 
 		 </td>
 		 <td>
-		 				
 		 <input id="endDate" width="276"  placeholder="End Date" class="border-right-0"/>
-		   <script type="text/javascript" src="./js/date.js"></script>
+		  
 		  		 
 		</td>
 			
@@ -57,9 +55,9 @@
   <c:forEach items="${batchs}" var="batch" >
   
    <tr>
-      <th scope="row">${batch.batch_id}</th>
-      <td>${batch.start_date}</td>
-      <td>${batch.end_date}</td>
+      <th scope="row">${batch.batchid}</th>
+      <td>${batch.startdate}</td>
+      <td>${batch.enddate}</td>
       <td>${batch.status}</td>
       <td><div class="btn-group" dropdown>
             
@@ -72,7 +70,7 @@
 			                 	 <c:forEach items="${actions}" var="action" >
 			                 	 <c:choose>
 			 
-			                 	 	<c:when test="${batch.status == action.status}">
+			                 	 	<c:when test="${batch.status == action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
@@ -98,5 +96,5 @@
 </table>
 
  </div>
-
+ 
 <%@ include file="/common/footer.jspf"%>

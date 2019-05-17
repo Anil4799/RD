@@ -36,37 +36,37 @@
   					<div class="card-body label_color">
   					<div>
     					<span>First Name:<span class="required">*</span></span>
-    					<span style="float:right;">
-    					<input name="firstName"  id="firstName" type="text"  class="form-control form-control-sm" size="30" />
+    					<span style="float:right;width:34%">
+    					<input name="firstName"  id="firstName" type="text"  class="form-control form-control-sm"  />
     					</span>
 					</div>
 					<br>
 					<div>
 						Last Name:<span class="required">*</span>
-						<span style="float:right;">
-						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm" size="30" />
+						<span style="float:right;width:34%">
+						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm" />
 						</span>
 					</div>
 					<br>
 					<div>
 						Date of Birth:<span class="required">*</span>
-						<span style="float:right;">
-						<input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  size="30"/>
+						<span style="float:right;width:34%">
+						<input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  />
 						</span>
 					</div>
 					<br>
 					<div>
 						Email:<span class="required">*</span>
-						<span style="float:right;">
-						<input name="email" id="email"  type="email" class="form-control form-control-sm" size="30"/>
+						<span style="float:right;width:34%">
+						<input name="email" id="email"  type="email" class="form-control form-control-sm" />
 						</span>
 					</div>
 					
 					<br>
 					<div>
 						Gender:<span class="required">*</span>
-						<span style="float:right;">
-						<select name="gender" id="gender" class="form-control form-control-sm"  style="width:195px" required>
+						<span style="float:right;width:34%">
+						<select name="gender" id="gender" class="form-control form-control-sm"   required>
 						<option value="no_value"></option>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
@@ -76,15 +76,15 @@
 					<br>
 					<div>
 						Contact Number:
-						<span style="float:right;">
-						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" size="30"/>
+						<span style="float:right;width:34%">
+						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" />
 						</span>
 					</div>
 					<br>
 					<div>
 					Location:<span class="required">*</span>
-					<span style="float:right;">
-					<input name="personalLocation" id="personalLocation" type="text" class="form-control form-control-sm" size="30"/>
+					<span style="float:right;width:34%">
+					<input name="personalLocation" id="personalLocation" type="text" class="form-control form-control-sm" />
 					</span>
 					</div>
     				
@@ -99,8 +99,8 @@
   					<div>
   						
   						College:
-  						<span style="float:right;" >
-  							<select name="collegeName" class="form-control form-control-sm" style="width:195px" onchange="setLocation(this.value)" >
+  						<span style="float:right;width:34%" >
+  							<select name="collegeName" class="form-control form-control-sm"  on change="setLocation(this.value)" >
   						<option value="no_value"></option>
   						<% Connection connection = DBManager.getConnection();
   						String collegeName = null, collegeLocation = "";
@@ -121,25 +121,25 @@
   					<br>
     				<div>
     					Location:
-    					<span style="float:right;" >
+    					<span style="float:right;width:34%" >
     					
-    					<input name="collegeLocation" type="text" class="form-control form-control-sm" size="30" value="<%=collegeLocation %>"/>
+    					<input name="collegeLocation" type="text" class="form-control form-control-sm"  value="<%=collegeLocation %>"/>
     					</span>
     				</div>
 					<br>
 					
 					<div>
 					Graduation:
-					<span style="float:right;" >
-					<input name="graduation" type="text" class="form-control form-control-sm" size="30"/>
+					<span style="float:right;width:34%" >
+					<input name="graduation" type="text" class="form-control form-control-sm" />
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					Graduation Speciality:
-					<span style="float:right;" >
-					<select name="graduationSpeciality" class="form-control form-control-sm" style="width:195px" >
+					<span style="float:right;width:34%" >
+					<select name="graduationSpeciality" class="form-control form-control-sm"  >
 					<option value="no_value"></option>
 						<option value="ece">ECE</option>
 						<option value="cse">CSE</option>
@@ -151,31 +151,31 @@
 					<br>
 					<div>
 					Year of Passed Out:
-					<span style="float:right;">
-					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" size="30"/>
+					<span style="float:right;width:34%">
+					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" />
 					</span>
 					
 					</div>
 					<br>
 					<div>
 					Graduation Marks:
-					<span style="float:right;">
-					<input name="graduationMarks" type="text"  class="form-control form-control-sm" size="30"/>
+					<span style="float:right;width:34%">
+					<input name="graduationMarks" type="text"  class="form-control form-control-sm" />
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					10th + 2 Marks:
-					<span style="float:right;">
-					<input name="twelveth" type="text" class="form-control form-control-sm" size="30"/>
+					<span style="float:right;width:34%">
+					<input name="twelveth" type="text" class="form-control form-control-sm" />
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
-					<span style="float:right;">
-					<input name="tenth" type="text" class="form-control form-control-sm" size="30"/>
+					<span style="float:right;width:34%">
+					<input name="tenth" type="text" class="form-control form-control-sm" />
 					</span>
 					</div>
 					
@@ -191,8 +191,8 @@
   					<div class="card-body label_color">
   					<div>
   						BatchId:<span class="required">*</span>
-  						<span style="float:right;">
-  						<select name="batchId" id="batchId" class="form-control form-control-sm" style="width:195px" required>
+  						<span style="float:right;width:34%">
+  						<select name="batchId" id="batchId" class="form-control form-control-sm"  required>
 							<option value="no_value"></option>
 							<option value="">RD-Q1-2019-B1</option>
 							<option value="">RD-Q1-2019-B2</option>
@@ -202,8 +202,8 @@
 						<br>
 						<div>
 						Employee Type:<span class="required">*</span>
-						<span style="float:right;">
-						<select name="employeeType" id="employeeType" class="form-control form-control-sm" style="width:195px" required>
+						<span style="float:right;width:34%">
+						<select name="employeeType" id="employeeType" class="form-control form-control-sm" required>
 						<option value="no_value"></option>
 						<% 
   						String employee_type = "";
@@ -225,8 +225,8 @@
 						<br>
 						<div>
 						Core Skill:<span class="required">*</span>
-						<span style="float:right;">
-						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm" style="width:195px" required>
+						<span style="float:right;width:34%">
+						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm"  required>
 						<option value="no_value"></option>
 						<% 
   						String skill = "";
@@ -247,8 +247,8 @@
 						<br>
 						<div>
 						Preferred Student Stream:
-						<span style="float:right;">
-						<select name="preferredStudentStream" class="form-control form-control-sm" style="width:195px">
+						<span style="float:right;width:34%">
+						<select name="preferredStudentStream" class="form-control form-control-sm" >
 						<option value="no_value"></option>
 						<% 
   						String streamName = "";
@@ -270,8 +270,8 @@
 						<br>
 						<div>
 						Assigned Stream:
-						<span style="float:right;" >
-						<select name="assignedStream" class="form-control form-control-sm" style="width:195px">
+						<span style="float:right;width:34%" >
+						<select name="assignedStream" class="form-control form-control-sm" >
 						<option value="no_value"></option>
 						<% 
   						//String streamName = "";
@@ -293,16 +293,16 @@
 						<br>
 						<div>
 						Date of Joining:<span class="required">*</span>
-						<span style="float:right;" >
-						<input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  size="30"/>
+						<span style="float:right;width:34%" >
+						<input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm" />
 						</span>
 						</div>
 						
 						<br>
 						<div>
 						Mentor:
-						<span style="float:right;" >
-						<select name="mentorName" class="form-control form-control-sm" style="width:195px">
+						<span style="float:right;width:34%" >
+						<select name="mentorName" class="form-control form-control-sm" >
 						<option value="no_value"></option>
 							<option value="Durga">Durga</option>
 							<option value="Revathi">Revathi</option>
@@ -313,8 +313,8 @@
 						<br>
 						<div>
 						Assigned Location:
-						<span style="float:right;" >
-						<select name="assignedLocation" class="form-control form-control-sm" style="width:195px">
+						<span style="float:right;width:34%" >
+						<select name="assignedLocation" class="form-control form-control-sm" >
 							<option value="no_value"></option>
 						<% 
   						String assignedLocation = "";
@@ -336,8 +336,8 @@
 						<br>
 						<div>
 						Relocation:<span class="required">*</span>
-						<span style="float:right;" >
-						<select name="relocation" id="relocation" class="form-control form-control-sm" style="width:195px" required>
+						<span style="float:right;width:34%" >
+						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
 							<option value="no_value"></option>
 							<option value="yes">Yes</option>
 							<option value="no">No</option>
@@ -348,8 +348,8 @@
 						<br>
 						<div>
 						Status:<span class="required">*</span>
-						<span style="float:right;" >
-						<select name="status" id="status" class="form-control form-control-sm" style="width:195px" required>
+						<span style="float:right;width:34%" >
+						<select name="status" id="status" class="form-control form-control-sm"  required>
 							<option value="no_value"></option>
 						<% 
   						String employeeStatus = "";

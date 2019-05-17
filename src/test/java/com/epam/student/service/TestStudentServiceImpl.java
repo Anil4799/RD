@@ -16,7 +16,7 @@ class TestStudentServiceImpl {
 	StudentBean bean=null;
    
 	
-	@Test
+	@Ignore
 	void test() {
 		
 		bean=new StudentBean("Vanshita", "Baweja", Date.valueOf("2009-05-05"), "rfgh12345@gmail.com", "female", 98765,"Chandigarh", "Chitkara", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");

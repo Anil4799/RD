@@ -16,32 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `student_personal_info`
+-- Table structure for table `status`
 --
 
-DROP TABLE IF EXISTS `student_personal_info`;
+DROP TABLE IF EXISTS `status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `student_personal_info` (
-  `First_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Last_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Date_Of_Birth` date NOT NULL DEFAULT '0000-00-00',
-  `Email_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Gender` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Contact` bigint(20) unsigned DEFAULT '0',
-  `Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`Email_Id`)
+CREATE TABLE `status` (
+  `statusId` int(11) NOT NULL,
+  `statusName` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`statusId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `student_personal_info`
+-- Dumping data for table `status`
 --
 
-LOCK TABLES `student_personal_info` WRITE;
-/*!40000 ALTER TABLE `student_personal_info` DISABLE KEYS */;
-INSERT INTO `student_personal_info` VALUES ('Test','aaa','2019-05-16','qqq@ss.com','male',123213,'ertert'),('Skr','rrr','2019-05-23','sdmm@dd.com','male',0,'bnbnb');
-/*!40000 ALTER TABLE `student_personal_info` ENABLE KEYS */;
+LOCK TABLES `status` WRITE;
+/*!40000 ALTER TABLE `status` DISABLE KEYS */;
+INSERT INTO `status` VALUES (1,'active'),(2,'inactive'),(3,'not started'),(4,'in progress'),(5,'completed');
+/*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-16 18:40:19
+-- Dump completed on 2019-05-16 18:40:13

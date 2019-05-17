@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: rd_portal
+-- Host: localhost    Database: rd_portal
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -23,16 +23,16 @@ DROP TABLE IF EXISTS `batch_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `batch_info` (
-  `batch_num` int(11) NOT NULL,
-  `batch_id` varchar(20) NOT NULL,
-  `year_num` int(11) NOT NULL,
-  `quarter_num` varchar(10) NOT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL,
-  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`SerialNo`,`year_num`,`quarter_num`,`batch_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Serial_Num` int(11) NOT NULL AUTO_INCREMENT,
+  `Batch_Num` int(11) DEFAULT NULL,
+  `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Year_Num` int(11) DEFAULT NULL,
+  `Quarter_Num` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Start_Date` date DEFAULT NULL,
+  `End_Date` date DEFAULT NULL,
+  `Status` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`Serial_Num`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `batch_info` (
 
 LOCK TABLES `batch_info` WRITE;
 /*!40000 ALTER TABLE `batch_info` DISABLE KEYS */;
+INSERT INTO `batch_info` VALUES (1,1,'RD-Q1-2019-B1',2019,'Q1','2019-03-20','2019-05-30','inactive'),(2,2,'RD-Q1-2019-B2',2019,'Q1','2019-03-28','2019-05-30','not started'),(3,1,'RD-Q2-2019-B1',2019,'Q2','2019-05-20','2019-05-30','active'),(4,2,'RD-Q2-2019-B2',2019,'Q2','2019-05-17','2019-05-17','not started');
 /*!40000 ALTER TABLE `batch_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-14 15:53:52
+-- Dump completed on 2019-05-16 18:40:19

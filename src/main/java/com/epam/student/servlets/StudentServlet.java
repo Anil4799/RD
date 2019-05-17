@@ -29,7 +29,6 @@ public class StudentServlet extends HttpServlet {
 
        @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	   System.out.println("Entered into StudentServlet Class...............");
     	LOGGER.debug("Entered into StudentServlet Class...............");
 		boolean result = false;
 		
@@ -188,6 +187,7 @@ public class StudentServlet extends HttpServlet {
 				graduationSpeciality, yearOfPassedOut1, graduationMarks1, twelvethMarks, tenthMarks,
 				batchId, employeeType, coreSkill, preferredStudentStream, assignedStream,
 				dateOfJoining, mentorName, assignedLocation, relocation, status);
+		
 		
 		try {
 			  result = studentService.addStudentDetails(studentBean);

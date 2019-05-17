@@ -1,4 +1,9 @@
 <%@ include file="/common/header.jspf" %> 
+		<style type="text/css">
+			.batch_info_form td{
+				border: 0px;
+			}
+		</style>
 
 		  <div style="font-family: 'Oswald', sans-serif; text-transform : none; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
 		  <div id="dialogoverlay"></div>
@@ -46,9 +51,11 @@
 								<td class="form_lable">Status: <span class="required">*</span></td>
 								<td>
 									<select name="batch_status" id="batch_status" class="form-control form-control-sm" required>
-										<option selected="selected" value="not started">Not Started</option>
-										<option>In Progress</option>
-										<option>Completed</option>
+
+										<option selected="selected" >Not Started</option>
+										<option value="in progress">Inprogress</option>
+
+										<option value="completed">Completed</option>
 									</select>
 								</td>
 							</tr>

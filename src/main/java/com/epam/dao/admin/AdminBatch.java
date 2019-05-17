@@ -3,7 +3,13 @@ package com.epam.dao.admin;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
+import com.epam.utils.DBManager;
+
 public class AdminBatch {
+	
+	private static final Logger LOGGER = Logger.getLogger( AdminBatch.class);
 	
 	private int batchnum;
 	private String batchid;
@@ -14,66 +20,124 @@ public class AdminBatch {
 	private String status;
 	
 	
-	public int getBatchNum() {
+	
+	
+	public int getBatchnum() {
 		return batchnum;
 	}
-	public void setBatchNum(int batchnum) {
+
+
+
+
+	public void setBatchnum(int batchnum) {
 		this.batchnum = batchnum;
 	}
-	public String getBatchId() {
+
+
+
+
+	public String getBatchid() {
 		return batchid;
 	}
-	public void setBatchId(String batchid) {
+
+
+
+
+	public void setBatchid(String batchid) {
 		this.batchid = batchid;
 	}
-	public int getYearNum() {
+
+
+
+
+	public int getYearnum() {
 		return yearnum;
 	}
-	public void setYearNum(int yearnum) {
+
+
+
+
+	public void setYearnum(int yearnum) {
 		this.yearnum = yearnum;
 	}
-	public String getQuarterNum() {
+
+
+
+
+	public String getQuarternum() {
 		return quarternum;
 	}
-	public void setQuarterNum(String quarternum) {
+
+
+
+
+	public void setQuarternum(String quarternum) {
 		this.quarternum = quarternum;
 	}
-	public String getStartDate() {
+
+
+
+
+	public String getStartdate() {
 		return startdate;
 	}
 
-	public void setStartDate(String startdate) {
-		this.startdate = startdate;
 
+
+
+	public void setStartdate(String startdate) {
+		this.startdate = dateFormat(startdate);
 	}
-	public String getEndDate() {
+
+
+
+
+	public String getEnddate() {
 		return enddate;
 	}
-	public void setEnd_date(String enddate) {
-		this.enddate = enddate;
+
+
+
+
+	public void setEnddate(String enddate) {
+		this.enddate = dateFormat(enddate);
 	}
+
+
+
+
 	public String getStatus() {
 		return status;
 	}
+
+
+
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	public  String dateFormat(String dd) {
-		String d = "";
+
+
+
+
+	public  String dateFormat(String oldDate) {
+		String newDate = "";
 		try {
-		String date_s =dd;
+
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
+        Date date = dt.parse(oldDate);
+
         SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-yyyy");
-        d= dt1.format(date);
+        newDate= dt1.format(date);
 		}
 		catch(Exception e)
 		{
-			
+
+			LOGGER.error(e.getMessage());
+
 		}
 		
-		return d;
+		return newDate;
 	}
 	
 	

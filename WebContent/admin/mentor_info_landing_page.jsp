@@ -42,8 +42,8 @@
   <c:forEach items="${mentors}" var="eee" >
   
    <tr>
-      <th scope="row">${eee.mentor_name}</th>
-      <td>${eee.technology_stream}</td>
+      <th scope="row">${eee.mentorname}</th>
+      <td>${eee.technologystream}</td>
       <td>${eee.status}</td>
     
         <td><div class="btn-group" dropdown>

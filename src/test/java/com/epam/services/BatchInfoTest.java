@@ -38,12 +38,12 @@ class BatchInfoTest {
 		 String startdate=null;
 		 String enddate=null;
 		 String status=null;
-		 batchid=b.getBatchId();
-		 batchnum=b.getBatchNum();
-		 yearnum=b.getYearNum();
-		 quarternum=b.getQuarterNum();
-		 startdate=b.getStartDate();
-		 enddate=b.getEndDate();
+		 batchid=b.getBatchid();
+		 batchnum=b.getBatchnum();
+		 yearnum=b.getYearnum();
+		 quarternum=b.getQuarternum();
+		 startdate=b.getStartdate();
+		 enddate=b.getEnddate();
 		 status=b.getStatus();
 		 assertNotNull(batchid);
 		 assertNotNull(quarternum);

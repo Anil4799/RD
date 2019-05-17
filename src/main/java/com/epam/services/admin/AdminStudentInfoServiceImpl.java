@@ -21,11 +21,11 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 				String firstName=rs.getString(1);
 				String lastName=rs.getString(2);
 				String name=firstName+" "+lastName;
-				student.setName(name);
-				student.setBatch(rs.getString("batch_id"));
-				student.setCoreSkill(rs.getString("core_skill"));
-				student.setMentor(rs.getString("mentor_name"));
-				student.setStatus(rs.getString("status"));	
+				student.setStudentName(name);
+				student.setStudentBatch(rs.getString("batch_id"));
+				student.setStudentCoreSkill(rs.getString("core_skill"));
+				student.setStudentMentor(rs.getString("mentor_name"));
+				student.setStudentStatus(rs.getString("status"));	
 				studentList.add(student);
 			}
 		}

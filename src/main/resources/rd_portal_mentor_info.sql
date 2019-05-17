@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `mentor_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `mentor_info` (
-  `email_id` varchar(30) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `mentorship_start_date` date DEFAULT NULL,
-  `mentorship_end_date` date DEFAULT NULL,
-  `max_no_of_mentees` varchar(30) DEFAULT NULL,
-  `technology_stream` varchar(30) DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`email_id`)
+  `Mentor_Name` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Email_Id` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Mentorship_Start_Date` date DEFAULT NULL,
+  `Mentorship_End_Date` date DEFAULT NULL,
+  `Max_No_Mentees` int(11) DEFAULT NULL,
+  `Technology_Stream` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Status` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`Email_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,7 @@ CREATE TABLE `mentor_info` (
 
 LOCK TABLES `mentor_info` WRITE;
 /*!40000 ALTER TABLE `mentor_info` DISABLE KEYS */;
-INSERT INTO `mentor_info` VALUES ('Ravi@epam.com','Ravi','2019-05-05','2019-07-05','20','c++','inactive'),('Sumit@epam.com','Sumit','2019-05-05','2019-07-05','20','c++','inactive'),('swati@epam.com','swati','2019-05-05','2019-07-05','20','java','active'),('vijay@epam.com','vijay','2019-05-05','2019-07-05','20','c++','active'),('vinay@epam.com','vinay','2019-05-05','2019-07-05','20','c++','active');
+INSERT INTO `mentor_info` VALUES ('Ravi','Ravi@epam.com','2019-05-05','2019-07-05',20,'c++','inactive'),('Sumit','Sumit@epam.com','2019-05-05','2019-07-05',20,'c++','inactive'),('swati','swati@epam.com','2019-05-05','2019-07-05',20,'java','active'),('vijay','vijay@epam.com','2019-05-05','2019-07-05',20,'c++','active'),('vinay','vinay@epam.com','2019-05-05','2019-07-05',20,'c++','active');
 /*!40000 ALTER TABLE `mentor_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 11:47:14
+-- Dump completed on 2019-05-16 18:40:16

@@ -18,7 +18,7 @@ public class AdminAddBatchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private static final Logger LOGGER = Logger.getLogger(AdminAddBatchServlet.class);
-@Override
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		String pageUrl = null;
@@ -36,7 +36,10 @@ public class AdminAddBatchServlet extends HttpServlet {
 		}
 		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
-		}finally {
+		}catch(Exception exception){
+			LOGGER.error(exception.getMessage());
+		}
+		finally {
 			LOGGER.debug("Exit from Servlet...............");
 		}
 	}

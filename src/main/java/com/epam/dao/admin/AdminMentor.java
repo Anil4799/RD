@@ -15,24 +15,35 @@ public class AdminMentor {
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
 	}
-	public String getMentorshipStartDate() {
-		return mentorshipstartdate;
-
+	public String getMentorname() {
+		return mentorname;
 	}
-	public void setMentorshipStartDate(String mentorshipstartdate) {
+	public void setMentorname(String mentorname) {
+		this.mentorname = mentorname;
+	}
+	public String getMentorshipstartdate() {
+		return mentorshipstartdate;
+	}
+	public void setMentorshipstartdate(String mentorshipstartdate) {
 		this.mentorshipstartdate = mentorshipstartdate;
 	}
-	public String getMentorShipEnddate() {
+	public String getMentorshipenddate() {
 		return mentorshipenddate;
 	}
-	public void setMentorShipEndDate(String mentorshipenddate) {
+	public void setMentorshipenddate(String mentorshipenddate) {
 		this.mentorshipenddate = mentorshipenddate;
 	}
-	public String getMaxnoOfMentees() {
+	public String getMaxnoofmentees() {
 		return maxnoofmentees;
 	}
-	public void setMaxnoOfMentees(String maxnoofmentees) {
+	public void setMaxnoofmentees(String maxnoofmentees) {
 		this.maxnoofmentees = maxnoofmentees;
+	}
+	public String getTechnologystream() {
+		return technologystream;
+	}
+	public void setTechnologystream(String technologystream) {
+		this.technologystream = technologystream;
 	}
 	public String getStatus() {
 		return status;
@@ -41,18 +52,7 @@ public class AdminMentor {
 		this.status = status;
 	}
 	
-	public String getMentorName() {
-		return mentorname;
-	}
-	public void setMentorName(String mentorname) {
-		this.mentorname = mentorname;
-	}
-	public String getTechnologyStream() {
-		return technologystream;
-	}
-	public void setTechnologyStream(String technologystream) {
-		this.technologystream = technologystream;
-	}
-
+	
+	
 }
 

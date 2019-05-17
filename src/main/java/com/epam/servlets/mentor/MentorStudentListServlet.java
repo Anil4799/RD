@@ -19,9 +19,9 @@ import com.epam.utils.DBManager;
 @WebServlet("/mentorstudentList")
 public class MentorStudentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 private MentorStudentInfoService studentInfoService = new MentorStudentInfoServiceImpl();
+	 private static final MentorStudentInfoService studentInfoService = new MentorStudentInfoServiceImpl();
 	  private static final Logger LOGGER = Logger.getLogger( MentorStudentListServlet.class); 
-    
+    @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Enter into servlet......");
 		List<MentorStudent> studentList =null;
@@ -30,8 +30,8 @@ public class MentorStudentListServlet extends HttpServlet {
 		try(Connection con=DBManager.getConnection();)
 		{
 			HttpSession session=request.getSession(false);  
-			String mentor_email_id=(String)session.getAttribute("email"); 
-			studentList=studentInfoService.mentorStudentDetails(con,mentor_email_id);
+			String mentoremailid=(String)session.getAttribute("email"); 
+			studentList=studentInfoService.mentorStudentDetails(con,mentoremailid);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTORSTUDENT_INFO);
 			request.setAttribute("students", studentList);
 			request.setAttribute("pageState", "STUDENT INFO");
@@ -42,8 +42,14 @@ public class MentorStudentListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
 		}
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+          }
+		catch(Exception e)
+		{
+			LOGGER.debug("Exit from servlet");
+		}
 		
-		request.getRequestDispatcher(pageUrl).forward(request, response);
 		LOGGER.debug("Exit from servlet");
 	}
 

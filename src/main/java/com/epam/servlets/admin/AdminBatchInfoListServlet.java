@@ -1,6 +1,5 @@
 package com.epam.servlets.admin;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import com.epam.dao.admin.AdminBatch;
-import com.epam.dao.admin.BatchAction;
+import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminBatchInfoService;
@@ -29,21 +28,20 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoListServlet.class);
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-	HttpSession session;
+	private static HttpSession session;
+
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		List<AdminBatch> batchList =null;
-		List<BatchAction> actionList =null;
+		List<MenuAction> actionList =null;
 		String pageUrl = null;
 		try
 		{
 			Connection con=DBManager.getConnection();
-			//session = request.getSession(true);
-			//int role= (int) session.getAttribute("role");
-			int role= 1;
-			int status=1;
+			session = request.getSession(true);
+			int role= (int) session.getAttribute("role");
 			actionList=menuActionItemService.getMenuActionList(con,role);
 			batchList=batchInfoListService.getAllBatchsList(con);
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
@@ -58,15 +56,20 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
 		}
-		try {
-		request.getRequestDispatcher(pageUrl).forward(request, response);
-		}
-		catch(UnknownHostException e)
+
+		try
 		{
-			LOGGER.error(e.getMessage());
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		}
+		catch(Exception e)
+		{
+			LOGGER.debug("Exit from Servlet...............");
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
-
-
+	
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  doGet(request, response);
+	}
 }
