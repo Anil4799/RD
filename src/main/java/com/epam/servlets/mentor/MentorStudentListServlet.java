@@ -47,7 +47,7 @@ public class MentorStudentListServlet extends HttpServlet {
           }
 		catch(Exception e)
 		{
-			LOGGER.debug("Exit from servlet");
+			LOGGER.debug(e.getMessage());
 		}
 		
 		LOGGER.debug("Exit from servlet");

@@ -4,13 +4,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+
 import com.epam.dao.mentor.MentorStudent;
+import com.epam.servlets.mentor.MentorStudentListServlet;
 
 public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
-
+	private static final Logger LOGGER = Logger.getLogger(MentorStudentInfoServiceImpl.class);
 	@Override
 	public List<MentorStudent> mentorStudentDetails(Connection con, String mentorEmailId) {
-		
+		 
 		List<MentorStudent> studentList = new ArrayList<>();
 		String sql = "call mentorStudent(?);";
 		try(CallableStatement cs= con.prepareCall(sql);)
@@ -21,7 +25,6 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 				while(rs.next())
 				{
 					MentorStudent student=new MentorStudent();
-					String emailId = rs.getString("email_id");
 					String firstName=rs.getString("first_name");
 					String lastName=rs.getString("last_name");
 					String name=firstName+" "+lastName;
@@ -29,7 +32,6 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					student.setBatch(rs.getString("batch_id"));
 					student.setCoreSkill(rs.getString("core_skill"));
 					student.setStatus(rs.getString("status"));	
-					student.setEmail(emailId);
 					studentList.add(student);
 				}
 			}
@@ -38,6 +40,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 		catch(Exception e)
 		{
 			studentList=null;
+			LOGGER.debug(e.getMessage());
 		}
 		
 	return studentList;
