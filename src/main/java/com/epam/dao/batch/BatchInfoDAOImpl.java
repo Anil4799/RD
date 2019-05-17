@@ -12,10 +12,11 @@ import com.epam.utils.DBManager;
 public class BatchInfoDAOImpl implements BatchInfoDAO {
 	CallableStatement statement;
 	Connection connection = null;
-	
+	String dbbatchId="Batch_Id";
 	private static final Logger LOGGER = Logger.getLogger(BatchInfoDAOImpl.class);
 	public String generateBatchId(String startDate) {
 		String batchId = null;
+		
 		
 	
 		try {
@@ -23,11 +24,11 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			statement = connection.prepareCall("{call batch_id_proc(?,?)}");
 			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
 			statement.setDate("Start_Date", stDate);
-			statement.registerOutParameter("Batch_Id", Types.VARCHAR);
+			statement.registerOutParameter(dbbatchId, Types.VARCHAR);
 			statement.execute();
-			batchId = statement.getString("Batch_Id");
-		} catch (Exception e) {
-			LOGGER.debug("EXCEPTION OCCURED.....");;
+			batchId = statement.getString(dbbatchId);
+		} catch (Exception exception) {
+			LOGGER.error(exception.getMessage());
 		} finally {
 			DBManager.closeConnection(connection);
 		}
@@ -44,7 +45,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			connection = DBManager.getConnection();
 			statement = connection.prepareCall("{call insert_procedure(?,?,?,?,?,?,?)}");
 			statement.setInt("Batch_Num", batchNumber);
-			statement.setString("Batch_Id", batchId);
+			statement.setString(dbbatchId, batchId);
 			statement.setInt("Year_Num", year);
 			statement.setString("Quarter_Num", quarter);
 			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
@@ -54,9 +55,9 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			statement.setString("Status", status);
 			rowsCount = statement.executeUpdate();
 			
-		} catch (Exception e) 
+		} catch (Exception exception) 
 		{
-			LOGGER.debug(e.getMessage());
+			LOGGER.error(exception.getMessage());
 		} 
 		finally {
 			statement.close();

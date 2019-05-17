@@ -58,7 +58,7 @@
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	 <c:forEach items="${actions}" var="action" >
-		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(action.status)}" />
+		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(action.statusName)}" />
 			                 	 <c:choose>
 			                 	 	<c:when test="${student.studentStatus ==  actionStatus}">
 			                

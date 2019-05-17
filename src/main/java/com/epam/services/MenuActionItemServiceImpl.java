@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.epam.dao.admin.BatchAction;
+import com.epam.dao.admin.MenuAction;
 import com.epam.utils.DBManager;
 
 public class MenuActionItemServiceImpl implements MenuActionItemService {
@@ -17,65 +17,36 @@ public class MenuActionItemServiceImpl implements MenuActionItemService {
 
 
 	@Override
-	public List<BatchAction> getMenuActionList(Connection con, int role) {
-		// TODO Auto-generated method stub
-		List<BatchAction> actionList = new ArrayList<BatchAction>();
-		CallableStatement cs=null;
-		ResultSet rs=null;
-		try
+	public List<MenuAction> getMenuActionList(Connection con, int role) {
+		List<MenuAction> actionList = new ArrayList<>();
+		String sql = "call menuAction(?);";
+		try(CallableStatement callableStatement= con.prepareCall(sql);)
 		{
-			LOGGER.debug("call batchAction  ...............");
-			String sql = "call menuAction(?);";
-			cs=con.prepareCall(sql);
-			cs.setInt(1,role);
-			rs=cs.executeQuery();
-			LOGGER.debug("call batchAction  ...............");
-
-			LOGGER.debug("---"+cs);
-			
-			
-			while(rs.next())
+			callableStatement.setInt(1, role);
+			try(ResultSet rs = callableStatement.executeQuery();)
 			{
-				LOGGER.debug("call batchAction 3 ...............");
+				while(rs.next())
+				{
+					LOGGER.debug("call batchAction 3 ...............");
 
-				BatchAction action=new BatchAction();
-				action.setStatus(rs.getString("StatusName"));
-				action.setAction(rs.getString("Action"));
-				actionList.add(action);
+					MenuAction action=new MenuAction();
+					action.setStatusName(rs.getString("StatusName"));
+					action.setAction(rs.getString("Action"));
+					actionList.add(action);
+				}
+						
 			}
 			
-						
 		}
 		catch(Exception e)
 		{
 			actionList=null;
+			LOGGER.debug(e.getMessage());
+
 		}
-		finally {
-			try {
-				cs.close();
-				rs.close();
-			} catch (SQLException e) {
-				
-			}
-		}
+		
 		
 		return actionList;
 	}
-//	public static void main(String args[])
-//	{
-//		try
-//		{
-//			MenuActionItemServiceImpl b=new MenuActionItemServiceImpl();
-//			Connection con = DBManager.getConnection();
-//			List<BatchAction> lb=b.getBatchActionList(con, 1,1);
-//			for (BatchAction batchAction : lb) {
-//				System.out.println(batchAction.getStatus());
-//			}
-//		}
-//		catch(Exception e)
-//		{
-//			
-//		}
-//	}
 
 }

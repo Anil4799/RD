@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import com.epam.dao.admin.AdminStudent;
-import com.epam.dao.admin.BatchAction;
+import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminStudentInfoService;
@@ -29,14 +29,14 @@ public class AdminStudentListServlet extends HttpServlet {
 	 private final AdminStudentInfoService studentInfoService = new AdminStudentInfoServiceImpl();
 	 private static final Logger LOGGER = Logger.getLogger( AdminStudentListServlet.class);
 		private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-		HttpSession session;
+		private static HttpSession session;
 
 
     
 	 @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<AdminStudent> studentList =null;
-		List<BatchAction> actionList =null;
+		List<MenuAction> actionList =null;
 		LOGGER.debug("Enter into servlet......");
 		String pageUrl=null;
 		try(Connection con=DBManager.getConnection();)
@@ -56,7 +56,13 @@ public class AdminStudentListServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
 		}
+		try {
 		request.getRequestDispatcher(pageUrl).forward(request, response);
+		}
+		catch(Exception e)
+		{
+			LOGGER.debug("Exit from servlet");
+		}
 		LOGGER.debug("Exit from servlet");
 	}
 

@@ -1,7 +1,11 @@
 
      <%@ include file="/common/header.jspf" %>
 
-		
+		<style type="text/css">
+			.mentor_info_form td{
+				border: 0px;
+			}
+		</style>	
 	
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px; padding-top: 1px;">		
 		<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC;">	

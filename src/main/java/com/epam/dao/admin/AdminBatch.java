@@ -3,7 +3,13 @@ package com.epam.dao.admin;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
+import com.epam.utils.DBManager;
+
 public class AdminBatch {
+	
+	private static final Logger LOGGER = Logger.getLogger( AdminBatch.class);
 	
 	private int batchnum;
 	private String batchid;
@@ -80,7 +86,7 @@ public class AdminBatch {
 
 
 	public void setStartdate(String startdate) {
-		this.startdate = startdate;
+		this.startdate = dateFormat(startdate);
 	}
 
 
@@ -94,7 +100,7 @@ public class AdminBatch {
 
 
 	public void setEnddate(String enddate) {
-		this.enddate = enddate;
+		this.enddate = dateFormat(enddate);
 	}
 
 
@@ -114,21 +120,24 @@ public class AdminBatch {
 
 
 
-	public  String dateFormat(String dd) {
-		String d = "";
+	public  String dateFormat(String oldDate) {
+		String newDate = "";
 		try {
-		String date_s =dd;
+
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
+        Date date = dt.parse(oldDate);
+
         SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-yyyy");
-        d= dt1.format(date);
+        newDate= dt1.format(date);
 		}
 		catch(Exception e)
 		{
-			
+
+			LOGGER.error(e.getMessage());
+
 		}
 		
-		return d;
+		return newDate;
 	}
 	
 	

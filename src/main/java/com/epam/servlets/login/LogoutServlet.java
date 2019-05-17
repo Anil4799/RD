@@ -10,30 +10,22 @@ import javax.servlet.http.HttpSession;
 
 import com.epam.utils.ConstantsUtility;
 
-/**
- * Servlet implementation class LogoutServlet
- */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LogoutServlet() {
-        super();
-    }
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			session.setAttribute("email", null);
 			session.invalidate();
 			String pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
-			request.getRequestDispatcher(pageUrl).forward(request, response);
+			try {
+				request.getRequestDispatcher(pageUrl).forward(request, response);
+			}catch(Exception e) {
+				
+			}
 		}
 	}
 

@@ -4,13 +4,14 @@ package com.epam.dao.mentor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import com.epam.mentor.bean.MentorBean;
 import com.epam.utils.DBManager;
 
 public class MentorDAO {
 
-	public int createMentor(MentorBean mentor) throws Exception 
+	public int createMentor(MentorBean mentor) throws SQLException 
 	{
 		
 		PreparedStatement ps=null;
