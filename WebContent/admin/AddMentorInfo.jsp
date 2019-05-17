@@ -34,15 +34,15 @@
 						</tr>
 						<tr>
 							<td class="form_lable">Email:<span class="required">*</span> </td>
-							<td><input type="text"  id="mentor_email" name="mentor_email" class="form-control form-control-sm" size="30" required/>
+							<td><input type="text"  id="mentor_email" name="mentor_email" class="form-control form-control-sm" size="30" required/></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship Start Date:<span class="required">*</span></td>
-							<td><input type="date" id="mentorship_start_date"  name="mentor_start_date" class="form-control form-control-sm" size="30" required/>
+							<td><input type="date" id="mentorship_start_date"  name="mentor_start_date" class="form-control form-control-sm" size="30" required/--></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
-							<td><input type="date" class="form-control form-control-sm" name="mentor_end_date" size="30" />
+							<td><input type="date" class="form-control form-control-sm" name="mentor_end_date" size="30" /></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>
@@ -56,7 +56,7 @@
 								<%
 								try{
 								Connection con=DBManager.getConnection();		
-								PreparedStatement ps=con.prepareStatement("select Technology from technology_stream");
+								PreparedStatement ps=con.prepareStatement("select Stream_Name from technical_stream ");
 								ResultSet rs=ps.executeQuery();
 								while(rs.next())
 								{

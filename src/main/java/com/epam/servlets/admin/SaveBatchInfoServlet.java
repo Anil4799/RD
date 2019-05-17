@@ -52,8 +52,8 @@ try {
 			String result = batchInfoServiceImpl.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status);
 			printWriter.println(result);
 			
-		} catch (SQLException sqlException) {
-			LOGGER.debug("EXCEPTION OCCURRED in SaveBatchInfoServlet.java");
+		} catch (Exception exception) {
+			LOGGER.error(exception.getMessage());
 		}
 
 	}

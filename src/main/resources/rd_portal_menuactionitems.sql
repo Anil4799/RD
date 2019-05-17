@@ -16,32 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `student_personal_info`
+-- Table structure for table `menuactionitems`
 --
 
-DROP TABLE IF EXISTS `student_personal_info`;
+DROP TABLE IF EXISTS `menuactionitems`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `student_personal_info` (
-  `First_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Last_Name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Date_Of_Birth` date NOT NULL DEFAULT '0000-00-00',
-  `Email_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Gender` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Contact` bigint(20) unsigned DEFAULT '0',
-  `Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`Email_Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `menuactionitems` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `action` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `student_personal_info`
+-- Dumping data for table `menuactionitems`
 --
 
-LOCK TABLES `student_personal_info` WRITE;
-/*!40000 ALTER TABLE `student_personal_info` DISABLE KEYS */;
-INSERT INTO `student_personal_info` VALUES ('Test','aaa','2019-05-16','qqq@ss.com','male',123213,'ertert'),('Skr','rrr','2019-05-23','sdmm@dd.com','male',0,'bnbnb');
-/*!40000 ALTER TABLE `student_personal_info` ENABLE KEYS */;
+LOCK TABLES `menuactionitems` WRITE;
+/*!40000 ALTER TABLE `menuactionitems` DISABLE KEYS */;
+INSERT INTO `menuactionitems` VALUES (1,1,1,'view'),(2,1,1,'edit'),(3,1,1,'deactivate'),(4,1,2,'view'),(5,1,2,'activate'),(6,1,3,'view'),(7,1,3,'edit'),(8,1,3,'start progress'),(9,1,4,'view'),(10,1,4,'edit'),(11,1,4,'mark complete'),(12,1,5,'view'),(13,2,1,'view'),(14,2,1,'provide feedback'),(15,2,2,'view');
+/*!40000 ALTER TABLE `menuactionitems` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-16 18:40:19
+-- Dump completed on 2019-05-16 18:40:17

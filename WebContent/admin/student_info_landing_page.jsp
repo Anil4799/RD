@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
   <%@ include file="/common/header.jspf" %>
@@ -46,27 +47,30 @@
  <c:forEach items="${students}" var="student" >
   
    <tr>
-      <th scope="row">${student.name}</th>
-      <td>${student.batch}</td>
-      <td>${student.coreSkill}</td>
-      <td>${student.mentor}</td>
-      <td>${student.status}</td>
+      <th scope="row">${student.studentName}</th>
+      <td>${student.studentBatch}</td>
+      <td>${student.studentCoreSkill}</td>
+      <td>${student.studentMentor}</td>
+      <td>${student.studentStatus}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
-		                 <ul class="dropdown-menu" role="menu">
-		                 	<c:choose>
-								  <c:when test="${student.status == 'active'}">
-								     <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Edit</a></li>
-					                <li><a class="dropdown-item" href="#">Deactivate</a></li>
-								  </c:when>
-								  <c:otherwise>
-								    <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Activate</a></li>
-								  </c:otherwise>
-								</c:choose>
+		                 <ul class="dropdown-menu ddmf" role="menu">
+		                 	 <c:forEach items="${actions}" var="action" >
+		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(action.status)}" />
+			                 	 <c:choose>
+			                 	 	<c:when test="${student.studentStatus ==  actionStatus}">
+			                
+	   										 <li><a class="dropdown-item" href="#">${action.status}-${action.action}</a></li>
+	   									
+	   							    </c:when>
+	   							    <c:otherwise>
+								    	
+								 	</c:otherwise>
+								 </c:choose>
+	    						
+							</c:forEach>
 
 					              				               					             
 					            </ul>

@@ -27,8 +27,8 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			statement.registerOutParameter(dbbatchId, Types.VARCHAR);
 			statement.execute();
 			batchId = statement.getString(dbbatchId);
-		} catch (Exception e) {
-			LOGGER.debug("EXCEPTION OCCURED.....");;
+		} catch (Exception exception) {
+			LOGGER.error(exception.getMessage());
 		} finally {
 			DBManager.closeConnection(connection);
 		}
@@ -52,12 +52,12 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			java.sql.Date edDate = java.sql.Date.valueOf(endDate);
 			statement.setDate("Start_Date", stDate);
 			statement.setDate("End_Date", edDate);
-			statement.setString("Batch_Status", status);
+			statement.setString("Status", status);
 			rowsCount = statement.executeUpdate();
 			
-		} catch (Exception e) 
+		} catch (Exception exception) 
 		{
-			LOGGER.debug("EXCEPTION OCCURED ...");
+			LOGGER.error(exception.getMessage());
 		} 
 		finally {
 			statement.close();

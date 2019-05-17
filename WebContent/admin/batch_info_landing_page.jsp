@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
+<script type="text/javascript" src="/admin-portal/js/date.js"></script>
+
+
   
     <div class="page_info">
 		<p class="page_title">Batch Info - Landing Page</p>
@@ -14,15 +17,11 @@
 				<td>
 
 				
-		 <input id="startDate" width="276"  placeholder="Start Date" class="border-right-0"/>
-		 
-		    <script type="text/javascript" src="./js/date.js"></script>
-		 
+		 <input id="startDate" width="276"  placeholder="Start Date" class=".col-sm-4.date border-right-0"/>		 
 		 </td>
 		 <td>
-		 				
 		 <input id="endDate" width="276"  placeholder="End Date" class="border-right-0"/>
-		   <script type="text/javascript" src="./js/date.js"></script>
+		  
 		  		 
 		</td>
 			
@@ -52,29 +51,36 @@
   </thead>
   <tbody>
   
+  
   <c:forEach items="${batchs}" var="batch" >
   
    <tr>
-      <th scope="row">${batch.batch_id}</th>
-      <td>${batch.start_date}</td>
-      <td>${batch.end_date}</td>
+      <th scope="row">${batch.batchid}</th>
+      <td>${batch.startdate}</td>
+      <td>${batch.enddate}</td>
       <td>${batch.status}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
-		                 <ul class="dropdown-menu" role="menu">
-		                 	<c:choose>
-								  <c:when test="${eee.status == 'active'}">
-								     <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Edit</a></li>
-					                <li><a class="dropdown-item" href="#">Deactivate</a></li>
-								  </c:when>
-								  <c:otherwise>
-								    <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Activate</a></li>
-								  </c:otherwise>
-								</c:choose>
+		                 <ul class="dropdown-menu ddmf" role="menu">
+		                 
+		 
+		                 	
+			                 	 <c:forEach items="${actions}" var="action" >
+			                 	 <c:choose>
+			 
+			                 	 	<c:when test="${batch.status == action.status}">
+			                
+	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+	   									
+	   							    </c:when>
+	   							    <c:otherwise>
+								    	
+								 	</c:otherwise>
+								 </c:choose>
+	    						
+							</c:forEach>
 
 					              				               					             
 					            </ul>
@@ -90,5 +96,5 @@
 </table>
 
  </div>
-
+ 
 <%@ include file="/common/footer.jspf"%>

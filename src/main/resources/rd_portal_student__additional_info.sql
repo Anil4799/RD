@@ -1,10 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
-<<<<<<< HEAD
 -- Host: localhost    Database: rd_portal
-=======
--- Host: 127.0.0.1    Database: rd_portal
->>>>>>> remotes/origin/EPMRDINFDP-2
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
@@ -27,7 +23,6 @@ DROP TABLE IF EXISTS `student__additional_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `student__additional_info` (
-
   `Email_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `Emp_Type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
@@ -50,10 +45,7 @@ CREATE TABLE `student__additional_info` (
 
 LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
-
-INSERT INTO `student__additional_info` VALUES ('a@b.c','lk76','temp','java','cse','cse','2015-11-03','ABC','HYD','pune','inactive'),('b@b.c','lk76','temp','java','cse','cse','2015-01-03','CBA','RNC','RNC','inactive');
-=======
-
+INSERT INTO `student__additional_info` VALUES ('qqq@ss.com','RD-Q1-2019-B1','FTE','Python','Java','.Net','2019-05-24','Ravi@epam.com','Hyderbad','yes','Active'),('sdmm@dd.com','RD-Q1-2019-B1','FTE','Python','Java','','2019-05-17','','Hyderbad','yes','Active');
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -66,5 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
--- Dump completed on 2019-05-14 15:53:48
+-- Dump completed on 2019-05-16 18:40:15
