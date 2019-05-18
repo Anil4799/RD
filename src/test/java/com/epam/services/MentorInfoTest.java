@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.epam.dao.admin.AdminMentor;
+import com.epam.dao.admin.Mentor;
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.utils.DBManager;
 
@@ -21,7 +21,7 @@ class MentorInfoTest {
 	static DBManager db;
 	static AdminMentorInfoServiceImpl mentor;
 	static Connection con=null;
-	List<AdminMentor> lsactual=null;
+	List<Mentor> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
@@ -49,7 +49,7 @@ class MentorInfoTest {
 	@Ignore
 	void test2()
 	{   lsactual =mentor.getAllMentorDetails(DBManager.getConnection());
-		AdminMentor m= lsactual.get(1);	
+		Mentor m= lsactual.get(1);	
 		lsactual =mentor.getAllMentorDetails(DBManager.getConnection());
 		String email_id=null;
 		String mentor_name=null;

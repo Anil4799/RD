@@ -24,6 +24,7 @@ public class AdminAddStudentServlet extends HttpServlet {
        
 	private static final Logger LOGGER = Logger.getLogger(AdminAddStudentServlet.class);
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		String pageUrl = null;

@@ -1,18 +1,15 @@
 package com.epam.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
-import com.epam.dao.admin.AdminMentor;
+import com.epam.dao.admin.Mentor;
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.utils.DBManager;
 
@@ -22,7 +19,7 @@ class AllMentorListTest {
 	static DBManager db;
 	static AdminMentorInfoServiceImpl mentor;
 	static Connection con=null;
-	List<AdminMentor> lsactual=null;
+	List<Mentor> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{

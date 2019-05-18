@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
-import com.epam.dao.admin.AdminMentor;
+import com.epam.dao.admin.Mentor;
 
 public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 	private static final Logger LOGGER = Logger.getLogger(AdminMentorInfoServiceImpl.class);
     
 	@Override
-	public List<AdminMentor> getAllMentorDetails(Connection con) {
+	public List<Mentor> getAllMentorDetails(Connection con) {
 		
-		List<AdminMentor> mentorList = new ArrayList<>();
+		List<Mentor> mentorList = new ArrayList<>();
 		String sql="call mentor();";
 		try(CallableStatement  cs= con.prepareCall(sql);ResultSet rs=cs.executeQuery(sql) )
 		{
@@ -21,7 +21,7 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 			{
 			while(rs.next())
 			{   
-				AdminMentor mentor=new AdminMentor();
+				Mentor mentor=new Mentor();
 				mentor.setEmailid("email_id");
 
 				mentor.setMentorname(rs.getString("Mentor_Name"));

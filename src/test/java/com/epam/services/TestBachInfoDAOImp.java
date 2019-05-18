@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.epam.dao.batch.BatchInfoDAOImpl;
+import com.epam.dao.admin.BatchInfoDAOImpl;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.mentor.bean.MentorBean;
-import com.epam.services.mentor.MentorService;
+import com.epam.dao.admin.MentorBean;
+import com.epam.services.admin.MentorService;
 
 
 

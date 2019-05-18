@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.epam.dao.admin.AdminMentor;
+import com.epam.dao.admin.Mentor;
 import com.epam.services.admin.AdminMentorInfoService;
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.services.login.Menu;
@@ -31,7 +31,7 @@ public class AdminMentorListServlet extends HttpServlet {
      @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Enter into servlet......");
-		List<AdminMentor> mentorList =null;
+		List<Mentor> mentorList =null;
 		String pageUrl=null;
 		try
 		{

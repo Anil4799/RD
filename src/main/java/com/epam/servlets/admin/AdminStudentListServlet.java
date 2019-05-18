@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import com.epam.dao.admin.AdminStudent;
+import com.epam.dao.admin.Student;
 import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
@@ -29,7 +29,7 @@ public class AdminStudentListServlet extends HttpServlet {
 	 
 	 @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<AdminStudent> studentList =null;
+		List<Student> studentList =null;
 		List<MenuAction> actionList =null;
 		LOGGER.debug("Enter into servlet......");
 		String pageUrl=null;

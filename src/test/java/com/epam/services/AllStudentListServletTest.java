@@ -1,20 +1,17 @@
 package com.epam.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
-import com.epam.dao.admin.AdminStudent;
+import com.epam.dao.admin.Student;
 import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.utils.DBManager;
 
@@ -24,7 +21,7 @@ class AllStudentListServletTest {
 	static DBManager db;
 	static AdminStudentInfoServiceImpl student;
 	static Connection con=null;
-	List<AdminStudent> lsactual=null;
+	List<Student> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
@@ -65,7 +62,7 @@ class AllStudentListServletTest {
 	@Ignore
 	void test2()
 	{   lsactual =student.getAllStudentDetails(DBManager.getConnection());
-	AdminStudent s= lsactual.get(1);
+	Student s= lsactual.get(1);
 	String name=null;
 	String batch=null;
 	String coreSkill=null;

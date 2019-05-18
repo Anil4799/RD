@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.apache.log4j.Logger;
 
-public class AdminBatch {
+public class Batch {
 	
-	private static final Logger LOGGER = Logger.getLogger( AdminBatch.class);
+	private static final Logger LOGGER = Logger.getLogger( Batch.class);
 	
 	private int batchnum;
 	private String batchid;

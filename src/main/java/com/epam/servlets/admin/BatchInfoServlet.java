@@ -4,7 +4,7 @@ import javax.servlet.http.*;
 
 import org.apache.log4j.Logger;
 
-import com.epam.services.batch.BatchInfoServiceImpl;
+import com.epam.services.admin.BatchInfoServiceImpl;
 
 import java.io.*;
 

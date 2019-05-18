@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.epam.dao.admin.AdminBatch;
+import com.epam.dao.admin.Batch;
 import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
@@ -33,7 +33,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
-		List<AdminBatch> batchList =null;
+		List<Batch> batchList =null;
 		List<MenuAction> actionList =null;
 		String pageUrl = null;
 		try

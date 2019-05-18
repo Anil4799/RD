@@ -1,6 +1,6 @@
 package com.epam.dao.admin;
 
-public class AdminMentor {
+public class Mentor {
 
 	String emailid;
 	String mentorname;

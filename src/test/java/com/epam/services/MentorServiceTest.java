@@ -8,8 +8,8 @@ import java.util.Date;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.epam.mentor.bean.MentorBean;
-import com.epam.services.mentor.MentorService;
+import com.epam.dao.admin.MentorBean;
+import com.epam.services.admin.MentorService;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 

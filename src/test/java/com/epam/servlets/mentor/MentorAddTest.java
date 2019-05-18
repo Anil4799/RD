@@ -16,8 +16,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.mentor.bean.MentorBean;
-import com.epam.services.mentor.MentorService;
+import com.epam.dao.admin.MentorBean;
+import com.epam.services.admin.MentorService;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 

@@ -31,8 +31,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.epam.dao.admin.AdminStudent" project="admin-portal" 
-    file="/admin-portal/src/main/java/com/epam/dao/admin/AdminStudent.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="com.epam.dao.admin.Student" project="admin-portal" 
+    file="/admin-portal/src/main/java/com/epam/dao/admin/Student.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="201" y="384"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -40,24 +40,24 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <dependency id="5">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="6">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="6" name="studentInfoService">        
+      <attribute id="7" name="studentInfoService">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="7" minimum="0" maximum="1">        
+      <multiplicity id="8" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="8">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
   <dependency id="9">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
   <realization id="10">    

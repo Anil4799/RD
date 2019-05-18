@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.epam.dao.admin.AdminStudent;
+import com.epam.dao.admin.Student;
 import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.utils.DBManager;
 
@@ -18,7 +18,7 @@ class StudentTest {
 	static DBManager db;
 	static AdminStudentInfoServiceImpl student;
 	static Connection con=null;
-	List<AdminStudent> lsactual=null;
+	List<Student> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
@@ -29,7 +29,7 @@ class StudentTest {
 	@Ignore
 	void Studenttest() throws Exception {
 		lsactual =student.getAllStudentDetails(DBManager.getConnection());
-		AdminStudent s= lsactual.get(1);
+		Student s= lsactual.get(1);
 		String name=null;
 		String batch=null;
 		String coreSkill=null;

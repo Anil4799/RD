@@ -1,4 +1,4 @@
-package com.epam.dao.mentor;
+package com.epam.dao.admin;
 
 
 
@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.epam.mentor.bean.MentorBean;
 import com.epam.utils.DBManager;
 
 public class MentorDAO {

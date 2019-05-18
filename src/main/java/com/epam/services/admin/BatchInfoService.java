@@ -1,4 +1,4 @@
-package com.epam.services.batch;
+package com.epam.services.admin;
 
 import java.sql.SQLException;
 

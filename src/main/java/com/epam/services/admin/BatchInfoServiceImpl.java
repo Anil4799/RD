@@ -1,8 +1,8 @@
-package com.epam.services.batch;
+package com.epam.services.admin;
 
 import java.sql.SQLException;
 
-import com.epam.dao.batch.BatchInfoDAOImpl;
+import com.epam.dao.admin.BatchInfoDAOImpl;
 
 public class BatchInfoServiceImpl implements BatchInfoService {
  BatchInfoDAOImpl batchInfoDAOImpl;

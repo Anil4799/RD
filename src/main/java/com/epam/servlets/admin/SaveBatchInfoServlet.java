@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.epam.services.batch.BatchInfoServiceImpl;
+import com.epam.services.admin.BatchInfoServiceImpl;
 
 /**
  * Servlet implementation class SaveBatchInfoServlet

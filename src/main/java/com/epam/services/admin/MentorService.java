@@ -1,10 +1,10 @@
-package com.epam.services.mentor;
+package com.epam.services.admin;
 
 
 import org.apache.log4j.Logger;
 
-import com.epam.dao.mentor.MentorDAO;
-import com.epam.mentor.bean.MentorBean;
+import com.epam.dao.admin.MentorBean;
+import com.epam.dao.admin.MentorDAO;
 
 public class MentorService {
 	private static final Logger LOGGER = Logger.getLogger(MentorService.class);

@@ -1,4 +1,4 @@
-package com.epam.dao.batch;
+package com.epam.dao.admin;
 
 import java.sql.SQLException;
 

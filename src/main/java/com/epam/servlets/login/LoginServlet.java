@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.epam.services.login.MenuItemsServiceImpl;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.services.login.LoginServiceImp;
 import com.epam.services.login.Menu;

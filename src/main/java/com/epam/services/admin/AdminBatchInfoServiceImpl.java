@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.dao.admin.AdminBatch;
+import com.epam.dao.admin.Batch;
 
 
 public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 	
 	@Override
-	public List<AdminBatch> getAllBatchsList(Connection con) {
+	public List<Batch> getAllBatchsList(Connection con) {
 		String sql="call batch();";
-		List<AdminBatch> batchList = new ArrayList<>();
+		List<Batch> batchList = new ArrayList<>();
 
 
 		try(CallableStatement cs=con.prepareCall(sql);ResultSet rs=cs.executeQuery();)
@@ -21,7 +21,7 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 
 			while(rs.next())
 			{
-				AdminBatch batch=new AdminBatch();
+				Batch batch=new Batch();
 				batch.setBatchid(rs.getString("batch_id"));
 				batch.setBatchnum(rs.getInt("batch_num"));
 				batch.setEnddate(rs.getString("end_date"));

@@ -4,20 +4,20 @@ import java.sql.ResultSet;
 import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.List;
-import com.epam.dao.admin.AdminStudent;
+import com.epam.dao.admin.Student;
 
 public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 
 	@Override
-	public List<AdminStudent> getAllStudentDetails(Connection con) {
+	public List<Student> getAllStudentDetails(Connection con) {
 		
-		List<AdminStudent> studentList = new ArrayList<>();
+		List<Student> studentList = new ArrayList<>();
 		String sql="call student();";
 		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();)
 		{
 			while(rs.next())
 			{
-				AdminStudent student=new AdminStudent();
+				Student student=new Student();
 				String firstName=rs.getString(1);
 				String lastName=rs.getString(2);
 				String name=firstName+" "+lastName;

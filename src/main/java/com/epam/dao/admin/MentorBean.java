@@ -1,4 +1,4 @@
-package com.epam.mentor.bean;
+package com.epam.dao.admin;
 
 import java.util.Date;
 

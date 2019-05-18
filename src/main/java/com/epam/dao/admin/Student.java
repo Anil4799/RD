@@ -1,6 +1,6 @@
 package com.epam.dao.admin;
 
-public class AdminStudent {
+public class Student {
 	String studentName;
 	String studentBatch;
 	String studentCoreSkill;

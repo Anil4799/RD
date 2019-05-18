@@ -1,11 +1,8 @@
 package com.epam.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-import org.junit.jupiter.api.Test;
-
-import com.epam.dao.batch.BatchInfoDAOImpl;
+import com.epam.dao.admin.BatchInfoDAOImpl;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
