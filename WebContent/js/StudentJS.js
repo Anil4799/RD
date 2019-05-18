@@ -129,7 +129,7 @@ function closeAlertPopup(){
 	}
 }
 function gotoStudentLandingPage(){   
-	document.location.href = '/admin-portal/studentList';	
+	document.location.href = 'studentList';	
 }
 
 

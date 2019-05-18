@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.epam.services.login.MenuItemsServiceImpl;
+import com.epam.services.login.MenuItemsSingleton;
 import com.epam.services.login.LoginServiceImp;
 import com.epam.services.login.Menu;
 import com.epam.utils.ConstantsUtility;
@@ -24,7 +25,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
 	private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	private HttpSession session;
+	private static HttpSession session=null;
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,11 +42,11 @@ public class LoginServlet extends HttpServlet implements Serializable {
 			int roleId = new LoginServiceImp().login(email, password);
 			if (roleId == 1) {
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADMIN_HOME_PAGE);
-				List<Menu> menuList = new MenuItemsServiceImpl().getMenuItems(roleId);
+				List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems(roleId);
 				session = request.getSession(true);
 				session.setAttribute(ConstantsUtility.EMAIL, email);
 				session.setAttribute(ConstantsUtility.ROLE, roleId);
-				session.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+				request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			} else if(roleId == 2){ 
 				pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.MENTOR_HOME_PAGE);
 				List<Menu> menuList = new MenuItemsServiceImpl().getMenuItems(roleId);

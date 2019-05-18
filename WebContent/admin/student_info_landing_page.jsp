@@ -26,7 +26,7 @@
 		</td>
 		<td><div class="button">
 		
-			<a href="/admin-portal/admin/AddStudentInfo.jsp" class="btn btn-success"> ADD NEW STUDENT</a>
+			<a href="addStudent" class="btn btn-success"> ADD NEW STUDENT</a>
 			</div></td> 
 		</tr>
 		</table>
@@ -62,7 +62,7 @@
 			                 	 <c:choose>
 			                 	 	<c:when test="${student.studentStatus ==  actionStatus}">
 			                
-	   										 <li><a class="dropdown-item" href="#">${action.status}-${action.action}</a></li>
+	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>

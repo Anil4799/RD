@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.*;
 import com.epam.dao.mentor.MentorStudent;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
 import com.epam.services.mentor.MentorStudentInfoService;
 import com.epam.services.mentor.MentorStudentInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
@@ -34,6 +36,8 @@ public class MentorStudentListServlet extends HttpServlet {
 			studentList=studentInfoService.mentorStudentDetails(con,mentoremailid);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTORSTUDENT_INFO);
 			request.setAttribute("students", studentList);
+			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");
 		}
 		catch(Exception e)

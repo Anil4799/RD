@@ -46,6 +46,10 @@
     <param-value>/error.jsp</param-value>
   </context-param>
    <context-param>
+    <param-name>ADD_PAGE_FOR_STUDENT_INFO</param-name>
+    <param-value>/admin/AddStudentInfo.jsp</param-value>
+  </context-param>
+   <context-param>
     <param-name>ADD_PAGE_FOR_BATCH_INFO</param-name>
     <param-value>/admin/AdminAddBatch.jsp</param-value>
   </context-param>

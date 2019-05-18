@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 import com.epam.dao.admin.AdminBatch;
 import com.epam.services.admin.AdminBatchInfoService;
 import com.epam.services.admin.AdminBatchInfoServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
@@ -33,6 +35,8 @@ public class AdminAddMentorServlet extends HttpServlet {
 		try
 		{
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADD_PAGE_FOR_MENTOR_INFO);
+			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "MENTOR INFO");
 
 		}

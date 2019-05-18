@@ -14,6 +14,8 @@ import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminStudentInfoService;
 import com.epam.services.admin.AdminStudentInfoServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
@@ -39,6 +41,8 @@ public class AdminStudentListServlet extends HttpServlet {
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO);
 			request.setAttribute("students", studentList);
 			request.setAttribute("actions", actionList);
+			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");
 		}
 		catch(Exception e)

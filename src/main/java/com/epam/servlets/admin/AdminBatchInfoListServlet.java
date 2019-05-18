@@ -18,6 +18,8 @@ import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminBatchInfoService;
 import com.epam.services.admin.AdminBatchInfoServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
@@ -44,6 +46,8 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
 			request.setAttribute("batchs", batchList);
 			request.setAttribute("actions", actionList);
+			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "BATCH INFO");
 
 		}

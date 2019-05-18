@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import com.epam.dao.admin.AdminMentor;
 import com.epam.services.admin.AdminMentorInfoService;
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
@@ -39,6 +41,8 @@ public class AdminMentorListServlet extends HttpServlet {
 			mentorList=mentorInfoService.getAllMentorDetails(con);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_INFO);
 			request.setAttribute("mentors", mentorList);	
+			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "MENTOR INFO");
 		}
 		catch(Exception e)
