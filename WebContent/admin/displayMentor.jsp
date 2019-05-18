@@ -57,7 +57,7 @@
 								<%
 								try{
 								Connection con=DBManager.getConnection();		
-								PreparedStatement ps=con.prepareStatement("select coursename from TechnologyStream");
+								PreparedStatement ps=con.prepareStatement("select coursename from technical_stream");
 								ResultSet rs=ps.executeQuery();
 								while(rs.next())
 								{

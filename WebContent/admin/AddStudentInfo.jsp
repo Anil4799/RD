@@ -368,7 +368,7 @@
   						
   						%>
   						
-							<option value="<%=employeeStatus	%>"><%=employeeStatus %></option>
+							<option value="<%=employeeStatus.toLowerCase()%>"><%=employeeStatus %></option>
 							<% } %>
 							</select>
 						</span>

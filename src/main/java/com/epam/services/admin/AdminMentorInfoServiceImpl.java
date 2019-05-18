@@ -29,7 +29,7 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 				mentor.setMentorshipenddate(rs.getString("mentorship_end_date"));
 				mentor.setMaxnoofmentees(rs.getString("max_no_mentees"));
 				mentor.setTechnologystream(rs.getString("technology_stream"));
-				mentor.setStatus(rs.getString("status"));
+				mentor.setMentorStatus(rs.getString("status"));
 				mentorList.add(mentor);
 			}
 			

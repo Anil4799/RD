@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
   <%@ include file="/common/header.jspf" %>
@@ -39,29 +40,32 @@
   </thead>
   <tbody>
   
-  <c:forEach items="${mentors}" var="eee" >
+  <c:forEach items="${mentors}" var="mentor" >
   
    <tr>
-      <th scope="row">${eee.mentorname}</th>
-      <td>${eee.technologystream}</td>
-      <td>${eee.status}</td>
+      <th scope="row">${mentor.mentorname}</th>
+      <td>${mentor.technologystream}</td>
+      <td>${mentor.mentorStatus}</td>
     
         <td><div class="btn-group" dropdown>
             
 		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
-		                 	<c:choose>
-								  <c:when test="${eee.status == 'active'}">
-								     <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Edit</a></li>
-					                <li><a class="dropdown-item" href="#">Deactivate</a></li>
-								  </c:when>
-								  <c:otherwise>
-								    <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Activate</a></li>
-								  </c:otherwise>
-								</c:choose>
+		                 	<c:forEach items="${actions}" var="action" >
+		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(action.statusName)}" />
+			                 	 <c:choose>
+			                 	 	<c:when test="${mentor.mentorStatus ==  actionStatus}">
+			                
+	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+	   									
+	   							    </c:when>
+	   							    <c:otherwise>
+								    	
+								 	</c:otherwise>
+								 </c:choose>
+	    						
+							</c:forEach>
 
 					              				               					             
 					            </ul>

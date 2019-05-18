@@ -8,9 +8,15 @@ public class Mentor {
 	String 	mentorshipenddate;
 	String maxnoofmentees;
 	String technologystream;
-	String status;
+	String mentorStatus;
 	public String getEmailid() {
 		return emailid;
+	}
+	public String getMentorStatus() {
+		return mentorStatus;
+	}
+	public void setMentorStatus(String mentorStatus) {
+		this.mentorStatus = mentorStatus;
 	}
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
@@ -45,12 +51,9 @@ public class Mentor {
 	public void setTechnologystream(String technologystream) {
 		this.technologystream = technologystream;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
+
+	
 	
 	
 	

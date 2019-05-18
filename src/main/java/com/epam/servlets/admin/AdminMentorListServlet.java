@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.Mentor;
+import com.epam.dao.admin.MenuAction;
+import com.epam.services.MenuActionItemService;
+import com.epam.services.MenuActionItemServiceImpl;
 import com.epam.services.admin.AdminMentorInfoService;
 import com.epam.services.admin.AdminMentorInfoServiceImpl;
 import com.epam.services.login.Menu;
@@ -26,21 +29,26 @@ public class AdminMentorListServlet extends HttpServlet {
 	
 
 	 private static final AdminMentorInfoService mentorInfoService = new AdminMentorInfoServiceImpl();
+	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
 
 		
      @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Enter into servlet......");
 		List<Mentor> mentorList =null;
+		List<MenuAction> actionList =null;
 		String pageUrl=null;
 		try
 		{
 			
 			
 			Connection con=DBManager.getConnection();
+			int role= (int) request.getSession(true).getAttribute("role");
+			actionList=menuActionItemService.getMenuActionList(con,role);
 			mentorList=mentorInfoService.getAllMentorDetails(con);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_INFO);
-			request.setAttribute("mentors", mentorList);	
+			request.setAttribute("mentors", mentorList);
+			request.setAttribute("actions", actionList);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute("pageState", "MENTOR INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);

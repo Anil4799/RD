@@ -83,9 +83,9 @@
 							<td class="form_lable">Status:<span class="required">*</span> </td>
 							<td>
 								<select id="mentor_status" name="mentor_status" class="form-control form-control-sm" required>										
-									<option >ACTIVE</option>
-									<option>INACTIVE</option>
-									<option >ONHOLD</option>
+									<option value="active">ACTIVE</option>
+									<option value="inactive">INACTIVE</option>
+									<option value="onhold">ONHOLD</option>
 								</select>
 							</td>
 						</tr>
