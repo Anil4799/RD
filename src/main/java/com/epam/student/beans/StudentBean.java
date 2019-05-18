@@ -183,38 +183,6 @@ public class StudentBean {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public StudentBean(String firstName, String lastName, Date dob, String email, String gender, long contactNumber,
-			String personalLocation, String collegeName, String collegeLocation, String graduation,
-			String graduationSpeciality, int yearOfPassedOut, int graduationMarks, int twelveth, int tenth,
-			String batchId, String employeeType, String coreSkill, String preferredStudentStream, String assignedStream,
-			Date dateOfJoining, String mentorName, String assignedLocation, String relocation, String status) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
-		this.email = email;
-		this.gender = gender;
-		this.contactNumber = contactNumber;
-		this.personalLocation = personalLocation;
-		this.collegeName = collegeName;
-		this.collegeLocation = collegeLocation;
-		this.graduation = graduation;
-		this.graduationSpeciality = graduationSpeciality;
-		this.yearOfPassedOut = yearOfPassedOut;
-		this.graduationMarks = graduationMarks;
-		this.twelveth = twelveth;
-		this.tenth = tenth;
-		this.batchId = batchId;
-		this.employeeType = employeeType;
-		this.coreSkill = coreSkill;
-		this.preferredStudentStream = preferredStudentStream;
-		this.assignedStream = assignedStream;
-		this.dateOfJoining = dateOfJoining;
-		this.mentorName = mentorName;
-		this.assignedLocation = assignedLocation;
-		this.relocation = relocation;
-		this.status = status;
-	}
 	
 	public StudentBean() {
 		

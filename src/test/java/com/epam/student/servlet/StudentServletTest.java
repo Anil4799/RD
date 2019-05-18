@@ -90,7 +90,7 @@ class StudentServletTest {
 		when( request.getParameter("relocation")).thenReturn("Yes");
 		when( request.getParameter("status")).thenReturn("Active");
 
-		StudentBean studentBean=new StudentBean("vijay", "kumar", Date.valueOf("2009-05-05"), "vijay4566@gmail.com", "male", 894173,"chna", "BVRIT", "Chandigarh", "BE", "CSE", 2013, 100, 100, 100, "RD-Q1-2019-B1", "FTE", "Java", "Java", "Java", Date.valueOf("2019-04-30"), "Durga", "Hyderabad", "Yes", "Active");
+		StudentBean studentBean=new StudentBean();
 
 		when(serviceimp.addStudentDetails(studentBean)).thenReturn(true);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);

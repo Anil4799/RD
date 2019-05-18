@@ -1,7 +1,6 @@
 package com.epam.servlets.admin;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,13 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.epam.dao.admin.AdminBatch;
-import com.epam.services.admin.AdminBatchInfoService;
-import com.epam.services.admin.AdminBatchInfoServiceImpl;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
-import com.epam.utils.DBManager;
 
 /**
  * Servlet implementation class BatchInfoListServlet
@@ -29,6 +24,7 @@ public class AdminAddMentorServlet extends HttpServlet {
        
 	private static final Logger LOGGER = Logger.getLogger(AdminAddMentorServlet.class);
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		String pageUrl = null;

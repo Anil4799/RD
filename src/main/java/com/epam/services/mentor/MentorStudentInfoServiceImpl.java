@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.epam.dao.mentor.MentorStudent;
-import com.epam.servlets.mentor.MentorStudentListServlet;
 
 public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 	private static final Logger LOGGER = Logger.getLogger(MentorStudentInfoServiceImpl.class);

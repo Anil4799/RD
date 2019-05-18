@@ -2,16 +2,15 @@ package com.epam.servlets.admin;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javax.servlet.http.HttpSession;
-
-
 import org.apache.log4j.Logger;
+
 import com.epam.dao.admin.AdminBatch;
 import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
@@ -64,7 +63,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			LOGGER.debug("Exit from Servlet...............");
+			LOGGER.debug(e.getMessage());
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
