@@ -36,30 +36,35 @@
     </tr>
   </thead>
   <tbody>
- <c:forEach items="${students}" var="eee" >
+ <c:forEach items="${students}" var="ms" >
   
    <tr>
-      <th scope="row">${eee.name}</th>
-      <td>${eee.batch}</td>
-      <td>${eee.coreSkill}</td>
-      <td>${eee.status}</td>
+      <th scope="row">${ms.name}</th>
+      <td>${ms.batch}</td>
+      <td>${ms.coreSkill}</td>
+      <td>${ms.status}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle" data-toggle="dropdown" >
+		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
-		                 <ul class="dropdown-menu" role="menu">
-		                 	<c:choose>
-								  <c:when test="${eee.status == 'active'}">
-								     <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Edit</a></li>
-					                <li><a class="dropdown-item" href="#">Deactivate</a></li>
-								  </c:when>
-								  <c:otherwise>
-								    <li><a class="dropdown-item" href="#">View</a></li>
-					                <li><a class="dropdown-item" href="#">Activate</a></li>
-								  </c:otherwise>
-								</c:choose>
-
+		                 <ul class="dropdown-menu ddmf" role="menu">
+		                 
+		 
+		                 	
+			                 	 <c:forEach items="${actions}" var="action" >
+			                 	 <c:choose>
+			 
+			                 	 	<c:when test="${ms.status == action.statusName}">
+			                
+	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+	   									
+	   							    </c:when>
+	   							    <c:otherwise>
+								    	
+								 	</c:otherwise>
+								 </c:choose>
+	    						
+							</c:forEach>
 					              				               					             
 					            </ul>
 					             

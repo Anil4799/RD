@@ -5,6 +5,14 @@
 <script type="text/javascript" src="/admin-portal/js/date.js"></script>
 
 
+<head>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+
   
     <div class="page_info">
 		<p class="page_title">Batch Info - Landing Page</p>
@@ -12,16 +20,16 @@
     
     <div class="container">
 
-		<table class="table">
+		<table class="table" >
 				<tr>
-				<td>
-
-				
-		 <input id="startDate" width="276"  placeholder="Start Date" class=".col-sm-4.date border-right-0"/>		 
+				<td >
+		<input id="startDate" width="276"  placeholder="Start Date" class=" border-right-0"/>
+			 	 <script type="text/javascript" src="./js/date.js"></script>
+		 
 		 </td>
-		 <td>
-		 <input id="endDate" width="276"  placeholder="End Date" class="border-right-0"/>
-		  
+		 <td>		 	
+		 <input id="endDate" width="276"  placeholder="End Date" class=" border-right-0 "/>
+		   <script type="text/javascript" src="./js/date.js"></script>
 		  		 
 		</td>
 			
@@ -69,7 +77,7 @@
 		                 	
 			                 	 <c:forEach items="${actions}" var="action" >
 			                 	 <c:choose>
-			 
+			  
 			                 	 	<c:when test="${batch.status == action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
