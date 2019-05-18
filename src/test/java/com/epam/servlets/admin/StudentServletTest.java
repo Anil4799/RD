@@ -1,4 +1,4 @@
-package com.epam.student.servlet;
+package com.epam.servlets.admin;
 
 import static org.mockito.ArgumentMatchers.anyString;
 
@@ -18,10 +18,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.student.beans.StudentBean;
-import com.epam.student.services.StudentServiceImpl;
-import com.epam.student.servlets.StudentServlet;
-
+import com.epam.dao.admin.StudentBean;
+import com.epam.services.admin.StudentServiceImpl;
+import com.epam.servlets.admin.StudentServlet;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 

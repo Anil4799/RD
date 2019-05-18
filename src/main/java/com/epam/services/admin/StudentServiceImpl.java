@@ -1,4 +1,4 @@
-package com.epam.student.services;
+package com.epam.services.admin;
 
 import java.sql.Connection;
 import org.apache.log4j.Logger;
@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import com.epam.student.beans.StudentBean;
+import com.epam.dao.admin.StudentBean;
 import com.epam.utils.DBManager;
 
 public class StudentServiceImpl implements StudentService {

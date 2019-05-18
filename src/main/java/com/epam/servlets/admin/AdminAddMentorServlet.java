@@ -43,7 +43,11 @@ public class AdminAddMentorServlet extends HttpServlet {
 			LOGGER.error(e.getMessage());
 		}
 		
-		request.getRequestDispatcher(pageUrl).forward(request, response);
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		} catch (Exception e) {
+			LOGGER.debug(e.getMessage());
+		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
 

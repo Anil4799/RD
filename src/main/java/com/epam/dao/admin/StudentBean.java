@@ -1,4 +1,4 @@
-package com.epam.student.beans;
+package com.epam.dao.admin;
 
 import java.util.Date;
 

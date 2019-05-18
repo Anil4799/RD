@@ -18,9 +18,13 @@ public class MentorService {
 			{
 				result= "invalid";	
 			}
-			MentorDAO mdao=new MentorDAO();
-			mdao.createMentor(mentor);
-			result= "success";
+			else
+			{
+				MentorDAO mdao=new MentorDAO();
+				mdao.createMentor(mentor);
+				result= "success";
+			}
+			
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
 		}

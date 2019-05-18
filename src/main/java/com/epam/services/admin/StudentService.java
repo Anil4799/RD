@@ -1,6 +1,6 @@
-package com.epam.student.services;
+package com.epam.services.admin;
 
-import com.epam.student.beans.StudentBean;
+import com.epam.dao.admin.StudentBean;
 
 public interface StudentService {
 	boolean addStudentDetails(StudentBean studentBean);

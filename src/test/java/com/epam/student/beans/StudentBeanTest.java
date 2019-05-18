@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Date;
 import org.junit.jupiter.api.Test;
 
+import com.epam.dao.admin.StudentBean;
+
 class StudentBeanTest {
 
 	@Test

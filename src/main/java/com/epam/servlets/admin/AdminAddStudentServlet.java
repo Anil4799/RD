@@ -1,7 +1,6 @@
 package com.epam.servlets.admin;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,13 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.epam.dao.admin.AdminBatch;
-import com.epam.services.admin.AdminBatchInfoService;
-import com.epam.services.admin.AdminBatchInfoServiceImpl;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
-import com.epam.utils.DBManager;
 
 /**
  * Servlet implementation class BatchInfoListServlet
@@ -36,18 +31,24 @@ public class AdminAddStudentServlet extends HttpServlet {
 		{
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADD_PAGE_FOR_STUDENT_INFO);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
-			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+			
 
 		}
-		catch(Exception e)
+		catch(Exception e1)
 		{
+			LOGGER.error(e1.getMessage());
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
-			request.setAttribute("errorMsg", e.getMessage());
-			LOGGER.error(e.getMessage());
+			request.setAttribute("errorMsg", e1.getMessage());
+			
 		}
 		
-		request.getRequestDispatcher(pageUrl).forward(request, response);
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		} catch (Exception e1) {
+			LOGGER.debug(e1.getMessage());
+		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
 

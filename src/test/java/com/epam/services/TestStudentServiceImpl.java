@@ -1,4 +1,4 @@
-package com.epam.student.service;
+package com.epam.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Date;
 import org.junit.jupiter.api.Test;
 
-import com.epam.student.beans.StudentBean;
-import com.epam.student.services.StudentServiceImpl;
+import com.epam.dao.admin.StudentBean;
+import com.epam.services.admin.StudentServiceImpl;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 

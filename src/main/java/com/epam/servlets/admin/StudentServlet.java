@@ -1,4 +1,4 @@
-package com.epam.student.servlets;
+package com.epam.servlets.admin;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.student.beans.StudentBean;
-import com.epam.student.services.StudentService;
-import com.epam.student.services.StudentServiceImpl;
+import com.epam.dao.admin.StudentBean;
+import com.epam.services.admin.StudentService;
+import com.epam.services.admin.StudentServiceImpl;
 
 import org.apache.log4j.Logger;
 
