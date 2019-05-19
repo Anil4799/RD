@@ -373,7 +373,7 @@ table.b, table tr.b, table td.b {
 	background-color:#ffffff;
 	font-family:"Oswald";
 	 position: relative;
-    z-index: 9999;
+   
 }  
 
 .gj-datepicker [role=right-icon] {
