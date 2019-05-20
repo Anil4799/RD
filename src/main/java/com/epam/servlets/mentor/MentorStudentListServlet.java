@@ -31,8 +31,7 @@ public class MentorStudentListServlet extends HttpServlet {
 		
 		try(Connection con=DBManager.getConnection();)
 		{
-			HttpSession session=request.getSession(false);  
-			String mentoremailid=(String)session.getAttribute("email"); 
+			String mentoremailid=(String)request.getSession(true).getAttribute(ConstantsUtility.EMAIL); 
 			studentList=studentInfoService.mentorStudentDetails(con,mentoremailid);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTORSTUDENT_INFO);
 			request.setAttribute("students", studentList);
