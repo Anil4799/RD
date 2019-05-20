@@ -5,7 +5,9 @@ import org.apache.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.epam.dao.admin.StudentBean;
 import com.epam.utils.DBManager;
@@ -164,7 +166,31 @@ public class StudentServiceImpl implements StudentService {
   		}
 		 LOGGER.debug("Exit from StudentServiceImpl Class..............."); 
 		    return result;
-	}}		
+	}
+	
+	public List<String> getCollegNames()
+	{
+		List<String> ls=new ArrayList();
+		try {
+			
+			Connection connection = DBManager.getConnection();
+				String collegeName = null, collegeLocation = "";
+				PreparedStatement preparedStatement = connection.prepareStatement("select college_name, location from student_college_info");
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while(resultSet.next())
+				{
+					collegeName = resultSet.getString("college_name");
+					ls.add(collegeName);
+			   }
+		} catch (Exception e) {
+			LOGGER.debug(e.getMessage()); 
+		}
+		
+		return ls;
+	}
+
+
+}		
 			
 			
 			

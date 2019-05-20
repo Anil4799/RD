@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.epam.services.admin.StudentService;
+import com.epam.services.admin.StudentServiceImpl;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
@@ -21,6 +23,7 @@ import com.epam.utils.ConstantsUtility;
 @WebServlet("/addStudent")
 public class AdminAddStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	StudentService studentService = new StudentServiceImpl();
        
 	private static final Logger LOGGER = Logger.getLogger(AdminAddStudentServlet.class);
 
@@ -32,6 +35,8 @@ public class AdminAddStudentServlet extends HttpServlet {
 		{
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADD_PAGE_FOR_STUDENT_INFO);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			List<String> collegeNames=studentService.getCollegNames();
+			request.setAttribute("collegeNames", collegeNames);
 			request.setAttribute("pageState", "STUDENT INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			

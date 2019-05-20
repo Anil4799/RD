@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/common/header.jspf" %> 
 <script src="/admin-portal/js/StudentJS.js"></script>
 
@@ -99,18 +100,10 @@
   						<span style="float:right;width:34%" >
   							<select name="collegeName" class="form-control form-control-sm" on change="setLocation(this.value)" >
   						 
-  						<% Connection connection = DBManager.getConnection();
-  						String collegeName = null, collegeLocation = "";
-  						PreparedStatement preparedStatement = connection.prepareStatement("select college_name, location from student_college_info");
-  						ResultSet resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							collegeName = resultSet.getString("college_name");
-  						
-  						%>
-  						
-							<option value="<%=collegeName+"$"+resultSet.getString("Location")%>"><%=collegeName %></option>
-							<% } %>
+  						 <c:forEach items="${collegeNames}" var="cn" >
+							<option value="${cn}>">${cn}</option>
+						</c:forEach>
+						
 							</select>
   						</span>
   					</div>
@@ -119,7 +112,7 @@
     					Location:
     					<span style="float:right;width:34%" >
     					
-    					<input name="collegeLocation" type="text" class="form-control form-control-sm"  value="<%=collegeLocation %>"/>
+    					<input name="collegeLocation" type="text" class="form-control form-control-sm"  value=""/>
     					</span>
     				</div>
 					<br>
@@ -192,6 +185,9 @@
 					       <option value="NULL"></option>
 					      <%
 					        String batchId = "";
+					      Connection connection = DBManager.getConnection();
+					      PreparedStatement preparedStatement=null;
+					      ResultSet resultSet =null;
 					         preparedStatement = connection.prepareStatement("select Batch_Id from batch_info");
 					         resultSet = preparedStatement.executeQuery();
 					        while(resultSet.next())
