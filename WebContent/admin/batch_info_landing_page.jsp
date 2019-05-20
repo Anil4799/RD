@@ -1,4 +1,6 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
@@ -78,14 +80,16 @@
 		 
 		                 	
 			                 	 <c:forEach items="${actions}" var="action" >
+			                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
 			                 	 <c:choose>
 			  
-			                 	 	<c:when test="${batch.status == action.statusName}">
+			                 	 	<c:when test="${actionStatus == action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
+								    		  
 								    	
 								 	</c:otherwise>
 								 </c:choose>

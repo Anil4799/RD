@@ -1,4 +1,6 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -49,14 +51,15 @@
       <td><div class="btn-group" dropdown>
             
 		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
-		          
+		          		
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 
 		 
 		                 	
 			                 	 <c:forEach items="${actions}" var="action" >
+			                 	  <c:set var = "actionStatus" value = "${fn:toLowerCase(action.statusName)}" />
 			                 	 <c:choose>
-			 
+			 	
 			                 	 	<c:when test="${ms.status == action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
@@ -66,7 +69,7 @@
 								    	
 								 	</c:otherwise>
 								 </c:choose>
-	    						
+	    					
 							</c:forEach>
 					              				               					             
 					            </ul>
