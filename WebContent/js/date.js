@@ -4,6 +4,7 @@ var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date()
        iconsLibrary: 'fontawesome',
        minDate: today,
        orientation: 'top auto',
+       format: 'MM-DD-YY' ,
        maxDate: function () {
            return $('#endDate').val();
        }
@@ -12,6 +13,7 @@ var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date()
        uiLibrary: 'bootstrap4',
        iconsLibrary: 'fontawesome',
        orientation: 'top auto',
+       format: 'MM-DD-YY' ,
        minDate: function () {
            return $('#startDate').val();
        }
