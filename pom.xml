@@ -33,10 +33,10 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jsp-api</artifactId>
-		    <version>2.0</version>
-		    <scope>provided</scope>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -79,26 +79,26 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		
-		<dependency>
-		    <groupId>com.github.h-thurow</groupId>
-		    <artifactId>tomcat8jndi</artifactId>
-		    <version>1.0.0</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
-<dependency>
-    <groupId>org.apache.tomcat</groupId>
-    <artifactId>tomcat-dbcp</artifactId>
-    <version>9.0.19</version>
-</dependency>
 
-<!-- https://mvnrepository.com/artifact/jstl/jstl -->
-<dependency>
-    <groupId>jstl</groupId>
-    <artifactId>jstl</artifactId>
-    <version>1.2</version>
-</dependency>
+		<dependency>
+			<groupId>com.github.h-thurow</groupId>
+			<artifactId>tomcat8jndi</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-dbcp</artifactId>
+			<version>9.0.19</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 	</dependencies>
 
@@ -136,7 +136,21 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.8</version>
 				<configuration>
-				<!-- 	<destFile>${sonar.jacoco.reportPaths}</destFile> -->
+					<!-- <destFile>${sonar.jacoco.reportPaths}</destFile> -->
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					
+						<excludes>
+							<exclude>com/epam/dao/login/*.class</exclude>
+							<exclude>com/epam/dao/admin/BatchInfoDAOImpl.class</exclude>
+							<exclude>com/epam/dao/mentor/*.class</exclude>
+							<exclude>com/epam/dao/admin/MentorDAO.class</exclude>
+							<exclude>com/epam/dao/admin/Mentor.class</exclude>
+							<exclude>com/epam/dao/admin/Student.class</exclude>
+						</excludes>
+					
 					<append>true</append>
 				</configuration>
 
@@ -166,9 +180,9 @@
 				</executions>
 
 			</plugin>
-			
-			
-			
+
+
+
 		</plugins>
 	</build>
 
