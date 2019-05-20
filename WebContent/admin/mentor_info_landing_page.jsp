@@ -21,7 +21,7 @@
 			
 		</td>
 		<td>
-		<i class="fa fa-search" aria-hidden="true"></i>
+		<i class="fa fa-search" style="color:lightgrey" aria-hidden="true"></i>
 		</td>
 		<td><div class="button">
 			<a href="addMentor" class="btn btn-success"> ADD NEW MENTOR</a>
@@ -49,7 +49,7 @@
     
         <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	<c:forEach items="${actions}" var="action" >
