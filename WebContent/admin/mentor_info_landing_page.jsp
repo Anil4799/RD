@@ -21,7 +21,9 @@
 			
 		</td>
 		<td>
-		<i class="fa fa-search" style="color:lightgrey" aria-hidden="true"></i>
+
+		<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
+
 		</td>
 		<td><div class="button">
 			<a href="addMentor" class="btn btn-success"> ADD NEW MENTOR</a>
@@ -61,7 +63,6 @@
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
-								    	
 								 	</c:otherwise>
 								 </c:choose>
 	    						

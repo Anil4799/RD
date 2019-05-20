@@ -827,5 +827,16 @@ table td, .table th {
 
 .xyz {
 	background: #EBEBEB;
-	border-color: #EBEBEB;
+
+	border-color:#EBEBEB;
+}
+ 
+.searchIcon {
+	 position:relative;
+	 color:#bebebe;
+	 aria-hidden:true;
+	 opacity:100;
+	 border:none;
+	 background-color:#ececec;
+	 padding: 12px 24px;
 }
