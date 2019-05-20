@@ -1,13 +1,15 @@
 <%@ include file="/common/header.jspf" %> 
 <script src="/admin-portal/js/StudentJS.js"></script>
 
+  <div class="page_info">
+		<p class="page_title">ADD STUDENT</p>
+	</div>
+
 
 <div class="container container-custom" style="text-transform: none; max-width=100%">
  
   <!---Body--->  
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background: white;">
-	<font size="+2">ADD STUDENT</font>
-	</div>
+	
 	<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC; z-index: 10;">	
 			<div style="margin: 10px 0px 20px 10px;">
 				RD Portal Says

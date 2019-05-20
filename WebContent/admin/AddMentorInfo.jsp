@@ -6,6 +6,10 @@
 				border: 0px;
 			}
 		</style>	
+		
+		<div class="page_info">
+		<p class="page_title">ADD MENTOR</p>
+	</div>
 	
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px; padding-top: 1px;">		
 		<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC;">	
@@ -16,7 +20,6 @@
 			</div>
 			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF" onClick="closeAlertPopup()">OK</span>		
 		</div>		
-		<div class="add_mentor_head">ADD MENTOR</div>
 		<div>
 			<div>	
 				<table width="100%">

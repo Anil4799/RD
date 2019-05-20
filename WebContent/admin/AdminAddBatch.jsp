@@ -4,6 +4,10 @@
 				border: 0px;
 			}
 		</style>
+		
+		<div class="page_info">
+		<p class="page_title">ADD BATCH</p>
+	</div>
 
 		  <div style="font-family: 'Oswald', sans-serif; text-transform : none; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
 		  <div id="dialogoverlay"></div>
@@ -17,7 +21,7 @@
 			<div id="batch_added_message" class="batch_added_message" style="padding: 7px 10px 5px 40px;">
 			
 			</div>
-			<div class="add_batch_head">ADD BATCH</div>
+			
 			<div>
 				<div>	
 					<table class="getwidth">
