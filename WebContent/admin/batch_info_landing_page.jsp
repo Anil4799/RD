@@ -23,20 +23,20 @@
 		<table class="table" >
 				<tr style="float:left">
 				<td >
-		<input id="startDate" width="276"  placeholder="Start Date" class="col-md-8 border-right-0"/>
+		<input id="startDate" width="300"  placeholder="Start Date" class="col-md-11 border-right-0"/>
 			 	 <script type="text/javascript" src="./js/date.js"></script>
 		 
 		 </td>
 		 <td>		 	
-		 <input id="endDate" width="276"  placeholder="End Date" class="col-md-8 border-right-0 "/>
+		 <input id="endDate" width="300"  placeholder="End Date" class="col-md-11 border-right-0 "/>
 		   <script type="text/javascript" src="./js/date.js"></script>
 		  		 
 		</td>
-			<td>
-		<i class="fa fa-search" style="color:lightgrey" aria-hidden="true"></i>
-		</td>
+		<td>
+			 
+  		<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
 		
-
+		</td>
 		<td><div class="button">
 			<a href="addBatch" class="btn btn-success"> ADD NEW BATCH</a>
 
