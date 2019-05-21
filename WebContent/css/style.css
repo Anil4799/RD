@@ -159,6 +159,23 @@ body {
 	padding-bottom: 10px;
 }
 
+.dropdown-item1 {
+	display: block;
+	width: 100%;
+	padding: 2px;
+	clear: both;
+	font-weight: 400;
+	color: #fff;
+	text-align: left;
+	white-space: nowrap;
+	background-color: transparent;
+	border: 0;
+	font-family: Oswald;
+	padding-left: 15px;
+	padding-right: 50px;
+	padding-bottom: 10px;
+}
+
 .dropdown-menu {
 	top: 100%;
 	left: 0;
@@ -169,16 +186,22 @@ body {
 	padding: .5rem 0;
 	margin: .125rem 0 0;
 	font-size: 1rem;
-	color: #212529;
+	color: #fff;
 	text-align: left;
 	list-style: none;
-	background-color: #fff;
+	background-color: #000;
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .15);
 	border-radius: .25rem;
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
+	color: #000000;
+	text-decoration: none;
+	background-color: #ebebeb;
+}
+
+.dropdown-item1:focus, .dropdown-item1:hover {
 	color: #000000;
 	text-decoration: none;
 	background-color: #ebebeb;
