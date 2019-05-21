@@ -6,28 +6,28 @@
 		<p class="page_title">ADD STUDENT</p>
 	</div>
 
-
-<div class="container container-custom" style="text-transform: none; max-width=100%">
+<div id="blank_popup" class="blank-popup-div"></div>
+<div class=" container-custom" >
  
   <!---Body--->  
 	
-	<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC; z-index: 10;">	
+	<div id="alert_popup" class="alert_popup">	
 			<div style="margin: 10px 0px 20px 10px;">
 				RD Portal Says
 			</div>
 			<div id="message_info">
 			</div>
-			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF" name="ok"  onClick="closeAlertPopup()">OK</span>		
+			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF;" onClick="closeAlertPopup()">OK</span>		
 		</div>
 	<form action ="StudentServlet" name="add_student_info" id="add_student_info" method="post">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235);">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" >
-			<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" name="save"  onClick="studentValidateForm()">SAVE</span>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235); ">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad"  style="padding-right:3.5%;">
+			<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;"  onClick="studentValidateForm()">SAVE</span>
 			<span class="backbutton" onClick="gotoStudentLandingPage()">BACK</span>
 		</div>
 		
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopad " >
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad " style="padding: 5%;float:left;">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopad " style="margin-top:0.5%; padding-right: 2%; " >
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad " style="padding: 5%;float:left; margin-top: 1%;">
 				
 				<div class="card">
   					<h5 class="card-header" >PERSONAL INFO</h5>
@@ -49,14 +49,15 @@
 					<div>
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						 <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  />
+						<input type="text" class="border-right-0" id="dateOfBirth" name="dateOfBirth"/>
+						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
 						</span>
 					</div>
 					<br>
 					<div>
 						Email:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input name="email" id="email"  type="email" class="form-control form-control-sm" />
+						<input name="email" id="email"  type="text" class="form-control form-control-sm" />
 						</span>
 					</div>
 					
@@ -173,7 +174,9 @@
 	   </div>
 			</div>
 		</div>
-		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopad" style=" position: absolute; top: 35px; right: 20px;">
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopad" style=" position: absolute; top: 35px; right: 20px; margin-top: 0.5%;padding-right: 2%;
+
+padding-left: 1%;">
 			
 			<div class="card">
   					<h5 class="card-header">ADDITIONAL INFO</h5>
@@ -291,7 +294,8 @@
 						<div>
 						Date of Joining:<span class="required">*</span>
 						<span style="float:right;width:34%" >
-						<input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />
+						<input class="border-right-0" id="dateOfJoining"/>
+						<!-- <input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />-->
 						</span>
 						</div>
 						
@@ -376,6 +380,20 @@
 		</div>
 	</div>
 </div>
+<script>
+        
+        $('#dateOfBirth').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+           
+        });
+        $('#dateOfJoining').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+           
+        });
+       
+    </script>
 </form>
  	
 </div>
