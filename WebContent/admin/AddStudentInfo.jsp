@@ -10,6 +10,8 @@
 <div class="container container-custom" style="text-transform: none; max-width=100%">
  
   <!---Body--->  
+ 		
+ 
 	
 	<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC; z-index: 10;">	
 			<div style="margin: 10px 0px 20px 10px;">
@@ -100,8 +102,8 @@
   						<span style="float:right;width:34%" >
   							<select name="collegeName" class="form-control form-control-sm" on change="setLocation(this.value)" >
   						 
-  						 <c:forEach items="${collegeNames}" var="cn" >
-							<option value="${cn}>">${cn}</option>
+  						 <c:forEach items="${collegeNames}" var="collegeName" >
+							<option value="${collegeName.collegeName}$${collegeName.collegeLocation}">${collegeName.collegeName}</option>
 						</c:forEach>
 						
 							</select>
@@ -182,21 +184,10 @@
   						BatchId:<span class="required">*</span>
 				        <span style="float:right;width:34%">
 					        <select name="batchId" id="batchId" class="form-control form-control-sm"  required>
-					       <option value="NULL"></option>
-					      <%
-					        String batchId = "";
-					      Connection connection = DBManager.getConnection();
-					      PreparedStatement preparedStatement=null;
-					      ResultSet resultSet =null;
-					         preparedStatement = connection.prepareStatement("select Batch_Id from batch_info");
-					         resultSet = preparedStatement.executeQuery();
-					        while(resultSet.next())
-					        {
-					         batchId = resultSet.getString("Batch_Id");
-					        
-					        %>
-					       <option value="<%=batchId%>"><%=batchId %></option>
-					       <% } %>
+						       <option value="NULL"></option>
+							     <c:forEach items="${batchIDList}" var="batchID" >
+									<option value="${batchID}">${batchID}</option>
+								</c:forEach>
 					       </select>
         				</span>
   					</div>
@@ -206,39 +197,25 @@
 						<span style="float:right;width:34%">
 						<select name="employeeType" id="employeeType" class="form-control form-control-sm"  required>
 						<option value="NULL"></option>
-						<% 
-  						String employee_type = "";
-  						 preparedStatement = connection.prepareStatement("select Employee_Type from employee_type");
-  						 resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							employee_type = resultSet.getString("employee_type");
-  						
-  						%>
-							<option value="<%=employee_type%>"><%=employee_type %></option>
-							<% } %>
+						<c:forEach items="${employeeTypeList}" var="employeeType" >
+									<option value="${employeeType}">${employeeType}</option>
+						</c:forEach>
 							</select>
 						</span>
 						</div>
 						
 						<br>
+						
+						
+						
 						<div>
 						Core Skill:<span class="required">*</span>
 						<span style="float:right;width:34%">
 						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm"  required>
 						<option value="NULL"></option>
-						<% 
-  						String skill = "";
-  						 preparedStatement = connection.prepareStatement("select Skill_Name from core_skill");
-  						 resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							skill = resultSet.getString("Skill_Name");
-  						
-  						%>
-  						
-							<option value="<%=skill	%>"><%=skill %></option>
-							<% } %>
+						<c:forEach items="${coreSkills}" var="coreSkill" >
+									<option value="${coreSkill}">${coreSkill}</option>
+						</c:forEach>
 							</select>
 						</span>
 						</div>
@@ -248,19 +225,12 @@
 						<span style="float:right;width:34%">
 						<select name="preferredStudentStream" class="form-control form-control-sm" >
 						<option value="NULL"></option>
-						<% 
-  						String streamName = "";
-  						 preparedStatement = connection.prepareStatement("select Stream_Name from technical_stream");
-  						 resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							
-  							streamName = resultSet.getString("Stream_Name");
+						<c:forEach items="${preferredStreams}" var="preferredStream" >
+									<option value="${preferredStream}">${preferredStream}</option>
+						</c:forEach>
+						
   						
-  						%>
-  						
-							<option value="<%=streamName	%>"><%=streamName %></option>
-							<% } %>
+						
 							</select>
 						</span>
 						</div>
@@ -271,18 +241,9 @@
 						<span style="float:right;width:34%" >
 						<select name="assignedStream" class="form-control form-control-sm" >
 						<option value="NULL"></option>
-						<% 
-  						 preparedStatement = connection.prepareStatement("select Stream_Name from technical_stream");
-  						 resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							
-  							streamName = resultSet.getString("Stream_Name");
-  						
-  						%>
-  						
-							<option value="<%=streamName	%>"><%=streamName %></option>
-							<% } %>
+						<c:forEach items="${assignedStreams}" var="assignedStream" >
+									<option value="${assignedStream}">${assignedStream}</option>
+						</c:forEach>
 							</select>
 						</span>
 						</div>
@@ -301,18 +262,9 @@
 					      <span style="float:right;width:34%" >
 						      <select name="mentorName" class="form-control form-control-sm" >
 						      <option value="NULL"></option>
-						       <%
-						       String Mentor_Name = "";
-						         preparedStatement = connection.prepareStatement("select Mentor_Name, Email_Id from mentor_info");
-						         resultSet = preparedStatement.executeQuery();
-						        while(resultSet.next())
-						        {
-						         Mentor_Name = resultSet.getString("Mentor_Name");
-						        
-						        %>
-						        
-						       <option value="<%=Mentor_Name %>"><%=Mentor_Name %></option>
-						       <% } %>
+						      <c:forEach items="${mentorList}" var="mentorName" >
+									<option value="${mentorName}">${mentorName}</option>
+						</c:forEach>
 						       </select>
 					      </span>
 						</div>
@@ -323,17 +275,9 @@
 						<span style="float:right;width:34%" >
 						<select name="assignedLocation" class="form-control form-control-sm" >
 							
-						<% 
-  						String assignedLocation = "";
-  						 preparedStatement = connection.prepareStatement("select Assigned_Location from assigned_location");
-  						 resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							assignedLocation = resultSet.getString("Assigned_Location");
-  						
-  						%>
-  						<option value="<%=assignedLocation	%>"><%=assignedLocation %></option>
-							<% } %>
+						<c:forEach items="${assignedLocationList}" var="assignedLocation" >
+									<option value="${assignedLocation}">${assignedLocation}</option>
+						</c:forEach>
 							</select>
 						</span>
 						</div>
@@ -356,18 +300,9 @@
 						<span style="float:right;width:34%" >
 						<select name="status" id="status" class="form-control form-control-sm"  required>
 							
-						<% 
-  						String employeeStatus = "";
-  						 preparedStatement = connection.prepareStatement("select Employee_Status from Employee_Status");
-  						 resultSet = preparedStatement.executeQuery();
-  						while(resultSet.next())
-  						{
-  							employeeStatus = resultSet.getString("Employee_Status");
-  						
-  						%>
-  						
-							<option value="<%=employeeStatus.toLowerCase()%>"><%=employeeStatus %></option>
-							<% } %>
+						<c:forEach items="${statusList}" var="status" >
+									<option value="${status}">${status}</option>
+						</c:forEach>
 							</select>
 						</span>
 						</div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.epam.dao.admin.CollegeBean;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
 import com.epam.services.login.Menu;
@@ -35,8 +36,35 @@ public class AdminAddStudentServlet extends HttpServlet {
 		{
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ADD_PAGE_FOR_STUDENT_INFO);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
-			List<String> collegeNames=studentService.getCollegNames();
+			StudentService studentService = new StudentServiceImpl();
+			
+			List<CollegeBean> collegeNames = studentService.getCollegNames();
 			request.setAttribute("collegeNames", collegeNames);
+			
+			List<String> batchIDList = studentService.getBatchID();
+			request.setAttribute("batchIDList", batchIDList);
+			
+			List<String> employeeTypeList = studentService.getEmployeeType();
+			request.setAttribute("employeeTypeList", employeeTypeList);
+			
+			List<String> coreSkills = studentService.getcoreSkill();
+			request.setAttribute("coreSkills", coreSkills);
+			
+			List<String> preferredStreams = studentService.getPreferredStream();
+			request.setAttribute("preferredStreams", preferredStreams);
+			
+			List<String> assignedStreams = studentService.getAssignedStream();
+			request.setAttribute("assignedStreams", assignedStreams);
+			
+			List<String> mentorList = studentService.getMentor();
+			request.setAttribute("mentorList", mentorList);
+			
+			List<String> statusList = studentService.getStatus();
+			request.setAttribute("statusList", statusList);
+			
+			List<String> assignedLocationList = studentService.getAssignedLocation();
+			request.setAttribute("assignedLocationList", assignedLocationList);
+			
 			request.setAttribute("pageState", "STUDENT INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			
