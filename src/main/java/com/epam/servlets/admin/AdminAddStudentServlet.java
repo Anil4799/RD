@@ -39,6 +39,8 @@ public class AdminAddStudentServlet extends HttpServlet {
 			request.setAttribute("collegeNames", collegeNames);
 			request.setAttribute("pageState", "STUDENT INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 			
 
 		}
@@ -47,13 +49,8 @@ public class AdminAddStudentServlet extends HttpServlet {
 			LOGGER.error(e1.getMessage());
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e1.getMessage());
-			
-		}
-		
-		try {
 			request.getRequestDispatcher(pageUrl).forward(request, response);
-		} catch (Exception e1) {
-			LOGGER.debug(e1.getMessage());
+
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
