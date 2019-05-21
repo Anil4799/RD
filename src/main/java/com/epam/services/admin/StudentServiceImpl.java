@@ -38,6 +38,7 @@ public class StudentServiceImpl implements StudentService {
 			   if(resultSet.next())
 			   {
 				   numberOfRowsInserted = 0;
+				   return numberOfRowsInserted;
 			   }
 			   
 			   
@@ -143,7 +144,7 @@ public class StudentServiceImpl implements StudentService {
 	public int addStudentDetails(StudentBean studentBean) {
 		try
 		{
-	             int numberofrow=addPersonalInfo(studentBean);
+	             int numberofrow = addPersonalInfo(studentBean);
 	             int numberofrow1 = 0;
 	             int numberofrow2 =0;
 	             if(numberofrow!=0)
