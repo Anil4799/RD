@@ -57,7 +57,7 @@
       <td>${student.studentStatus}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	 <c:forEach items="${actions}" var="action" >
@@ -77,7 +77,7 @@
 					              				               					             
 					            </ul>
 					             
-					            </button>     
+					                 
 					           
 					            
 					 </div></td>

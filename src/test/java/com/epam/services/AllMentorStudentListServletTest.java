@@ -57,15 +57,15 @@ class AllMentorStudentListServletTest {
 	String batch=null;
 	String coreSkill=null;
 	
-	String status=null;
-		name=s.getName();
-		batch=s.getBatch();
-		coreSkill=s.getCoreSkill();
-		status=s.getStatus();
-		assertNotNull(name);
-		assertNotNull(batch);
-		assertNotNull(coreSkill);
-		assertNotNull(status);
+//	String status=null;
+//		name=s.getName();
+//		batch=s.getBatch();
+//		coreSkill=s.getCoreSkill();
+//		status=s.getStatus();
+//		assertNotNull(name);
+//		assertNotNull(batch);
+//		assertNotNull(coreSkill);
+//		assertNotNull(status);
 		
 		
 	}

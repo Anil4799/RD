@@ -26,10 +26,11 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					String firstName=rs.getString("first_name");
 					String lastName=rs.getString("last_name");
 					String name=firstName+" "+lastName;
-					student.setName(name);
-					student.setBatch(rs.getString("batch_id"));
-					student.setCoreSkill(rs.getString("core_skill"));
-					student.setStatus(rs.getString("status"));	
+					student.setMentorStudentEmailId(mentorEmailId);
+					student.setMentorStudentName(name);
+					student.setMentorStudentBatch(rs.getString("batch_id"));
+					student.setMentorStudentCoreSkill(rs.getString("core_skill"));
+					student.setMentorStudentStatus(rs.getString("status"));	
 					studentList.add(student);
 				}
 			}
