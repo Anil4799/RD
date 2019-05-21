@@ -21,7 +21,7 @@ class TestStudentServiceImpl {
 		
 		bean=new StudentBean();
 		addstudent=new StudentServiceImpl();
-		boolean check=true;
+		int check=1;
 		check=addstudent.addStudentDetails(bean);
 		assertEquals(true, check);
 	

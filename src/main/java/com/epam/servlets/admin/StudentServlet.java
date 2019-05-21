@@ -139,15 +139,19 @@ public class StudentServlet extends HttpServlet {
 	 */
 	private void addStudentAndRedirect(HttpServletRequest request, HttpServletResponse response,
 			StudentBean studentBean) {
-		boolean result;
+		int result;
 		try {
 			  result = studentService.addStudentDetails(studentBean);
 			  
-			  if(result) {
-					request.getRequestDispatcher("admin/student_added_successfully.jsp").forward(request, response);
-				} else {
-					request.getRequestDispatcher("RegFailure.jsp").include(request, response);  
+			  if(result == 1) {
+				    request.setAttribute("result", "success");
+					
+				} else  if(result == 0){
+					request.setAttribute("result", "fail");
 				}
+			  
+			  request.getRequestDispatcher("admin/student_added_successfully.jsp").forward(request, response);
+				
 		}
 		catch( Exception e)
 		{			 

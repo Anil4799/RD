@@ -91,7 +91,7 @@ class StudentServletTest {
 
 		StudentBean studentBean=new StudentBean();
 
-		when(serviceimp.addStudentDetails(studentBean)).thenReturn(true);
+		when(serviceimp.addStudentDetails(studentBean)).thenReturn(1);
 		when(request.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(request.getServletContext()).thenReturn(context);				
 		when(request.getRequestDispatcher("admin/student_added_successfully.jsp")).thenReturn(rd);
