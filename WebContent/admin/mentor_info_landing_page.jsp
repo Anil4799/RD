@@ -21,7 +21,9 @@
 			
 		</td>
 		<td>
-		<i class="fa fa-search" aria-hidden="true"></i>
+
+		<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
+
 		</td>
 		<td><div class="button">
 			<a href="addMentor" class="btn btn-success"> ADD NEW MENTOR</a>
@@ -49,19 +51,18 @@
     
         <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	<c:forEach items="${actions}" var="action" >
-		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(action.statusName)}" />
+		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(mentor.mentorStatus)}" />
 			                 	 <c:choose>
-			                 	 	<c:when test="${mentor.mentorStatus ==  actionStatus}">
-			                
+			                 	 	<c:when test="${actionStatus ==  action.statusName}">
+			                				
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
-								    	
 								 	</c:otherwise>
 								 </c:choose>
 	    						

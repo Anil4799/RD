@@ -95,7 +95,7 @@
 
 						<form id="logoutform" class="dropdown-menu">
 							<button
-								class="dropdown-item dropdown-item:focus dropdown-item:hover"
+								class="dropdown-item1 dropdown-item1:focus dropdown-item1:hover"
 								type="submit" onclick="logout()">Logout</button>
 						</form>
 					</div>

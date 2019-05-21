@@ -52,6 +52,8 @@ public class AdminMentorListServlet extends HttpServlet {
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute("pageState", "MENTOR INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 			
 		}
 		catch(Exception e)
@@ -59,16 +61,9 @@ public class AdminMentorListServlet extends HttpServlet {
 			LOGGER.error("Exception occured in MentorInfo = {}", e);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
-			
-			
-		}
-		
-		try {
 			request.getRequestDispatcher(pageUrl).forward(request, response);
-		}
-		catch(Exception e)
-		{
-			LOGGER.error("Exception occured in MentorInfo = {}", e);
+
+			
 		}
 		LOGGER.debug("Exit from servlet");
 	}

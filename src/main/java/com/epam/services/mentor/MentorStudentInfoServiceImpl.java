@@ -15,7 +15,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 	public List<MentorStudent> mentorStudentDetails(Connection con, String mentorEmailId) {
 		 
 		List<MentorStudent> studentList = new ArrayList<>();
-		String sql = "call mentorStudent('test_mentor1@epam.com');";
+		String sql = "call mentorStudent('"+mentorEmailId+"');";
 		try(CallableStatement cs= con.prepareCall(sql);)
 		{
 			try(ResultSet rs = cs.executeQuery();)
