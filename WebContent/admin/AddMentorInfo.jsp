@@ -5,13 +5,39 @@
 			.mentor_info_form td{
 				border: 0px;
 			}
+			.button, select {
+			    text-transform: none;
+			    width: 30px;
+			    height: 31px;			    
+			}
+			.btn {
+			    display: inline-block;
+			    font-weight: 400;
+			    color: #A9A9A9;
+			    text-align: center;
+			    vertical-align: middle;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    background-color: transparent;
+			    border: 1px solid transparent;
+			    padding: 0px;
+			    font-size: 1rem;
+			    line-height: 1.5;
+			    border-radius: .25rem;
+			        border-top-left-radius: 0.25rem;
+			        border-bottom-left-radius: 0.25rem;
+			    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
 		</style>	
 		
 		<div class="page_info">
 		<p class="page_title">ADD MENTOR</p>
 	</div>
 	
-		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px; padding-top: 1px;">		
+		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px; padding-top: 1px;">
+		<div id="blank_popup" style="height: 600px; width: 100%; display: none; position: absolute; top: 0px; left: 0px; opacity: 0.1; background-color: #fff;"></div>			
 		<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC;">	
 			<div style="margin: 10px 0px 20px 10px;">
 				RD Portal Says
@@ -24,7 +50,7 @@
 			<div>	
 				<table width="100%">
 					<tr>
-						<td align="right">
+						<td align="right" style="padding: 0px 10px 0px 0px;">
 							<span class="savebutton" style="background-color:#5CB85C ; color: #FFF" onClick="validateForm()">SAVE</span>
 							<span onClick="gotoMentorInfo()" class="backbutton">BACK</span>
 						</td>
@@ -32,9 +58,9 @@
 				</table>						
 			</div>			
 			<div class="mentor_info_title">MENTOR INFO</div>
-			<div class="mentor_info_form" style="height: 100%; padding: 20px 0px 20px 0px;">
+			<div class="mentor_info_form" style="height: 100%; padding: 20px 30px 20px 30px;">
 				<form id="mentor_info_form" name="mentor_info_form">
-					<table>
+					<table width="40%" style="margin-left: 25%;">
 						<tr>
 							<td class="form_lable">Name:<span class="required">*</span></td>
 							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required/></td>								
@@ -45,15 +71,15 @@
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship Start Date:<span class="required">*</span></td>
-							<td><input type="date" id="mentorship_start_date"  name="mentor_start_date" class="form-control form-control-sm" size="30" required/--></td>
+							<td><input class="border-right-0 form-control form-control-sm" id="mentorship_start_date" name="mentorship_start_date"/></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
-							<td><input type="date" class="form-control form-control-sm" name="mentor_end_date" size="30" /></td>
+							<td><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"/></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>
-							<td><input type="number" id="max_no_of_mentees" name="max_noof_mentees" class="form-control form-control-sm" size="30" required/>
+							<td><input type="text" id="max_no_of_mentees" name="max_noof_mentees" class="form-control form-control-sm" size="30" required/></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Technology Stream: </td>
@@ -94,6 +120,23 @@
 						</tr>
 					</table>
 				</form>
+				<script>     
+			        $('#mentorship_start_date').datepicker({
+			
+			            uiLibrary: 'bootstrap4',
+			
+			            iconsLibrary: 'fontawesome',						        
+			
+			        });
+			
+			        $('#mentorship_end_date').datepicker({
+			
+			            uiLibrary: 'bootstrap4',
+			
+			            iconsLibrary: 'fontawesome',          
+			
+			        });     
+    			</script>
 			</div>				
 			</div>							
 		</div>

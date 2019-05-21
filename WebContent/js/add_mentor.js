@@ -49,8 +49,8 @@ function validateForm() {
 				else{
 					document.forms["mentor_info_form"]["mentor_status"].classList.remove("txtbrcolr");
 				}
-				if(message.length > 0 ){
-					//alert(message);
+				if(message.length > 0 ){					
+					document.getElementById("blank_popup").style.display = "block";
 					document.getElementById("message_info").innerHTML = message;
 					document.getElementById("alert_popup").style.display = "block";
 					var elements = mentor_info_form.elements;
@@ -60,25 +60,24 @@ function validateForm() {
 				}	
 				else
 					{						
-						//document.getElementById("mentor_info_form").reset();
-						//document.getElementById("mentor_added_message").style.display = "block";
-					  	document.getElementById("mentor_info_form").action="/admin-portal/MentorServlet";
+						document.getElementById("mentor_info_form").action="/admin-portal/MentorServlet";
 					    document.getElementById("mentor_info_form").method = "POST";
 					    document.getElementById("mentor_info_form").submit();
 					}
 				}
 				function closeAlertPopup(){
 					document.getElementById("alert_popup").style.display = "none";
+					document.getElementById("blank_popup").style.display = "none";	
 					var elements = mentor_info_form.elements;
 					for (var i = 0, len = elements.length; i < len; ++i) {
 						elements[i].disabled = false;
 					}
 				}
 				
-				function gotoMentorInfo(){					
+				function gotoMentorInfo(){				
+					document.location.href = '/admin-portal/mentorList';
 					var elements = mentor_info_form.elements;
 					for (var i = 0, len = elements.length; i < len; ++i) {
 						elements[i].disabled = true;
 					}
-					document.location.href = '/admin-portal/mentorList';						
 				}				
