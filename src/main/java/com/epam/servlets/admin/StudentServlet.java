@@ -92,6 +92,7 @@ public class StudentServlet extends HttpServlet {
 	 * @return
 	 */
 	private Date formatDate(String dob) {
+		System.out.println("dob.."+dob);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null;
 		try{

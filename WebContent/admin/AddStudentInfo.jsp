@@ -1,6 +1,10 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/common/header.jspf" %> 
 <script src="/admin-portal/js/StudentJS.js"></script>
+<style>
+.btn {
+    display: inline-block;    font-weight: 400;    color: #A9A9A9;    padding: 0px;    text-align: center;    vertical-align: middle;    -webkit-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none;    background-color: transparent;    border: 1px solid transparent;    /* padding: .375rem .75rem; */    font-size: 1rem;    line-height: 1.5;    border-radius: .25rem;    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+    </style>
 
   <div class="page_info">
 		<p class="page_title">ADD STUDENT</p>
@@ -51,7 +55,7 @@
 					<div>
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input type="text" class="border-right-0" id="dateOfBirth" name="dateOfBirth"/>
+						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
 						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
 						</span>
 					</div>
@@ -255,7 +259,7 @@ padding-left: 1%;">
 						<div>
 						Date of Joining:<span class="required">*</span>
 						<span style="float:right;width:34%" >
-						<input class="border-right-0" id="dateOfJoining"/>
+						<input class="border-right-0 form-control-sm" id="dateOfJoining" name="dateOfJoining"/>
 						<!-- <input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />-->
 						</span>
 						</div>
@@ -320,12 +324,13 @@ padding-left: 1%;">
         $('#dateOfBirth').datepicker({
             uiLibrary: 'bootstrap4',
             iconsLibrary: 'fontawesome',
+            format: 'yyyy-dd-mm',
            
         });
         $('#dateOfJoining').datepicker({
             uiLibrary: 'bootstrap4',
             iconsLibrary: 'fontawesome',
-           
+            format: 'yyyy-dd-mm',
         });
        
     </script>
