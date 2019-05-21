@@ -25,7 +25,7 @@
 			<div>	
 				<table width="100%">
 					<tr>
-						<td align="right" style="padding: 0px 10px 0px 0px;">
+						<td align="right" style="padding: 0px;">
 							<span class="savebutton" style="background-color:#5CB85C ; color: #FFF" onClick="validateForm()">SAVE</span>
 							<span onClick="gotoMentorInfo()" class="backbutton">BACK</span>
 						</td>
@@ -33,33 +33,33 @@
 				</table>						
 			</div>			
 			<div class="mentor_info_title">MENTOR INFO</div>
-			<div class="mentor_info_form" style="height: 100%; padding: 20px 30px 20px 30px;">
+			<div class="mentor_info_form" style="height: 100%; padding: 20px 0px 20px 0px;">
 				<form id="mentor_info_form" name="mentor_info_form">
 					<table width="40%" style="margin-left: 25%;">
 						<tr>
 							<td class="form_lable">Name:<span class="required">*</span></td>
-							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required/></td>								
+							<td>Mentor Name</td>								
 						</tr>
 						<tr>
 							<td class="form_lable">Email:<span class="required">*</span> </td>
-							<td><input type="text"  id="mentor_email" name="mentor_email" class="form-control form-control-sm" size="30" required/></td>
+							<td>Mentor Email</td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship Start Date:<span class="required">*</span></td>
-							<td><input type="date" id="mentorship_start_date"  name="mentor_start_date" class="form-control form-control-sm" size="30" required/--></td>
+							<td>Mentor Ship Start Date</td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
-							<td><input type="date" class="form-control form-control-sm" name="mentor_end_date" size="30" /></td>
+							<td>Mentor Ship End Date</td>
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>
-							<td><input type="text" id="max_no_of_mentees" name="max_noof_mentees" class="form-control form-control-sm" size="30" required/>
+							<td>Max No.of Mentees</td>
 						</tr>
 						<tr>
 							<td class="form_lable">Technology Stream: </td>
-							<td>
-								<select name="mentor_technology" class="form-control form-control-sm">
+							<td>Technology Stream
+								<!--select name="mentor_technology" class="form-control form-control-sm">
 								<option></option>
 								<%
 								try{
@@ -80,18 +80,14 @@
 								}
 							
 								%>	
-								</select>
+								</select-->
 							</td>
 						</tr>
 						<tr>
 							<td class="form_lable">Status:<span class="required">*</span> </td>
-							<td>
-								<select id="mentor_status" name="mentor_status" class="form-control form-control-sm" required>										
-									<option value="active">ACTIVE</option>
-									<option value="inactive">INACTIVE</option>
-									<option value="onhold">ONHOLD</option>
-								</select>
-							</td>
+						
+							<td>Status</td>	
+						
 						</tr>
 					</table>
 				</form>

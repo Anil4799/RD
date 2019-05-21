@@ -59,7 +59,7 @@
 			                 	 <c:choose>
 			                 	 	<c:when test="${actionStatus ==  action.statusName}">
 			                				
-	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+	   										 <li><a class="dropdown-item" href="#" id="${mentor.email}">${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
