@@ -16,8 +16,16 @@ public class MentorStudentActionServlet extends HttpServlet {
        
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String actionView=request.getParameter("actionView");
+		String emailId=request.getParameter("email_id");
+		
+		if(actionView.equalsIgnoreCase("View"))
+		{
+			//MentorStudentViewService mentorStudentViewService=new MentorStudentViewServiceImpl();
+			request.setAttribute("student", "Demo");
+			request.getRequestDispatcher("/mentor/Mentor_ViewStudentDetail.jsp").forward(request, response);
+		}
+		
 	}
 
 	@Override

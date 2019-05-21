@@ -26,7 +26,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					String firstName=rs.getString("first_name");
 					String lastName=rs.getString("last_name");
 					String name=firstName+" "+lastName;
-					student.setMentorStudentEmailId(mentorEmailId);
+					student.setMentorStudentEmailId(rs.getString("email_id"));
 					student.setMentorStudentName(name);
 					student.setMentorStudentBatch(rs.getString("batch_id"));
 					student.setMentorStudentCoreSkill(rs.getString("core_skill"));
@@ -43,5 +43,10 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 		}
 		
 	return studentList;
+	}
+	@Override
+	public List<MentorStudent> mentorViewStudentDetails(Connection con, String emailId) {
+		
+		return null;
 	}
 }

@@ -62,7 +62,7 @@
 			 	
 			                 	 	<c:when test="${actionStatus == action.statusName}">
 			                
-	   										 <li><a href="MentorStudentActionServlet?actionView=${action.action}&${ms.mentorStudentEmailId}" class="dropdown-item" >${action.action}</a></li>
+	   										 <li><a href="MentorStudentActionServlet?actionView=${action.action}&email_id=${ms.mentorStudentEmailId}" class="dropdown-item" >${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>

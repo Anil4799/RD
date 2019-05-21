@@ -38,7 +38,7 @@
     					
     					
     					
-    					<th scope="row">${student.studentName}</th>
+    					<th scope="row">${student}</th>
     					</span>
 					</div>
 					<br>
