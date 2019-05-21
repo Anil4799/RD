@@ -1,0 +1,125 @@
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+     <footer class=footer>
+
+<div style="position: fixed; height: 30px; bottom: 0; right: 0;  left: 0; background:#5A5C5F"></div>
+
+ </footer>
+    
+  </body>
+  
+  <script>
+		$("#mentor_name").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#mentor_email").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#mentorship_start_date").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#max_no_of_mentees").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#mentor_status").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});	
+	</script>	
+  
+  <script>
+		$("#batch_id").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#batch_start_date").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+	
+		
+		$("#batch_status").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});	
+		
+		$('#batch_status').attr("disabled", true);
+		
+		$("#batch_start_date").change(function(){
+			var v =document.getElementById('batch_start_date').value;
+			var xhttp;
+			
+			if (window.XMLHttpRequest) {
+			    xhttp = new XMLHttpRequest();
+			  } else {
+			    // code for IE6, IE5
+			    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			      document.getElementById('batch_id').value = this.responseText;
+			      $("#batch_id").removeClass('txtbrcolr');
+			    }
+			  };
+			  xhttp.open("GET", "/admin-portal/BatchInfoServlet?batch_start_date="+v, true);
+			  xhttp.send();
+					
+		});	
+		
+	</script>
+	<script>
+		$("#firstName").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#email").keypress(function(){
+			  if($(this).val().length>=1){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#dateOfBirth").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#gender").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#personalLocation").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#batchId").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#employeeType").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#coreSkill").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#relocation").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#status").change(function(){
+			  if($(this).val()){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+		$("#dateOfJoining").change(function(){
+			  if($(this).value){}
+			 	 $(this).removeClass('txtbrcolr');
+			});
+	</script>
+</html>

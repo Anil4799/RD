@@ -1,32 +1,41 @@
-/**
- * 
- */
 package com.epam.utils;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
-/**
- * @author Durga_Adimulam
- *
- */
 public class DBManager {
+	
+	
 
+	private static final Logger LOGGER = Logger.getLogger( DBManager.class);
 	public static Connection getConnection() {
 		Connection connection = null;
-		
-		try
-        {
+		try 
+		{
 			Class.forName(ApplicationProperties.getPropertyValue("db.driver"));
             connection = DriverManager.getConnection(ApplicationProperties.getPropertyValue("db.host"), 
-            		ApplicationProperties.getPropertyValue("db.user"), 
-            		ApplicationProperties.getPropertyValue("db.password"));
+            ApplicationProperties.getPropertyValue("db.user"), 
+            ApplicationProperties.getPropertyValue("db.password"));
         }
-        catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        catch (Exception e)
+		{
+            LOGGER.error("Exception occured in DBManager", e);
+         }
 		
 		return connection;
 	}
+
+
+	public static void closeConnection(Connection connection) {
+		try {
+			if (connection != null)
+				connection.close();
+		} catch (SQLException e) {
+
+			LOGGER.error("Exception occured in DBManager", e);
+
+		}
+	}
 }
+

@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>RD Admin Portal</display-name>
+
+  
   <welcome-file-list>
-    <welcome-file>inputForm.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  <context-param>
-    <param-name>RESULT_PAGE_FOR_CALCULATOR</param-name>
-    <param-value>/resultPageForCalculator.jsp</param-value>
+   <context-param>
+    <param-name>ADMIN_HOME_PAGE</param-name>
+    <param-value>/admin/admin_dashboard.jsp</param-value>
   </context-param>
+   <context-param>
+    <param-name>MENTOR_HOME_PAGE</param-name>
+    <param-value>/mentor/mentor_dashboard.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>LOGIN_PAGE</param-name>
+    <param-value>/login.jsp</param-value>
+  </context-param>
+  
+   <context-param>
+    <param-name>RESULT_PAGE_FOR_REPORTS</param-name>
+    <param-value>/report/report.jsp</param-value>
+  </context-param>
+  
+  
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_BATCH_INFO</param-name>
+    <param-value>/admin/batch_info_landing_page.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_STUDENT_INFO</param-name>
+    <param-value>/admin/student_info_landing_page.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_MENTOR_INFO</param-name>
+    <param-value>/admin/mentor_info_landing_page.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_MENTORSTUDENT_INFO</param-name>
+    <param-value>/mentor/MentorStudentInfoLandingPage.jsp</param-value>
+  </context-param>                                                
   <context-param>
     <param-name>ERROR_PAGE</param-name>
     <param-value>/error.jsp</param-value>
+  </context-param>
+   <context-param>
+    <param-name>ADD_PAGE_FOR_STUDENT_INFO</param-name>
+    <param-value>/admin/AddStudentInfo.jsp</param-value>
+  </context-param>
+   <context-param>
+    <param-name>ADD_PAGE_FOR_BATCH_INFO</param-name>
+    <param-value>/admin/AdminAddBatch.jsp</param-value>
+  </context-param>
+   <context-param>
+    <param-name>ADD_PAGE_FOR_MENTOR_INFO</param-name>
+    <param-value>/admin/AddMentorInfo.jsp</param-value>
   </context-param>
 </web-app>
