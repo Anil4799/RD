@@ -34,6 +34,8 @@ public class AdminAddMentorServlet extends HttpServlet {
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "MENTOR INFO");
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 
 		}
 		catch(Exception e)
@@ -41,12 +43,8 @@ public class AdminAddMentorServlet extends HttpServlet {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
-		}
-		
-		try {
 			request.getRequestDispatcher(pageUrl).forward(request, response);
-		} catch (Exception e) {
-			LOGGER.debug(e.getMessage());
+
 		}
 		LOGGER.debug("Exit from Servlet...............");
 	}

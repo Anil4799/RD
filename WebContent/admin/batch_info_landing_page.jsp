@@ -1,4 +1,6 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
@@ -23,20 +25,20 @@
 		<table class="table" >
 				<tr style="float:left">
 				<td >
-		<input id="startDate" width="276"  placeholder="Start Date" class="col-md-8 border-right-0"/>
+		<input id="startDate" width="300"  placeholder="Start Date" class="col-md-11 border-right-0"/>
 			 	 <script type="text/javascript" src="./js/date.js"></script>
 		 
 		 </td>
 		 <td>		 	
-		 <input id="endDate" width="276"  placeholder="End Date" class="col-md-8 border-right-0 "/>
+		 <input id="endDate" width="300"  placeholder="End Date" class="col-md-11 border-right-0 "/>
 		   <script type="text/javascript" src="./js/date.js"></script>
 		  		 
 		</td>
-			<td>
-		<i class="fa fa-search" style="color:lightgrey" aria-hidden="true"></i>
-		</td>
+		<td>
+			 
+  		<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
 		
-
+		</td>
 		<td><div class="button">
 			<a href="addBatch" class="btn btn-success"> ADD NEW BATCH</a>
 
@@ -71,21 +73,23 @@
       <td>${batch.status}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 
 		 
 		                 	
 			                 	 <c:forEach items="${actions}" var="action" >
+			                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
 			                 	 <c:choose>
 			  
-			                 	 	<c:when test="${batch.status == action.statusName}">
+			                 	 	<c:when test="${actionStatus == action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
+								    		  
 								    	
 								 	</c:otherwise>
 								 </c:choose>

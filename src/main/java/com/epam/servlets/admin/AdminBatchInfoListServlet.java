@@ -48,6 +48,8 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "BATCH INFO");
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 
 		}
 		catch(Exception e)
@@ -55,16 +57,10 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 		}
 
-		try
-		{
-			request.getRequestDispatcher(pageUrl).forward(request, response);
-		}
-		catch(Exception e)
-		{
-			LOGGER.debug(e.getMessage());
-		}
 		LOGGER.debug("Exit from Servlet...............");
 	}
 	

@@ -44,19 +44,16 @@ public class AdminStudentListServlet extends HttpServlet {
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 		}
 		catch(Exception e)
 		{
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
-		}
-		try {
-		request.getRequestDispatcher(pageUrl).forward(request, response);
-		}
-		catch(Exception e)
-		{
-			LOGGER.debug("Exit from servlet");
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+
 		}
 		LOGGER.debug("Exit from servlet");
 	}

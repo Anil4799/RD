@@ -22,7 +22,10 @@
 			
 		</td>
 		<td>
-		<i class="fa fa-search" aria-hidden="true"></i>
+
+		
+		<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
+
 		</td>
 		<td><div class="button">
 		
@@ -54,19 +57,18 @@
       <td>${student.studentStatus}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	 <c:forEach items="${actions}" var="action" >
-		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(action.statusName)}" />
+		                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(student.studentStatus)}" />
 			                 	 <c:choose>
-			                 	 	<c:when test="${student.studentStatus ==  actionStatus}">
+			                 	 	<c:when test="${actionStatus ==  action.statusName}">
 			                
 	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
-								    	
 								 	</c:otherwise>
 								 </c:choose>
 	    						
