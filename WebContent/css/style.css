@@ -81,18 +81,19 @@ body {
 			    	background-color:#ebebeb;
 			    	   
 				}
-				.page_info{
+			/* 	.page_info{
 				  background-color: #ffffff;
 				  height: 35px;
 				  vertical-align: middle;
-				}
+				} 
 				.page_title{
 					padding-top: 5px;
 					margin-left: 20px;
 					
+					
 				}
 	
-
+*/
 
 .container {
 	/*! max-width: 100%; */
@@ -293,13 +294,13 @@ body {
 
 .page_info {
 	background-color: #ffffff;
-	height: 35px;
-	vertical-align: middle;
+ 	vertical-align: middle;
 }
 
 .page_title {
 	padding-top: 5px;
 	margin-left: 20px;
+	font-size: 24px;
 }
 
 .container-custom {
@@ -431,7 +432,7 @@ body {
 	padding: 6px 12px;
 }
 
-.page_info {
+/* .page_info {
 	background-color: #ffffff;
 	height: 35px;
 	vertical-align: middle;
@@ -440,7 +441,7 @@ body {
 .page_title {
 	padding-top: 5px;
 	margin-left: 20px;
-}
+} */
 
 select:required:invalid {
 	color: gray;

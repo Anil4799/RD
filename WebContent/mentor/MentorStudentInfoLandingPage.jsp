@@ -7,7 +7,7 @@
   <%@ include file="/common/header.jspf" %>
   
     <div class="page_info">
-		<p class="page_title">Student Info-Landing Page</p>
+		<p class="page_title">Student Info - Landing Page</p>
 	</div>
     
     <div class="container">

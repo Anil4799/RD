@@ -52,4 +52,8 @@
     <param-name>ADD_PAGE_FOR_MENTOR_INFO</param-name>
     <param-value>/admin/AddMentorInfo.jsp</param-value>
   </context-param>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_VIEW_STUDENT_INFO</param-name>
+    <param-value>/mentor/Mentor_ViewStudentDetail.jsp</param-value>
+  </context-param>
 </web-app>
