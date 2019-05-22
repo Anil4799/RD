@@ -35,31 +35,30 @@
   					<div>
     					<span>First Name:<span class="required"></span></span>
     					<!-- <span style="float:right;width:34%"> -->
+    					  					
     					
-    					
-    					
-    					<th scope="row">${student}</th>
+    					<th scope="row">${student.firstName}</th>
     					</span>
 					</div>
 					<br>
 					<div>
 						<span>Last Name:<span class="required"></span></span>
 						<span style="float:right;width:34%">
-						
+						<th scope="row">${student.lastName}</th>
 						</span>
 					</div>
 					<br>
 					<div>
 						Date of Birth:<span class="required"></span>
 						<span style="float:right;width:34%">
-						
+						<th scope="row">${student.dob}</th>
 						</span>
 					</div>
 					<br>
 					<div>
 						Email:<span class="required"></span>
 						<span style="float:right;width:34%">
-						
+						<th scope="row">${student.email}</th>
 						</span>
 					</div>
 					
@@ -67,21 +66,21 @@
 					<div>
 						Gender:<span class="required"></span>
 						<span style="float:right; width:34%" >
-						
+						<th scope="row">${student.gender}</th>
 					    </span>
 					</div>
 					<br>
 					<div>
 						Contact Number:
 						<span style="float:right;width:34%">
-						
+						<th scope="row">${student.contactNumber}</th>
 						</span>
 					</div>
 					<br>
 					<div>
 					Location:<span class="required"></span>
 					<span style="float:right;width:34%">
-					
+					<th scope="row">${student.personalLocation}</th>
 					</span>
 					</div>
     				
@@ -98,10 +97,8 @@
   						College:
   						<span style="float:right;width:34%" >
   							
-  						 
-  						 <c:forEach items="${collegeNames}" var="cn" >
-							<option value="${cn}>">${cn}</option>
-						</c:forEach>
+  						 <th scope="row">${student.collegeName}</th>
+  						
 						
 						
   						</span>
@@ -111,7 +108,7 @@
     					Location:
     					<span style="float:right;width:34%" >
     					
-    					
+    					<th scope="row">${student.collegeLocation}</th>
     					</span>
     				</div>
 					<br>
@@ -119,7 +116,7 @@
 					<div>
 					Graduation:
 					<span style="float:right;width:34%" >
-				
+				<th scope="row">${student.graduation}</th>
 					</span>
 					</div>
 					
@@ -128,7 +125,7 @@
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
 					
-					
+					<th scope="row">${student.graduationSpeciality}</th>
 					</span>
 					</div>
 					
@@ -136,7 +133,7 @@
 					<div>
 					Year of Passed Out:
 					<span style="float:right;width:34%">
-					
+					<th scope="row">${student.yearOfPassedOut}</th>
 					</span>
 					
 					</div>
@@ -144,7 +141,7 @@
 					<div>
 					Graduation Marks:
 					<span style="float:right;width:34%">
-				
+				<th scope="row">${student.graduationMarks}</th>
 					</span>
 					</div>
 					
@@ -152,14 +149,14 @@
 					<div>
 					10th + 2 Marks:
 					<span style="float:right;width:34%">
-					
+					<th scope="row">${student.twelveth}</th>
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
 					<span style="float:right;width:34%">
-				
+				<th scope="row">${student.tenth}</th>
 					</span>
 					</div>
 					
@@ -177,14 +174,14 @@
   					<div>
   						BatchId:<span class="required"></span>
 				        <span style="float:right;width:34%">
-					        
+					       <th scope="row">${student.batchId}</th> 
         				</span>
   					</div>
 						<br>
 						<div>
 						Employee Type:<span class="required"></span>
 						<span style="float:right;width:34%">
-													
+							<th scope="row">${student.employeeType}</th>						
 						</span>
 						</div>
 						
@@ -192,14 +189,14 @@
 						<div>
 						Core Skill:<span class="required"></span>
 						<span style="float:right;width:34%">
-						
+						<th scope="row">${student.coreSkill}</th>
 						</span>
 						</div>
 						<br>
 						<div>
 						Preferred Student Stream:
 						<span style="float:right;width:34%">
-						
+						<th scope="row">${student.preferredStudentStream}</th>
 						</span>
 						</div>
 						
@@ -207,7 +204,7 @@
 						<div>
 						Assigned Stream:
 						<span style="float:right;width:34%" >
-						
+						<th scope="row">${student.assignedStream}</th>
 						</span>
 						</div>
 						
@@ -215,7 +212,7 @@
 						<div>
 						Date of Joining:<span class="required"></span>
 						<span style="float:right;width:34%" >
-						
+						<th scope="row">${student.dateOfJoining}</th>
 						</span>
 						</div>
 						
@@ -223,7 +220,7 @@
 						<div>
 						Assigned Location:
 						<span style="float:right;width:34%" >
-						
+						<th scope="row">${student.assignedLocation}</th>
 						</span>
 						</div>
 						
@@ -231,7 +228,7 @@
 						<div>
 						Relocation:<span class="required"></span>
 						<span style="float:right;width:34%" >
-						
+						<th scope="row">${student.relocation}</th>
 						</span>
 						</div>
 						
@@ -239,7 +236,7 @@
 						<div>
 						Status:<span class="required"></span>
 						<span style="float:right;width:34%" >
-						
+						<th scope="row">${student.status}</th>
 						</span>
 						</div>
  		   		</div>
