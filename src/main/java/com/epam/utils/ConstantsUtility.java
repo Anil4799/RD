@@ -19,6 +19,7 @@ public class ConstantsUtility {
 	public static final String EMAIL="email";
 	public static final String ROLE="role";
 	public static final String MENU_LIST="menuList";
+	public static final String RESULT_PAGE_FOR_VIEW_ACTION = "RESULT_PAGE_FOR_VIEW_ACTION";
 
 
 }

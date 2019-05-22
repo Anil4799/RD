@@ -357,7 +357,7 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	content: "";
 }
 
-.backbutton, .savebutton {
+.backbutton, .savebutton, .editbutton {
 	font-size: 12px;
 	border-radius: 5px 5px 5px 5px;
 	background: #D8DCDE;
@@ -840,3 +840,4 @@ table td, .table th {
 	 background-color:#ececec;
 	 padding: 12px 24px;
 }
+

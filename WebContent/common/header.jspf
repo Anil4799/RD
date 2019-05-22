@@ -37,7 +37,7 @@
 <script src="/admin-portal/js/main.js"></script>
 <script src="/admin-portal/js/StudentJS.js"></script>
 <script src="/admin-portal/js/add_mentor.js"></script>
-
+<!-- <script src="/admin-portal/js/validateStartEndDate.js"></script> -->
 <!-- new links for date -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>

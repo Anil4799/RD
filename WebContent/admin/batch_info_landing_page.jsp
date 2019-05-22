@@ -12,6 +12,93 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+    <script>
+    
+    function validateStartEndDate()
+    {
+    	
+    	var startDate= document.getElementById("startDate").value;
+    	var endDate=document.getElementById("endDate").value;
+    	var msg="";
+    	var endMsg="";
+    	//var count=0;
+    	document.getElementById("alertWhenDateSearch").style.display="none";
+    		
+    if(startDate==""){msg+="Start Date ";}
+    	
+    	
+    if(endDate==""){
+    	msg+="End Date";
+    }
+    if(startDate=="" && endDate==""){
+    	msg="Start Date and End Date";
+    	
+    }
+    
+    endMsg=" need to be entered";
+    
+    var SDate=new Date(startDate);
+    var EDate=new Date(endDate);
+    
+   if(EDate<SDate){
+	   endMsg="";
+	   msg="Incorrect date range";
+   }
+    
+    if(msg.length>0){
+    	document.getElementById("alertWhenDateSearch").style.color="red";
+    	document.getElementById("batchLandingTable").style.display="none";
+    	document.getElementById("alertWhenDateSearch").style.display="block";
+    	document.getElementById("alertWhenDateSearch").innerHTML=msg+endMsg;
+    	}
+    else
+    	{
+    	alert("in else");
+    	
+    //	sendSearchDatesAsynchronous(startDate,endDate);
+    document.forms[0].action="/admin-portal/AdminBatchInfoListWithInDateRange?startDate="+ '01-05-2019'+ "&endDate="+'06-06-2019';
+	document.forms[0].method = "GET";
+    document.forms[0].submit();
+    alert("in else2");
+    	}
+
+    }
+    
+    function customAlertRecordsFound(recordsFound){
+    	alert("found"+recordsFound);
+    	document.getElementById("alertWhenDateSearch").style.color="black";
+    	document.getElementById("alertWhenDateSearch").innerHTML=recordsFound+" records found";
+    	document.getElementById("alertWhenDateSearch").style.display="block";
+    	
+    	
+    }
+    function sendSearchDatesAsynchronous(startDate,endDate) {
+    
+    	var params = "?startDate="+ startDate+ "&endDate="+endDate;
+		var xhttp;
+
+		if (window.XMLHttpRequest) {
+		   xhttp = new XMLHttpRequest();
+		} else {
+			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+	  xhttp.onreadystatechange = function() {
+ 	 if (this.readyState == 4 && this.status == 200) {
+ 		customAlertRecordsFound(this.responseText);
+ 	 }
+};
+		 xhttp.open("GET", "/admin-portal/AdminBatchInfoListWithInDateRange"+ params, true);
+		xhttp.send();
+		
+    }
+    
+    
+
+
+    </script>
+    
 </head>
 
 
@@ -36,7 +123,7 @@
 		</td>
 		<td>
 			 
-  		<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
+  		<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe"  onclick="validateStartEndDate()"></button>
 		
 		</td>
 		<td><div class="button">
@@ -50,7 +137,10 @@
 		  
 		
 		</table>
-		
+		<div id="alertWhenDateSearch" style="display:none; text-transform:none;">
+		     
+		</div>
+	<div id="batchLandingTable">	
 		<table class="table">
   <thead>
     <tr>
@@ -71,9 +161,9 @@
       <td>${batch.startdate}</td>
       <td>${batch.enddate}</td>
       <td>${batch.status}</td>
-      <td><div class="btn-group" dropdown>
+      <td><div class="btn-group" >
             
-		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 
@@ -84,8 +174,8 @@
 			                 	 <c:choose>
 			  
 			                 	 	<c:when test="${actionStatus == action.statusName}">
-			                
-	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+			                																						
+	   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
@@ -99,16 +189,16 @@
 					              				               					             
 					            </ul>
 					             
-					            </button>     
+					           
 					           
 					            
-					 </div></i></td>
+					 </div></td>
     </tr>
          
   </c:forEach>
   </tbody>
 </table>
-
+</div>
  </div>
  
 <%@ include file="/common/footer.jspf"%>
