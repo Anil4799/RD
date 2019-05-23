@@ -2,11 +2,28 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %>
+
+ <script type="text/javascript">
+	function checkImplementation(action,emailId)
+	{
+		if(action =='View')
+		{
+			document.location.href = 'MentorStudentActionServlet?actionView='+action+'&email_id='+emailId+'';
+		}
+		else
+		{
+			openAlertPopup();
+		}
+	}
+</script>
+
+
 <div class="page_info">
 	<p class="page_title">Student Info - Landing Page</p>
 </div>
 <div class="container">
 	<form action="mentorStudentSearchServlet" method="post">
+
 		<table class="table">
 		<tr>
 		<td><input type="text" class="form-control" placeholder="First Name" name="firstname"></td>
@@ -27,6 +44,7 @@
 	</form>
 	<c:if test="${result eq false}">
 		<table class="table">
+
   			<thead>
 				<tr>
 			      	<th scope="col">NAME</th>
@@ -45,20 +63,20 @@
 						<td>${ms.status}</td>
 						<td>
 							<div class="btn-group" dropdown>    
-								<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+								<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 									<ul class="dropdown-menu ddmf" role="menu">
 										<c:forEach items="${actions}" var="action" >
 											<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.status)}" />
 											<c:choose>
 												<c:when test="${actionStatus == action.statusName}">
-													<li><a class="dropdown-item" href="#">${action.action}</a></li>
+													<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');">${action.action}</a></li>
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>      
 									</ul>
-								</button>     
+								     
 							</div>
 						</td>
 					</tr>
@@ -92,20 +110,20 @@
 								<td>${ms.status}</td>
 								<td>
 									<div class="btn-group" dropdown>    
-										<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+										<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 											<ul class="dropdown-menu ddmf" role="menu">
 												<c:forEach items="${actions}" var="action" >
 													<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.status)}" />
 													<c:choose>
 														<c:when test="${actionStatus == action.statusName}">
-															<li><a class="dropdown-item" href="#">${action.action}</a></li>
+															<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');">${action.action}</a></li>
 														</c:when>
 														<c:otherwise>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>      
 											</ul>
-										</button>     
+										     
 									</div>
 								</td>
 							</tr>
@@ -116,5 +134,6 @@
 		</c:choose>
 	</c:if>
 </div>
+
 
 <%@ include file="/common/footer.jspf"%>

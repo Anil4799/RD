@@ -30,6 +30,7 @@
 				</td> 
 			</tr>
 		</table>
+
 	</form>
 		<c:if test="${result eq false}">
 		 	<table class="table">
@@ -53,18 +54,18 @@
 					      <td>${student.studentStatus}</td>
 					      <td>
 					      		<div class="btn-group dropdown">     
-					        		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+					        		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button> 
 						                 <ul class="dropdown-menu ddmf" role="menu">
 						                 	 <c:forEach items="${actions}" var="action" >
 						                 	 	<c:set var = "actionStatus" value = "${fn:toLowerCase(student.studentStatus)}" />
 							                 	 	<c:choose>
 							                 	 		<c:when test="${actionStatus ==  action.statusName}">
-							             				 	<li><a class="dropdown-item" href="#">${action.action}</a></li>   									
+							             				 	<li><a class="dropdown-item" href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.studentEmailId}">${action.action}</a></li>   									
 					   							    	</c:when>
 												 	</c:choose> 	
 											</c:forEach>
 										</ul>
-								    </button>     				
+								       				
 								 </div>
 							</td>
 			    		</tr>
@@ -100,18 +101,18 @@
 						      <td>${student.studentStatus}</td>
 						      <td>
 						      		<div class="btn-group dropdown">     
-						        		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+						        		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 							                 <ul class="dropdown-menu ddmf" role="menu">
 							                 	 <c:forEach items="${actions}" var="action" >
 							                 	 	<c:set var = "actionStatus" value = "${fn:toLowerCase(student.studentStatus)}" />
 								                 	 	<c:choose>
 								                 	 		<c:when test="${actionStatus ==  action.statusName}">
-								             				 	<li><a class="dropdown-item" href="#">${action.action}</a></li>   									
+								             				 	<li><a class="dropdown-item" href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.studentEmailId}">${action.action}</a></li>   									
 						   							    	</c:when>
 													 	</c:choose> 	
 												</c:forEach>
 											</ul>
-									    </button>     				
+									         				
 									 </div>
 								</td>
 				    		</tr>
@@ -121,6 +122,7 @@
 			  </c:when>
 			</c:choose>
 		</c:if>
+
  </div>
 
 <%@ include file="/common/footer.jspf"%>

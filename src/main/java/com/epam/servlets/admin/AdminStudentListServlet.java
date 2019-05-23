@@ -45,6 +45,7 @@ public class AdminStudentListServlet extends HttpServlet {
 			batchIDList = batchInfoDAO.getAllBatchID(con);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO);
 			request.setAttribute("students", studentList);
+			System.out.println("---------------> "+studentList.size());
 			request.setAttribute("actions", actionList);
 			request.setAttribute("batchIDs", batchIDList);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();

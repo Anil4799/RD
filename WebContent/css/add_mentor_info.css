@@ -1,16 +1,16 @@
 @charset "ISO-8859-1";
 	.backbutton, .savebutton{
-    	font-size: 12px;
+    	font-size: 14px;
     	border-radius: 5px 5px 5px 5px;
 		background:  #D8DCDE;
 		padding: 5px 5px 5px 5px;				
-		width: 60px;
-		height: 28px;
+		width: 62px;
+		height: 32px;
 		float: right;				
 		margin: 3px;
 		text-align: center;
 		cursor: pointer;
-		font-weight: bold;		
+		font-weight: regular;		
 	}
 	.ok_button{
     	font-size: 12px;

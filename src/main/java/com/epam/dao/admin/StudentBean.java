@@ -30,6 +30,8 @@ public class StudentBean {
 	private String relocation;
 	private String status;
 	
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -96,9 +98,6 @@ public class StudentBean {
 	public void setGraduationSpeciality(String graduationSpeciality) {
 		this.graduationSpeciality = graduationSpeciality;
 	}
-	
-	
-	
 	public int getYearOfPassedOut() {
 		return yearOfPassedOut;
 	}
@@ -183,6 +182,8 @@ public class StudentBean {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
 	
 	
 }
