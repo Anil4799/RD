@@ -6,6 +6,20 @@
 
   <%@ include file="/common/header.jspf" %>
   
+  <script type="text/javascript">
+	function checkImplementation(action,emailId)
+	{
+		if(action =='View')
+		{
+			document.location.href = 'MentorStudentActionServlet?actionView='+action+'&email_id='+emailId+'';
+		}
+		else
+		{
+			openAlertPopup();
+		}
+	}
+</script>
+  
     <div class="page_info">
 		<p class="page_title">Student Info-Landing Page</p>
 	</div>
@@ -62,7 +76,7 @@
 			 	
 			                 	 	<c:when test="${actionStatus == action.statusName}">
 			                
-	   										 <li><a href="MentorStudentActionServlet?actionView=${action.action}&email_id=${ms.mentorStudentEmailId}" class="dropdown-item" >${action.action}</a></li>
+	   										 <li><a href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');" class="dropdown-item" >${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>

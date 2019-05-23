@@ -15,7 +15,7 @@
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235);">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" >
 			
-			<span class="backbutton" onClick="gotoStudentLandingPage()">BACK</span>
+			<span class="backbutton" onClick="gotoMentorStudentLandingPage()">BACK</span>
 		</div>
 		
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopad " >
