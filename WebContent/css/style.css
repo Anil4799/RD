@@ -840,3 +840,10 @@ table td, .table th {
 	 background-color:#ececec;
 	 padding: 12px 24px;
 }
+
+.displayViewFont{
+	text-transform:capitalize;
+	color:#000;
+	float:right;
+	width:34%
+}

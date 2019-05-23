@@ -27,28 +27,28 @@
   					<div>
     					<span>First Name:
     					<!-- <span style="float:right;width:34%"> -->
-    					 <span style="color:#000;float:right;width:34%">		
+    					 <span class="displayViewFont">		
     						<c:out value="${student[0].firstName.equals('') ? '': student[0].firstName}" />
     					</span>
 					</div>
 					<br>
 					<div>
 						<span>Last Name:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 							<c:out value="${student[0].lastName.equals('') ? '': student[0].lastName}" />
 						</span>
 					</div>
 					<br>
 					<div>
 						Date of Birth:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 							<c:out value="${student[0].dob}" />
 						</span>
 					</div>
 					<br>
 					<div>
 						Email:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 						<c:out value="${student[0].email}" />
 						</span>
 					</div>
@@ -56,21 +56,21 @@
 					<br>
 					<div>
 						Gender:
-						<span  style="color:#000;float:right; width:34%" >
+						<span  class="displayViewFont" >
 						<c:out value="${student[0].gender.equals('') ? '': student[0].gender}" />
 					    </span>
 					</div>
 					<br>
 					<div>
 						Contact Number:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 						<c:out value="${student[0].contactNumber == 0 ? '': student[0].contactNumber}" />
 						</span>
 					</div>
 					<br>
 					<div>
 					Location:
-					<span style="color:#000;float:right;width:34%">
+					<span class="displayViewFont">
 					<c:out value="${student[0].personalLocation.equals('') ? '': student[0].personalLocation}" />
 					</span>
 					</div>
@@ -86,9 +86,9 @@
   					<div>
   						
   						College:
-  						<span style="float:right;width:34%" >
+  						<span class="displayViewFont" >
   							
-  						<c:out value="${student[0].collegeName==0 ? '':'${student[0].collegeName'}"/>
+  						<c:out value="${student[0].collegeName.equals('') ? '': student[0].collegeName}"/>
   						
 						
 						
@@ -97,16 +97,16 @@
   					<br>
     				<div>
     					Location:
-    					<span style="color:#000;float:right;width:34%" >
+    					<span class="displayViewFont">
     					
-    					<c:out value="${student[0].collegeLocation==0 ? '':'${student[0].collegeLocation'}"/>
+    					<c:out value="${student[0].collegeLocation.equals('') ? '':student[0].collegeLocation}"/>
     					</span>
     				</div>
 					<br>
 					
 					<div>
 					Graduation:
-					<span style="color:#000;float:right;width:34%" >
+					<span class="displayViewFont" >
 				<c:out value="${student[0].graduation.equals('') ? '':student[0].graduation}"/>
 					</span>
 					</div>
@@ -114,40 +114,40 @@
 					<br>
 					<div>
 					Graduation Speciality:
-					<span style="color:#000;float:right;width:34%" >
+					<span class="displayViewFont">
 					
-					<c:out value="${student[0].graduationSpeciality==0 ? '':'$student[0].graduationSpeciality'}"/>
+					<c:out value="${student[0].graduationSpeciality==0 ? '': student[0].graduationSpeciality}"/>
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					Year of Passed Out:
-					<span style="color:#000;float:right;width:34%">
-					<c:out value="${student[0].yearOfPassedOut==0 ? '':'$student[0].yearOfPassedOut'}"/>
+					<span class="displayViewFont">
+					<c:out value="${student[0].yearOfPassedOut==0 ? '':student[0].yearOfPassedOut}"/>
 					</span>
 					
 					</div>
 					<br>
 					<div>
 					Graduation Marks:
-					<span style="color:#000;float:right;width:34%">
-						<c:out value="${student[0].graduationMarks==0 ? '':'$student[0].graduationMarks'}" />
+					<span class="displayViewFont">
+						<c:out value="${student[0].graduationMarks==0 ? '':student[0].graduationMarks}" />
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					10th + 2 Marks:
-					<span style="color:#000;float:right;width:34%">
-						<c:out value="${student[0].twelveth==0 ? '':'$student[0].twelveth'}" />
+					<span class="displayViewFont">
+						<c:out value="${student[0].twelveth==0 ? '':student[0].twelveth}" />
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
-					<span style="color:#000;float:right;width:34%">
-						<c:out value="${student[0].tenth==0 ? '':'$student[0].tenth'}" />
+					<span class="displayViewFont">
+						<c:out value="${student[0].tenth==0 ? '':student[0].tenth}" />
 					</span>
 					</div>
 					
@@ -164,14 +164,14 @@
   					<div class="card-body label_color">
   					<div>
   						BatchId:
-				        <span style="color:#000;float:right;width:34%">
+				        <span class="displayViewFont">
 					      <c:out value="${student[0].batchId}" />
         				</span>
   					</div>
 						<br>
 						<div>
 						Employee Type:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 							<c:out value="${student[0].employeeType.equals('') ? '': student[0].employeeType}" />						
 						</span>
 						</div>
@@ -179,14 +179,14 @@
 						<br>
 						<div>
 						Core Skill:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 						<c:out value="${student[0].coreSkill.equals('') ? '': student[0].coreSkill}" />
 						</span>
 						</div>
 						<br>
 						<div>
 						Preferred Student Stream:
-						<span style="color:#000;float:right;width:34%">
+						<span class="displayViewFont">
 						<c:out value="${student[0].preferredStudentStream.equals('') ? '': student[0].preferredStudentStream}" />
 						</span>
 						</div>
@@ -194,7 +194,7 @@
 						<br>
 						<div>
 						Assigned Stream:
-						<span style="color:#000;float:right;width:34%" >
+						<span class="displayViewFont" >
 						<c:out value="${student[0].assignedStream.equals('') ? '': student[0].assignedStream}" />
 						</span>
 						</div>
@@ -202,7 +202,7 @@
 						<br>
 						<div>
 						Date of Joining:
-						<span style="color:#000;float:right;width:34%" >
+						<span class="displayViewFont" >
 						<th scope="row"><c:out value="${student[0].dateOfJoining}" /></th>
 						</span>
 						</div>
@@ -210,7 +210,7 @@
 						<br>
 						<div>
 						Assigned Location:
-						<span style="color:#000;float:right;width:34%" >
+						<span class="displayViewFont" >
 						<c:out value="${student[0].assignedLocation.equals('') ? '': student[0].assignedLocation}" />
 						</span>
 						</div>
@@ -218,7 +218,7 @@
 						<br>
 						<div>
 						Relocation:
-						<span style="color:#000;float:right;width:34%" >
+						<span class="displayViewFont" >
 						<c:out value="${student[0].relocation.equals('') ? '': student[0].relocation}" />
 						</span>
 						</div>
@@ -226,7 +226,7 @@
 						<br>
 						<div>
 						Status:
-						<span style="color:#000;float:right;width:34%" >
+						<span class="displayViewFont">
 						<c:out value="${student[0].status.equals('') ? '': student[0].status}" />
 						</span>
 						</div>
