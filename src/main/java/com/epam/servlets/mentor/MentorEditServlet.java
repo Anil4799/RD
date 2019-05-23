@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.MentorBean;
 import com.epam.services.admin.MentorService;
@@ -24,22 +25,24 @@ import com.epam.utils.ConstantsUtility;
 @WebServlet("/MentorEditServlet")
 public class MentorEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(MentorEditServlet.class);  
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MentorEditServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-				MentorBean mentor = UpdateMentor(request);
+				MentorBean mentor = updateMentor(request);
 				MentorService service=new MentorService();
 				String status = service.updateMentor(mentor);
 				List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
@@ -57,7 +60,7 @@ public class MentorEditServlet extends HttpServlet {
 			} catch (Exception e) {
 				
 				
-				e.printStackTrace();
+				LOGGER.debug(e.getMessage());
 			}
 			
 
@@ -66,8 +69,8 @@ public class MentorEditServlet extends HttpServlet {
 		
 	}
 
-	private MentorBean UpdateMentor(HttpServletRequest request) throws ParseException {
-		// TODO Auto-generated method stub
+	private MentorBean updateMentor(HttpServletRequest request) throws ParseException {
+		
 			
 		MentorBean mentor = new MentorBean();
 		
@@ -78,14 +81,14 @@ public class MentorEditServlet extends HttpServlet {
 		mentor.setStatus(request.getParameter("mentor_status"));
 		
 		String mentorstartdate=request.getParameter("mentorship_start_date");
-		String date1[]=mentorstartdate.split("-");
+		String[] date1=mentorstartdate.split("-");
 		String mentorstartdatesql=date1[2]+"-"+date1[0]+"-"+date1[1];
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date mysqlmentorstartdate=sdf.parse(mentorstartdatesql);
 		
 	
 		String  mentorenddate=request.getParameter("mentorship_end_date");
-		String date2[]=mentorenddate.split("-");
+		String[] date2=mentorenddate.split("-");
 		String mentorenddatesql=date2[2]+"-"+date2[0]+"-"+date2[1];
 		
 		java.util.Date mysqlmentorenddate=sdf.parse(mentorenddatesql);

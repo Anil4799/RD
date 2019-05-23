@@ -39,7 +39,7 @@
 			</div>			
 			<div class="mentor_info_title">MENTOR INFO</div>
 			<div class="mentor_info_form" style="height: 100%; padding: 20px 0px 20px 0px;">
-			<% MentorBean mentor =(MentorBean)request.getAttribute("MentorbeanList"); %>
+			<% MentorBean mentor =(MentorBean)request.getAttribute("MentorbeanList1"); %>
 				<form id="mentor_info_form" name="mentor_info_form"> 								
 					<table width="38%" style="margin-left: 0%;">
 						<tr>

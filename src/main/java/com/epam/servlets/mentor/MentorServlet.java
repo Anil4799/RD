@@ -40,7 +40,7 @@ public class MentorServlet extends HttpServlet {
 			} catch (Exception e) {
 				
 				LOGGER.debug(e.getMessage());
-				e.printStackTrace();
+				
 			}
 			
 		LOGGER.debug("Exit from Servlet...............");
@@ -57,14 +57,14 @@ public class MentorServlet extends HttpServlet {
 		mentor.setStatus(req.getParameter("mentor_status"));
 		
 		String mentorstartdate=req.getParameter("mentorship_start_date");
-		String date1[]=mentorstartdate.split("-");
+		String[] date1=mentorstartdate.split("-");
 		String mentorstartdatesql=date1[2]+"-"+date1[0]+"-"+date1[1];
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date mysqlmentorstartdate=sdf.parse(mentorstartdatesql);
 		
 	
 		String  mentorenddate=req.getParameter("mentorship_end_date");
-		String date2[]=mentorenddate.split("-");
+		String[] date2=mentorenddate.split("-");
 		String mentorenddatesql=date2[2]+"-"+date2[0]+"-"+date2[1];
 		
 		java.util.Date mysqlmentorenddate=sdf.parse(mentorenddatesql);

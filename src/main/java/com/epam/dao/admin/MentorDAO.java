@@ -47,10 +47,11 @@ public class MentorDAO {
 		
 		MentorBean mentor=new MentorBean();
 		String sql="select * from Mentor_info where Email_Id=?";
+		ResultSet rs=null;
 		try(Connection con = DBManager.getConnection();PreparedStatement  ps = con.prepareStatement(sql))
 		{
 			ps.setString(1,id);
-			ResultSet rs=ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 			mentor.setName(rs.getString(2));
 			mentor.setEmail(rs.getString(3));
@@ -70,6 +71,16 @@ public class MentorDAO {
 			
 			LOGGER.error(e.getMessage());
 		}
+		finally {
+			try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	        } catch (SQLException e3) {
+	            // Can't do nothing
+	        }
+		}
+		
 		return mentor;
 		
 	}	

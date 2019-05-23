@@ -16,7 +16,7 @@
 		<div class="page_info">
 			<p class="page_title">ADD MENTOR</p>
 		</div>
-	<% MentorBean mentor =(MentorBean)request.getAttribute("MentorbeanList"); 
+	<% MentorBean mentor =(MentorBean)request.getAttribute("MentorbeanList2"); 
 			
 			
 			
