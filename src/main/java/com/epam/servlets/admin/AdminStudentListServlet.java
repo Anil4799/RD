@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import com.epam.dao.admin.Student;
+import com.epam.dao.admin.BatchInfoDAO;
+import com.epam.dao.admin.BatchInfoDAOImpl;
 import com.epam.dao.admin.MenuAction;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
@@ -26,21 +28,25 @@ public class AdminStudentListServlet extends HttpServlet {
 	 private final AdminStudentInfoService studentInfoService = new AdminStudentInfoServiceImpl();
 	 private static final Logger LOGGER = Logger.getLogger( AdminStudentListServlet.class);
 	 private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
-	 
+	 private final BatchInfoDAO batchInfoDAO = new BatchInfoDAOImpl();
 	 @Override
 	 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Student> studentList =null;
 		List<MenuAction> actionList =null;
+		List<String> batchIDList=null;
 		LOGGER.debug("Enter into servlet......");
 		String pageUrl=null;
+		request.setAttribute("result", false);
 		try(Connection con=DBManager.getConnection();)
 		{
 			int role= (int) request.getSession(true).getAttribute("role");
 			studentList=studentInfoService.getAllStudentDetails(con);
 			actionList=menuActionItemService.getMenuActionList(con,role);
+			batchIDList = batchInfoDAO.getAllBatchID(con);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO);
 			request.setAttribute("students", studentList);
 			request.setAttribute("actions", actionList);
+			request.setAttribute("batchIDs", batchIDList);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");

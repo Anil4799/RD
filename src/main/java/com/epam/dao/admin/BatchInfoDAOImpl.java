@@ -2,8 +2,11 @@ package com.epam.dao.admin;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -16,9 +19,6 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 	private static final Logger LOGGER = Logger.getLogger(BatchInfoDAOImpl.class);
 	public String generateBatchId(String startDate) {
 		String batchId = null;
-		
-		
-	
 		try {
 			connection = DBManager.getConnection();
 			statement = connection.prepareCall("{call batch_id_proc(?,?)}");
@@ -70,6 +70,22 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			return "Batch Saved successfully";
 
 	}
+
+
+	@Override
+	public List<String> getAllBatchID(Connection con) {
+		List<String> batchIDList = new ArrayList<>();
+		String sql="call get_all_batchID();";
+		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();){
+			while(rs.next()){
+				batchIDList.add(rs.getString(1));
 		
-	
+			}
+		}catch(Exception e){
+			batchIDList=null;
+			e.getMessage();
+		}
+		
+		return batchIDList;
+	}
 }

@@ -43,4 +43,37 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 		
 	return studentList;
 	}
+	@Override
+	public List<MentorStudent> getAllSearchStudentDetails(Connection con,String mentorEmailId, String firstNamedb, String lastNamedb,
+			String batchIDdb) {
+		
+		List<MentorStudent> studentList = new ArrayList<>();
+		String sql="call search_mentor_student('"+mentorEmailId+"','"+firstNamedb+"','"+lastNamedb+"','"+batchIDdb+"');";
+		try(CallableStatement cs= con.prepareCall(sql);)
+		{
+			try(ResultSet rs = cs.executeQuery();)
+			{
+				while(rs.next())
+				{
+					MentorStudent student=new MentorStudent();
+					String firstName=rs.getString("first_name");
+					String lastName=rs.getString("last_name");
+					String name=firstName+" "+lastName;
+					student.setName(name);
+					student.setBatch(rs.getString("batch_id"));
+					student.setCoreSkill(rs.getString("core_skill"));
+					student.setStatus(rs.getString("status"));	
+					studentList.add(student);
+				}
+			}
+
+		}
+		catch(Exception e)
+		{
+			studentList=null;
+			LOGGER.debug(e.getMessage());
+		}
+		
+	return studentList;
+	}
 }
