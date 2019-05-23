@@ -48,10 +48,11 @@ public class MentorStudentActionServlet extends HttpServlet {
 			{
 				studentList=studentInfoService.mentorViewStudentDetails(con, studentEmailId);
 				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_VIEW_STUDENT_INFO);
-				request.setAttribute("students", studentList);
+				request.setAttribute("student", studentList);
 				List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 				request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 				request.setAttribute("pageState", "STUDENT INFO");
+				LOGGER.debug("AAAAAAA"+ studentList.size() );
 				request.getRequestDispatcher(pageUrl).forward(request, response);
 
 			}

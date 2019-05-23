@@ -11,15 +11,7 @@
  
   <!---Body--->  
 	
-	<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC; z-index: 10;">	
-			<div style="margin: 10px 0px 20px 10px;">
-				RD Portal Says
-			</div>
-			<div id="message_info">
-			</div>
-			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF" name="ok"  onClick="closeAlertPopup()">OK</span>		
-		</div>
-	<form action ="StudentServlet" name="add_student_info" id="add_student_info" method="post">
+
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235);">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" >
 			
@@ -33,55 +25,53 @@
   					<h5 class="card-header" >PERSONAL INFO</h5>
   					<div class="card-body label_color">
   					<div>
-    					<span>First Name:<span class="required"></span></span>
+    					<span>First Name:
     					<!-- <span style="float:right;width:34%"> -->
-    					
-    					
-    					
-    					<th scope="row">${student}</th>
+    					 <span style="color:#000;float:right;width:34%">		
+    						<c:out value="${student[0].firstName.equals('') ? '': student[0].firstName}" />
     					</span>
 					</div>
 					<br>
 					<div>
-						<span>Last Name:<span class="required"></span></span>
-						<span style="float:right;width:34%">
-						
+						<span>Last Name:
+						<span style="color:#000;float:right;width:34%">
+							<c:out value="${student[0].lastName.equals('') ? '': student[0].lastName}" />
 						</span>
 					</div>
 					<br>
 					<div>
-						Date of Birth:<span class="required"></span>
-						<span style="float:right;width:34%">
-						
+						Date of Birth:
+						<span style="color:#000;float:right;width:34%">
+							<c:out value="${student[0].dob}" />
 						</span>
 					</div>
 					<br>
 					<div>
-						Email:<span class="required"></span>
-						<span style="float:right;width:34%">
-						
+						Email:
+						<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].email}" />
 						</span>
 					</div>
 					
 					<br>
 					<div>
-						Gender:<span class="required"></span>
-						<span style="float:right; width:34%" >
-						
+						Gender:
+						<span  style="color:#000;float:right; width:34%" >
+						<c:out value="${student[0].gender.equals('') ? '': student[0].gender}" />
 					    </span>
 					</div>
 					<br>
 					<div>
 						Contact Number:
-						<span style="float:right;width:34%">
-						
+						<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].contactNumber == 0 ? '': student[0].contactNumber}" />
 						</span>
 					</div>
 					<br>
 					<div>
-					Location:<span class="required"></span>
-					<span style="float:right;width:34%">
-					
+					Location:
+					<span style="color:#000;float:right;width:34%">
+					<c:out value="${student[0].personalLocation.equals('') ? '': student[0].personalLocation}" />
 					</span>
 					</div>
     				
@@ -98,10 +88,8 @@
   						College:
   						<span style="float:right;width:34%" >
   							
-  						 
-  						 <c:forEach items="${collegeNames}" var="cn" >
-							<option value="${cn}>">${cn}</option>
-						</c:forEach>
+  						<c:out value="${student[0].collegeName==0 ? '':'${student[0].collegeName'}"/>
+  						
 						
 						
   						</span>
@@ -109,57 +97,57 @@
   					<br>
     				<div>
     					Location:
-    					<span style="float:right;width:34%" >
+    					<span style="color:#000;float:right;width:34%" >
     					
-    					
+    					<c:out value="${student[0].collegeLocation==0 ? '':'${student[0].collegeLocation'}"/>
     					</span>
     				</div>
 					<br>
 					
 					<div>
 					Graduation:
-					<span style="float:right;width:34%" >
-				
+					<span style="color:#000;float:right;width:34%" >
+				<c:out value="${student[0].graduation.equals('') ? '':student[0].graduation}"/>
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					Graduation Speciality:
-					<span style="float:right;width:34%" >
+					<span style="color:#000;float:right;width:34%" >
 					
-					
+					<c:out value="${student[0].graduationSpeciality==0 ? '':'$student[0].graduationSpeciality'}"/>
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					Year of Passed Out:
-					<span style="float:right;width:34%">
-					
+					<span style="color:#000;float:right;width:34%">
+					<c:out value="${student[0].yearOfPassedOut==0 ? '':'$student[0].yearOfPassedOut'}"/>
 					</span>
 					
 					</div>
 					<br>
 					<div>
 					Graduation Marks:
-					<span style="float:right;width:34%">
-				
+					<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].graduationMarks==0 ? '':'$student[0].graduationMarks'}" />
 					</span>
 					</div>
 					
 					<br>
 					<div>
 					10th + 2 Marks:
-					<span style="float:right;width:34%">
-					
+					<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].twelveth==0 ? '':'$student[0].twelveth'}" />
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
-					<span style="float:right;width:34%">
-				
+					<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].tenth==0 ? '':'$student[0].tenth'}" />
 					</span>
 					</div>
 					
@@ -175,71 +163,71 @@
   					<h5 class="card-header">ADDITIONAL INFO</h5>
   					<div class="card-body label_color">
   					<div>
-  						BatchId:<span class="required"></span>
-				        <span style="float:right;width:34%">
-					        
+  						BatchId:
+				        <span style="color:#000;float:right;width:34%">
+					      <c:out value="${student[0].batchId}" />
         				</span>
   					</div>
 						<br>
 						<div>
-						Employee Type:<span class="required"></span>
-						<span style="float:right;width:34%">
-													
+						Employee Type:
+						<span style="color:#000;float:right;width:34%">
+							<c:out value="${student[0].employeeType.equals('') ? '': student[0].employeeType}" />						
 						</span>
 						</div>
 						
 						<br>
 						<div>
-						Core Skill:<span class="required"></span>
-						<span style="float:right;width:34%">
-						
+						Core Skill:
+						<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].coreSkill.equals('') ? '': student[0].coreSkill}" />
 						</span>
 						</div>
 						<br>
 						<div>
 						Preferred Student Stream:
-						<span style="float:right;width:34%">
-						
+						<span style="color:#000;float:right;width:34%">
+						<c:out value="${student[0].preferredStudentStream.equals('') ? '': student[0].preferredStudentStream}" />
 						</span>
 						</div>
 						
 						<br>
 						<div>
 						Assigned Stream:
-						<span style="float:right;width:34%" >
-						
+						<span style="color:#000;float:right;width:34%" >
+						<c:out value="${student[0].assignedStream.equals('') ? '': student[0].assignedStream}" />
 						</span>
 						</div>
 						
 						<br>
 						<div>
-						Date of Joining:<span class="required"></span>
-						<span style="float:right;width:34%" >
-						
+						Date of Joining:
+						<span style="color:#000;float:right;width:34%" >
+						<th scope="row"><c:out value="${student[0].dateOfJoining}" /></th>
 						</span>
 						</div>
 						
 						<br>
 						<div>
 						Assigned Location:
-						<span style="float:right;width:34%" >
-						
+						<span style="color:#000;float:right;width:34%" >
+						<c:out value="${student[0].assignedLocation.equals('') ? '': student[0].assignedLocation}" />
 						</span>
 						</div>
 						
 						<br>
 						<div>
-						Relocation:<span class="required"></span>
-						<span style="float:right;width:34%" >
-						
+						Relocation:
+						<span style="color:#000;float:right;width:34%" >
+						<c:out value="${student[0].relocation.equals('') ? '': student[0].relocation}" />
 						</span>
 						</div>
 						
 						<br>
 						<div>
-						Status:<span class="required"></span>
-						<span style="float:right;width:34%" >
-						
+						Status:
+						<span style="color:#000;float:right;width:34%" >
+						<c:out value="${student[0].status.equals('') ? '': student[0].status}" />
 						</span>
 						</div>
  		   		</div>
@@ -247,7 +235,6 @@
 		</div>
 	</div>
 </div>
-</form>
  	
 </div>
 
