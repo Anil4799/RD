@@ -130,9 +130,9 @@
 							<td class="form_lable">Status:<span class="required">*</span> </td>
 							<td>
 								<select id="mentor_status" name="mentor_status" class="form-control form-control-sm" required>										
-									<option value="active">ACTIVE</option>
-									<option value="inactive">INACTIVE</option>
-									<option value="onhold">ONHOLD</option>
+									<option style="font-family: Oswald" value="active">ACTIVE</option>
+									<option style="font-family: Oswald"  value="inactive">INACTIVE</option>
+									<option style="font-family: Oswald" value="onhold">ONHOLD</option>
 								</select>
 							</td>
 						</tr>
