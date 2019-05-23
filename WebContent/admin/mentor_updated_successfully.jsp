@@ -1,13 +1,14 @@
 
      <%@ include file="/common/header.jspf" %>
-		<style>
-	     	.mentor_info_form td{
-					border: 0px;
-				}
-     	</style>
+     <style>
+     	.mentor_info_form td{
+				border: 0px;
+			}
+     </style>
+
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #EBEBEB; margin: 0px 3px 0px 3px; padding-top: 1px;">
-		<div id="mentor_added_message" class="mentor_added_message" style="padding: 10px 10px 5px 30px;">
-			Mentor Added Successfully
+		<div id="mentor_added_message" class="mentor_added_message" style="padding: 10px 10px 5px 25px;">
+			Mentor Updated Successfully
 		</div>		
 		<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC;">	
 			<div style="margin: 10px 0px 20px 10px;">
@@ -22,7 +23,7 @@
 			<div>	
 				<table width="100%">
 					<tr>
-						<td align="right">
+						<td align="right" style="padding: 0px 10px 0px 0px;">
 							<span class="savebutton" style="background-color:#5CB85C ; color: #FFF" onClick="validateForm()">SAVE</span>
 							<a href="mentor_info_landing_page.jsp" class="backbutton" style="text-decoration: none; color: #464343;">BACK</span>
 						</td>
@@ -32,7 +33,7 @@
 			<div class="mentor_info_title">MENTOR INFO</div>
 			<div class="mentor_info_form" style="height: 100%;">
 				<form id="mentor_info_form" name="mentor_info_form">
-					<table width="40%" style="margin-left: 25%;">
+					<table width="38%" style="margin-left: 25%;">
 						<tr>
 							<td class="form_lable">Name:<span class="required">*</span></td>
 							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required/></td>								

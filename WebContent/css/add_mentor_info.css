@@ -3,14 +3,16 @@
     	font-size: 12px;
     	border-radius: 5px 5px 5px 5px;
 		background:  #D8DCDE;
-		padding: 5px 5px 5px 5px;				
+		padding: 4px 5px 5px 5px;				
 		width: 60px;
 		height: 28px;
 		float: right;				
 		margin: 3px;
 		text-align: center;
 		cursor: pointer;
-		font-weight: bold;		
+		font-weight: normal;
+		color: #333333;	
+		border: 1px solid #CCCCCC;		
 	}
 	.ok_button{
     	font-size: 12px;
@@ -80,15 +82,25 @@
 	}	
 	
 	.form_lable{
-				width: 300px;
-				padding-left: 100px;
-				font-size: 14px;
-				color: #909497;
-			}				
-			table.b, table tr.b, table td.b	{ 
-				border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; border: 0; 
-			}
-			.txtbrcolr
-			{
-				border-color: red;
-			}				  	  
+		width: 300px;
+		padding-left: 100px;
+		font-size: 14px;
+		color: #909497;
+	}				
+	table.b, table tr.b, table td.b	{ 
+		border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; border: 0; 
+	}
+	.txtbrcolr
+	{
+		border-color: red;
+	}	
+	.blank_popup{
+		height: 600px;
+		width: 100%;
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		opacity: 0.1;
+		background-color: #fff;
+	}			  
