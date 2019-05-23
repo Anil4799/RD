@@ -465,19 +465,22 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	content: "";
 }
 
-.backbutton, .savebutton {
-	font-size: 12px;
+/* .backbutton, .savebutton {
+	font-size: 14;
 	border-radius: 5px 5px 5px 5px;
 	background: #D8DCDE;
 	padding: 5px 5px 5px 5px;
-	width: 60px;
-	height: 28px;
+	
 	float: right;
 	margin: 3px;
 	text-align: center;
 	cursor: pointer;
-	font-weight: bold;
-}
+	
+	Font: Oswald;
+	Color: #000000;
+	
+	
+} */
 
 .ok_button {
 	font-size: 12px;	border-radius: 5px 5px 5px 5px;	background: #D8DCDE;	padding: 5px 5px 5px 5px;	width: 60px;	height: 28px;	float: right;margin: 3px;text-align: center;	cursor: pointer;}
@@ -637,7 +640,7 @@ table.b, table tr.b, table td.b {
 	height: 40px;
 }
 
-.backbutton, .savebutton {
+/* .backbutton, .savebutton {
 	font-family: 'Oswald', sans-serif;
 	font-size: 14px;
 	border-radius: 5px 5px 5px 5px;
@@ -649,7 +652,7 @@ table.b, table tr.b, table td.b {
 	margin: 3px;
 	text-align: center;
 	cursor: pointer;
-}
+} */
 
 .batch_info_title {
 	font-size: 17px;
@@ -781,7 +784,7 @@ table.b, table tr.b, table td.b {
 	text-align: right;
 }
 
-.backbutton, .savebutton {
+/* .backbutton, .savebutton {
 	font-size: 12px;
 	border-radius: 5px 5px 5px 5px;
 	background: #D8DCDE;
@@ -793,7 +796,7 @@ table.b, table tr.b, table td.b {
 	text-align: center;
 	cursor: pointer;
 }
-
+ */
 .batch_info_title {
 	font-size: 17px;
 	border-radius: 5px 5px 5px 5px;
@@ -926,4 +929,11 @@ table td, .table th {
 	 border:none;
 	 background-color:#ececec;
 	 padding: 12px 24px;
+}
+
+.card-header {
+
+    background-color: rgba(255, 252, 252, 0.03);
+  
+
 }
