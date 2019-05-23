@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.utils.ConstantsUtility;
 
 /**
@@ -15,7 +17,7 @@ import com.epam.utils.ConstantsUtility;
 @WebServlet("/BatchAction")
 public class BatchAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static final Logger LOGGER = Logger.getLogger(BatchAction.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -42,5 +44,15 @@ public class BatchAction extends HttpServlet {
 			request.getRequestDispatcher(pageUrl).forward(request, response);
 		
 	}
+	
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  try {
+		doGet(request, response);
+	} catch (Exception e) {
+		LOGGER.debug(e.getMessage());
+	}
+	}
+
 
 }

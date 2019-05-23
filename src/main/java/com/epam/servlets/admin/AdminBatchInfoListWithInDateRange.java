@@ -45,6 +45,7 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 				{
 					String startDate=request.getParameter("startDate");
 					String endDate=request.getParameter("endDate");
+					System.out.println("dates received "+startDate+" "+endDate);
 					Connection con=DBManager.getConnection();
 					
 					int role= (int) request.getSession(true).getAttribute("role");
@@ -53,12 +54,17 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 					
 					batchList=batchInfoListService.getAllBatchListWithInDateRange(con, startDate, endDate);
 					
+					//int batchListSize=batchList.size();
 					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
 					request.setAttribute("batchs", batchList);
 					request.setAttribute("actions", actionList);
 					List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 					request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 					request.setAttribute("pageState", "BATCH INFO");
+					//System.out.println("------------> "+batchList.size());
+					request.setAttribute("resultSize", batchList.size());
+					request.setAttribute("searchResult", "a");
+					
 					request.getRequestDispatcher(pageUrl).forward(request, response);
 
 

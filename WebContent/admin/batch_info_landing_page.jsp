@@ -54,151 +54,195 @@
     	}
     else
     	{
-    	alert("in else");
     	
-    //	sendSearchDatesAsynchronous(startDate,endDate);
-    document.forms[0].action="/admin-portal/AdminBatchInfoListWithInDateRange?startDate="+ '01-05-2019'+ "&endDate="+'06-06-2019';
-	document.forms[0].method = "GET";
-    document.forms[0].submit();
-    alert("in else2");
+    	
+    	var params="?startDate="+startDate+"&endDate="+endDate;
+   
+    document.getElementById("batchDetailsSearch").action="/admin-portal/AdminBatchInfoListWithInDateRange"+params;
+    document.getElementById("batchDetailsSearch").method = "post";
+    document.getElementById("batchDetailsSearch").submit();
+ 
     	}
 
     }
     
-    function customAlertRecordsFound(recordsFound){
-    	alert("found"+recordsFound);
-    	document.getElementById("alertWhenDateSearch").style.color="black";
-    	document.getElementById("alertWhenDateSearch").innerHTML=recordsFound+" records found";
-    	document.getElementById("alertWhenDateSearch").style.display="block";
-    	
-    	
-    }
-    function sendSearchDatesAsynchronous(startDate,endDate) {
-    
-    	var params = "?startDate="+ startDate+ "&endDate="+endDate;
-		var xhttp;
-
-		if (window.XMLHttpRequest) {
-		   xhttp = new XMLHttpRequest();
-		} else {
-			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-	  xhttp.onreadystatechange = function() {
- 	 if (this.readyState == 4 && this.status == 200) {
- 		customAlertRecordsFound(this.responseText);
- 	 }
-};
-		 xhttp.open("GET", "/admin-portal/AdminBatchInfoListWithInDateRange"+ params, true);
-		xhttp.send();
-		
-    }
-    
-    
-
-
-    </script>
+   </script>
     
 </head>
 
-
-  
     <div class="page_info">
 		<p class="page_title">Batch Info - Landing Page</p>
 	</div>
     
     <div class="container">
-
-		<table class="table" >
-				<tr style="float:left">
-				<td >
-		<input id="startDate" width="300"  placeholder="Start Date" class="col-md-11 border-right-0"/>
-			 	 <script type="text/javascript" src="./js/date.js"></script>
+         <form id="batchDetailsSearch">
+				<table class="table" >
+					<tr style="float:left">
+						<td >
+								<input id="startDate" width="300"  placeholder="Start Date" class="col-md-11 border-right-0"/>
+			 					 <script type="text/javascript" src="./js/date.js"></script>
 		 
-		 </td>
-		 <td>		 	
-		 <input id="endDate" width="300"  placeholder="End Date" class="col-md-11 border-right-0 "/>
-		   <script type="text/javascript" src="./js/date.js"></script>
+						 </td>
+						 <td>		 	
+		 						<input id="endDate" width="300"  placeholder="End Date" class="col-md-11 border-right-0 "/>
+		  						 <script type="text/javascript" src="./js/date.js"></script>
 		  		 
-		</td>
-		<td>
+						</td>
+						 <td>
 			 
-  		<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe"  onclick="validateStartEndDate()"></button>
+  								<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe"  onclick="validateStartEndDate()"></button>
 		
-		</td>
-		<td><div class="button">
-			<a href="addBatch" class="btn btn-success"> ADD NEW BATCH</a>
+						</td>
+						<td>
+								<div class="button">
+										<a href="addBatch" class="btn btn-success"> ADD NEW BATCH</a>
 
-			</div></td> 
-			
-		 
-			
-		</tr>
-		  
+								</div>
+						</td> 
+				  </tr>
+			</table>
+		</form>
 		
-		</table>
-		<div id="alertWhenDateSearch" style="display:none; text-transform:none;">
-		     
+		<div id="alertWhenDateSearch" style="text-transform:none;">
+		    
+		       
 		</div>
-	<div id="batchLandingTable">	
-		<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">BATCHID</th>
-      <th scope="col">START DATE</th>
-      <th scope="col">END DATE</th>
-      <th scope="col">STATUS</th>
-      <th scope="col">ACTION</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  
-  <c:forEach items="${batchs}" var="batch" >
-  
-   <tr>
-      <th scope="row">${batch.batchid}</th>
-      <td>${batch.startdate}</td>
-      <td>${batch.enddate}</td>
-      <td>${batch.status}</td>
-      <td><div class="btn-group" >
-            
-		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
-		          
-		                 <ul class="dropdown-menu ddmf" role="menu">
-		                 
-		 
-		                 	
-			                 	 <c:forEach items="${actions}" var="action" >
-			                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
-			                 	 <c:choose>
+		
+ 		<c:choose>
 			  
-			                 	 	<c:when test="${actionStatus == action.statusName}">
+			 <c:when test="${searchResult == 'a'}">
 			                																						
-	   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
-	   									
-	   							    </c:when>
-	   							    <c:otherwise>
+	   				<span style="text-transform:none;padding-left:10px;color: #909497;">	
+							<c:out value='${resultSize}'/> records found
+						</span>
+							
+					<table class="table">
+							<c:choose>
+						       <c:when test="${resultSize > 0}" >
+						       		<thead>
+								    <tr>
+								      <th>BATCHID</th>
+								      <th>START DATE</th>
+								      <th>END DATE</th>
+								      <th>STATUS</th>
+								      <th>ACTION</th>
+								    </tr>
+								  </thead>
+						       </c:when>
+						       <c:otherwise>
+						       
+						       </c:otherwise>
+						       </c:choose>
+					       <tbody>
+							   <c:forEach items="${batchs}" var="batch" >
+							     <tr>
+							      <th scope="row">${batch.batchid}</th>
+							      <td>${batch.startdate}</td>
+							      <td>${batch.enddate}</td>
+							      <td>${batch.status}</td>
+							      <td><div class="btn-group" >
+							            
+									            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
+									          
+									                 <ul class="dropdown-menu ddmf" role="menu">
+									                 
+									 
+									                 	
+										                 <c:forEach items="${actions}" var="action" >
+										                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
+										                 	 <c:choose>
+										  
+										                 	 	<c:when test="${actionStatus == action.statusName}">
+										                																						
+								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
+								   									
+								   							    </c:when>
+								   							    <c:otherwise>
+															    		  
+															    	
+															 	</c:otherwise>
+															 </c:choose>
+								    						
+														</c:forEach>
+							
+												              				               					             
+												      </ul>
+										    </div>
+								      </td>
+							        </tr>
+							         
+							      </c:forEach>
+							  </tbody>
+					</table>
+										
+	   		</c:when>
+	   	<c:otherwise>
+							
+							
+		<div id="batchLandingTable">	
+					
+					<table class="table">
+			  			<thead>
+						    <tr>
+						      <th scope="col">BATCHID</th>
+						      <th scope="col">START DATE</th>
+						      <th scope="col">END DATE</th>
+						      <th scope="col">STATUS</th>
+						      <th scope="col">ACTION</th>
+						    </tr>
+			  			</thead>
+			  			<tbody>
+			  
+			  
+			  				<c:forEach items="${batchs}" var="batch" >
+			  
+							   			<tr>
+										      <th scope="row">${batch.batchid}</th>
+										      <td>${batch.startdate}</td>
+										      <td>${batch.enddate}</td>
+										      <td>${batch.status}</td>
+										      <td>
+										      		<div class="btn-group" >
+										            
+									            	<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
+									          
+									                 <ul class="dropdown-menu ddmf" role="menu">
+									                 
+									 
+									                 	
+										                 	 <c:forEach items="${actions}" var="action" >
+										                 		 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
+										                 		 <c:choose>
+										  
+										                 	 			<c:when test="${actionStatus == action.statusName}">
+										                																						
+								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
+								   									
+								   							   			 </c:when>
+								   							   			 <c:otherwise>
+															    		  
+															    	
+															 			 </c:otherwise>
+															    </c:choose>
+								    						
+															</c:forEach>
+							
+												              				               					             
+												       </ul>
+												   	 </div>
+										    	</td>
+							   			 </tr>
+							         
+			  						</c:forEach>
+						  	</tbody>
+					</table>	
+			
+			</div>	
 								    		  
 								    	
-								 	</c:otherwise>
-								 </c:choose>
-	    						
-							</c:forEach>
+	    </c:otherwise>
+		</c:choose>
 
-					              				               					             
-					            </ul>
-					             
-					           
-					           
-					            
-					 </div></td>
-    </tr>
-         
-  </c:forEach>
-  </tbody>
-</table>
-</div>
  </div>
  
 <%@ include file="/common/footer.jspf"%>

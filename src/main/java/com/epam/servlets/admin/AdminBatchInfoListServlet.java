@@ -48,6 +48,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "BATCH INFO");
+			request.setAttribute("searchResult", "");
 			request.getRequestDispatcher(pageUrl).forward(request, response);
 
 

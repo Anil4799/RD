@@ -63,8 +63,8 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
 			java.sql.Date enDate = java.sql.Date.valueOf(endDate);
 			
-			statement.setDate("Start_Date", stDate);
-			statement.setDate("End_Date", enDate);
+			statement.setDate("startDate", stDate);
+			statement.setDate("endDate", enDate);
 			ResultSet rs=statement.executeQuery();
 			
 			while(rs.next())
@@ -85,6 +85,7 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
+			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}

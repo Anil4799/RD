@@ -56,4 +56,8 @@
     <param-name>RESULT_PAGE_FOR_VIEW_ACTION</param-name>
     <param-value>/admin/ViewBatchDetails.jsp</param-value>
   </context-param>
+  <context-param>
+    <param-name>RESULT_PAGE_FOR_BATCH_INFO_SEARCH</param-name>
+    <param-value>/admin/SearchBatchDetails.jsp</param-value>
+  </context-param>
 </web-app>
