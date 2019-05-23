@@ -139,7 +139,7 @@
 
 					<span class="displayViewFont">
 					
-					<c:out value="${student[0].graduationSpeciality==0 ? '': student[0].graduationSpeciality}"/>
+					<c:out value="${student[0].graduationSpeciality.equals('') ? '': student[0].graduationSpeciality}"/>
 
 					</span>
 					</div>
