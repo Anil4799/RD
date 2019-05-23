@@ -1,53 +1,17 @@
 package com.epam.services.admin;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.List;
-import com.epam.dao.admin.Student;
 import com.epam.dao.admin.StudentBean;
 
-public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
+public class ViewStudentInfoServiceImpl implements ViewStudentInfoService {
 
 	@Override
-	public List<Student> getAllStudentDetails(Connection con) {
-		
-		List<Student> studentList = new ArrayList<>();
-		String sql="call student();";
-		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();)
-		{
-			while(rs.next())
-			{
-				System.out.println("===============> "+ rs.getString("first_name"));
-				Student student=new Student();
-				String firstName=rs.getString("first_name");
-				String lastName=rs.getString("last_name");
-				String name=firstName+" "+lastName;
-				student.setStudentName(name);
-				student.setStudentBatch(rs.getString("batch_id"));
-				student.setStudentCoreSkill(rs.getString("core_skill"));
-				student.setStudentMentor(rs.getString("mentor_name"));
-				student.setStudentStatus(rs.getString("status"));
-				student.setStudentEmailId(rs.getString("email_id"));
-				studentList.add(student);
-			}
-		}
-			
-		catch(Exception e)
-		{
-			studentList=null;
-			e.printStackTrace();;
-		}
-		
-		System.out.println("===============> "+ studentList.size());
-		
-		return studentList;
-	}
-
-	@Override
-	public List<StudentBean> adminStudentDetails(Connection con, String studentEmailId) {
+	public List<StudentBean> adminStudentDetails(Connection con) {
 		List<StudentBean> studentList = new ArrayList<>();
-		String sql="call viewStudent('"+studentEmailId+"');";
+		String sql="call viewStudent('qqq@ss.com');";
 		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();)
 		{
 			while(rs.next())

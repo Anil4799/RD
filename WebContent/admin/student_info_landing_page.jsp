@@ -57,7 +57,9 @@
       <td>${student.studentStatus}</td>
       <td><div class="btn-group" dropdown>
             
-		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
+
+		            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button> 
+
 		          
 		                 <ul class="dropdown-menu ddmf" role="menu">
 		                 	 <c:forEach items="${actions}" var="action" >
@@ -65,7 +67,8 @@
 			                 	 <c:choose>
 			                 	 	<c:when test="${actionStatus ==  action.statusName}">
 			                
-	   										 <li><a class="dropdown-item" href="#">${action.action}</a></li>
+											<%-- 	 <li><a class="dropdown-item" href="#">${action.action}</a></li> --%>
+   										 <li><a href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.studentEmailId}" class="dropdown-item" >${action.action}</a></li>
 	   									
 	   							    </c:when>
 	   							    <c:otherwise>
@@ -77,7 +80,6 @@
 					              				               					             
 					            </ul>
 					             
-					                 
 					           
 					            
 					 </div></td>

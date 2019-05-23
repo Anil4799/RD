@@ -40,6 +40,7 @@ public class AdminStudentListServlet extends HttpServlet {
 			actionList=menuActionItemService.getMenuActionList(con,role);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO);
 			request.setAttribute("students", studentList);
+			System.out.println("---------------> "+studentList.size());
 			request.setAttribute("actions", actionList);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);

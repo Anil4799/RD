@@ -6,7 +6,14 @@ public class Student {
 	String studentCoreSkill;
 	String studentMentor;
 	String studentStatus;
+	String studentEmailId;
 	
+	public String getStudentEmailId() {
+		return studentEmailId;
+	}
+	public void setStudentEmailId(String studentEmailId) {
+		this.studentEmailId = studentEmailId;
+	}
 	public String getStudentName() {
 		return studentName;
 	}
