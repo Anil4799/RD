@@ -127,7 +127,7 @@ body {
 
 .navbar .nav-link:hover {
 	background-color: #000;
-	color: #00ccff !important;
+	color: #39C2D7  !important;
 }
 
 .navbar .user-icon:hover {
@@ -273,7 +273,7 @@ body {
 	color: #fff;
 	text-align: left;
 	list-style: none;
-	background-color: #000;
+	background-color: #464547;
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .15);
 	border-radius: .25rem;
@@ -331,7 +331,7 @@ body {
 
 .navbar .nav-link:hover {
 	background-color: #000;
-	color: #00ccff !important;
+	color: #39C2D7 !important;
 }
 
 .navbar .user-icon:hover {
@@ -926,3 +926,33 @@ table td, .table th {
 	 background-color:#ececec;
 	 padding: 12px 24px;
 }
+
+.displayViewFont{
+	text-transform:capitalize;
+	color:#000;
+	float:right;
+	width:34%
+}
+
+.dropdown-item1 {
+	display: block;
+	width: 100%;
+	padding: 1.8px;
+	clear: both;
+	font-weight: 400;
+	color: #fff;
+	text-align: left;
+	white-space: nowrap;
+	background-color: #464547;
+	border: 0;
+	font-family: Oswald;
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+} 
+.dropdown-item1:focus, .dropdown-item1:hover {
+	color: #fff;
+	
+	background-color: #464547;
+}  
+.navbar .nav-link.active {  background-color: #000;color:#39C2D7 ! important; }
