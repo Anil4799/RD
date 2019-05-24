@@ -47,7 +47,7 @@
 					<div>
 						Date of Birth:
 						<span style="color:#000;float:right;width:34%">
-							<c:out value="${student[0].dob}" />
+							<c:out value="${student[0].dateOfBirth}" />
 						</span>
 					</div>
 					<br>
@@ -209,7 +209,7 @@
 						<div>
 						Date of Joining:
 						<span style="color:#000;float:right;width:34%" >
-						<c:out value="${student[0].dateOfJoining}" />
+						<c:out value="${student[0].doj}" />
 						</span>
 						</div>
 						

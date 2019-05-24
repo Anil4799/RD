@@ -7,6 +7,7 @@ public class StudentBean {
 	private String firstName;
 	private String lastName;
 	private Date dob;
+	private String dateOfBirth;
 	private String email;
 	private String gender;
 	private long contactNumber;
@@ -25,6 +26,19 @@ public class StudentBean {
 	private String preferredStudentStream;
 	private String assignedStream;
 	private Date dateOfJoining;
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	public String getDoj() {
+		return doj;
+	}
+	public void setDoj(String doj) {
+		this.doj = doj;
+	}
+	private String doj;
 	private String mentorName;
 	private String assignedLocation;
 	private String relocation;
