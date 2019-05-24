@@ -24,7 +24,6 @@ import com.epam.utils.ConstantsUtility;
 @WebServlet("/addStudent")
 public class AdminAddStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	StudentService studentService = new StudentServiceImpl();
        
 	private static final Logger LOGGER = Logger.getLogger(AdminAddStudentServlet.class);
 
@@ -65,8 +64,7 @@ public class AdminAddStudentServlet extends HttpServlet {
 			List<String> assignedLocationList = studentService.getAssignedLocation();
 			request.setAttribute("assignedLocationList", assignedLocationList);
 			
-//			List<StudentBean> graduationSpeciality = studentService.getGraduationSpeciality();
-//			request.setAttribute("graduationSpeciality", graduationSpeciality);
+
 			
 			request.setAttribute("pageState", "STUDENT INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);

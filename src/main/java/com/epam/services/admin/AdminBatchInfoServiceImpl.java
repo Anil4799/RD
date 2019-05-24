@@ -53,11 +53,10 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 	
 	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate){
 		
-		//int count=0;
 		List<Batch> batchList = new ArrayList<>();
 		
 		try {
-			//connection = DBManager.getConnection();
+
 			CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");
 			
 			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
@@ -79,13 +78,11 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 				batch.setYearnum(rs.getInt("year_num"));
 				
 				batchList.add(batch);
-				//count++;
 			}
 			
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
-			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}
