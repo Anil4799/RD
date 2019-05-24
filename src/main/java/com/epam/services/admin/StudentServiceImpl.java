@@ -155,12 +155,7 @@ public class StudentServiceImpl implements StudentService {
 	            	  numberofrow1=addEducationalInfo(studentBean);
 		              numberofrow2=addAddtionalInfo(studentBean);
 	             }
-	             
-	            
-	            /* if(numberofrow == 2)
-	             {
-	            	 result =2;
-	             }*/
+
 	              if((numberofrow>0)&& (numberofrow1>0)&& (numberofrow2>0))
 			    {
 			    	result = 1;
@@ -449,8 +444,6 @@ public class StudentServiceImpl implements StudentService {
 					String strDateOfJoining = resultSet.getString("Date_Of_Joining");
 					System.out.println("dobStr == "+strDateOfJoining);
 					studentBean.setStrDateOfJoining(strDateOfJoining);
-					
-					//studentBean.setDateOfJoining(resultSet.getDate("Date_Of_Joining"));
 					studentBean.setMentorName(resultSet.getString("Mentor_Name"));
 					studentBean.setAssignedLocation(resultSet.getString("Assigned_Location"));
 					studentBean.setRelocation(resultSet.getString("Relocation"));
@@ -459,7 +452,6 @@ public class StudentServiceImpl implements StudentService {
 				}
 						
 		} catch (Exception e) {
-			e.printStackTrace();
 			LOGGER.debug(e.getMessage()); 
 		}
 		

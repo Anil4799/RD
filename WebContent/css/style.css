@@ -567,6 +567,7 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	color: #909497;
 }
 
+
 table.b, table tr.b, table td.b {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -839,6 +840,10 @@ table.b, table tr.b, table td.b {
 	height: 30px;
 }
 
+.view_batch_id,.view_batch_start_date,.view_batch_end_date,.view_batch_status
+{
+font-size: 14px;
+}
 .form_lable {
 	width: 300px;
 	padding-left: 100px;

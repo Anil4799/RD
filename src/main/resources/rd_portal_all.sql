@@ -348,7 +348,8 @@ CREATE TABLE `student__additional_info` (
 
 LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
-INSERT INTO `student__additional_info` VALUES (8,'a@a.a','RD-Q2-2019-B6','FTE','Python','','','0012-05-11',' ','Hyderbad','Yes','Active'),(9,'bb@bb.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11','test_mentor1@epam.com','Hyderbad','Yes','Active'),(10,'rr@rr.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11',' ','Hyderbad','Yes','Active'),(11,'WER','RD-Q2-2019-B6','FTE','Python','','','0013-01-08','','Hyderbad','Yes','Active');
+
+INSERT INTO `student__additional_info` VALUES (35,'Kapse@Kapse.Kapse','RD-Q1-2019-B1','FTE','Python','','','2020-04-05','test_mentor2@epam.com','Hyderbad','Yes','Active'),(36,'timma@timma.timma','RD-Q1-2019-B2','FTE','Java','','','2020-12-05','test_mentor2@epam.com','Hyderbad','Yes','Active'),(37,'qqFTE1@ddd.com','RD-Q1-2019-B1','FTE','Python','Java','Java','2020-11-05','test_mentor2@epam.com','Hyderbad','Yes','Resigned as FTE'),(38,'asd@eeehh..gh','RD-Q1-2019-B1','FTE','Python','Java','Java','2020-11-05','demoMentor@aa.com','Hyderbad','Yes','Active');
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,7 +408,8 @@ CREATE TABLE `student_educational_info` (
 
 LOCK TABLES `student_educational_info` WRITE;
 /*!40000 ALTER TABLE `student_educational_info` DISABLE KEYS */;
-INSERT INTO `student_educational_info` VALUES ('a@a.a','','','','',0,0,0,0),('bb@bb.com','','','','',0,0,0,0),('rr@rr.com','','','','',0,0,0,0),('WER','','','','',0,0,0,0);
+
+INSERT INTO `student_educational_info` VALUES ('asd@eeehh..gh','BVRIT','dfg','dfgdg','ECE',456,456,456,456),('Kapse@Kapse.Kapse','BVRIT','dsff','','',0,0,0,0),('qqFTE1@ddd.com','BVRIT','fghfh','hhhh','ECE',444,444,444,444),('timma@timma.timma','','','','',0,0,0,0);
 /*!40000 ALTER TABLE `student_educational_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,7 +440,8 @@ CREATE TABLE `student_personal_info` (
 
 LOCK TABLES `student_personal_info` WRITE;
 /*!40000 ALTER TABLE `student_personal_info` DISABLE KEYS */;
-INSERT INTO `student_personal_info` VALUES (44,'a','a','0010-12-10','a@a.a','Male',1,'a'),(45,'xx','ee','0010-12-10','bb@bb.com','Male',0,'rrr'),(46,'rr','rr','0011-02-09','rr@rr.com','Male',0,'rrr'),(47,'QWER','WER','0011-01-09','WER','Male',1,'Hyd');
+
+INSERT INTO `student_personal_info` VALUES (34,'asdds','asdsad','2020-04-05','asd@eeehh..gh','Male',34545,'dfgdd'),(31,'Kapse','Kapse','2019-07-05','Kapse@Kapse.Kapse','Male',0,'ggg'),(33,'TTTTT','TTTTT','2020-03-05','qqFTE1@ddd.com','Male',43554654,'nnn'),(32,'Timma','Timma','2021-06-04','timma@timma.timma','Male',0,'ff');
 /*!40000 ALTER TABLE `student_personal_info` ENABLE KEYS */;
 UNLOCK TABLES;
 

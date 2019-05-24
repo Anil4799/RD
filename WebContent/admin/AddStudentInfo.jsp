@@ -56,7 +56,7 @@
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
 						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
-						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
+						 
 						</span>
 					</div>
 					<br>
@@ -320,6 +320,22 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
+<<<<<<< HEAD
+        
+        $('#dateOfBirth').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            format: 'mm-dd-yyyy',
+           
+        });
+        $('#dateOfJoining').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            format: 'mm-dd-yyyy',
+        });
+       
+    </script>
+=======
 
 
 $("#lastName").keyup(function(){
@@ -357,6 +373,7 @@ $('#dateOfJoining').datepicker({
 
 </script>
 
+>>>>>>> branch 'Sprint-3' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
 </form>
  	
 </div>

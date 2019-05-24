@@ -58,7 +58,7 @@ public class AdminStudentListServlet extends HttpServlet {
 		{
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
-			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
+			LOGGER.error("Exception occured in AdminStudentListServlet = {}", e);
 			request.getRequestDispatcher(pageUrl).forward(request, response);
 
 		}
