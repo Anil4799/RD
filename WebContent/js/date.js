@@ -8,6 +8,7 @@ var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date()
        uiLibrary: 'bootstrap4',
        iconsLibrary: 'fontawesome',
        orientation: 'top auto',
+
    });
    
    
