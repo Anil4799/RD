@@ -2,16 +2,17 @@ package com.epam.services.admin;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import com.epam.dao.admin.Batch;
 import com.epam.utils.DBManager;
 
 
-public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
+public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoServiceImpl.class);
 	@Override
 	public List<Batch> getAllBatchsList(Connection con) {
@@ -52,19 +53,19 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 	
 	
 	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate){
-		
-		//int count=0;
+		System.out.println(startDate);
 		List<Batch> batchList = new ArrayList<>();
-		
 		try {
-			//connection = DBManager.getConnection();
 			CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");
 			
-			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
-			java.sql.Date enDate = java.sql.Date.valueOf(endDate);
+			java.sql.Date sqlStartDate = formatToSqlDate(startDate);
+			java.sql.Date sqlEndDate = formatToSqlDate(endDate);
+			System.out.println(sqlStartDate + "===startDate ---EndDate=============" + sqlEndDate);	
+						
+			statement.setDate("startDate", sqlStartDate);
+			statement.setDate("endDate", sqlEndDate);
 			
-			statement.setDate("startDate", stDate);
-			statement.setDate("endDate", enDate);
+						
 			ResultSet rs=statement.executeQuery();
 			
 			while(rs.next())
@@ -79,9 +80,9 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 				batch.setYearnum(rs.getInt("year_num"));
 				
 				batchList.add(batch);
-				//count++;
 			}
 			
+			System.out.println(batchList.size());
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
@@ -93,5 +94,17 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 
 		return batchList;
 		
+	}
+
+
+
+
+
+	private java.sql.Date formatToSqlDate(String startDate) throws ParseException {
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat sdfOriginal = new SimpleDateFormat("MM-dd-yyyy");
+		String formattedDate = sdf.format(sdfOriginal.parse(startDate));
+		
+		return java.sql.Date.valueOf(formattedDate);
 	}
 }
