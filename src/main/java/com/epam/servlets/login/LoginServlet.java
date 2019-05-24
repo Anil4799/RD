@@ -25,6 +25,12 @@ public class LoginServlet extends HttpServlet implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private static HttpSession session=null;
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
+		request.getRequestDispatcher(pageUrl).forward(request,response);
+	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,22 +65,14 @@ public class LoginServlet extends HttpServlet implements Serializable {
 			}
 		}
 		
-		LOGGER.info("session -2 ..............." + session);
-		if(session!=null) {
-			try {
-				request.getRequestDispatcher(pageUrl).forward(request, response);
-			}catch(Exception e) {
-				LOGGER.info("Exception..............." +e);
-			}
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		} catch (Exception e) {
+			LOGGER.info("Exception..............." + e.getMessage());
 			
-		} else {
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.LOGIN_PAGE);
-			try {
-				request.getRequestDispatcher(pageUrl).forward(request, response);
-			}catch(Exception e) {
-				LOGGER.info("Exception..............." +e);
-			}
 		}
+
+			
 		LOGGER.debug("Exit from Servlet...............");
 	}
 

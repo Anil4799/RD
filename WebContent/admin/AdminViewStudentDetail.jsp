@@ -14,7 +14,7 @@
 
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235);">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" >
-		<c:if test="${ student[0].status.equalsIgnoreCase('Active')}"><span class="savebutton" style="background-color:#5CB85C ; color: #FFF;"  >EDIT
+		<c:if test="${ student[0].status.equalsIgnoreCase('Active')}"><span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" onClick="gotoStudentEditPage('${student[0].email}')" >EDIT
 			</span></c:if>
 			<span class="backbutton" onClick="gotoStudentLandingPage()">BACK</span>
 			
@@ -47,7 +47,7 @@
 					<div>
 						Date of Birth:
 						<span style="color:#000;float:right;width:34%">
-							<c:out value="${student[0].dob}" />
+							<c:out value="${student[0].dateOfBirth}" />
 						</span>
 					</div>
 					<br>
@@ -209,7 +209,7 @@
 						<div>
 						Date of Joining:
 						<span style="color:#000;float:right;width:34%" >
-						<c:out value="${student[0].dateOfJoining}" />
+						<c:out value="${student[0].doj}" />
 						</span>
 						</div>
 						

@@ -52,7 +52,7 @@ public class MentorStudentActionServlet extends HttpServlet {
 				List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 				request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 				request.setAttribute("pageState", "STUDENT INFO");
-				LOGGER.debug("AAAAAAA"+ studentList.size() );
+				//LOGGER.debug("AAAAAAA"+ studentList.size() );
 				request.getRequestDispatcher(pageUrl).forward(request, response);
 
 			}

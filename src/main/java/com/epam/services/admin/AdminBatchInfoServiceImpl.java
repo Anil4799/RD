@@ -42,10 +42,12 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 	
 	
 	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate){
-		System.out.println(startDate);
+
+		
 		List<Batch> batchList = new ArrayList<>();
+
 		try(CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");) {
-			
+
 			
 			java.sql.Date sqlStartDate = formatToSqlDate(startDate);
 			java.sql.Date sqlEndDate = formatToSqlDate(endDate);
@@ -56,8 +58,9 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 						
 			ResultSet rs=statement.executeQuery();
 			
+
 			processResultSet(batchList, rs);
-			
+
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());

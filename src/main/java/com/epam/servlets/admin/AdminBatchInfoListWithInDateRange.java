@@ -34,6 +34,7 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 				LOGGER.debug("Entered into Servlet...............");
@@ -44,8 +45,6 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 				{
 					String startDate=request.getParameter("startDate");
 					String endDate=request.getParameter("endDate");
-					
-					System.out.println("dates received "+startDate+" "+endDate);
 					Connection con=DBManager.getConnection();
 					
 					int role= (int) request.getSession(true).getAttribute("role");

@@ -12,6 +12,8 @@ import org.apache.log4j.Logger;
 import com.epam.dao.admin.StudentBean;
 import com.epam.services.admin.AdminStudentInfoService;
 import com.epam.services.admin.AdminStudentInfoServiceImpl;
+import com.epam.services.admin.StudentService;
+import com.epam.services.admin.StudentServiceImpl;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.utils.ConstantsUtility;
@@ -56,6 +58,28 @@ public class AdminStudentActionServlet extends HttpServlet {
 				catch(Exception ex) {
 					LOGGER.error("Exception occured in StudentViewErrorPage = {}", ex);
 				}
+			}
+		}
+		
+		else if(actionView.equalsIgnoreCase("Edit"))
+		{
+			StudentService studentService = new StudentServiceImpl();
+			request.setAttribute("studentBean", studentService.getDetails(emailId));
+			request.setAttribute("collegeNames", studentService.getCollegNames());
+			request.setAttribute("employeeTypeList", studentService.getEmployeeType());
+			request.setAttribute("coreSkills", studentService.getcoreSkill());
+			request.setAttribute("preferredStreams", studentService.getPreferredStream());
+			request.setAttribute("assignedStreams", studentService.getAssignedStream());
+			request.setAttribute("assignedLocationList", studentService.getAssignedLocation());
+			request.setAttribute("statusList", studentService.getStatus());
+			request.setAttribute("mentorList", studentService.getMentor());
+			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+			request.setAttribute("pageState", "STUDENT INFO");
+
+			try {
+				request.getRequestDispatcher("admin/EditStudentInfo.jsp").forward(request, response);
+			} catch (Exception e) {
 			}
 		}
 		

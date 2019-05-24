@@ -94,7 +94,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					StudentBean student=new StudentBean();
 					student.setFirstName(rs.getString("first_name"));
 					student.setLastName(rs.getString("last_name"));
-					student.setDob(rs.getDate("date_of_birth")); 
+					student.setDateOfBirth(rs.getString("date_of_birth")); 
 					student.setEmail(rs.getString("email_id"));
 					student.setGender(rs.getString("gender"));
 					student.setContactNumber(rs.getLong("contact"));
@@ -112,7 +112,7 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					student.setCoreSkill(rs.getString("core_skill"));
 					student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
 					student.setAssignedStream(rs.getString("Assigned_Stream"));
-					student.setDateOfJoining(rs.getDate("Date_Of_Joining"));
+					student.setDoj(rs.getString("Date_Of_Joining"));
 					student.setMentorName(rs.getString("mentor_name"));
 					student.setAssignedLocation(rs.getString("Assigned_location"));
 					student.setRelocation(rs.getString("relocation"));

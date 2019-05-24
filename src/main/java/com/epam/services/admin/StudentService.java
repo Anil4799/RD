@@ -12,9 +12,12 @@ public interface StudentService {
 	public List<String> getEmployeeType();
 	public List<String> getcoreSkill();
 	public List<String> getPreferredStream();
-	
 	public List<String> getAssignedStream();
 	public List<String> getAssignedLocation();
 	public List<String> getMentor();
 	public List<String> getStatus();
+	public StudentBean getDetails(String emailId);
+	
+	public int editStudentDetails(StudentBean studentBean);
+	//public List<StudentBean> getGraduationSpeciality();
 }

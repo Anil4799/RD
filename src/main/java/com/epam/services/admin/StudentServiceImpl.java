@@ -25,6 +25,9 @@ public class StudentServiceImpl implements StudentService {
 	int numberOfRowsInserted=0;
 	 int numberOfRowsInserted1=0;
 	 int numberOfRowsInserted2=0;
+	 int numberOfRowsUpdated1 = 0;
+	 int numberOfRowsUpdated2 = 0;
+	 int numberOfRowsUpdated3 = 0;
 	 
 	 String query = null;
 	
@@ -387,6 +390,226 @@ public class StudentServiceImpl implements StudentService {
 		return assignedLocationList;
 	}
 	
+	public StudentBean getDetails(String emailId)
+	{
+		StudentBean studentBean = new StudentBean();
+		String query = "";
+		try {
+			
+			Connection connection = DBManager.getConnection();
+				
+				query = "select First_Name, Last_Name, DATE_FORMAT(Date_Of_Birth, '%m-%d-%Y') Date_Of_Birth, Email_Id, Gender, Contact, Location from student_personal_info where Email_Id=?";
+				PreparedStatement preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, emailId);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if(resultSet.next())
+				{
+					studentBean.setFirstName(resultSet.getString("First_Name"));
+					studentBean.setLastName(resultSet.getString("Last_Name"));
+					
+					String dobStr = resultSet.getString("Date_Of_Birth");
+					System.out.println("dobStr == "+dobStr);
+					studentBean.setStrDob(dobStr);
+//										
+					studentBean.setEmail(resultSet.getString("Email_Id"));
+					studentBean.setGender(resultSet.getString("Gender"));
+					studentBean.setContactNumber(resultSet.getLong("Contact"));
+					studentBean.setPersonalLocation(resultSet.getString("Location"));
+			   }
+				
+				query = "select Email_Id, College_Name, College_Loc, Graduation, Graduation_Stream, Passed_Out_Year, Graduation_Marks, Inter_Marks, Ssc_Marks  from student_educational_info  where Email_Id=?";
+				 preparedStatement = connection.prepareStatement(query);
+				 preparedStatement.setString(1, emailId);
+				 resultSet = preparedStatement.executeQuery();
+				if(resultSet.next())
+				{
+					studentBean.setCollegeName(resultSet.getString("College_Name"));
+					studentBean.setCollegeLocation(resultSet.getString("College_Loc"));
+					studentBean.setGraduation(resultSet.getString("Graduation"));
+					studentBean.setGraduationSpeciality(resultSet.getString("Graduation_Stream"));
+					studentBean.setYearOfPassedOut(resultSet.getInt("Passed_Out_Year"));
+					studentBean.setGraduationMarks(resultSet.getInt("Graduation_Marks"));
+					studentBean.setTwelveth(resultSet.getInt("Inter_Marks"));
+					studentBean.setTenth(resultSet.getInt("Ssc_Marks"));
+					
+				}
+				query = "select SerialNo, Email_Id, Batch_Id, Emp_Type, Core_Skill, Preferred_Student_Stream, Assigned_Stream, DATE_FORMAT(Date_Of_Joining, '%m-%d-%Y') Date_Of_Joining, Mentor_Name, Assigned_Location, Relocation, Status from student__additional_info where Email_Id=?";
+				 preparedStatement = connection.prepareStatement(query);
+				 preparedStatement.setString(1, emailId);
+				 resultSet = preparedStatement.executeQuery();
+				if(resultSet.next())
+				{
+					studentBean.setEmail(resultSet.getString("Email_Id"));
+					studentBean.setBatchId(resultSet.getString("Batch_Id"));
+					studentBean.setEmployeeType(resultSet.getString("Emp_Type"));
+					studentBean.setCoreSkill(resultSet.getString("Core_Skill"));
+					studentBean.setPreferredStudentStream(resultSet.getString("Preferred_Student_Stream"));
+					studentBean.setAssignedStream(resultSet.getString("Assigned_Stream"));
+					
+					String strDateOfJoining = resultSet.getString("Date_Of_Joining");
+					System.out.println("dobStr == "+strDateOfJoining);
+					studentBean.setStrDateOfJoining(strDateOfJoining);
+					
+					//studentBean.setDateOfJoining(resultSet.getDate("Date_Of_Joining"));
+					studentBean.setMentorName(resultSet.getString("Mentor_Name"));
+					studentBean.setAssignedLocation(resultSet.getString("Assigned_Location"));
+					studentBean.setRelocation(resultSet.getString("Relocation"));
+					studentBean.setStatus(resultSet.getString("Status"));
+													
+				}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOGGER.debug(e.getMessage()); 
+		}
+		
+		return studentBean;
+	}
+	
+	public int editPersonalDetails(StudentBean studentBean) {
+		try {
+			 connection = DBManager.getConnection();
+			   preparedStatement = connection.prepareStatement("update student_personal_info set Date_Of_Birth=?, Gender=?, Contact=?, Location=? where Email_Id=?");
+			   Date dateOfBirth = studentBean.getDob();
+			   java.sql.Date dateOfBirth1 = new java.sql.Date(dateOfBirth.getTime()); 
+			   preparedStatement.setDate(1, dateOfBirth1);
+			   preparedStatement.setString(2, studentBean.getGender());
+			   preparedStatement.setLong(3, studentBean.getContactNumber());
+			   preparedStatement.setString(4, studentBean.getPersonalLocation());
+			   preparedStatement.setString(5, studentBean.getEmail());
+			   
+			   numberOfRowsUpdated1 = preparedStatement.executeUpdate();
+			
+		} catch(Exception e) {
+			 LOGGER.debug(e.getMessage());
+			  return 0;
+		}
+		return numberOfRowsUpdated1;
+	}
+	
+	public int editEducationalDetails(StudentBean studentBean) {
+		try {
+			 String updateQuery = "update student_educational_info set College_Name=?, College_Loc=?, Graduation=?, Graduation_Stream=?, Passed_Out_Year=?, Graduation_Marks=?, Inter_Marks=?, Ssc_Marks=? where Email_Id=?";
+			   preparedStatement = connection.prepareStatement(updateQuery);
+			   
+			   
+			    String collegeNameAndLocation = studentBean.getCollegeName();
+				String collegeName = "";
+				collegeName = extractCollegeName(collegeNameAndLocation, collegeName);
+				studentBean.setCollegeName(extractCollegeName(collegeNameAndLocation, collegeName));
+			   
+			   System.out.println("college name = "+ studentBean.getCollegeName());
+			   preparedStatement.setString(1, studentBean.getCollegeName());
+	 			preparedStatement.setString(2, studentBean.getCollegeLocation());
+	 			//preparedStatement.setString(3, studentBean.getCollegeLocation());
+	 			preparedStatement.setString(3, studentBean.getGraduation());
+	 			preparedStatement.setString(4, studentBean.getGraduationSpeciality());
+	 			preparedStatement.setInt(5, studentBean.getYearOfPassedOut());
+	 			preparedStatement.setInt(6, studentBean.getGraduationMarks());
+	 			preparedStatement.setInt(7, studentBean.getTwelveth());
+	 			preparedStatement.setInt(8, studentBean.getTenth());
+	 			preparedStatement.setString(9, studentBean.getEmail());	 			
+				
+				 numberOfRowsUpdated2 = preparedStatement.executeUpdate();
+				 
+		} catch(Exception e) {
+			LOGGER.debug(e.getMessage());
+			  return 0;
+		}
+		return numberOfRowsUpdated2;
+	}
+	
+	public int editAdditionalDetails(StudentBean studentBean) {
+		try {
+			String updateQuery = "update student__additional_info set Emp_Type=?, Core_Skill=?, Preferred_Student_Stream=?, Assigned_Stream=?, Mentor_Name=?, Assigned_Location=?, Relocation=?, Status=? where Email_Id=?";
+			// preparedStatement = connection.prepareStatement(updateQuery);
+			 preparedStatement = connection.prepareStatement(updateQuery);
+	  			
+			 System.out.println("type:::::"+studentBean.getEmployeeType());
+	  			preparedStatement.setString(1, studentBean.getEmployeeType());
+	  			
+	  			preparedStatement.setString(2, studentBean.getCoreSkill());
+	  			preparedStatement.setString(3, studentBean.getPreferredStudentStream());
+	  			preparedStatement.setString(4, studentBean.getAssignedStream());
+	  			String mentorName = studentBean.getMentorName();
+	  			System.out.println("mentor name ===  "+ mentorName+" length="+ mentorName.length());
+	  			preparedStatement.setString(5, mentorName);
+	  			System.out.println("===========");
+	  			System.out.println(studentBean.getAssignedLocation()+" "+studentBean.getRelocation()+" "+studentBean.getRelocation()+" "+studentBean.getStatus()+" "+studentBean.getEmail());
+	  			
+	  			preparedStatement.setString(6, studentBean.getAssignedLocation());
+	  			preparedStatement.setString(7, studentBean.getRelocation());
+	  			preparedStatement.setString(8, studentBean.getStatus());
+	  			System.out.println("Email:::::"+studentBean.getEmail());
+	  			preparedStatement.setString(9, studentBean.getEmail());
+	  			
+			 numberOfRowsUpdated3 = preparedStatement.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+			LOGGER.debug(e.getMessage());
+			  return 0;
+		}
+		return numberOfRowsUpdated3;
+	}
+	public int editStudentDetails(StudentBean studentBean)
+	{
+		
+			int RowsUpdated1 = editPersonalDetails(studentBean);
+			int RowsUpdated2 = editEducationalDetails(studentBean);
+			int RowsUpdated3 = editAdditionalDetails(studentBean);
+			int result = 0; 
+			 
+			 System.out.println("\n updated sucessfully..... \n ");
+	  	
+		if(RowsUpdated1>0 && RowsUpdated2>0 && RowsUpdated3>0)
+		{
+			 System.out.println("\n updated sucessfully..... \n ");
+			 result = 1;
+		}
+			
+		else
+			result = 0;
+		return result;
+	}
+	
+	private String extractCollegeName(String collegeNameAndLocation, String collegeName) {
+		if(!collegeNameAndLocation.contains("$"))
+		{
+			collegeName = collegeNameAndLocation;
+		}
+		else if(!collegeNameAndLocation.equals(""))
+		{
+			collegeName = collegeNameAndLocation.substring(0,collegeNameAndLocation.indexOf('$'));
+		}
+		return collegeName;
+	}
+	
+	
+	/* working on it
+	public List<StudentBean> getGraduationSpeciality()
+	{
+		List<String> batchIDList=new ArrayList<String>();
+		try {
+			
+			Connection connection = DBManager.getConnection();
+				String batchId = null;
+				
+				preparedStatement = connection.prepareStatement("select Batch_Id from batch_info");
+		         resultSet = preparedStatement.executeQuery();
+		        while(resultSet.next())
+		        {
+		         batchId = resultSet.getString("Batch_Id");
+		         batchIDList.add(batchId);
+		        
+		        }
+		} catch (Exception e) {
+			LOGGER.debug(e.getMessage()); 
+		}
+		
+		return batchIDList;
+	}
+	
+	*/
 }		
 			
 			

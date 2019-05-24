@@ -45,7 +45,7 @@ public class MentorMenuServlet extends HttpServlet {
 		String statusinfo=request.getParameter("status");
 		
 		
-		if(statusinfo.contentEquals("inactive")&&action.equals("View")) {
+		if((statusinfo.contentEquals("inactive")||statusinfo.contentEquals("onhold")) && action.equals("View")) {
 					MentorBean mentor=viewMentor(request);	
 					try {
 					

@@ -49,7 +49,7 @@
 
 						Date of Birth:
 						<span class="displayViewFont">
-							<c:out value="${student[0].dob}" />
+							<c:out value="${student[0].dateOfBirth}" />
 
 						</span>
 					</div>
@@ -246,7 +246,7 @@
 
 						Date of Joining:
 						<span class="displayViewFont" >
-						<th scope="row"><c:out value="${student[0].dateOfJoining}" /></th>
+						<th scope="row"><c:out value="${student[0].doj}" /></th>
 
 						</span>
 						</div>

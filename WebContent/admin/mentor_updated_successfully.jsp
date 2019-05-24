@@ -1,15 +1,76 @@
 
      <%@ include file="/common/header.jspf" %>
-     <style>
-     	.mentor_info_form td{
+
+		<style type="text/css">
+			.mentor_info_form td{
 				border: 0px;
 			}
-     </style>
-
+			.button, select {
+			    text-transform: none;
+			    width: 30px;
+			    height: 31px;			    
+			}
+			
+			.btn {
+			    display: inline-block;
+			    font-weight: 400;
+			    color: #A9A9A9;
+			    text-align: center;
+			    vertical-align: middle;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    background-color: transparent;
+			    border: 1px solid transparent;
+			    padding: 0px;
+			    font-size: 1rem;
+			    line-height: 1.5;
+			    border-radius: .25rem;
+			   	border-top-left-radius: 0.25rem;
+			    border-bottom-left-radius: 0.25rem;
+			    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
+			table td, .table th {
+			    padding: 0px;			    
+			    border-top: 1px solid #dee2e6;
+			    font-weight: normal;
+			}
+			.input-group {
+			    position: relative;
+			    display: -ms-flexbox;
+			    display: flex;
+			    -ms-flex-wrap: wrap;
+			    flex-wrap: wrap;
+			    -ms-flex-align: stretch;
+			    align-items: stretch;
+			    width: 100%;
+			    border: 0px;			    
+			}
+			
+			.gj-datepicker-bootstrap [role=right-icon] button {
+			    width: 38px;
+			    position: relative;
+			    border: 0px;
+			}
+			.border-right-0 {
+			    border: 0px;
+			}
+			.start_date, .end_date{
+				border: 1px solid #ced4da;
+				border-radius: 4px 2px 2px 4px;
+			}
+		</style>	
+		
+		<div class="page_info">
+		<p class="page_title">ADD MENTOR</p>
+	</div>
+	
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #EBEBEB; margin: 0px 3px 0px 3px; padding-top: 1px;">
 		<div id="mentor_added_message" class="mentor_added_message" style="padding: 10px 10px 5px 25px;">
 			Mentor Updated Successfully
-		</div>		
+		</div>	
+		<div id="blank_popup" class="blank_popup" style="display: block;"></div>			
 		<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC;">	
 			<div style="margin: 10px 0px 20px 10px;">
 				RD Portal Says
@@ -18,41 +79,40 @@
 			</div>
 			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF" onClick="closeAlertPopup()">OK</span>		
 		</div>		
-		<div class="add_mentor_head">ADD MENTOR</div>
 		<div>
 			<div>	
 				<table width="100%">
 					<tr>
 						<td align="right" style="padding: 0px 10px 0px 0px;">
-							<span class="savebutton" style="background-color:#5CB85C ; color: #FFF" onClick="validateForm()">SAVE</span>
-							<a href="mentor_info_landing_page.jsp" class="backbutton" style="text-decoration: none; color: #464343;">BACK</span>
+							<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" onClick="validateForm()">SAVE</span>
+							<span onClick="gotoMentorInfo()" class="backbutton">BACK</span>
 						</td>
 					</tr>
 				</table>						
 			</div>			
 			<div class="mentor_info_title">MENTOR INFO</div>
-			<div class="mentor_info_form" style="height: 100%;">
+			<div class="mentor_info_form" style="height: 100%; padding: 20px 30px 20px 30px;">
 				<form id="mentor_info_form" name="mentor_info_form">
-					<table width="38%" style="margin-left: 25%;">
+					<table width="38%" style="margin-left: 0%;">
 						<tr>
 							<td class="form_lable">Name:<span class="required">*</span></td>
 							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required/></td>								
 						</tr>
 						<tr>
 							<td class="form_lable">Email:<span class="required">*</span> </td>
-							<td><input type="text"  id="mentor_email" name="mentor_email" class="form-control form-control-sm" size="30" required/>
+							<td><input type="text"  id="mentor_email" name="mentor_email" class="form-control form-control-sm" size="30" required/></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship Start Date:<span class="required">*</span></td>
-							<td><input type="date" id="mentorship_start_date"  name="mentor_start_date" class="form-control form-control-sm" size="30" required/>
+							<td><div class="start_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_start_date" name="mentorship_start_date"/></div></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
-							<td><input type="date" class="form-control form-control-sm" name="mentor_end_date" size="30" />
+							<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"/></div></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>
-							<td><input type="text" id="max_no_of_mentees" name="max_noof_mentees" class="form-control form-control-sm" size="30" required/>
+							<td><input type="text" id="max_no_of_mentees" name="max_noof_mentees" class="form-control form-control-sm" size="30" required/></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Technology Stream: </td>
@@ -62,7 +122,7 @@
 								<%
 								try{
 								Connection con=DBManager.getConnection();		
-								PreparedStatement ps=con.prepareStatement("select coursename from technical_stream");
+								PreparedStatement ps=con.prepareStatement("select Stream_Name from technical_stream ");
 								ResultSet rs=ps.executeQuery();
 								while(rs.next())
 								{
@@ -85,23 +145,57 @@
 							<td class="form_lable">Status:<span class="required">*</span> </td>
 							<td>
 								<select id="mentor_status" name="mentor_status" class="form-control form-control-sm" required>										
-									<option >ACTIVE</option>
-									<option>INACTIVE</option>
-									<option >ONHOLD</option>
+									<option value="active">ACTIVE</option>
+									<option value="inactive">INACTIVE</option>
+									<option value="onhold">ONHOLD</option>
 								</select>
 							</td>
 						</tr>
 					</table>
 				</form>
+				<script>     
+			        $('#mentorship_start_date').datepicker({
+			
+						id: 'start_date',
+			            uiLibrary: 'bootstrap4',
+			
+			            iconsLibrary: 'fontawesome',
+			
+						format: 'mm-dd-yyyy',        
+			
+			        });
+			
+			        $('#mentorship_end_date').datepicker({
+				
+						id: 'end_date',
+			
+			            uiLibrary: 'bootstrap4',
+			
+			            iconsLibrary: 'fontawesome',     
+			
+						format: 'mm-dd-yyyy',     
+			
+			        }); 
+			
+					$("#mentorship_start_date").change(function(){
+
+				    	if($(this).val().length >0){
+
+							$("#mentorship_start_date").removeClass("txtbrcolr");
+							
+							$('.start_date').css('border-color','#ced4da');
+						}   
+
+					}); 
+					function gotoMentoInfo() {
+						document.location.href = '/admin-portal/mentorList';					  
+						}
+		
+					setTimeout(gotoMentoInfo, 2000);  
+					
+    			</script>
 			</div>				
-			</div>			
-			<script>
-				function gotoMentoInfo() {
-					document.location.href = '/admin-portal/mentorList';					  
-					}
-	
-				setTimeout(gotoMentoInfo, 1000);
-			</script>				
+			</div>							
 		</div>
 
 <%@ include file="/common/footer.jspf"%>

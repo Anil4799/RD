@@ -7,7 +7,7 @@
     </style>
 
   <div class="page_info">
-		<p class="page_title">ADD STUDENT</p>
+		<p class="page_title">EDIT STUDENT DETAILS</p>
 	</div>
 
 <div id="blank_popup" class="blank-popup-div"></div>
@@ -25,10 +25,10 @@
 			</div>
 			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF;" onClick="closeAlertPopup()">OK</span>		
 		</div>
-	<form action ="StudentServlet" name="add_student_info" id="add_student_info" method="post">
+	<form name="add_student_info" id="add_student_info" method="post">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235); ">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad"  style="padding-right:3.5%;">
-			<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;"  onClick="studentValidateForm()">SAVE</span>
+			<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;"  onClick="studentUpadte()">SAVE</span>
 			<span class="backbutton" onClick="gotoStudentLandingPage()">BACK</span>
 		</div>
 		
@@ -41,29 +41,28 @@
   					<div>
     					<span>First Name:<span class="required">*</span></span>
     					<span style="float:right;width:34%">
-    					<input name="firstName"  id="firstName" type="text"  class="form-control form-control-sm"  />
+    					<input name="firstName"  id="firstName" type="text"  class="form-control form-control-sm"  value='<c:out value="${studentBean.firstName}"></c:out>' readonly="readonly"/>
     					</span>
 					</div>
 					<br>
 					<div>
 						<span>Last Name:<span class="required">*</span></span>
 						<span style="float:right;width:34%">
-						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm"  />
+						<input name="lastName" id="lastName"  type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.lastName}"></c:out>' readonly="readonly"/>
 						</span>
 					</div>
 					<br>
 					<div>
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
-						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
+						<input type="text" class="border-right-0 form-control form-control-sm" id="dateOfBirth" name="dateOfBirth" value='<c:out value="${studentBean.strDob}"></c:out>'/>
 						</span>
 					</div>
 					<br>
 					<div>
 						Email:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input name="email" id="email"  type="text" class="form-control form-control-sm" />
+						<input name="email" id="email"  type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.email}"></c:out>' readonly="readonly"/>
 						</span>
 					</div>
 					
@@ -72,9 +71,17 @@
 						Gender:<span class="required">*</span>
 						<span style="float:right; width:34%" >
 						<select name="gender" id="gender" class="form-control form-control-sm"  required>
-						<option value="no_value"></option>
-						<option value="Male">Male</option>
-						<option value="Female">Female</option>
+						<option value='<c:out value="${studentBean.gender}"></c:out>'><c:out value="${studentBean.gender}"></c:out></option>
+						<c:choose>
+	                 	 	<c:when test="${studentBean.gender ==  'Male'}">
+	                 	 		<option value="Female">Female</option>	                  										 									  								
+					    	</c:when>
+  							<c:when test="${studentBean.gender ==  'Female'}">	  
+  							    <option value="Male">Male</option>                										 																	  							
+						    </c:when>
+						    <c:otherwise>						    	
+						 	</c:otherwise>
+						 </c:choose>
 					    </select>
 					    </span>
 					</div>
@@ -82,14 +89,15 @@
 					<div>
 						Contact Number:
 						<span style="float:right;width:34%">
-						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" />
+						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.contactNumber}"></c:out>'/>
 						</span>
 					</div>
 					<br>
 					<div>
 					Location:<span class="required">*</span>
 					<span style="float:right;width:34%">
-					<input name="personalLocation" id="personalLocation" type="text" class="form-control form-control-sm" />
+					<input name="personalLocation" id="personalLocation" type="text" class="form-control form-control-sm" 
+					value='<c:out value="${studentBean.personalLocation}"></c:out>'/>
 					</span>
 					</div>
     				
@@ -106,11 +114,17 @@
   						College:
   						<span style="float:right;width:34%" >
   							<select name="collegeName" class="form-control form-control-sm" on change="setLocation(this.value)" >
-  						 
-  						 <c:forEach items="${collegeNames}" var="collegeName" >
-							<option value="${collegeName.collegeName}$${collegeName.collegeLocation}">${collegeName.collegeName}</option>
-						</c:forEach>
-						
+  							 <option value='<c:out value="${studentBean.collegeName}"></c:out>'><c:out value="${studentBean.collegeName}"></c:out></option>
+  						   						 
+							<c:forEach items="${collegeNames}" var="cllgName">
+						        <c:if test="${cllgName.collegeName != studentBean.collegeName}">
+						        	<c:if test="${cllgName.collegeName != ''}">
+						            <option value="${cllgName.collegeName}">${cllgName.collegeName}</option>
+						            </c:if>
+						        </c:if>
+						        
+						    </c:forEach>
+										
 							</select>
   						</span>
   					</div>
@@ -119,7 +133,7 @@
     					Location:
     					<span style="float:right;width:34%" >
     					
-    					<input name="collegeLocation" type="text" class="form-control form-control-sm"  value=""/>
+    					<input name="collegeLocation" type="text" class="form-control form-control-sm"  value='<c:out value="${studentBean.collegeLocation}"></c:out>'/>
     					</span>
     				</div>
 					<br>
@@ -127,7 +141,7 @@
 					<div>
 					Graduation:
 					<span style="float:right;width:34%" >
-					<input name="graduation" type="text" class="form-control form-control-sm" />
+					<input name="graduation" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.graduation}"></c:out>' />
 					</span>
 					</div>
 					
@@ -135,20 +149,19 @@
 					<div>
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
-					<select name="graduationSpeciality" class="form-control form-control-sm"  >
-					<option value="NULL"></option>
+					<select name="graduationSpeciality" class="form-control form-control-sm" >
+					<!-- <option value="NULL"></option> -->
 						<option value="ece">ECE</option>
 						<option value="cse">CSE</option>
 						<option value="it">IT</option>
 					</select>
 					</span>
 					</div>
-					
 					<br>
 					<div>
 					Year of Passed Out:
 					<span style="float:right;width:34%">
-					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" />
+					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.yearOfPassedOut}"></c:out>'/>
 					</span>
 					
 					</div>
@@ -156,7 +169,7 @@
 					<div>
 					Graduation Marks:
 					<span style="float:right;width:34%">
-					<input name="graduationMarks" type="text"  class="form-control form-control-sm" />
+					<input name="graduationMarks" type="text"  class="form-control form-control-sm" value='<c:out value="${studentBean.graduationMarks}"></c:out>'/>
 					</span>
 					</div>
 					
@@ -164,14 +177,14 @@
 					<div>
 					10th + 2 Marks:
 					<span style="float:right;width:34%">
-					<input name="twelveth" type="text" class="form-control form-control-sm"/>
+					<input name="twelveth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.twelveth}"></c:out>'/>
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
 					<span style="float:right;width:34%">
-					<input name="tenth" type="text" class="form-control form-control-sm" />
+					<input name="tenth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.tenth}"></c:out>' />
 					</span>
 					</div>
 					
@@ -190,39 +203,43 @@ padding-left: 1%;">
   					<div>
   						BatchId:<span class="required">*</span>
 				        <span style="float:right;width:34%">
-					        <select name="batchId" id="batchId" class="form-control form-control-sm"  required>
+					        <select name="batchId" id="batchId" class="form-control form-control-sm" required disabled="true">
+					          <option value='<c:out value="${studentBean.batchId}"></c:out>'><c:out value="${studentBean.batchId}" ></c:out></option>
 						       <option value="NULL"></option>
 							     <c:forEach items="${batchIDList}" var="batchID" >
-									<option value="${batchID}">${batchID}</option>
+									<option value="${batchID}">${batchID}</option>		
 								</c:forEach>
 					       </select>
         				</span>
-  					</div>
+  					</div>					
 						<br>
 						<div>
 						Employee Type:<span class="required">*</span>
 						<span style="float:right;width:34%">
 						<select name="employeeType" id="employeeType" class="form-control form-control-sm"  required>
-						<option value="NULL"></option>
-						<c:forEach items="${employeeTypeList}" var="employeeType" >
-									<option value="${employeeType}">${employeeType}</option>
-						</c:forEach>
+						 <option value='<c:out value="${studentBean.employeeType}"></c:out>'><c:out value="${studentBean.employeeType}"></c:out></option>
+											
+						    <c:forEach items="${employeeTypeList}" var="employeeType">
+						        <c:if test="${employeeType != studentBean.employeeType}">
+						            <option value="${employeeType}">${employeeType}</option>
+						        </c:if>
+						    </c:forEach>									
 							</select>
 						</span>
 						</div>
 						
 						<br>
-						
-						
-						
+																	
 						<div>
 						Core Skill:<span class="required">*</span>
 						<span style="float:right;width:34%">
 						<select name="coreSkill" id="coreSkill" class="form-control form-control-sm"  required>
-						<option value="NULL"></option>
-						<c:forEach items="${coreSkills}" var="coreSkill" >
-									<option value="${coreSkill}">${coreSkill}</option>
-						</c:forEach>
+						<option value='<c:out value="${studentBean.coreSkill}"></c:out>'><c:out value="${studentBean.coreSkill}"></c:out></option>
+						<c:forEach items="${coreSkills}" var="coreSkill">
+						        <c:if test="${coreSkill != studentBean.coreSkill}">
+						            <option value="${coreSkill}">${coreSkill}</option>
+						        </c:if>
+						    </c:forEach>
 							</select>
 						</span>
 						</div>
@@ -231,13 +248,12 @@ padding-left: 1%;">
 						Preferred Student Stream:
 						<span style="float:right;width:34%">
 						<select name="preferredStudentStream" class="form-control form-control-sm" >
-						<option value="NULL"></option>
-						<c:forEach items="${preferredStreams}" var="preferredStream" >
-									<option value="${preferredStream}">${preferredStream}</option>
-						</c:forEach>
-						
-  						
-						
+						<option value='<c:out value="${studentBean.preferredStudentStream}"></c:out>'><c:out value="${studentBean.preferredStudentStream}"></c:out></option>
+						<c:forEach items="${preferredStreams}" var="preferredStream">
+						        <c:if test="${preferredStream != studentBean.preferredStudentStream}">
+						            <option value="${preferredStream}">${preferredStream}</option>
+						        </c:if>
+						    </c:forEach>						  												
 							</select>
 						</span>
 						</div>
@@ -247,20 +263,22 @@ padding-left: 1%;">
 						Assigned Stream:
 						<span style="float:right;width:34%" >
 						<select name="assignedStream" class="form-control form-control-sm" >
-						<option value="NULL"></option>
-						<c:forEach items="${assignedStreams}" var="assignedStream" >
-									<option value="${assignedStream}">${assignedStream}</option>
-						</c:forEach>
+						<option value='<c:out value="${studentBean.assignedStream}"></c:out>'><c:out value="${studentBean.assignedStream}"></c:out></option>
+						<c:forEach items="${assignedStreams}" var="assignedStream">
+					        <c:if test="${assignedStream != studentBean.assignedStream}">
+					            <option value="${assignedStream}">${assignedStream}</option>
+					        </c:if>
+					    </c:forEach>		
 							</select>
 						</span>
 						</div>
 						
 						<br>
-						<div>
+						<div id="disable-div">
 						Date of Joining:<span class="required">*</span>
 						<span style="float:right;width:34%" >
-						<input class="border-right-0 form-control-sm" id="dateOfJoining" name="dateOfJoining"/>
-						<!-- <input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />-->
+						
+						<input name="dateOfJoining" id="dateOfJoining"  type="text" class="form-control form-control-sm" readonly="readonly" value='<c:out value="${studentBean.strDateOfJoining}" ></c:out>' readonly="readonly"/>
 						</span>
 						</div>
 						
@@ -269,10 +287,12 @@ padding-left: 1%;">
 						Mentor:
 					      <span style="float:right;width:34%" >
 						      <select name="mentorName" class="form-control form-control-sm" >
-						      <option value="NULL"></option>
-						      <c:forEach items="${mentorList}" var="mentorName" >
-									<option value="${mentorName}">${mentorName}</option>
-						</c:forEach>
+						      <option value='<c:out value="${studentBean.mentorName}"></c:out>'><c:out value="${studentBean.mentorName}"></c:out></option>
+						     <c:forEach items="${mentorList}" var="mentorLists">
+					        <c:if test="${mentorLists != studentBean.mentorName}">
+					            <option value="${mentorLists}">${mentorLists}</option>
+					        </c:if>
+					    </c:forEach>
 						       </select>
 					      </span>
 						</div>
@@ -282,10 +302,12 @@ padding-left: 1%;">
 						Assigned Location:
 						<span style="float:right;width:34%" >
 						<select name="assignedLocation" class="form-control form-control-sm" >
-							
-						<c:forEach items="${assignedLocationList}" var="assignedLocation" >
-									<option value="${assignedLocation}">${assignedLocation}</option>
-						</c:forEach>
+							 <option value='<c:out value="${studentBean.assignedLocation}"></c:out>'><c:out value="${studentBean.assignedLocation}"></c:out></option>
+						<c:forEach items="${assignedLocationList}" var="assignedLocationLists">
+					        <c:if test="${assignedLocationLists != studentBean.assignedLocation}">
+					            <option value="${assignedLocationLists}">${assignedLocationLists}</option>
+					        </c:if>
+					    </c:forEach>
 							</select>
 						</span>
 						</div>
@@ -295,9 +317,17 @@ padding-left: 1%;">
 						Relocation:<span class="required">*</span>
 						<span style="float:right;width:34%" >
 						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
-							<option value="no_value"></option>
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
+						<option value='<c:out value="${studentBean.relocation}"></c:out>'><c:out value="${studentBean.relocation}"></c:out></option>
+							<c:choose>
+		                 	 	<c:when test="${studentBean.relocation ==  'Yes'}">
+		                 	 		<option value="No">No</option>	                  										 									  								
+						    	</c:when>
+	  							<c:when test="${studentBean.relocation ==  'No'}">	  
+	  							    <option value="Yes">Yes</option>                										 																	  							
+							    </c:when>
+						    <c:otherwise>						    	
+						 	</c:otherwise>
+						 </c:choose>
 						</select>
 						</span>
 						</div>
@@ -307,10 +337,12 @@ padding-left: 1%;">
 						Status:<span class="required">*</span>
 						<span style="float:right;width:34%" >
 						<select name="status" id="status" class="form-control form-control-sm"  required>
-							
-						<c:forEach items="${statusList}" var="status" >
-									<option value="${status}">${status}</option>
-						</c:forEach>
+							<option value='<c:out value="${studentBean.status}"></c:out>'><c:out value="${studentBean.status}"></c:out></option>
+						<c:forEach items="${statusList}" var="statusLists">
+					        <c:if test="${statusLists != studentBean.status}">
+					            <option value="${statusLists}">${statusLists}</option>
+					        </c:if>
+					    </c:forEach>
 							</select>
 						</span>
 						</div>
@@ -320,24 +352,6 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
-<<<<<<< HEAD
-        
-        $('#dateOfBirth').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'mm-dd-yyyy',
-           
-        });
-        $('#dateOfJoining').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'mm-dd-yyyy',
-        });
-       
-    </script>
-=======
-
-
 $("#lastName").keyup(function(){
     if($(this).val().length >0){
 $("#lastName").removeClass("txtbrcolr");
@@ -355,25 +369,19 @@ $("#dateOfJoining").change(function(){
 $("#dateOfJoining").removeClass("txtbrcolr");
 }    
 });
-
-
+        
 $('#dateOfBirth').datepicker({
     uiLibrary: 'bootstrap4',
     iconsLibrary: 'fontawesome',
     format: 'mm-dd-yyyy',
-    
-   
 });
 $('#dateOfJoining').datepicker({
-    uiLibrary: 'bootstrap4',
-    iconsLibrary: 'fontawesome',
-    format: 'mm-dd-yyyy',
-});
-
-
-</script>
-
->>>>>>> branch 'Sprint-3' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
+     uiLibrary: 'bootstrap4',
+     iconsLibrary: 'fontawesome',   
+     format: 'mm-dd-yyyy',
+ });
+$('#disable-div *').children().prop("disabled",true);
+    </script>
 </form>
  	
 </div>
