@@ -1,6 +1,10 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/common/header.jspf" %> 
 <script src="/admin-portal/js/StudentJS.js"></script>
+<style>
+.btn {
+    display: inline-block;    font-weight: 400;    color: #A9A9A9;    padding: 0px;    text-align: center;    vertical-align: middle;    -webkit-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none;    background-color: transparent;    border: 1px solid transparent;    /* padding: .375rem .75rem; */    font-size: 1rem;    line-height: 1.5;    border-radius: .25rem;    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+    </style>
 
   <div class="page_info">
 		<p class="page_title">EDIT STUDENT DETAILS</p>
@@ -51,8 +55,7 @@
 					<div>
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input type="text" class="border-right-0" id="dateOfBirth" name="dateOfBirth" value='<c:out value="${studentBean.dob}"></c:out>'/>
-						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
+						<input type="text" class="border-right-0 form-control form-control-sm" id="dateOfBirth" name="dateOfBirth" value='<c:out value="${studentBean.strDob}"></c:out>'/>
 						</span>
 					</div>
 					<br>
@@ -70,11 +73,11 @@
 						<select name="gender" id="gender" class="form-control form-control-sm"  required>
 						<option value='<c:out value="${studentBean.gender}"></c:out>'><c:out value="${studentBean.gender}"></c:out></option>
 						<c:choose>
-	                 	 	<c:when test="${studentBean.gender ==  'male'}">
-	                 	 		<option value="female">female</option>	                  										 									  								
+	                 	 	<c:when test="${studentBean.gender ==  'Male'}">
+	                 	 		<option value="female">Female</option>	                  										 									  								
 					    	</c:when>
-  							<c:when test="${studentBean.gender ==  'female'}">	  
-  							    <option value="male">male</option>                										 																	  							
+  							<c:when test="${studentBean.gender ==  'Female'}">	  
+  							    <option value="male">Male</option>                										 																	  							
 						    </c:when>
 						    <c:otherwise>						    	
 						 	</c:otherwise>
@@ -271,11 +274,11 @@ padding-left: 1%;">
 						</div>
 						
 						<br>
-						<div>
+						<div id="disable-div">
 						Date of Joining:<span class="required">*</span>
 						<span style="float:right;width:34%" >
-						<!-- <input class="border-right-0" id="dateOfJoining"/>  -->
-						<input name="dateOfJoining" id="dateOfJoining"  type="text" class="form-control form-control-sm"  value='<c:out value="${studentBean.dateOfJoining}" ></c:out>' readonly="readonly"/>
+						
+						<input name="dateOfJoining" id="dateOfJoining"  type="text" class="form-control form-control-sm" readonly="readonly" value='<c:out value="${studentBean.strDateOfJoining}" ></c:out>' readonly="readonly"/>
 						</span>
 						</div>
 						
@@ -317,10 +320,10 @@ padding-left: 1%;">
 						<option value='<c:out value="${studentBean.relocation}"></c:out>'><c:out value="${studentBean.relocation}"></c:out></option>
 							<c:choose>
 		                 	 	<c:when test="${studentBean.relocation ==  'yes'}">
-		                 	 		<option value="no">no</option>	                  										 									  								
+		                 	 		<option value="No">No</option>	                  										 									  								
 						    	</c:when>
 	  							<c:when test="${studentBean.relocation ==  'no'}">	  
-	  							    <option value="yes">yes</option>                										 																	  							
+	  							    <option value="Yes">Yes</option>                										 																	  							
 							    </c:when>
 						    <c:otherwise>						    	
 						 	</c:otherwise>
@@ -367,17 +370,17 @@ $("#dateOfJoining").removeClass("txtbrcolr");
 }    
 });
         
-        $('#dateOfBirth').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-           
-        });
-        $('#dateOfJoining').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-           
-        });
-       
+$('#dateOfBirth').datepicker({
+    uiLibrary: 'bootstrap4',
+    iconsLibrary: 'fontawesome',
+    format: 'mm-dd-yyyy',
+});
+$('#dateOfJoining').datepicker({
+     uiLibrary: 'bootstrap4',
+     iconsLibrary: 'fontawesome',   
+     format: 'mm-dd-yyyy',
+ });
+$('#disable-div *').children().prop("disabled",true);
     </script>
 </form>
  	

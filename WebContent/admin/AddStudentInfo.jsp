@@ -73,8 +73,8 @@
 						<span style="float:right; width:34%" >
 						<select name="gender" id="gender" class="form-control form-control-sm"  required>
 						<option value="no_value"></option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
 					    </select>
 					    </span>
 					</div>
@@ -296,8 +296,8 @@ padding-left: 1%;">
 						<span style="float:right;width:34%" >
 						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
 							<option value="no_value"></option>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
 						</select>
 						</span>
 						</div>

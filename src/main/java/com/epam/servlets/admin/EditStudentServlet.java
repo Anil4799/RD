@@ -90,6 +90,9 @@ LOGGER.debug("Entered into EditStudentServlet Class...............");
 		StudentBean student = new StudentBean();
 		student.setFirstName(request.getParameter("firstName"));
 		student.setLastName(request.getParameter("lastName"));
+		
+		System.out.println("dateOfBirth="+request.getParameter("dateOfBirth"));
+		
 		student.setDob(formatDate(request.getParameter("dateOfBirth")));
 		student.setEmail(request.getParameter("email"));
 		student.setGender(request.getParameter("gender"));
@@ -148,10 +151,14 @@ LOGGER.debug("Entered into EditStudentServlet Class...............");
 	 * @return
 	 */
 	private Date formatDate(String dob) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
 		Date date = null;
 		try{
+			System.out.println("param dob === "+ dob);
 			date = format.parse(dob);
+			System.out.println("util date dob === "+ date);
+			java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
+			System.out.println("sqlStartDate=="+sqlStartDate);
 		}
 		catch(Exception e){
 			LOGGER.debug(e.getMessage());

@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -398,7 +399,7 @@ public class StudentServiceImpl implements StudentService {
 			
 			Connection connection = DBManager.getConnection();
 				
-				query = "select First_Name, Last_Name, Date_Of_Birth, Email_Id, Gender, Contact, Location from student_personal_info where Email_Id=?";
+				query = "select First_Name, Last_Name, DATE_FORMAT(Date_Of_Birth, '%m-%d-%Y') Date_Of_Birth, Email_Id, Gender, Contact, Location from student_personal_info where Email_Id=?";
 				PreparedStatement preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, "raju@gmail.com");
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -406,7 +407,11 @@ public class StudentServiceImpl implements StudentService {
 				{
 					studentBean.setFirstName(resultSet.getString("First_Name"));
 					studentBean.setLastName(resultSet.getString("Last_Name"));
-					studentBean.setDob(resultSet.getDate("Date_Of_Birth"));
+					
+					String dobStr = resultSet.getString("Date_Of_Birth");
+					System.out.println("dobStr == "+dobStr);
+					studentBean.setStrDob(dobStr);
+//										
 					studentBean.setEmail(resultSet.getString("Email_Id"));
 					studentBean.setGender(resultSet.getString("Gender"));
 					studentBean.setContactNumber(resultSet.getLong("Contact"));
@@ -429,7 +434,7 @@ public class StudentServiceImpl implements StudentService {
 					studentBean.setTenth(resultSet.getInt("Ssc_Marks"));
 					
 				}
-				query = "select SerialNo, Email_Id, Batch_Id, Emp_Type, Core_Skill, Preferred_Student_Stream, Assigned_Stream, Date_Of_Joining, Mentor_Name, Assigned_Location, Relocation, Status from student__additional_info where Email_Id=?";
+				query = "select SerialNo, Email_Id, Batch_Id, Emp_Type, Core_Skill, Preferred_Student_Stream, Assigned_Stream, DATE_FORMAT(Date_Of_Joining, '%m-%d-%Y') Date_Of_Joining, Mentor_Name, Assigned_Location, Relocation, Status from student__additional_info where Email_Id=?";
 				 preparedStatement = connection.prepareStatement(query);
 				 preparedStatement.setString(1, "raju@gmail.com");
 				 resultSet = preparedStatement.executeQuery();
@@ -441,7 +446,12 @@ public class StudentServiceImpl implements StudentService {
 					studentBean.setCoreSkill(resultSet.getString("Core_Skill"));
 					studentBean.setPreferredStudentStream(resultSet.getString("Preferred_Student_Stream"));
 					studentBean.setAssignedStream(resultSet.getString("Assigned_Stream"));
-					studentBean.setDateOfJoining(resultSet.getDate("Date_Of_Joining"));
+					
+					String strDateOfJoining = resultSet.getString("Date_Of_Joining");
+					System.out.println("dobStr == "+strDateOfJoining);
+					studentBean.setStrDateOfJoining(strDateOfJoining);
+					
+					//studentBean.setDateOfJoining(resultSet.getDate("Date_Of_Joining"));
 					studentBean.setMentorName(resultSet.getString("Mentor_Name"));
 					studentBean.setAssignedLocation(resultSet.getString("Assigned_Location"));
 					studentBean.setRelocation(resultSet.getString("Relocation"));
@@ -450,6 +460,7 @@ public class StudentServiceImpl implements StudentService {
 				}
 						
 		} catch (Exception e) {
+			e.printStackTrace();
 			LOGGER.debug(e.getMessage()); 
 		}
 		
