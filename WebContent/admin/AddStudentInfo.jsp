@@ -324,13 +324,13 @@ padding-left: 1%;">
         $('#dateOfBirth').datepicker({
             uiLibrary: 'bootstrap4',
             iconsLibrary: 'fontawesome',
-            format: 'yyyy-dd-mm',
+            format: 'mm-dd-yyyy',
            
         });
         $('#dateOfJoining').datepicker({
             uiLibrary: 'bootstrap4',
             iconsLibrary: 'fontawesome',
-            format: 'yyyy-dd-mm',
+            format: 'mm-dd-yyyy',
         });
        
     </script>
