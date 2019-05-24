@@ -67,7 +67,10 @@
 	</div>
 	
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #EBEBEB; margin: 0px 3px 0px 3px; padding-top: 1px;">
-		<div id="blank_popup" class="blank_popup"></div>			
+		<div id="mentor_added_message" class="mentor_added_message" style="padding: 10px 10px 5px 30px; width: 350px;">
+			<span style="color: red;">Registration Failed :&nbsp;&nbsp;&nbsp; </span><q>Email Already Exists</q>
+		</div>		
+		<div id="blank_popup" class="blank_popup" style="display: block;"></div>			
 		<div id="alert_popup" class="alert_popup" style="padding: 7px 10px 5px 40px; border: 1px solid #DCDCDC;">	
 			<div style="margin: 10px 0px 20px 10px;">
 				RD Portal Says
@@ -183,7 +186,12 @@
 							$('.start_date').css('border-color','#ced4da');
 						}   
 
-					});   
+					}); 
+					function gotoMentoInfo() {
+						document.location.href = '/admin-portal/mentorList';					  
+						}
+		
+					setTimeout(gotoMentoInfo, 2000);  
 					
     			</script>
 			</div>				

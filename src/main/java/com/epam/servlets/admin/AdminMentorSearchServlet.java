@@ -57,6 +57,8 @@ public class AdminMentorSearchServlet extends HttpServlet {
 				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_INFO);
 				request.setAttribute("mentors", mentorList);
 				request.setAttribute("actions", actionList);
+				request.getRequestDispatcher(pageUrl).forward(request, response);
+
 				
 			}catch(Exception e){
 				LOGGER.error("Exception occured in AdminMentorSearchServlet = {}", e);
@@ -66,12 +68,10 @@ public class AdminMentorSearchServlet extends HttpServlet {
 			}
 		}else {
 				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_INFO);
+				request.getRequestDispatcher(pageUrl).forward(request, response);
+
 		}
-		try {
-			request.getRequestDispatcher(pageUrl).forward(request, response);
-		}catch(Exception e) {
-			
-		}
+		
 		LOGGER.debug("Exit from AdminMentorSearchServlet.....");
 	}
 }

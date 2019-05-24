@@ -320,6 +320,22 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
+<<<<<<< HEAD
+        
+        $('#dateOfBirth').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            format: 'mm-dd-yyyy',
+           
+        });
+        $('#dateOfJoining').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            format: 'mm-dd-yyyy',
+        });
+       
+    </script>
+=======
 
 
 $("#lastName").keyup(function(){
@@ -357,6 +373,7 @@ $('#dateOfJoining').datepicker({
 
 </script>
 
+>>>>>>> branch 'Sprint-3' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
 </form>
  	
 </div>

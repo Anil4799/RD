@@ -13,7 +13,67 @@
     
 <!--     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
    
-   
+   <style>
+   	.button, select {
+			    text-transform: none;
+			    width: 30px;
+			    height: 31px;			    
+			}
+
+			.btn {
+			    display: inline-block;
+			    font-weight: 400;
+			    color: #A9A9A9;
+			    text-align: center;
+			    vertical-align: middle;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    background-color: transparent;
+			    border: 1px solid transparent;
+			    padding: 0px;
+			    font-size: 1rem;
+			    line-height: 1.5;
+			    border-radius: .25rem;
+			        border-top-left-radius: 0.25rem;
+			        border-bottom-left-radius: 0.25rem;
+			    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
+			
+			.sbtn {
+			    display: inline-block;
+			    font-weight: 400;
+			    color: #A9A9A9;
+			    width: 200px;
+			    height: 35px;
+			    text-decoration: none;
+			    text-align: center;
+			    vertical-align: middle;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    background-color: transparent;
+			    border: 1px solid transparent;
+			    padding: 5px;
+			    font-size: 1rem;
+			    line-height: 1.5;
+			    border-radius: .25rem;
+			        border-top-left-radius: 0.25rem;
+			        border-bottom-left-radius: 0.25rem;
+			    border-top-left-radius: 0.25rem;
+			    border-bottom-left-radius: 0.25rem;
+			    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
+			.sbtn-success {
+			    color: #fff;
+			    background-color: #28a745;
+			    border-color: #28a745;
+			    text-decoration: none;
+			}
+   	
+   </style>
    
    <script type="text/javascript">
    
@@ -43,6 +103,7 @@
    var SDate=new Date(startDate);
    var EDate=new Date(endDate);
    
+   
   if(EDate<SDate){
 	   endMsg="";
 	   msg="Incorrect date range";
@@ -57,13 +118,13 @@
    else
    	{
    	
-   	
+	   
    	var params="?startDate="+startDate+"&endDate="+endDate;
+   	
   
    document.getElementById("batchDetailsSearch").action="/admin-portal/AdminBatchInfoListWithInDateRange"+params;
    document.getElementById("batchDetailsSearch").method = "post";
    document.getElementById("batchDetailsSearch").submit();
-
    	}
 
 
@@ -83,13 +144,12 @@
 				<table class="table" >
 					<tr style="float:left">
 						<td >
-								<input id="startDate" width="300"  placeholder="Start Date" class="col-md-11 border-right-0"/>
-			 					 <script type="text/javascript" src="./js/date.js"></script>
+								<input class="border-right-0 form-control form-control-sm" placeholder="Start Date" id="startDate" name="startDate"/>
 		 
 						 </td>
 						 <td>		 	
-		 						<input id="endDate" width="300"  placeholder="End Date" class="col-md-11 border-right-0 "/>
-		  						 <script type="text/javascript" src="./js/date.js"></script>
+		 						<input class="border-right-0 form-control form-control-sm" placeholder="End Date" id="endDate" name="endDate"/>
+		  						
 		  		 
 						</td>
 						 <td>
@@ -99,7 +159,7 @@
 						</td>
 						<td>
 								<div class="button">
-										<a href="addBatch" class="btn btn-success"> ADD NEW BATCH</a>
+										<a href="addBatch" class="sbtn sbtn-success" style="text-decoration: none;"> ADD NEW BATCH</a>
 
 								</div>
 						</td> 
@@ -111,7 +171,32 @@
 		    
 		       
 		</div>
-		
+		<script>
+		 $('#startDate').datepicker({
+			
+			            uiLibrary: 'bootstrap4',
+			
+
+			            iconsLibrary: 'fontawesome',
+			
+						format: 'mm-dd-yyyy',        
+
+			
+			        });
+			
+			        $('#endDate').datepicker({
+			
+			            uiLibrary: 'bootstrap4',
+			
+
+			            iconsLibrary: 'fontawesome',     
+			
+						format: 'mm-dd-yyyy',     
+			
+			        }); 
+			
+			</script>
+			
  		<c:choose>
  
 			 <c:when test="${searchResult == 'a'}">

@@ -2,16 +2,18 @@ package com.epam.services.admin;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import com.epam.dao.admin.Batch;
 import com.epam.utils.DBManager;
 
 
-public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
+public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoServiceImpl.class);
 	@Override
 	public List<Batch> getAllBatchsList(Connection con) {
@@ -22,19 +24,7 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 		try(CallableStatement cs=con.prepareCall(sql);ResultSet rs=cs.executeQuery();)
 		{
 
-			while(rs.next())
-			{
-				Batch batch=new Batch();
-				batch.setBatchid(rs.getString("batch_id"));
-				batch.setBatchnum(rs.getInt("batch_num"));
-				batch.setEnddate(rs.getString("end_date"));
-				batch.setQuarternum(rs.getString("quarter_num"));
-				batch.setStartdate(rs.getString("start_date"));
-				batch.setStatus(rs.getString("status"));
-				batch.setYearnum(rs.getInt("year_num"));
-				
-				batchList.add(batch);
-			}
+			processResultSet(batchList, rs);
 			
 						
 		}
@@ -52,40 +42,28 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 	
 	
 	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate){
+
 		
-		//int count=0;
 		List<Batch> batchList = new ArrayList<>();
-		
-		try {
-			//connection = DBManager.getConnection();
-			CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");
+
+		try(CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");) {
+
 			
-			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
-			java.sql.Date enDate = java.sql.Date.valueOf(endDate);
+			java.sql.Date sqlStartDate = formatToSqlDate(startDate);
+			java.sql.Date sqlEndDate = formatToSqlDate(endDate);
+						
+			statement.setDate("startDate", sqlStartDate);
+			statement.setDate("endDate", sqlEndDate);
 			
-			statement.setDate("startDate", stDate);
-			statement.setDate("endDate", enDate);
+						
 			ResultSet rs=statement.executeQuery();
 			
-			while(rs.next())
-			{
-				Batch batch=new Batch();
-				batch.setBatchid(rs.getString("batch_id"));
-				batch.setBatchnum(rs.getInt("batch_num"));
-				batch.setEnddate(rs.getString("end_date"));
-				batch.setQuarternum(rs.getString("quarter_num"));
-				batch.setStartdate(rs.getString("start_date"));
-				batch.setStatus(rs.getString("status"));
-				batch.setYearnum(rs.getInt("year_num"));
-				
-				batchList.add(batch);
-				//count++;
-			}
-			
+
+			processResultSet(batchList, rs);
+
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
-			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}
@@ -93,5 +71,37 @@ public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 
 		return batchList;
 		
+	}
+
+
+
+
+
+	private void processResultSet(List<Batch> batchList, ResultSet rs) throws SQLException {
+		while(rs.next())
+		{
+			Batch batch=new Batch();
+			batch.setBatchid(rs.getString("batch_id"));
+			batch.setBatchnum(rs.getInt("batch_num"));
+			batch.setEnddate(rs.getString("end_date"));
+			batch.setQuarternum(rs.getString("quarter_num"));
+			batch.setStartdate(rs.getString("start_date"));
+			batch.setStatus(rs.getString("status"));
+			batch.setYearnum(rs.getInt("year_num"));
+			
+			batchList.add(batch);
+		}
+	}
+
+
+
+
+
+	private java.sql.Date formatToSqlDate(String startDate) throws ParseException {
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat sdfOriginal = new SimpleDateFormat("MM-dd-yyyy");
+		String formattedDate = sdf.format(sdfOriginal.parse(startDate));
+		
+		return java.sql.Date.valueOf(formattedDate);
 	}
 }
