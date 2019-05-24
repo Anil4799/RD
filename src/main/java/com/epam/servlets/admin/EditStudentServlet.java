@@ -47,36 +47,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 		StudentService studentService = new StudentServiceImpl();
 		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
-		//StudentService studentService = new StudentServiceImpl();
 		
-		/*List<CollegeBean> collegeNames = studentService.getCollegNames();
-		request.setAttribute("collegeNames", collegeNames);
-		
-		List<String> batchIDList = studentService.getBatchID();
-		request.setAttribute("batchIDList", batchIDList);
-		
-		List<String> employeeTypeList = studentService.getEmployeeType();
-		request.setAttribute("employeeTypeList", employeeTypeList);
-		
-		List<String> coreSkills = studentService.getcoreSkill();
-		request.setAttribute("coreSkills", coreSkills);
-		
-		List<String> preferredStreams = studentService.getPreferredStream();
-		request.setAttribute("preferredStreams", preferredStreams);
-		
-		List<String> assignedStreams = studentService.getAssignedStream();
-		request.setAttribute("assignedStreams", assignedStreams);
-		
-		List<String> mentorList = studentService.getMentor();
-		request.setAttribute("mentorList", mentorList);
-		
-		List<String> statusList = studentService.getStatus();
-		request.setAttribute("statusList", statusList);
-		
-		List<String> assignedLocationList = studentService.getAssignedLocation();
-		request.setAttribute("assignedLocationList", assignedLocationList);
-		
-		request.setAttribute("studentBean", studentService.getDetails());*/
 		
 		request.getRequestDispatcher("admin/EditStudentInfo.jsp").forward(request, response);
 		

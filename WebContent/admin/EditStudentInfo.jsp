@@ -74,10 +74,10 @@
 						<option value='<c:out value="${studentBean.gender}"></c:out>'><c:out value="${studentBean.gender}"></c:out></option>
 						<c:choose>
 	                 	 	<c:when test="${studentBean.gender ==  'Male'}">
-	                 	 		<option value="female">Female</option>	                  										 									  								
+	                 	 		<option value="Female">Female</option>	                  										 									  								
 					    	</c:when>
   							<c:when test="${studentBean.gender ==  'Female'}">	  
-  							    <option value="male">Male</option>                										 																	  							
+  							    <option value="Male">Male</option>                										 																	  							
 						    </c:when>
 						    <c:otherwise>						    	
 						 	</c:otherwise>
@@ -319,10 +319,10 @@ padding-left: 1%;">
 						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
 						<option value='<c:out value="${studentBean.relocation}"></c:out>'><c:out value="${studentBean.relocation}"></c:out></option>
 							<c:choose>
-		                 	 	<c:when test="${studentBean.relocation ==  'yes'}">
+		                 	 	<c:when test="${studentBean.relocation ==  'Yes'}">
 		                 	 		<option value="No">No</option>	                  										 									  								
 						    	</c:when>
-	  							<c:when test="${studentBean.relocation ==  'no'}">	  
+	  							<c:when test="${studentBean.relocation ==  'No'}">	  
 	  							    <option value="Yes">Yes</option>                										 																	  							
 							    </c:when>
 						    <c:otherwise>						    	
