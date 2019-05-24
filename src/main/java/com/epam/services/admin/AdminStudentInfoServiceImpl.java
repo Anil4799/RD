@@ -14,7 +14,7 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 	@Override
 	public List<Student> getAllStudentDetails(Connection con) {
 		
-		
+		System.out.println("-----------------> Hello");
 		
 		List<Student> studentList = new ArrayList<>();
 		String sql="call student();";
@@ -34,6 +34,8 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 				student.setStudentStatus(rs.getString("status"));	
 				
 				studentList.add(student);
+				 System.out.println("-----------------> "+studentList.size());
+
 			}
 		}
 			
@@ -41,6 +43,7 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 		{
 			studentList=null;
 			e.getMessage();
+			e.printStackTrace();
 		}
 		
 		return studentList;
@@ -122,6 +125,7 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 		{
 			studentList=null;
 			e.getMessage();
+			e.printStackTrace();
 		}
 		
 		return studentList;

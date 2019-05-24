@@ -65,7 +65,7 @@ CREATE TABLE `batch_info` (
 
 LOCK TABLES `batch_info` WRITE;
 /*!40000 ALTER TABLE `batch_info` DISABLE KEYS */;
-INSERT INTO `batch_info` VALUES (1,1,'RD-Q1-2019-B1',2019,'Q1','2019-03-20','2019-05-30','not started'),(2,2,'RD-Q1-2019-B2',2019,'Q1','2019-03-28','2019-05-30','not started'),(3,1,'RD-Q2-2019-B1',2019,'Q2','2019-05-20','2019-05-30','Completed'),(16,2,'RD-Q2-2019-B2',2019,'Q2','2019-05-09','2019-05-24','IN PrOgRess'),(17,3,'RD-Q2-2019-B3',2019,'Q2','2019-05-23','2019-05-18','Not Started'),(18,4,'RD-Q2-2019-B4',2019,'Q2','2019-05-06','2019-05-23','Not Started'),(19,5,'RD-Q2-2019-B5',2019,'Q2','2019-05-06','2019-05-08','Not Started'),(20,6,'RD-Q2-2019-B6',2019,'Q2','2019-05-07','2019-05-09','In Progress'),(21,7,'RD-Q2-2019-B7',2019,'Q2','2019-05-31','2019-05-21','Completed'),(22,8,'RD-Q2-2019-B8',2019,'Q2','2019-06-01','2019-12-31','Not Started');
+INSERT INTO `batch_info` VALUES (20,6,'RD-Q2-2019-B6',2019,'Q2','2019-05-07','2019-05-09','In Progress'),(21,7,'RD-Q2-2019-B7',2019,'Q2','2019-05-31','2019-05-21','Completed'),(22,8,'RD-Q2-2019-B8',2019,'Q2','2019-06-01','2019-12-31','Not Started');
 /*!40000 ALTER TABLE `batch_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `mentor_info` (
   `Status` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`Email_Id`),
   UNIQUE KEY `SerialNo_UNIQUE` (`SerialNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +186,7 @@ CREATE TABLE `mentor_info` (
 
 LOCK TABLES `mentor_info` WRITE;
 /*!40000 ALTER TABLE `mentor_info` DISABLE KEYS */;
-INSERT INTO `mentor_info` VALUES (6,'demoMentorTest','demoMentor@aa.com','2019-05-02','2019-05-25',10,'Java','inactive'),(10,'fff','fff@ddd.com','2019-05-09','2019-05-11',12,'Big-Data','active'),(5,'jagadesh','jagu@gmail.com','2019-05-08','2019-05-01',12,'.Net','active'),(2,'karthik','kkarthik46@gmail.com','2019-05-08','2019-05-31',5,'Java','active'),(3,'Ravi','Ravi@epam.com','2019-05-05','2019-07-05',20,'c++','inactive'),(4,'rrr','rrr@rrr.com','2019-05-16','2019-05-27',1,'Java','active'),(1,'dsa','test_mentor1@epam.com','2019-05-17','2019-05-28',1,'Big-Data','Active'),(7,'test_mentor2','test_mentor2@epam.com','2019-05-21','2019-05-23',1,'Java','onhold'),(8,'test_mentor3','test_mentor3@epam.com','2019-05-22','2019-05-22',1,'Salesforce','inactive');
+INSERT INTO `mentor_info` VALUES (12,'test','test_mentor1@epam.com','2019-05-06','2019-05-31',10,'Java','active');
 /*!40000 ALTER TABLE `mentor_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +339,7 @@ CREATE TABLE `student__additional_info` (
   PRIMARY KEY (`SerialNo`),
   KEY `Email_Id` (`Email_Id`),
   CONSTRAINT `student__additional_info_ibfk_1` FOREIGN KEY (`Email_Id`) REFERENCES `student_personal_info` (`Email_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +348,7 @@ CREATE TABLE `student__additional_info` (
 
 LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
-INSERT INTO `student__additional_info` VALUES (35,'Kapse@Kapse.Kapse','RD-Q1-2019-B1','FTE','Python','','','2020-04-05','test_mentor2@epam.com','Hyderbad','yes','Active'),(36,'timma@timma.timma','RD-Q1-2019-B2','FTE','Java','','','2020-12-05','test_mentor2@epam.com','Hyderbad','yes','Active'),(37,'qqFTE1@ddd.com','RD-Q1-2019-B1','FTE','Python','Java','Java','2020-11-05','test_mentor2@epam.com','Hyderbad','yes','Resigned as FTE'),(38,'asd@eeehh..gh','RD-Q1-2019-B1','FTE','Python','Java','Java','2020-11-05','demoMentor@aa.com','Hyderbad','yes','Active');
+INSERT INTO `student__additional_info` VALUES (8,'a@a.a','RD-Q2-2019-B6','FTE','Python','','','0012-05-11',' ','Hyderbad','Yes','Active'),(9,'bb@bb.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11','test_mentor1@epam.com','Hyderbad','Yes','Active'),(10,'rr@rr.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11',' ','Hyderbad','Yes','Active'),(11,'WER','RD-Q2-2019-B6','FTE','Python','','','0013-01-08','','Hyderbad','Yes','Active');
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,7 +407,7 @@ CREATE TABLE `student_educational_info` (
 
 LOCK TABLES `student_educational_info` WRITE;
 /*!40000 ALTER TABLE `student_educational_info` DISABLE KEYS */;
-INSERT INTO `student_educational_info` VALUES ('asd@eeehh..gh','BVRIT','dfg','dfgdg','ece',456,456,456,456),('Kapse@Kapse.Kapse','BVRIT','dsff','','',0,0,0,0),('qqFTE1@ddd.com','BVRIT','fghfh','hhhh','ece',444,444,444,444),('timma@timma.timma','','','','',0,0,0,0);
+INSERT INTO `student_educational_info` VALUES ('a@a.a','','','','',0,0,0,0),('bb@bb.com','','','','',0,0,0,0),('rr@rr.com','','','','',0,0,0,0),('WER','','','','',0,0,0,0);
 /*!40000 ALTER TABLE `student_educational_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,7 +429,7 @@ CREATE TABLE `student_personal_info` (
   `Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`Email_Id`),
   UNIQUE KEY `SerialNo_UNIQUE` (`SerialNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -438,7 +438,7 @@ CREATE TABLE `student_personal_info` (
 
 LOCK TABLES `student_personal_info` WRITE;
 /*!40000 ALTER TABLE `student_personal_info` DISABLE KEYS */;
-INSERT INTO `student_personal_info` VALUES (34,'asdds','asdsad','2020-04-05','asd@eeehh..gh','male',34545,'dfgdd'),(31,'Kapse','Kapse','2019-07-05','Kapse@Kapse.Kapse','male',0,'ggg'),(33,'TTTTT','TTTTT','2020-03-05','qqFTE1@ddd.com','male',43554654,'nnn'),(32,'Timma','Timma','2021-06-04','timma@timma.timma','male',0,'ff');
+INSERT INTO `student_personal_info` VALUES (44,'a','a','0010-12-10','a@a.a','Male',1,'a'),(45,'xx','ee','0010-12-10','bb@bb.com','Male',0,'rrr'),(46,'rr','rr','0011-02-09','rr@rr.com','Male',0,'rrr'),(47,'QWER','WER','0011-01-09','WER','Male',1,'Hyd');
 /*!40000 ALTER TABLE `student_personal_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -798,8 +798,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `student`()
 BEGIN
+DECLARE mentor_email nvarchar(200);
+SELECT student__additional_info.mentor_Name INTO mentor_email
+FROM student__additional_info WHERE student__additional_info.mentor_Name = 'JJJ';
 
-select 
+IF mentor_email != '' THEN
+    select 
 student_personal_info.email_id,
 student_personal_info.first_name,
 student_personal_info.last_name ,
@@ -814,7 +818,19 @@ on student__additional_info.mentor_name=mentor_info.email_id
 where mentor_info.email_id=student__additional_info.mentor_Name 
 and student__additional_info.email_id=student_personal_info.email_id  
 ORDER BY student_personal_info.serialNo DESC LIMIT 10;
-
+ELSE
+  select 
+student_personal_info.email_id,
+student_personal_info.first_name,
+student_personal_info.last_name ,
+student__additional_info.batch_id ,
+student__additional_info.core_skill,
+student__additional_info.mentor_Name,
+student__additional_info.status 
+from student_personal_info, student__additional_info 
+where student__additional_info.email_id=student_personal_info.email_id  
+ORDER BY student_personal_info.serialNo DESC LIMIT 10;
+END IF;
 
 
 END ;;
@@ -868,4 +884,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-24 14:37:14
+-- Dump completed on 2019-05-24 19:13:50

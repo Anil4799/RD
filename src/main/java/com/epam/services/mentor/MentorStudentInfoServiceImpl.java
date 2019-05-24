@@ -90,7 +90,6 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 			{
 				while(rs.next())
 				{
-					System.out.println("TTTTTTT _> "+rs.getString("first_name"));
 					StudentBean student=new StudentBean();
 					student.setFirstName(rs.getString("first_name"));
 					student.setLastName(rs.getString("last_name"));

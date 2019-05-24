@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-import com.epam.utils.ConstantsUtility;
 
 
 /**
@@ -44,14 +43,14 @@ public class LoginRequiredFilter implements Filter {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		LOGGER.info("Exited in to LoginRequiredFilter");
 	}
 	
-
+	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+		// init configs
 	}
 
 }
