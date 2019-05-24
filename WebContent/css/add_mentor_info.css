@@ -17,7 +17,7 @@
 		border: 1px solid #CCCCCC;		
 	}
 	.ok_button{
-    	font-size: 12px;
+    	font-size: 14px;
     	border-radius: 5px 5px 5px 5px;
 		background:  #D8DCDE;
 		padding: 5px 5px 5px 5px;				
@@ -50,7 +50,7 @@
 		display: inline; 
 	}
 	.mentor_info_form{
-    	font-size: 12px;
+    	font-size: 14px;
     	border-radius: 5px 5px 5px 5px;
 		background: #fff;
 		padding: 5px 30px 5px 30px;	
