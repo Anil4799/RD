@@ -2,6 +2,7 @@ package com.epam.services.admin;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,19 +24,7 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 		try(CallableStatement cs=con.prepareCall(sql);ResultSet rs=cs.executeQuery();)
 		{
 
-			while(rs.next())
-			{
-				Batch batch=new Batch();
-				batch.setBatchid(rs.getString("batch_id"));
-				batch.setBatchnum(rs.getInt("batch_num"));
-				batch.setEnddate(rs.getString("end_date"));
-				batch.setQuarternum(rs.getString("quarter_num"));
-				batch.setStartdate(rs.getString("start_date"));
-				batch.setStatus(rs.getString("status"));
-				batch.setYearnum(rs.getInt("year_num"));
-				
-				batchList.add(batch);
-			}
+			processResultSet(batchList, rs);
 			
 						
 		}
@@ -55,12 +44,11 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate){
 		System.out.println(startDate);
 		List<Batch> batchList = new ArrayList<>();
-		try {
-			CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");
+		try(CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");) {
+			
 			
 			java.sql.Date sqlStartDate = formatToSqlDate(startDate);
 			java.sql.Date sqlEndDate = formatToSqlDate(endDate);
-			System.out.println(sqlStartDate + "===startDate ---EndDate=============" + sqlEndDate);	
 						
 			statement.setDate("startDate", sqlStartDate);
 			statement.setDate("endDate", sqlEndDate);
@@ -68,25 +56,11 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 						
 			ResultSet rs=statement.executeQuery();
 			
-			while(rs.next())
-			{
-				Batch batch=new Batch();
-				batch.setBatchid(rs.getString("batch_id"));
-				batch.setBatchnum(rs.getInt("batch_num"));
-				batch.setEnddate(rs.getString("end_date"));
-				batch.setQuarternum(rs.getString("quarter_num"));
-				batch.setStartdate(rs.getString("start_date"));
-				batch.setStatus(rs.getString("status"));
-				batch.setYearnum(rs.getInt("year_num"));
-				
-				batchList.add(batch);
-			}
+			processResultSet(batchList, rs);
 			
-			System.out.println(batchList.size());
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
-			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}
@@ -94,6 +68,26 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 
 		return batchList;
 		
+	}
+
+
+
+
+
+	private void processResultSet(List<Batch> batchList, ResultSet rs) throws SQLException {
+		while(rs.next())
+		{
+			Batch batch=new Batch();
+			batch.setBatchid(rs.getString("batch_id"));
+			batch.setBatchnum(rs.getInt("batch_num"));
+			batch.setEnddate(rs.getString("end_date"));
+			batch.setQuarternum(rs.getString("quarter_num"));
+			batch.setStartdate(rs.getString("start_date"));
+			batch.setStatus(rs.getString("status"));
+			batch.setYearnum(rs.getInt("year_num"));
+			
+			batchList.add(batch);
+		}
 	}
 
 
