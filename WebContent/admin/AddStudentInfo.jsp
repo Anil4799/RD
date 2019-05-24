@@ -321,6 +321,7 @@ padding-left: 1%;">
 </div>
 <script>
 
+
 $("#lastName").keyup(function(){
     if($(this).val().length >0){
 $("#lastName").removeClass("txtbrcolr");
@@ -355,6 +356,7 @@ $('#dateOfJoining').datepicker({
 
 
 </script>
+
 </form>
  	
 </div>
