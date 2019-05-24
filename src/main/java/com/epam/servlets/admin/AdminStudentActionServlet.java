@@ -63,11 +63,7 @@ public class AdminStudentActionServlet extends HttpServlet {
 		
 		else if(actionView.equalsIgnoreCase("Edit"))
 		{
-			//String action=request.getParameter("actionView");
-			//String email=request.getParameter("email_id");
 			StudentService studentService = new StudentServiceImpl();
-			//if(action.equalsIgnoreCase("edit"))
-			//{
 			request.setAttribute("studentBean", studentService.getDetails(emailId));
 			request.setAttribute("collegeNames", studentService.getCollegNames());
 			request.setAttribute("employeeTypeList", studentService.getEmployeeType());
@@ -83,7 +79,10 @@ public class AdminStudentActionServlet extends HttpServlet {
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");
 
-			request.getRequestDispatcher("admin/EditStudentInfo.jsp").forward(request, response);
+			try {
+				request.getRequestDispatcher("admin/EditStudentInfo.jsp").forward(request, response);
+			} catch (Exception e) {
+			}
 		}
 		
 	}

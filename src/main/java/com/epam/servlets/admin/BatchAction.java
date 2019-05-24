@@ -25,7 +25,9 @@ public class BatchAction extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String pageUrl=null;
 	
@@ -39,17 +41,14 @@ public class BatchAction extends HttpServlet {
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
 		request.setAttribute("status", status);
-		if(actionVal.equalsIgnoreCase("View")||actionVal.equalsIgnoreCase("In Progress")) {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_VIEW_ACTION);
-		}
-		else if(actionVal.equalsIgnoreCase("Completed")) {
-			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_VIEW_ACTION);
-		}
 		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 		request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 		request.setAttribute("pageState", "BATCH INFO");
 			request.getRequestDispatcher(pageUrl).forward(request, response);
-		
+		}catch(Exception exception) {
+			LOGGER.error(exception.getMessage());
+		}
 	}
 	
 	@Override

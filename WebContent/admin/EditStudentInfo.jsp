@@ -74,10 +74,10 @@
 						<option value='<c:out value="${studentBean.gender}"></c:out>'><c:out value="${studentBean.gender}"></c:out></option>
 						<c:choose>
 	                 	 	<c:when test="${studentBean.gender ==  'Male'}">
-	                 	 		<option value="female">Female</option>	                  										 									  								
+	                 	 		<option value="Female">Female</option>	                  										 									  								
 					    	</c:when>
   							<c:when test="${studentBean.gender ==  'Female'}">	  
-  							    <option value="male">Male</option>                										 																	  							
+  							    <option value="Male">Male</option>                										 																	  							
 						    </c:when>
 						    <c:otherwise>						    	
 						 	</c:otherwise>
@@ -89,7 +89,8 @@
 					<div>
 						Contact Number:
 						<span style="float:right;width:34%">
-						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.contactNumber}"></c:out>'/>
+						
+						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.contactNumber == 0 ? '': studentBean.contactNumber}" />'/>
 						</span>
 					</div>
 					<br>
@@ -150,6 +151,7 @@
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
 					<select name="graduationSpeciality" class="form-control form-control-sm" >
+
 					
 								
 								
@@ -161,6 +163,7 @@
 						        </c:if>
 						    </c:forEach>	
 								
+
 					</select>
 					</span>
 					</div>
@@ -168,7 +171,7 @@
 					<div>
 					Year of Passed Out:
 					<span style="float:right;width:34%">
-					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.yearOfPassedOut}"></c:out>'/>
+					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.yearOfPassedOut == 0 ? '': studentBean.yearOfPassedOut}"></c:out>'/>
 					</span>
 					
 					</div>
@@ -176,7 +179,7 @@
 					<div>
 					Graduation Marks:
 					<span style="float:right;width:34%">
-					<input name="graduationMarks" type="text"  class="form-control form-control-sm" value='<c:out value="${studentBean.graduationMarks}"></c:out>'/>
+					<input name="graduationMarks" type="text"  class="form-control form-control-sm" value='<c:out value="${studentBean.graduationMarks == 0 ? '': studentBean.graduationMarks}"></c:out>'/>
 					</span>
 					</div>
 					
@@ -184,14 +187,14 @@
 					<div>
 					10th + 2 Marks:
 					<span style="float:right;width:34%">
-					<input name="twelveth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.twelveth}"></c:out>'/>
+					<input name="twelveth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.twelveth == 0 ? '': studentBean.twelveth }"></c:out>'/>
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
 					<span style="float:right;width:34%">
-					<input name="tenth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.tenth}"></c:out>' />
+					<input name="tenth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.tenth == 0 ? '': studentBean.tenth }"></c:out>' />
 					</span>
 					</div>
 					
@@ -326,10 +329,10 @@ padding-left: 1%;">
 						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
 						<option value='<c:out value="${studentBean.relocation}"></c:out>'><c:out value="${studentBean.relocation}"></c:out></option>
 							<c:choose>
-		                 	 	<c:when test="${studentBean.relocation ==  'yes'}">
+		                 	 	<c:when test="${studentBean.relocation ==  'Yes'}">
 		                 	 		<option value="No">No</option>	                  										 									  								
 						    	</c:when>
-	  							<c:when test="${studentBean.relocation ==  'no'}">	  
+	  							<c:when test="${studentBean.relocation ==  'No'}">	  
 	  							    <option value="Yes">Yes</option>                										 																	  							
 							    </c:when>
 						    <c:otherwise>						    	

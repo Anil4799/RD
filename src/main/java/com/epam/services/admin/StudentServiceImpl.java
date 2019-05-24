@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -148,6 +147,7 @@ public class StudentServiceImpl implements StudentService {
              else{             
 		    	result = 0;	
              }
+
 		}
 		catch(Exception e){
 			 LOGGER.debug(e.getMessage()); 
@@ -383,6 +383,7 @@ public class StudentServiceImpl implements StudentService {
 				resultSetOne = preparedStatementOne.executeQuery();
 				if(resultSetOne.next())
 				{
+//<<<<<<< HEAD
 					studentBean.setMentorName(resultSetOne.getString("Mentor_Name"));
 				}				 
 				studentBean.setEmail(resultSet.getString("Email_Id"));
@@ -398,6 +399,41 @@ public class StudentServiceImpl implements StudentService {
 				studentBean.setRelocation(resultSet.getString("Relocation"));
 				studentBean.setStatus(resultSet.getString("Status"));													
 			}						
+//=======
+//					studentBean.setCollegeName(resultSet.getString("College_Name"));
+//					studentBean.setCollegeLocation(resultSet.getString("College_Loc"));
+//					studentBean.setGraduation(resultSet.getString("Graduation"));
+//					studentBean.setGraduationSpeciality(resultSet.getString("Graduation_Stream"));
+//					studentBean.setYearOfPassedOut(resultSet.getInt("Passed_Out_Year"));
+//					studentBean.setGraduationMarks(resultSet.getInt("Graduation_Marks"));
+//					studentBean.setTwelveth(resultSet.getInt("Inter_Marks"));
+//					studentBean.setTenth(resultSet.getInt("Ssc_Marks"));
+//					
+//				}
+//				query = "select SerialNo, Email_Id, Batch_Id, Emp_Type, Core_Skill, Preferred_Student_Stream, Assigned_Stream, DATE_FORMAT(Date_Of_Joining, '%m-%d-%Y') Date_Of_Joining, Mentor_Name, Assigned_Location, Relocation, Status from student__additional_info where Email_Id=?";
+//				 preparedStatement = connection.prepareStatement(query);
+//				 preparedStatement.setString(1, emailId);
+//				 resultSet = preparedStatement.executeQuery();
+//				if(resultSet.next())
+//				{
+//					studentBean.setEmail(resultSet.getString("Email_Id"));
+//					studentBean.setBatchId(resultSet.getString("Batch_Id"));
+//					studentBean.setEmployeeType(resultSet.getString("Emp_Type"));
+//					studentBean.setCoreSkill(resultSet.getString("Core_Skill"));
+//					studentBean.setPreferredStudentStream(resultSet.getString("Preferred_Student_Stream"));
+//					studentBean.setAssignedStream(resultSet.getString("Assigned_Stream"));
+//					
+//					String strDateOfJoining = resultSet.getString("Date_Of_Joining");
+//					System.out.println("dobStr == "+strDateOfJoining);
+//					studentBean.setStrDateOfJoining(strDateOfJoining);
+//					studentBean.setMentorName(resultSet.getString("Mentor_Name"));
+//					studentBean.setAssignedLocation(resultSet.getString("Assigned_Location"));
+//					studentBean.setRelocation(resultSet.getString("Relocation"));
+//					studentBean.setStatus(resultSet.getString("Status"));
+//													
+//				}
+//						
+//>>>>>>> branch 'Sprint-3' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage()); 
 		}	
@@ -514,9 +550,8 @@ public class StudentServiceImpl implements StudentService {
 		}
 		finally {
   			try {
-  				resultSet.close();
-  				resultSetOne.close();
-  				preparedStatementOne.close();
+  				
+  				//preparedStatementOne.close();
   				preparedStatement.close();
   				connection.close();
   			} catch (SQLException e) {

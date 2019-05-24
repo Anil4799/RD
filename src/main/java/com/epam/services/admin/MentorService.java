@@ -10,7 +10,7 @@ import com.epam.dao.admin.MentorDAO;
 
 public class MentorService {
 	private static final Logger LOGGER = Logger.getLogger(MentorService.class);
-
+	private static final String ERROR="invalid";
 
 	public String addMentor(MentorBean mentor)
 	{
@@ -18,13 +18,19 @@ public class MentorService {
 		try {
 			if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMentorEndDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null||mentor.getTechnologyStream()==null)
 			{
-				result= "invalid";	
+				result= ERROR;	
 			}
 			else
 			{
 				MentorDAO mdao=new MentorDAO();
-				mdao.createMentor(mentor);
-				result= "success";
+				int value=mdao.createMentor(mentor);
+				if(value>0)
+				{
+					result= "success";
+				}
+				else{
+					result = ERROR;
+				}
 			}
 			
 		} catch (Exception e) {
@@ -56,7 +62,7 @@ public class MentorService {
 		try {
 			if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMentorEndDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null||mentor.getTechnologyStream()==null)
 			{
-				result= "invalid";	
+				result= ERROR;	
 			}
 			else
 			{

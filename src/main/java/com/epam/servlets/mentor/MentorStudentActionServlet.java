@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.StudentBean;
-import com.epam.dao.mentor.MentorStudent;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.services.mentor.MentorStudentInfoService;
@@ -52,7 +51,6 @@ public class MentorStudentActionServlet extends HttpServlet {
 				List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 				request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 				request.setAttribute("pageState", "STUDENT INFO");
-				//LOGGER.debug("AAAAAAA"+ studentList.size() );
 				request.getRequestDispatcher(pageUrl).forward(request, response);
 
 			}
@@ -71,7 +69,6 @@ public class MentorStudentActionServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

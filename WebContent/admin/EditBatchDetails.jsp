@@ -1,11 +1,4 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
-<script type="text/javascript" src="/admin-portal/js/date.js"></script>
-
 		<style type="text/css">
 			.batch_info_form td{
 				border: 0px;
@@ -13,7 +6,7 @@
 		</style>
 		
 		<div class="page_info">
-		<p class="page_title">ADD BATCH</p>
+		<p class="page_title">EDIT BATCH DETAILS</p>
 	</div>
 
 		  <div style="font-family: 'Oswald', sans-serif; text-transform : none; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
@@ -34,7 +27,7 @@
 					<table class="getwidth">
 						<tr>
 							<td align="right">
-								<span class="savebutton" style="background-color:#5CB85C ; font-size=14px; color: #FFF" onClick="batchValidateForm()">SAVE</span>
+								<span class="savebutton" style="background-color:#5CB85C ; font-size=14px; color: #FFF" onClick="editBatchDetails()">SAVE</span>
 								<span class="backbutton" style="font-size=14px;" onClick="batchInfoLandingPgae()">BACK</span>
 							</td>
 						</tr>
@@ -47,15 +40,11 @@
 							
 							<tr>
 							  	<td class="form_lable">Start Date: <span class="required">*</span></td>
-								<td><input type="date" id="batch_start_date" name="batch_start_date" class="form-control form-control-sm" size="30" required/>
-								 <script type="text/javascript" src="./js/date.js"></script>
-								</td>
+								<td><input type="date" id="batch_start_date" name="batch_start_date" class="form-control form-control-sm" size="30" required readonly/></td>
 							</tr>
 							<tr>
 								<td class="form_lable">End Date: </td>
-								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" />
-								 <script type="text/javascript" src="./js/date.js"></script>
-								</td>
+								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" /></td>
 							</tr>  
 														<tr>
 								<td class="form_lable">BatchId: <span class="required">*</span></td>
@@ -67,10 +56,10 @@
 								<td>
 									<select name="batch_status" id="batch_status" class="form-control form-control-sm" required>
 
-										<option selected="selected" >Not Started</option>
-										<option value="in progress">Inprogress</option>
+										<option selected="selected" value="Not Started">Not Started</option>
+										<option value="In Progress">In progress</option>
 
-										<option value="completed">Completed</option>
+										<option value="Completed">Completed</option>
 									</select>
 								</td>
 							</tr>
