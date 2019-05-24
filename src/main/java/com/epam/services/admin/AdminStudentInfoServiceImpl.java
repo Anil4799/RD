@@ -20,8 +20,8 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 			{
 				System.out.println("===============> "+ rs.getString("first_name"));
 				Student student=new Student();
-				String firstName=rs.getString(1);
-				String lastName=rs.getString(2);
+				String firstName=rs.getString("first_name");
+				String lastName=rs.getString("last_name");
 				String name=firstName+" "+lastName;
 				student.setStudentName(name);
 				student.setStudentEmailId(rs.getString("email_id"));
@@ -51,8 +51,8 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 			while(rs.next())
 			{
 				Student student=new Student();
-				String firstName=rs.getString(1);
-				String lastName=rs.getString(2);
+				String firstName=rs.getString("first_name");
+				String lastName=rs.getString("last_name");
 				String name=firstName+" "+lastName;
 				student.setStudentName(name);
 				student.setStudentBatch(rs.getString("batch_id"));

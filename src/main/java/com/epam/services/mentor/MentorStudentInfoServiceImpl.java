@@ -64,7 +64,8 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					student.setMentorStudentName(name);
 					student.setMentorStudentBatch(rs.getString("batch_id"));
 					student.setMentorStudentCoreSkill(rs.getString("core_skill"));
-					student.setMentorStudentStatus(rs.getString("status"));	
+					student.setMentorStudentStatus(rs.getString("status"));
+					student.setMentorStudentEmailId(rs.getString("email_id"));
 					studentList.add(student);
 				}
 			}

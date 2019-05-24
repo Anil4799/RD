@@ -3,7 +3,7 @@
 <script src="/admin-portal/js/StudentJS.js"></script>
 
   <div class="page_info">
-		<p class="page_title">ADD STUDENT</p>
+		<p class="page_title">VIEW STUDENT</p>
 	</div>
 
 

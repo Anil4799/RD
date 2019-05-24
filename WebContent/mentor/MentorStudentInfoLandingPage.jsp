@@ -57,16 +57,16 @@
   			<tbody>
  				<c:forEach items="${students}" var="ms" >
    					<tr>
-						<th scope="row">${ms.name}</th>
-						<td>${ms.batch}</td>
-						<td>${ms.coreSkill}</td>
-						<td>${ms.status}</td>
+						<th scope="row">${ms.mentorStudentName}</th>
+      <td>${ms.mentorStudentBatch}</td>
+      <td>${ms.mentorStudentCoreSkill}</td>
+      <td>${ms.mentorStudentStatus}</td>
 						<td>
 							<div class="btn-group" dropdown>    
 								<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 									<ul class="dropdown-menu ddmf" role="menu">
 										<c:forEach items="${actions}" var="action" >
-											<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.status)}" />
+											<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.mentorStudentStatus)}" />
 											<c:choose>
 												<c:when test="${actionStatus == action.statusName}">
 													<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');">${action.action}</a></li>
@@ -104,16 +104,16 @@
 	  				<tbody>
 		 				<c:forEach items="${students}" var="ms" >
 		   					<tr>
-								<th scope="row">${ms.name}</th>
-								<td>${ms.batch}</td>
-								<td>${ms.coreSkill}</td>
-								<td>${ms.status}</td>
+								<th scope="row">${ms.mentorStudentName}</th>
+      <td>${ms.mentorStudentBatch}</td>
+      <td>${ms.mentorStudentCoreSkill}</td>
+      <td>${ms.mentorStudentStatus}</td>
 								<td>
 									<div class="btn-group" dropdown>    
 										<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 											<ul class="dropdown-menu ddmf" role="menu">
 												<c:forEach items="${actions}" var="action" >
-													<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.status)}" />
+													<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.mentorStudentStatus)}" />
 													<c:choose>
 														<c:when test="${actionStatus == action.statusName}">
 															<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');">${action.action}</a></li>
