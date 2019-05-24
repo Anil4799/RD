@@ -56,7 +56,7 @@
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
 						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
-						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
+						 
 						</span>
 					</div>
 					<br>

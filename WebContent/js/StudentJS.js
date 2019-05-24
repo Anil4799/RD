@@ -126,7 +126,6 @@ function gotoMentorStudentLandingPage(){
 function setLocation()
 {
  var collegeNameLocation = document.add_student_info.collegeName.value;
- var collegeName1 = collegeNameLocation.substring(0, collegeNameLocation.indexOf("$"));
  var location = collegeNameLocation.substring(collegeNameLocation.indexOf("$") + 1);
  document.add_student_info.collegeLocation.value = location;
  
@@ -135,8 +134,6 @@ function setLocation()
 function openAlertPopup()
 {
 	alert("Not yet Implemented");
-	//document.getElementById("message_info").innerHTML = "Not yet Implemented";
-    //document.getElementById("alert_popup").style.display = "block";
 }
 
 
