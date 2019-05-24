@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.CollegeBean;
+import com.epam.dao.admin.StudentBean;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
 import com.epam.services.login.Menu;
@@ -64,6 +65,9 @@ public class AdminAddStudentServlet extends HttpServlet {
 			
 			List<String> assignedLocationList = studentService.getAssignedLocation();
 			request.setAttribute("assignedLocationList", assignedLocationList);
+			
+//			List<StudentBean> graduationSpeciality = studentService.getGraduationSpeciality();
+//			request.setAttribute("graduationSpeciality", graduationSpeciality);
 			
 			request.setAttribute("pageState", "STUDENT INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);

@@ -26,6 +26,7 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 				student.setStudentCoreSkill(rs.getString("core_skill"));
 				student.setStudentMentor(rs.getString("mentor_name"));
 				student.setStudentStatus(rs.getString("status"));	
+				
 				studentList.add(student);
 			}
 		}

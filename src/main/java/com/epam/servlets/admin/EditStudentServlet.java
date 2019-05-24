@@ -1,9 +1,9 @@
 package com.epam.servlets.admin;
 
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,26 +11,81 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.dao.admin.CollegeBean;
 import com.epam.dao.admin.StudentBean;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
 
 import org.apache.log4j.Logger;
 
-@WebServlet("/StudentServlet")
-public class StudentServlet extends HttpServlet {
+/**
+ * Servlet implementation class EditStudentServlet
+ */
+@WebServlet("/EditStudentServlet")
+public class EditStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final StudentService studentService = new StudentServiceImpl();
-	private static final Logger LOGGER = Logger.getLogger(StudentServlet.class);
+	private static final Logger LOGGER = Logger.getLogger(EditStudentServlet.class);
 
        
-       public StudentServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EditStudentServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-       @Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	LOGGER.debug("Entered into StudentServlet Class+++++++++");
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    
+    
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		StudentService studentService = new StudentServiceImpl();
+		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+		//StudentService studentService = new StudentServiceImpl();
+		
+		/*List<CollegeBean> collegeNames = studentService.getCollegNames();
+		request.setAttribute("collegeNames", collegeNames);
+		
+		List<String> batchIDList = studentService.getBatchID();
+		request.setAttribute("batchIDList", batchIDList);
+		
+		List<String> employeeTypeList = studentService.getEmployeeType();
+		request.setAttribute("employeeTypeList", employeeTypeList);
+		
+		List<String> coreSkills = studentService.getcoreSkill();
+		request.setAttribute("coreSkills", coreSkills);
+		
+		List<String> preferredStreams = studentService.getPreferredStream();
+		request.setAttribute("preferredStreams", preferredStreams);
+		
+		List<String> assignedStreams = studentService.getAssignedStream();
+		request.setAttribute("assignedStreams", assignedStreams);
+		
+		List<String> mentorList = studentService.getMentor();
+		request.setAttribute("mentorList", mentorList);
+		
+		List<String> statusList = studentService.getStatus();
+		request.setAttribute("statusList", statusList);
+		
+		List<String> assignedLocationList = studentService.getAssignedLocation();
+		request.setAttribute("assignedLocationList", assignedLocationList);
+		
+		request.setAttribute("studentBean", studentService.getDetails());*/
+		
+		request.getRequestDispatcher("admin/EditStudentInfo.jsp").forward(request, response);
+		
+	}
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("in EditStudentServlet class");
+LOGGER.debug("Entered into EditStudentServlet Class...............");
 		
 		StudentBean student = new StudentBean();
 		student.setFirstName(request.getParameter("firstName"));
@@ -40,10 +95,10 @@ public class StudentServlet extends HttpServlet {
 		student.setGender(request.getParameter("gender"));
 		student.setContactNumber(mobileValidation(request.getParameter("contactNumber")));
 		student.setPersonalLocation(request.getParameter("personalLocation"));
-		String collegeNameAndLocation = request.getParameter("collegeName");
-		String collegeName = "";
-		collegeName = extractCollegeName(collegeNameAndLocation, collegeName);
-		student.setCollegeName(extractCollegeName(collegeNameAndLocation, collegeName));
+		//String collegeNameAndLocation = request.getParameter("collegeName");
+		//String collegeName = "";
+		//collegeName = request.getParameter("collegeName");
+		student.setCollegeName(request.getParameter("collegeName"));
 		
 		String collegeLocation = request.getParameter("collegeLocation");
 		String graduation = request.getParameter("graduation");
@@ -81,8 +136,8 @@ public class StudentServlet extends HttpServlet {
 		student.setRelocation(request.getParameter("relocation"));
 		student.setStatus(request.getParameter("status"));
 				
-		addStudentAndRedirect(request, response, student);
-		LOGGER.debug("Exit from StudentServlet Class...............");
+		editStudentAndRedirect(request, response, student);
+		LOGGER.debug("Exit from EditStudentServlet Class...............");
 		
 	}
 
@@ -109,7 +164,7 @@ public class StudentServlet extends HttpServlet {
 	 * @param collegeName
 	 * @return
 	 */
-	private String extractCollegeName(String collegeNameAndLocation, String collegeName) {
+	/*private String extractCollegeName(String collegeNameAndLocation, String collegeName) {
 		if(!collegeNameAndLocation.contains("$"))
 		{
 			collegeName = collegeNameAndLocation;
@@ -119,7 +174,7 @@ public class StudentServlet extends HttpServlet {
 			collegeName = collegeNameAndLocation.substring(0,collegeNameAndLocation.indexOf('$'));
 		}
 		return collegeName;
-	}
+	}*/
 
 	/**
 	 * @param value
@@ -138,11 +193,11 @@ public class StudentServlet extends HttpServlet {
 	 * @param response
 	 * @param studentBean
 	 */
-	private void addStudentAndRedirect(HttpServletRequest request, HttpServletResponse response,
+	private void editStudentAndRedirect(HttpServletRequest request, HttpServletResponse response,
 			StudentBean studentBean) {
 		int result;
 		try {
-			  result = studentService.addStudentDetails(studentBean);
+			  result = studentService.editStudentDetails(studentBean);
 			  
 			  if(result == 1) {
 				    request.setAttribute("result", "success");
@@ -151,7 +206,7 @@ public class StudentServlet extends HttpServlet {
 					request.setAttribute("result", "fail");
 				}
 			  
-			  request.getRequestDispatcher("admin/student_added_successfully.jsp").forward(request, response);
+			  request.getRequestDispatcher("admin/studentEditedSuccessfully.jsp").forward(request, response);
 				
 		}
 		catch( Exception e)
@@ -199,6 +254,9 @@ public class StudentServlet extends HttpServlet {
 			
 		}
 		return totalMarks;
+
+		
+		
 	}
-	
+
 }
