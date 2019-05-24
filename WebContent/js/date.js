@@ -2,7 +2,7 @@ var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date()
    $('#startDate').datepicker({
        uiLibrary: 'bootstrap4',
        iconsLibrary: 'fontawesome',
-       orientation: 'top auto',
+       orientation: 'top auto',      
    });
    $('#endDate').datepicker({
        uiLibrary: 'bootstrap4',

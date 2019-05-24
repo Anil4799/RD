@@ -37,11 +37,23 @@
 			    padding: 0px;			    
 			    border-top: 1px solid #dee2e6;
 			    font-weight: normal;
-			}		
+			}	
+			.gj-datepicker-bootstrap [role=right-icon] button {
+			    width: 38px;
+			    position: relative;
+			    border: 0px;
+			}
+			.border-right-0 {
+			    border: 0px;
+			}
+			.start_date, .end_date{
+				border: 1px solid #ced4da;
+				border-radius: 4px 2px 2px 4px;
+			}	
 		</style>	
 		
 		<div class="page_info">
-		<p class="page_title">ADD MENTOR</p>
+		<p class="page_title">EDIT MENTOR DETAILS</p>
 	</div>
 	
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #EBEBEB; margin: 0px 3px 0px 3px; padding-top: 1px;">
@@ -85,14 +97,14 @@
 							
 							%>
 								
-							<td><input class="border-right-0 form-control form-control-sm" id="mentorship_start_date" name="mentorship_start_date" value=<%=mysqlmentorstartdate %>></td>
+							<td><div class="start_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_start_date" name="mentorship_start_date" value=<%=mysqlmentorstartdate %>></div></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
 							<%
 							String mysqlmentorenddate=sdf.format(mentor.getMentorEndDate());
 							%>
-							<td><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"  value=<%=mysqlmentorenddate %>></td>
+							<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"  value=<%=mysqlmentorenddate %>></div></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>
@@ -139,32 +151,24 @@
 					</table>
 				</form>
 				<script>     
-			        $('#mentorship_start_date').datepicker({
-			
-			            uiLibrary: 'bootstrap4',
-			
-			            iconsLibrary: 'fontawesome',
-			
+			        $('#mentorship_start_date').datepicker({			
+			            uiLibrary: 'bootstrap4',			
+			            iconsLibrary: 'fontawesome',			
 						format: 'mm-dd-yyyy', 			
 			        });
 			
-			        $('#mentorship_end_date').datepicker({
-			
-			            uiLibrary: 'bootstrap4',
-			
-			            iconsLibrary: 'fontawesome',     
-			
+			        $('#mentorship_end_date').datepicker({			
+			            uiLibrary: 'bootstrap4',			
+			            iconsLibrary: 'fontawesome',			
 						format: 'mm-dd-yyyy',    			
 			        });     
 			
 					$("#mentorship_start_date").change(function(){
 
 				    	if($(this).val().length >0){
-
-							$("#mentorship_start_date").removeClass("txtbrcolr");
-
-						}   
-
+							$("#mentorship_start_date").removeClass("txtbrcolr");							
+							$('.start_date').css('border-color','#ced4da');
+						} 
 					});   
     			</script>
 			</div>				
