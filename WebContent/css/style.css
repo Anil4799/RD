@@ -89,12 +89,12 @@ body {
 				.page_title{
 					padding-top: 5px;
 					margin-left: 20px;
-<<<<<<< HEAD
+
 					font-size: 24px;
-=======
+
 					
 					
->>>>>>> EPMRDINFDP-7
+
 				}
 	
 */
@@ -484,8 +484,13 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	content: "";
 }
 
+
 /* .backbutton, .savebutton {
 	font-size: 14;
+
+.backbutton, .savebutton, .editbutton {
+	font-size: 12px;
+
 	border-radius: 5px 5px 5px 5px;
 	background: #D8DCDE;
 	padding: 5px 5px 5px 5px;
@@ -949,6 +954,7 @@ table td, .table th {
 	 background-color:#ececec;
 	 padding: 12px 24px;
 }
+
 
 
 .displayViewFont{
