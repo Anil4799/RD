@@ -45,7 +45,6 @@ public class AdminStudentListServlet extends HttpServlet {
 			batchIDList = batchInfoDAO.getAllBatchID(con);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_STUDENT_INFO);
 			request.setAttribute("students", studentList);
-			System.out.println("---------------> "+studentList.size());
 			request.setAttribute("actions", actionList);
 			request.setAttribute("batchIDs", batchIDList);
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
@@ -58,7 +57,7 @@ public class AdminStudentListServlet extends HttpServlet {
 		{
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
-			LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
+			LOGGER.error("Exception occured in AdminStudentListServlet = {}", e);
 			request.getRequestDispatcher(pageUrl).forward(request, response);
 
 		}

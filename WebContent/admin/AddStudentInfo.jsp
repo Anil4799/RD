@@ -136,10 +136,13 @@
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
 					<select name="graduationSpeciality" class="form-control form-control-sm"  >
-					<option value="NULL"></option>
-						<option value="ece">ECE</option>
-						<option value="cse">CSE</option>
-						<option value="it">IT</option>
+					 <option value='<c:out value="${studentBean.graduationSpeciality}"></c:out>'><c:out value="${studentBean.graduationSpeciality}"></c:out></option>
+											
+						    <c:forEach items="${graduationSpecialityList}" var="graduationSpeciality">
+						        
+						            <option value="${graduationSpeciality}">${graduationSpeciality}</option>
+						        
+						    </c:forEach>	
 					</select>
 					</span>
 					</div>
