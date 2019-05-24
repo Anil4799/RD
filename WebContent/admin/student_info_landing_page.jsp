@@ -31,6 +31,7 @@
 			</tr>
 		</table>
 
+
 	</form>
 		<c:if test="${result eq false}">
 		 	<table class="table">

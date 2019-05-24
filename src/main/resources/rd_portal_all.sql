@@ -111,7 +111,7 @@ CREATE TABLE `employee_status` (
 
 LOCK TABLES `employee_status` WRITE;
 /*!40000 ALTER TABLE `employee_status` DISABLE KEYS */;
-INSERT INTO `employee_status` VALUES (1,'Active'),(2,'Terminated'),(3,'Resigned as FTE'),(4,'Resigned as intern');
+INSERT INTO `employee_status` VALUES (1,'Active'),(2,'Terminated'),(3,'Resigned as FTE'),(4,'Resigned as Intern');
 /*!40000 ALTER TABLE `employee_status` ENABLE KEYS */;
 UNLOCK TABLES;
 

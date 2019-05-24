@@ -14,7 +14,7 @@
 
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235);">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" >
-		<c:if test="${ student[0].status.equalsIgnoreCase('Active')}"><span class="savebutton" style="background-color:#5CB85C ; color: #FFF;"  >EDIT
+		<c:if test="${ student[0].status.equalsIgnoreCase('Active')}"><span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" onClick="gotoStudentEditPage('${student[0].email}')" >EDIT
 			</span></c:if>
 			<span class="backbutton" onClick="gotoStudentLandingPage()">BACK</span>
 			

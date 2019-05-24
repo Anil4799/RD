@@ -43,9 +43,23 @@ public class StudentBean {
 	private String assignedLocation;
 	private String relocation;
 	private String status;
+	private String strDob;
+	private String strDateOfJoining;
 	
-	
-	
+
+	public String getStrDateOfJoining() {
+		return strDateOfJoining;
+	}
+	public void setStrDateOfJoining(String strDateOfJoining) {
+		this.strDateOfJoining = strDateOfJoining;
+	}
+	public String getStrDob() {
+		return strDob;
+	}
+	public void setStrDob(String strDob) {
+		this.strDob = strDob;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
