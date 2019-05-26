@@ -64,8 +64,14 @@ public class SaveStudentInfoServlet extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("admin/AddStudentInfo.jsp").forward(request, response);
+		try {
+			request.getRequestDispatcher("admin/AddStudentInfo.jsp").forward(request, response);
+		} catch (Exception e) {
+			//Ecxeption 
+		}
 		
 	}
+    
+    
 
 }
