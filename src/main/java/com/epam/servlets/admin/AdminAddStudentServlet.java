@@ -65,6 +65,9 @@ public class AdminAddStudentServlet extends HttpServlet {
 			request.setAttribute("assignedLocationList", assignedLocationList);
 			
 
+			List<String> graduationSpecialityList = studentService.getGraduationSpeciality();
+			request.setAttribute("graduationSpecialityList", graduationSpecialityList);
+
 			
 			request.setAttribute("pageState", "STUDENT INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);

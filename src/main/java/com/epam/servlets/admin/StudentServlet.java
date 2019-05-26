@@ -91,7 +91,6 @@ public class StudentServlet extends HttpServlet {
 		Date date = null;
 		try{
 			date = format.parse(dob);
-			java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
 		}
 		catch(Exception e){
 			LOGGER.debug(e.getMessage());
@@ -137,7 +136,7 @@ public class StudentServlet extends HttpServlet {
 				
 		}
 		catch( Exception e)
-		{			  e.printStackTrace();
+		{			 
 			 LOGGER.debug(e.getMessage());
 		      
 		}

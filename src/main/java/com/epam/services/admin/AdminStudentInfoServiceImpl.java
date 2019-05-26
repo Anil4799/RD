@@ -9,12 +9,17 @@ import com.epam.dao.admin.StudentBean;
 
 public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 	
-	private final String coreSkill="core_skill";
+	private static final  String CORESKILL="core_skill";
+	private static final  String FIRSTNAME="first_name";
+	private static final  String LASTNAME="last_name";
+	private static final  String EMAILID="email_id";
+	private static final  String BATCHID="batch_id";
+	private static final  String MENTORNAME="mentor_name";
+	private static final  String STATUS="status";
 
 	@Override
 	public List<Student> getAllStudentDetails(Connection con) {
 		
-		System.out.println("-----------------> Hello");
 		
 		List<Student> studentList = new ArrayList<>();
 		String sql="call student();";
@@ -23,18 +28,17 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 			while(rs.next())
 			{
 				Student student=new Student();
-				String firstName=rs.getString("first_name");
-				String lastName=rs.getString("last_name");
+				String firstName=rs.getString(FIRSTNAME);
+				String lastName=rs.getString(LASTNAME);
 				String name=firstName+" "+lastName;
 				student.setStudentName(name);
-				student.setStudentEmailId(rs.getString("email_id"));
-				student.setStudentBatch(rs.getString("batch_id"));
-				student.setStudentCoreSkill(rs.getString(coreSkill));
-				student.setStudentMentor(rs.getString("mentor_name"));
-				student.setStudentStatus(rs.getString("status"));	
+				student.setStudentEmailId(rs.getString(EMAILID));
+				student.setStudentBatch(rs.getString(BATCHID));
+				student.setStudentCoreSkill(rs.getString(CORESKILL));
+				student.setStudentMentor(rs.getString(MENTORNAME));
+				student.setStudentStatus(rs.getString(STATUS));	
 				
 				studentList.add(student);
-				 System.out.println("-----------------> "+studentList.size());
 
 			}
 		}
@@ -43,7 +47,6 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 		{
 			studentList=null;
 			e.getMessage();
-			e.printStackTrace();
 		}
 		
 		return studentList;
@@ -58,15 +61,15 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 			while(rs.next())
 			{
 				Student student=new Student();
-				String firstName=rs.getString("first_name");
-				String lastName=rs.getString("last_name");
+				String firstName=rs.getString(FIRSTNAME);
+				String lastName=rs.getString(LASTNAME);
 				String name=firstName+" "+lastName;
 				student.setStudentName(name);
-				student.setStudentBatch(rs.getString("batch_id"));
-				student.setStudentCoreSkill(rs.getString(coreSkill));
-				student.setStudentMentor(rs.getString("mentor_name"));
-				student.setStudentStatus(rs.getString("status"));
-				student.setStudentEmailId(rs.getString("email_id"));
+				student.setStudentBatch(rs.getString(BATCHID));
+				student.setStudentCoreSkill(rs.getString(CORESKILL));
+				student.setStudentMentor(rs.getString(MENTORNAME));
+				student.setStudentStatus(rs.getString(STATUS));
+				student.setStudentEmailId(rs.getString(EMAILID));
 				studentList.add(student);
 			}
 		}
@@ -90,10 +93,10 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 			{
 				StudentBean student=new StudentBean();
 												 
-				 student.setFirstName(rs.getString("first_name"));
-				 student.setLastName(rs.getString("last_name"));
+				 student.setFirstName(rs.getString(FIRSTNAME));
+				 student.setLastName(rs.getString(LASTNAME));
 				 student.setDateOfBirth(rs.getString("date_of_birth")); 
-				 student.setEmail(rs.getString("email_id"));
+				 student.setEmail(rs.getString(EMAILID));
 				 student.setGender(rs.getString("gender"));
 				 student.setContactNumber(rs.getLong("contact"));
 				 student.setPersonalLocation(rs.getString("location"));
@@ -107,14 +110,14 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 				 student.setTenth(rs.getInt("SSc_Marks"));
 				 student.setBatchId(rs.getString("Batch_id"));
 				 student.setEmployeeType(rs.getString("Emp_type"));
-				 student.setCoreSkill(rs.getString(coreSkill));
+				 student.setCoreSkill(rs.getString(CORESKILL));
 				 student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
 				 student.setAssignedStream(rs.getString("Assigned_Stream"));
 				 student.setDoj(rs.getString("Date_Of_Joining"));
-				 student.setMentorName(rs.getString("mentor_name"));
+				 student.setMentorName(rs.getString(MENTORNAME));
 				 student.setAssignedLocation(rs.getString("Assigned_location"));
 				 student.setRelocation(rs.getString("relocation"));
-				 student.setStatus(rs.getString("status"));
+				 student.setStatus(rs.getString(STATUS));
 				 	 
 				 studentList.add(student);
 									
@@ -125,7 +128,6 @@ public class AdminStudentInfoServiceImpl implements AdminStudentInfoService {
 		{
 			studentList=null;
 			e.getMessage();
-			e.printStackTrace();
 		}
 		
 		return studentList;

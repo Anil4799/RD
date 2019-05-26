@@ -73,6 +73,8 @@ public class AdminStudentActionServlet extends HttpServlet {
 			request.setAttribute("assignedLocationList", studentService.getAssignedLocation());
 			request.setAttribute("statusList", studentService.getStatus());
 			request.setAttribute("mentorList", studentService.getMentor());
+			
+			request.setAttribute("graduationSpecialityList", studentService.getGraduationSpeciality());
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "STUDENT INFO");
@@ -80,6 +82,7 @@ public class AdminStudentActionServlet extends HttpServlet {
 			try {
 				request.getRequestDispatcher("admin/EditStudentInfo.jsp").forward(request, response);
 			} catch (Exception e) {
+				LOGGER.error("Exception occured in StudentViewErrorPage = {}", e);
 			}
 		}
 		

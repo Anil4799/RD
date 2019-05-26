@@ -19,13 +19,5 @@ if(count ==2){
 endMsg="need to be entered";
 return msg+endMsg;
 
-if(count>0){
-	document.getElementById(batchLandingTable).style.display="none";
-	
-	
-	
-}
-
-
 }
 

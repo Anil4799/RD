@@ -12,6 +12,14 @@ import com.epam.dao.mentor.MentorStudent;
 
 public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 	private static final Logger LOGGER = Logger.getLogger(MentorStudentInfoServiceImpl.class);
+	
+	private static final  String CORESKILL="core_skill";
+	private static final  String FIRSTNAME="first_name";
+	private static final  String LASTNAME="last_name";
+	private static final  String EMAILID="email_id";
+	private static final  String BATCHID="batch_id";
+	private static final  String MENTORNAME="mentor_name";
+	private static final  String STATUS="status";
 	@Override
 	public List<MentorStudent> mentorStudentDetails(Connection con, String mentorEmailId) {
 		 
@@ -24,14 +32,14 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 				while(rs.next())
 				{
 					MentorStudent student=new MentorStudent();
-					String firstName=rs.getString("first_name");
-					String lastName=rs.getString("last_name");
+					String firstName=rs.getString(FIRSTNAME);
+					String lastName=rs.getString(LASTNAME);
 					String name=firstName+" "+lastName;
-					student.setMentorStudentEmailId(rs.getString("email_id"));
+					student.setMentorStudentEmailId(rs.getString(EMAILID));
 					student.setMentorStudentName(name);
-					student.setMentorStudentBatch(rs.getString("batch_id"));
-					student.setMentorStudentCoreSkill(rs.getString("core_skill"));
-					student.setMentorStudentStatus(rs.getString("status"));	
+					student.setMentorStudentBatch(rs.getString(BATCHID));
+					student.setMentorStudentCoreSkill(rs.getString(CORESKILL));
+					student.setMentorStudentStatus(rs.getString(STATUS));	
 					studentList.add(student);
 				}
 			}
@@ -58,14 +66,14 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 				while(rs.next())
 				{
 					MentorStudent student=new MentorStudent();
-					String firstName=rs.getString("first_name");
-					String lastName=rs.getString("last_name");
+					String firstName=rs.getString(FIRSTNAME);
+					String lastName=rs.getString(LASTNAME);
 					String name=firstName+" "+lastName;
 					student.setMentorStudentName(name);
-					student.setMentorStudentBatch(rs.getString("batch_id"));
-					student.setMentorStudentCoreSkill(rs.getString("core_skill"));
-					student.setMentorStudentStatus(rs.getString("status"));
-					student.setMentorStudentEmailId(rs.getString("email_id"));
+					student.setMentorStudentBatch(rs.getString(BATCHID));
+					student.setMentorStudentCoreSkill(rs.getString(CORESKILL));
+					student.setMentorStudentStatus(rs.getString(STATUS));
+					student.setMentorStudentEmailId(rs.getString(EMAILID));
 					studentList.add(student);
 				}
 			}
@@ -91,10 +99,10 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 				while(rs.next())
 				{
 					StudentBean student=new StudentBean();
-					student.setFirstName(rs.getString("first_name"));
-					student.setLastName(rs.getString("last_name"));
+					student.setFirstName(rs.getString(FIRSTNAME));
+					student.setLastName(rs.getString(LASTNAME));
 					student.setDateOfBirth(rs.getString("date_of_birth")); 
-					student.setEmail(rs.getString("email_id"));
+					student.setEmail(rs.getString(EMAILID));
 					student.setGender(rs.getString("gender"));
 					student.setContactNumber(rs.getLong("contact"));
 					student.setPersonalLocation(rs.getString("location"));
@@ -108,14 +116,14 @@ public class MentorStudentInfoServiceImpl implements MentorStudentInfoService {
 					student.setTenth(rs.getInt("SSc_Marks"));
 					student.setBatchId(rs.getString("Batch_id"));
 					student.setEmployeeType(rs.getString("Emp_type"));
-					student.setCoreSkill(rs.getString("core_skill"));
+					student.setCoreSkill(rs.getString(CORESKILL));
 					student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
 					student.setAssignedStream(rs.getString("Assigned_Stream"));
 					student.setDoj(rs.getString("Date_Of_Joining"));
-					student.setMentorName(rs.getString("mentor_name"));
+					student.setMentorName(rs.getString(MENTORNAME));
 					student.setAssignedLocation(rs.getString("Assigned_location"));
 					student.setRelocation(rs.getString("relocation"));
-					student.setStatus(rs.getString("status"));
+					student.setStatus(rs.getString(STATUS));
 					studentList.add(student);
 				}
 			}
