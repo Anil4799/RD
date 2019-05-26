@@ -269,7 +269,6 @@ padding-left: 1%;">
 						Mentor:
 					      <span style="float:right;width:34%" >
 						      <select name="mentorName" class="form-control form-control-sm" >
-						      <option value="NULL"></option>
 						      <c:forEach items="${mentorList}" var="mentorName" >
 									<option value="${mentorName}">${mentorName}</option>
 						</c:forEach>
@@ -320,22 +319,7 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
-<<<<<<< HEAD
-        
-        $('#dateOfBirth').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'mm-dd-yyyy',
-           
-        });
-        $('#dateOfJoining').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'mm-dd-yyyy',
-        });
-       
-    </script>
-=======
+
 
 
 $("#lastName").keyup(function(){
@@ -373,7 +357,6 @@ $('#dateOfJoining').datepicker({
 
 </script>
 
->>>>>>> branch 'Sprint-3' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
 </form>
  	
 </div>

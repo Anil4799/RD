@@ -137,7 +137,7 @@ public class StudentServlet extends HttpServlet {
 				
 		}
 		catch( Exception e)
-		{			 
+		{			  e.printStackTrace();
 			 LOGGER.debug(e.getMessage());
 		      
 		}

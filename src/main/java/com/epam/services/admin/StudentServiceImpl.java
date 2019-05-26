@@ -95,6 +95,7 @@ public class StudentServiceImpl implements StudentService {
     	  }
     	  catch(SQLException e)
     	  {
+    		  e.printStackTrace();
     		  LOGGER.debug(e.getMessage());
     		  return 0;
     	  }
@@ -137,6 +138,7 @@ public class StudentServiceImpl implements StudentService {
     	  }
     	  catch(SQLException e)
     	  {
+    		  e.printStackTrace();
     		 LOGGER.debug(e.getMessage());
     		 return 0;
     	  }
@@ -170,6 +172,7 @@ public class StudentServiceImpl implements StudentService {
 		}
 		catch(Exception e)
 		{
+			 e.printStackTrace();
 			 LOGGER.debug(e.getMessage()); 
 		}
 		finally {
@@ -207,6 +210,7 @@ public class StudentServiceImpl implements StudentService {
 					collegeNameList.add(college);
 			   }
 		} catch (Exception e) {
+			 e.printStackTrace();
 			LOGGER.debug(e.getMessage()); 
 		}
 		
@@ -230,6 +234,7 @@ public class StudentServiceImpl implements StudentService {
 		        
 		        }
 		} catch (Exception e) {
+			 e.printStackTrace();
 			LOGGER.debug(e.getMessage()); 
 		}
 		
@@ -252,6 +257,7 @@ public class StudentServiceImpl implements StudentService {
 						employeeTypeList.add(employeeType);
 		            }
 		} catch (Exception e) {
+			 e.printStackTrace();
 			LOGGER.debug(e.getMessage()); 
 		}
 		
