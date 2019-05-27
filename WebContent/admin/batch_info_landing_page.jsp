@@ -78,22 +78,7 @@
    <script type="text/javascript">
    
    
-   
-   function stringToDate(_date,_format,_delimiter)
-   {
-               var formatLowerCase=_format.toLowerCase();
-               var formatItems=formatLowerCase.split(_delimiter);
-               var dateItems=_date.split(_delimiter);
-               var monthIndex=formatItems.indexOf("mm");
-               var dayIndex=formatItems.indexOf("dd");
-               var yearIndex=formatItems.indexOf("yyyy");
-               var month=parseInt(dateItems[monthIndex]);
-               month-=1;
-
-               
-               var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
-               return formatedDate;
-   }
+  
    
    function validateStartEndDate()
    {
@@ -193,7 +178,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 						</td>
 						 <td>
 			 
-  								<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe;pointer-events: none;"  onclick="validateStartEndDate()"></button>
+  								<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe;"  onclick="validateStartEndDate()"></button>
 		
 						</td>
 						<td>
