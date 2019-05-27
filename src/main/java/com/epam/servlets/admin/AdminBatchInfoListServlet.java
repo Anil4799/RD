@@ -49,7 +49,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			request.setAttribute("pageState", "BATCH INFO");
 			request.setAttribute("searchResult", "");
-			request.getRequestDispatcher(pageUrl).forward(request, response);
+			goToURL(request, response, pageUrl);
 
 
 		}
@@ -58,7 +58,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
-			request.getRequestDispatcher(pageUrl).forward(request, response);
+			goToURL(request, response, pageUrl);
 
 		}
 
@@ -72,5 +72,14 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	} catch (Exception e) {
 		LOGGER.debug(e.getMessage());
 	}
+	}
+	
+	public void goToURL(HttpServletRequest request, HttpServletResponse response,String pageUrl)
+	{
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		} catch (Exception e1) {
+			LOGGER.error(e1.getMessage());
+		}
 	}
 }

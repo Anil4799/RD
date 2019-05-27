@@ -62,7 +62,7 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 					request.setAttribute("resultSize", batchList.size());
 					request.setAttribute("searchResult", "a");
 					
-					request.getRequestDispatcher(pageUrl).forward(request, response);
+					goToURL(request, response, pageUrl);
 
 
 				}
@@ -71,7 +71,7 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 					pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 					request.setAttribute("errorMsg", e.getMessage());
 					LOGGER.error(e.getMessage());
-					request.getRequestDispatcher(pageUrl).forward(request, response);
+					goToURL(request, response, pageUrl);
 
 				}
 
@@ -85,6 +85,15 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 			} catch (Exception e) {
 				LOGGER.debug(e.getMessage());
 			}
+			}
+			
+			public void goToURL(HttpServletRequest request, HttpServletResponse response,String pageUrl)
+			{
+				try {
+					request.getRequestDispatcher(pageUrl).forward(request, response);
+				} catch (Exception e1) {
+					LOGGER.error(e1.getMessage());
+				}
 			}
 				
 				

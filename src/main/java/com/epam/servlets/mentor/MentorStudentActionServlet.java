@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.epam.dao.admin.StudentBean;
-import com.epam.dao.mentor.MentorStudent;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
 import com.epam.services.mentor.MentorStudentInfoService;
@@ -52,15 +51,13 @@ public class MentorStudentActionServlet extends HttpServlet {
 				List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 				request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 				request.setAttribute("pageState", "STUDENT INFO");
-				//LOGGER.debug("AAAAAAA"+ studentList.size() );
-				request.getRequestDispatcher(pageUrl).forward(request, response);
-
+				goToURL(request, response, pageUrl);
 			}
 			catch(Exception e)
 			{
 				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 				request.setAttribute("errorMsg", e.getMessage());
-				request.getRequestDispatcher(pageUrl).forward(request, response);
+				goToURL(request, response, pageUrl);
 				LOGGER.error("Exception occured in MentorStudentInfo = {}", e);
 			}
 		
@@ -69,10 +66,13 @@ public class MentorStudentActionServlet extends HttpServlet {
 		
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	public void goToURL(HttpServletRequest request, HttpServletResponse response,String pageUrl)
+	{
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		} catch (Exception e1) {
+			LOGGER.error(e1.getMessage());
+		}
 	}
 
 }

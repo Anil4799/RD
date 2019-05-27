@@ -1,6 +1,5 @@
 function validateForm() {
 	var message = "";
-	var l = message.length;
 	var mentor_name=document.forms["mentor_info_form"]["mentor_name"].value;
 	var mentor_email = document.forms["mentor_info_form"]["mentor_email"].value;
 	var mentorship_start_date=$("#mentorship_start_date").val();
@@ -97,7 +96,6 @@ function gotoMentorInfo(){
 
 function validateEditForm() {
 	var message = "";
-	var l = message.length;
 	var mentor_name=document.forms["mentor_info_form"]["mentor_name"].value;
 	var mentor_email = document.forms["mentor_info_form"]["mentor_email"].value;
 	var mentorship_start_date=$("#mentorship_start_date").val();
@@ -173,11 +171,4 @@ function validateEditForm() {
 		}
 }
 
-function closeAlertPopup(){
-	document.getElementById("alert_popup").style.display = "none";
-	document.getElementById("blank_popup").style.display = "none";	
-	var elements = mentor_info_form.elements;
-	for (var i = 0, len = elements.length; i < len; ++i) {
-		elements[i].disabled = false;
-	}
-}
+

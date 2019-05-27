@@ -19,5 +19,5 @@ public interface StudentService {
 	public StudentBean getDetails(String emailId);
 	
 	public int editStudentDetails(StudentBean studentBean);
-	//public List<StudentBean> getGraduationSpeciality();
+	public List<String> getGraduationSpeciality();
 }

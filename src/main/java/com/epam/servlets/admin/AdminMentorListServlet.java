@@ -52,18 +52,24 @@ public class AdminMentorListServlet extends HttpServlet {
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute("pageState", "MENTOR INFO");
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
-			request.getRequestDispatcher(pageUrl).forward(request, response);
-		}
+			goToURL(request, response, pageUrl);		}
 		catch(Exception e)
 		{
 			LOGGER.error("Exception occured in AdminMentorListServlet = {}", e);
 			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
-			request.getRequestDispatcher(pageUrl).forward(request, response);
-
+			goToURL(request, response, pageUrl);
 			
 		}
 		LOGGER.debug("Exit from AdminMentorListServlet.....");
 	}
+     public void goToURL(HttpServletRequest request, HttpServletResponse response,String pageUrl)
+		{
+			try {
+				request.getRequestDispatcher(pageUrl).forward(request, response);
+			} catch (Exception e1) {
+				LOGGER.error(e1.getMessage());
+			}
+		}
 
 }

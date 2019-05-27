@@ -89,7 +89,8 @@
 					<div>
 						Contact Number:
 						<span style="float:right;width:34%">
-						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.contactNumber}"></c:out>'/>
+						
+						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.contactNumber == 0 ? '': studentBean.contactNumber}" />'/>
 						</span>
 					</div>
 					<br>
@@ -150,10 +151,19 @@
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
 					<select name="graduationSpeciality" class="form-control form-control-sm" >
-					<!-- <option value="NULL"></option> -->
-						<option value="ece">ECE</option>
-						<option value="cse">CSE</option>
-						<option value="it">IT</option>
+
+					
+								
+								
+						 <option value='<c:out value="${studentBean.graduationSpeciality}"></c:out>'><c:out value="${studentBean.graduationSpeciality}"></c:out></option>
+											
+						    <c:forEach items="${graduationSpecialityList}" var="graduationSpeciality">
+						        <c:if test="${graduationSpeciality != studentBean.graduationSpeciality}">
+						            <option value="${graduationSpeciality}">${graduationSpeciality}</option>
+						        </c:if>
+						    </c:forEach>	
+								
+
 					</select>
 					</span>
 					</div>
@@ -161,7 +171,7 @@
 					<div>
 					Year of Passed Out:
 					<span style="float:right;width:34%">
-					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.yearOfPassedOut}"></c:out>'/>
+					<input name="yearOfPassedOut" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.yearOfPassedOut == 0 ? '': studentBean.yearOfPassedOut}"></c:out>'/>
 					</span>
 					
 					</div>
@@ -169,7 +179,7 @@
 					<div>
 					Graduation Marks:
 					<span style="float:right;width:34%">
-					<input name="graduationMarks" type="text"  class="form-control form-control-sm" value='<c:out value="${studentBean.graduationMarks}"></c:out>'/>
+					<input name="graduationMarks" type="text"  class="form-control form-control-sm" value='<c:out value="${studentBean.graduationMarks == 0 ? '': studentBean.graduationMarks}"></c:out>'/>
 					</span>
 					</div>
 					
@@ -177,14 +187,14 @@
 					<div>
 					10th + 2 Marks:
 					<span style="float:right;width:34%">
-					<input name="twelveth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.twelveth}"></c:out>'/>
+					<input name="twelveth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.twelveth == 0 ? '': studentBean.twelveth }"></c:out>'/>
 					</span>
 					</div>
 					<br>
 					<div>
 					10th Marks:
 					<span style="float:right;width:34%">
-					<input name="tenth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.tenth}"></c:out>' />
+					<input name="tenth" type="text" class="form-control form-control-sm" value='<c:out value="${studentBean.tenth == 0 ? '': studentBean.tenth }"></c:out>' />
 					</span>
 					</div>
 					

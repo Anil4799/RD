@@ -48,30 +48,38 @@ public class AdminMentorSearchServlet extends HttpServlet {
 		String searchMentor = request.getParameter("mentorname");
 		String searchtechnology = request.getParameter("technologystream");
 		
-		
+		try{	
 		if(searchMentor.length()!=0 || searchtechnology.length()!=0) {
-			try{	
+			
 				int role= (int) request.getSession(true).getAttribute("role");
 				actionList=menuActionItemService.getMenuActionList(con,role);
 				mentorList=mentorInfoService.searchMentors(con,searchMentor,searchtechnology);
 				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_INFO);
 				request.setAttribute("mentors", mentorList);
 				request.setAttribute("actions", actionList);
-				request.getRequestDispatcher(pageUrl).forward(request, response);
-
+				goToURL(request, response, pageUrl);
 				
-			}catch(Exception e){
-				LOGGER.error("Exception occured in AdminMentorSearchServlet = {}", e);
-				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
-				request.setAttribute("errorMsg", e.getMessage());
-				request.getRequestDispatcher(pageUrl).forward(request, response);
-			}
+			
 		}else {
 				pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_MENTOR_INFO);
-				request.getRequestDispatcher(pageUrl).forward(request, response);
-
+				goToURL(request, response, pageUrl);
 		}
+		}catch(Exception e){
+			LOGGER.error("Exception occured in AdminMentorSearchServlet = {}", e);
+			pageUrl=request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
+			request.setAttribute("errorMsg", e.getMessage());
+			goToURL(request, response, pageUrl);	
+			}
 		
 		LOGGER.debug("Exit from AdminMentorSearchServlet.....");
+	}
+	
+	public void goToURL(HttpServletRequest request, HttpServletResponse response,String pageUrl)
+	{
+		try {
+			request.getRequestDispatcher(pageUrl).forward(request, response);
+		} catch (Exception e1) {
+			LOGGER.error(e1.getMessage());
+		}
 	}
 }

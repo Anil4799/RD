@@ -56,7 +56,7 @@
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
 						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
-						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
+						 
 						</span>
 					</div>
 					<br>
@@ -136,10 +136,13 @@
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
 					<select name="graduationSpeciality" class="form-control form-control-sm"  >
-					<option value="NULL"></option>
-						<option value="ece">ECE</option>
-						<option value="cse">CSE</option>
-						<option value="it">IT</option>
+					 <option value='<c:out value="${studentBean.graduationSpeciality}"></c:out>'><c:out value="${studentBean.graduationSpeciality}"></c:out></option>
+											
+						    <c:forEach items="${graduationSpecialityList}" var="graduationSpeciality">
+						        
+						            <option value="${graduationSpeciality}">${graduationSpeciality}</option>
+						        
+						    </c:forEach>	
 					</select>
 					</span>
 					</div>
@@ -269,7 +272,6 @@ padding-left: 1%;">
 						Mentor:
 					      <span style="float:right;width:34%" >
 						      <select name="mentorName" class="form-control form-control-sm" >
-						      <option value="NULL"></option>
 						      <c:forEach items="${mentorList}" var="mentorName" >
 									<option value="${mentorName}">${mentorName}</option>
 						</c:forEach>
@@ -320,22 +322,6 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
-<<<<<<< HEAD
-        
-        $('#dateOfBirth').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'mm-dd-yyyy',
-           
-        });
-        $('#dateOfJoining').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'mm-dd-yyyy',
-        });
-       
-    </script>
-=======
 
 
 $("#lastName").keyup(function(){
@@ -373,7 +359,6 @@ $('#dateOfJoining').datepicker({
 
 </script>
 
->>>>>>> branch 'Sprint-3' of https://git.epam.com/Durga_Adimulam/rd-admin-portal.git
 </form>
  	
 </div>
