@@ -77,21 +77,30 @@
    
    <script type="text/javascript">
    
+   
+  
+   
    function validateStartEndDate()
    {
-   	
+	   
+	   
    	var startDate= document.getElementById("startDate").value;
    	var endDate=document.getElementById("endDate").value;
    	var msg="";
    	var endMsg="";
    	//var count=0;
+   		
    	document.getElementById("alertWhenDateSearch").style.display="none";
    		
-   if(startDate==""){msg+="Start Date ";}
+   if(startDate==""){
+	  
+	   msg+="Start Date ";}
    	
    	
    if(endDate==""){
+	   
    	msg+="End Date";
+   	
    }
    if(startDate=="" && endDate==""){
    	msg="Start Date and End Date";
@@ -100,20 +109,33 @@
    
    endMsg=" need to be entered";
    
-   var SDate=new Date(startDate);
-   var EDate=new Date(endDate);
+   
+  var SDate=startDate.split("-");
+  var EDate=endDate.split("-");
+
+var SDateParsed=new Date(SDate[2], SDate[0] - 1, SDate[1]);
+var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
+ 
    
    
-  if(EDate<SDate){
+ 
+  if(EDateParsed<SDateParsed){
 	   endMsg="";
 	   msg="Incorrect date range";
   }
    
    if(msg.length>0){
+	   
+	  
    	document.getElementById("alertWhenDateSearch").style.color="red";
+    
    	document.getElementById("batchLandingTable").style.display="none";
+     
    	document.getElementById("alertWhenDateSearch").style.display="block";
+   
    	document.getElementById("alertWhenDateSearch").innerHTML=msg+endMsg;
+   	
+   	document.getElementById("recordsFound").style.display="none";
    	}
    else
    	{
@@ -125,6 +147,8 @@
    document.getElementById("batchDetailsSearch").action="/admin-portal/AdminBatchInfoListWithInDateRange"+params;
    document.getElementById("batchDetailsSearch").method = "post";
    document.getElementById("batchDetailsSearch").submit();
+   
+   
    	}
 
 
@@ -144,17 +168,17 @@
 				<table class="table" >
 					<tr style="float:left">
 						<td >
-								<input class="border-right-0 form-control form-control-sm" placeholder="Start Date" id="startDate" name="startDate"/>
+								<input class="border-right-0 form-control form-control-sm" placeholder="Start Date" id="startDate" name="startDate" readonly/>
 		 
 						 </td>
 						 <td>		 	
-		 						<input class="border-right-0 form-control form-control-sm" placeholder="End Date" id="endDate" name="endDate"/>
+		 						<input class="border-right-0 form-control form-control-sm" placeholder="End Date" id="endDate" name="endDate" readonly/>
 		  						
 		  		 
 						</td>
 						 <td>
 			 
-  								<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe"  onclick="validateStartEndDate()"></button>
+  								<button type="button" class="fa fa-search searchIcon searchBox"  style="color:#bebebe;"  onclick="validateStartEndDate()"></button>
 		
 						</td>
 						<td>
@@ -201,10 +225,13 @@
  
 			 <c:when test="${searchResult == 'a'}">
 			                																						
-	   				<span style="text-transform:none;padding-left:10px;color: #909497;">	
-							<c:out value='${resultSize}'/> records found
-						</span>
+	   				<span id="recordsFound" style="text-transform:none;padding-left:10px;color: #909497;">	
 							
+							<c:out value='${resultSize}'/> records found
+							
+							
+						</span>
+					<div id="batchLandingTable">		
 					<table class="table">
 							<c:choose>
 						       <c:when test="${resultSize > 0}" >
@@ -263,7 +290,7 @@
 							      </c:forEach>
 							  </tbody>
 					</table>
-										
+						</div>						
 	   		</c:when>
 	   		
 	   		
