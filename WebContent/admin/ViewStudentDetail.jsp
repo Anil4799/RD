@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Student_Info_Landing_Page</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h1>Student_Info</h1>
+
 </body>
 </html>

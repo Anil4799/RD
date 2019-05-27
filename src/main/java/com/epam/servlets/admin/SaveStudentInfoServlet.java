@@ -25,12 +25,12 @@ public class SaveStudentInfoServlet extends HttpServlet {
      */
     public SaveStudentInfoServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		StudentService studentService = new StudentServiceImpl();
@@ -64,8 +64,14 @@ public class SaveStudentInfoServlet extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("admin/AddStudentInfo.jsp").forward(request, response);
+		try {
+			request.getRequestDispatcher("admin/AddStudentInfo.jsp").forward(request, response);
+		} catch (Exception e) {
+			//Ecxeption 
+		}
 		
 	}
+    
+    
 
 }

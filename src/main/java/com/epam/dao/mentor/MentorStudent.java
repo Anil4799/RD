@@ -7,37 +7,38 @@ public class MentorStudent {
 	String mentorStudentStatus;
 	String mentorStudentEmailId;
 	
-	public String getName() {
-		return  mentorStudentName;
+	public String getMentorStudentName() {
+		return mentorStudentName;
 	}
-	public void setName(String  mentorStudentName) {
-		this.mentorStudentName =  mentorStudentName;
+	public void setMentorStudentName(String mentorStudentName) {
+		this.mentorStudentName = mentorStudentName;
 	}
-	public String getBatch() {
+	public String getMentorStudentBatch() {
 		return mentorStudentBatch;
 	}
-	public void setBatch(String mentorStudentBatch) {
+	public void setMentorStudentBatch(String mentorStudentBatch) {
 		this.mentorStudentBatch = mentorStudentBatch;
 	}
-	public String getCoreSkill() {
+	public String getMentorStudentCoreSkill() {
 		return mentorStudentCoreSkill;
 	}
-	public void setCoreSkill(String mentorStudentCoreSkill) {
+	public void setMentorStudentCoreSkill(String mentorStudentCoreSkill) {
 		this.mentorStudentCoreSkill = mentorStudentCoreSkill;
 	}
-	
-	public String getStatus() {
+	public String getMentorStudentStatus() {
 		return mentorStudentStatus;
 	}
-	public void setStatus(String mentorStudentStatus) {
+	public void setMentorStudentStatus(String mentorStudentStatus) {
 		this.mentorStudentStatus = mentorStudentStatus;
 	}
-	public String getEmail() {
+	public String getMentorStudentEmailId() {
 		return mentorStudentEmailId;
 	}
-	public void setEmail(String mentorStudentEmailId) {
+	public void setMentorStudentEmailId(String mentorStudentEmailId) {
 		this.mentorStudentEmailId = mentorStudentEmailId;
 	}
+	
+	
 	
 	
 }

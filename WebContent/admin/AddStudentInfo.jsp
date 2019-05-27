@@ -1,6 +1,10 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/common/header.jspf" %> 
 <script src="/admin-portal/js/StudentJS.js"></script>
+<style>
+.btn {
+    display: inline-block;    font-weight: 400;    color: #A9A9A9;    padding: 0px;    text-align: center;    vertical-align: middle;    -webkit-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none;    background-color: transparent;    border: 1px solid transparent;    /* padding: .375rem .75rem; */    font-size: 1rem;    line-height: 1.5;    border-radius: .25rem;    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+    </style>
 
   <div class="page_info">
 		<p class="page_title">ADD STUDENT</p>
@@ -51,8 +55,8 @@
 					<div>
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input type="text" class="border-right-0" id="dateOfBirth" name="dateOfBirth"/>
-						 <!-- <input name="dateOfBirth" id="dateOfBirth"  type="date" class="form-control form-control-sm"  /> -->
+						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
+						 
 						</span>
 					</div>
 					<br>
@@ -69,8 +73,8 @@
 						<span style="float:right; width:34%" >
 						<select name="gender" id="gender" class="form-control form-control-sm"  required>
 						<option value="no_value"></option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
 					    </select>
 					    </span>
 					</div>
@@ -132,10 +136,13 @@
 					Graduation Speciality:
 					<span style="float:right;width:34%" >
 					<select name="graduationSpeciality" class="form-control form-control-sm"  >
-					<option value="NULL"></option>
-						<option value="ece">ECE</option>
-						<option value="cse">CSE</option>
-						<option value="it">IT</option>
+					 <option value='<c:out value="${studentBean.graduationSpeciality}"></c:out>'><c:out value="${studentBean.graduationSpeciality}"></c:out></option>
+											
+						    <c:forEach items="${graduationSpecialityList}" var="graduationSpeciality">
+						        
+						            <option value="${graduationSpeciality}">${graduationSpeciality}</option>
+						        
+						    </c:forEach>	
 					</select>
 					</span>
 					</div>
@@ -255,7 +262,7 @@ padding-left: 1%;">
 						<div>
 						Date of Joining:<span class="required">*</span>
 						<span style="float:right;width:34%" >
-						<input class="border-right-0" id="dateOfJoining"/>
+						<input class="border-right-0 form-control-sm" id="dateOfJoining" name="dateOfJoining"/>
 						<!-- <input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />-->
 						</span>
 						</div>
@@ -265,7 +272,6 @@ padding-left: 1%;">
 						Mentor:
 					      <span style="float:right;width:34%" >
 						      <select name="mentorName" class="form-control form-control-sm" >
-						      <option value="NULL"></option>
 						      <c:forEach items="${mentorList}" var="mentorName" >
 									<option value="${mentorName}">${mentorName}</option>
 						</c:forEach>
@@ -292,8 +298,8 @@ padding-left: 1%;">
 						<span style="float:right;width:34%" >
 						<select name="relocation" id="relocation" class="form-control form-control-sm"  required>
 							<option value="no_value"></option>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
 						</select>
 						</span>
 						</div>
@@ -316,19 +322,43 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
-        
-        $('#dateOfBirth').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-           
-        });
-        $('#dateOfJoining').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-           
-        });
-       
-    </script>
+
+
+$("#lastName").keyup(function(){
+    if($(this).val().length >0){
+$("#lastName").removeClass("txtbrcolr");
+}    
+});
+
+$("#dateOfBirth").change(function(){
+    if($(this).val().length >0){
+$("#dateOfBirth").removeClass("txtbrcolr");
+}    
+});
+
+$("#dateOfJoining").change(function(){
+    if($(this).val().length >0){
+$("#dateOfJoining").removeClass("txtbrcolr");
+}    
+});
+
+
+$('#dateOfBirth').datepicker({
+    uiLibrary: 'bootstrap4',
+    iconsLibrary: 'fontawesome',
+    format: 'mm-dd-yyyy',
+    
+   
+});
+$('#dateOfJoining').datepicker({
+    uiLibrary: 'bootstrap4',
+    iconsLibrary: 'fontawesome',
+    format: 'mm-dd-yyyy',
+});
+
+
+</script>
+
 </form>
  	
 </div>

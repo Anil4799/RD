@@ -1,6 +1,8 @@
 package com.epam.servlets.admin;
 
 import java.io.IOException;
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,7 +31,7 @@ public class StudentServlet extends HttpServlet {
 
        @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	LOGGER.debug("Entered into StudentServlet Class...............");
+    	LOGGER.debug("Entered into StudentServlet Class+++++++++");
 		
 		StudentBean student = new StudentBean();
 		student.setFirstName(request.getParameter("firstName"));
@@ -82,17 +84,10 @@ public class StudentServlet extends HttpServlet {
 				
 		addStudentAndRedirect(request, response, student);
 		LOGGER.debug("Exit from StudentServlet Class...............");
-		
 	}
-
-	/**
-	 * @param dateOfBirth
-	 * @param dob
-	 * @param format
-	 * @return
-	 */
 	private Date formatDate(String dob) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+		
 		Date date = null;
 		try{
 			date = format.parse(dob);
@@ -103,11 +98,6 @@ public class StudentServlet extends HttpServlet {
 		return date;
 	}
 
-	/**
-	 * @param collegeNameAndLocation
-	 * @param collegeName
-	 * @return
-	 */
 	private String extractCollegeName(String collegeNameAndLocation, String collegeName) {
 		if(!collegeNameAndLocation.contains("$"))
 		{
@@ -120,10 +110,7 @@ public class StudentServlet extends HttpServlet {
 		return collegeName;
 	}
 
-	/**
-	 * @param value
-	 * @return
-	 */
+
 	private String checkNull(String value) {
 		if(value.equals("NULL"))
 		{
@@ -132,11 +119,6 @@ public class StudentServlet extends HttpServlet {
 		return value;
 	}
 
-	/**
-	 * @param request
-	 * @param response
-	 * @param studentBean
-	 */
 	private void addStudentAndRedirect(HttpServletRequest request, HttpServletResponse response,
 			StudentBean studentBean) {
 		int result;
@@ -160,11 +142,6 @@ public class StudentServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @param contactNumber
-	 * @param mobileNumber
-	 * @return
-	 */
 	private long mobileValidation( String mobileNumber) {
 		long contactNumber = 0 ;
 		if(!mobileNumber.equals(""))
@@ -180,10 +157,6 @@ public class StudentServlet extends HttpServlet {
 		return contactNumber;
 	}
 
-	/**
-	 * @param marks
-	 * @return
-	 */
 	private int marksValidation(String marks) {
 		int totalMarks =0 ;
 		if(!marks.equals(""))

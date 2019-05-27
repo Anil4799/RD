@@ -81,18 +81,23 @@ body {
 			    	background-color:#ebebeb;
 			    	   
 				}
-				.page_info{
+			/* 	.page_info{
 				  background-color: #ffffff;
-				  height: 35px;
+				 
 				  vertical-align: middle;
-				}
+				} 
 				.page_title{
 					padding-top: 5px;
 					margin-left: 20px;
+
+					font-size: 24px;
+
 					
+					
+
 				}
 	
-
+*/
 
 .container {
 	/*! max-width: 100%; */
@@ -127,7 +132,7 @@ body {
 
 .navbar .nav-link:hover {
 	background-color: #000;
-	color: #00ccff !important;
+	color: #39C2D7  !important;
 }
 
 .navbar .user-icon:hover {
@@ -273,7 +278,7 @@ body {
 	color: #fff;
 	text-align: left;
 	list-style: none;
-	background-color: #000;
+	background-color: #464547;
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .15);
 	border-radius: .25rem;
@@ -291,16 +296,18 @@ body {
 	background-color: #ebebeb;
 }
 
+
 .page_info {
 	background-color: #ffffff;
-	height: 35px;
-	vertical-align: middle;
+ 	vertical-align: middle;
 }
 
 .page_title {
 	padding-top: 5px;
 	margin-left: 20px;
+	font-size: 24px;
 }
+
 
 .container-custom {
 	width: 100%;
@@ -331,7 +338,7 @@ body {
 
 .navbar .nav-link:hover {
 	background-color: #000;
-	color: #00ccff !important;
+	color: #39C2D7 !important;
 }
 
 .navbar .user-icon:hover {
@@ -431,7 +438,19 @@ body {
 	padding: 6px 12px;
 }
 
-.page_info {
+
+/* .page_info { */
+/* 	background-color: #ffffff; */
+/* 	height: 35px; */
+/* 	vertical-align: middle; */
+/* } */
+
+/* .page_title { */
+/* 	padding-top: 5px; */
+/* 	margin-left: 20px; */
+/* } */
+
+/* .page_info {
 	background-color: #ffffff;
 	height: 35px;
 	vertical-align: middle;
@@ -440,7 +459,8 @@ body {
 .page_title {
 	padding-top: 5px;
 	margin-left: 20px;
-}
+} */
+
 
 select:required:invalid {
 	color: gray;
@@ -464,19 +484,27 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	content: "";
 }
 
-.backbutton, .savebutton {
+
+/* .backbutton, .savebutton {
+	font-size: 14;
+
+.backbutton, .savebutton, .editbutton {
 	font-size: 12px;
+
 	border-radius: 5px 5px 5px 5px;
 	background: #D8DCDE;
 	padding: 5px 5px 5px 5px;
-	width: 60px;
-	height: 28px;
+	
 	float: right;
 	margin: 3px;
 	text-align: center;
 	cursor: pointer;
-	font-weight: bold;
-}
+	
+	Font: Oswald;
+	Color: #000000;
+	
+	
+} */
 
 .ok_button {
 	font-size: 12px;	border-radius: 5px 5px 5px 5px;	background: #D8DCDE;	padding: 5px 5px 5px 5px;	width: 60px;	height: 28px;	float: right;margin: 3px;text-align: center;	cursor: pointer;}
@@ -538,6 +566,7 @@ input[type="date"]:focus:before, input[type="date"]:valid:before {
 	font-size: 14px;
 	color: #909497;
 }
+
 
 table.b, table tr.b, table td.b {
 	border-collapse: collapse;
@@ -636,7 +665,7 @@ table.b, table tr.b, table td.b {
 	height: 40px;
 }
 
-.backbutton, .savebutton {
+/* .backbutton, .savebutton {
 	font-family: 'Oswald', sans-serif;
 	font-size: 14px;
 	border-radius: 5px 5px 5px 5px;
@@ -648,7 +677,7 @@ table.b, table tr.b, table td.b {
 	margin: 3px;
 	text-align: center;
 	cursor: pointer;
-}
+} */
 
 .batch_info_title {
 	font-size: 17px;
@@ -780,7 +809,7 @@ table.b, table tr.b, table td.b {
 	text-align: right;
 }
 
-.backbutton, .savebutton {
+/* .backbutton, .savebutton {
 	font-size: 12px;
 	border-radius: 5px 5px 5px 5px;
 	background: #D8DCDE;
@@ -792,7 +821,7 @@ table.b, table tr.b, table td.b {
 	text-align: center;
 	cursor: pointer;
 }
-
+ */
 .batch_info_title {
 	font-size: 17px;
 	border-radius: 5px 5px 5px 5px;
@@ -811,6 +840,10 @@ table.b, table tr.b, table td.b {
 	height: 30px;
 }
 
+.view_batch_id,.view_batch_start_date,.view_batch_end_date,.view_batch_status
+{
+font-size: 14px;
+}
 .form_lable {
 	width: 300px;
 	padding-left: 100px;
@@ -926,3 +959,43 @@ table td, .table th {
 	 background-color:#ececec;
 	 padding: 12px 24px;
 }
+
+
+
+.displayViewFont{
+	text-transform:capitalize;
+	color:#000;
+	float:right;
+	width:34%
+}
+
+.dropdown-item1 {
+	display: block;
+	width: 100%;
+	padding: 1.8px;
+	clear: both;
+	font-weight: 400;
+	color: #fff;
+	text-align: left;
+	white-space: nowrap;
+	background-color: #464547;
+	border: 0;
+	font-family: Oswald;
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+} 
+.dropdown-item1:focus, .dropdown-item1:hover {
+	color: #fff;
+	
+	background-color: #464547;
+}  
+.navbar .nav-link.active {  background-color: #000;color:#39C2D7 ! important; }
+
+.card-header {
+
+    background-color: rgba(255, 252, 252, 0.03);
+  
+
+}
+

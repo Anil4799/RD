@@ -1,4 +1,11 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
+<script type="text/javascript" src="/admin-portal/js/date.js"></script>
+
 		<style type="text/css">
 			.batch_info_form td{
 				border: 0px;
@@ -40,11 +47,15 @@
 							
 							<tr>
 							  	<td class="form_lable">Start Date: <span class="required">*</span></td>
-								<td><input type="date" id="batch_start_date" name="batch_start_date" class="form-control form-control-sm" size="30" required/></td>
+								<td><input type="date" id="batch_start_date" name="batch_start_date" class="form-control form-control-sm" size="30" required/>
+								 <script type="text/javascript" src="./js/date.js"></script>
+								</td>
 							</tr>
 							<tr>
 								<td class="form_lable">End Date: </td>
-								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" /></td>
+								<td><input type="date" id="batch_end_date" class="form-control form-control-sm" name="batch_end_date" size="30" />
+								 <script type="text/javascript" src="./js/date.js"></script>
+								</td>
 							</tr>  
 														<tr>
 								<td class="form_lable">BatchId: <span class="required">*</span></td>
