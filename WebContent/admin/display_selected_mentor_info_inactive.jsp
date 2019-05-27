@@ -14,7 +14,7 @@
 		</style>	
 		
 		<div class="page_info">
-		<p class="page_title">ADD MENTOR</p>
+		<p class="page_title">VIEW MENTOR</p>
 	</div>
 	
 		<div style="font-family: 'Oswald', sans-serif; font-size: 15px; background-color: #EBEBEB; margin: 0px 3px 0px 3px; padding-top: 1px;">
