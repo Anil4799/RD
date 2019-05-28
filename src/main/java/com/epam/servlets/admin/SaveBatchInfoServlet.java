@@ -34,6 +34,8 @@ try {
 		BatchInfoServiceImpl batchInfoServiceImpl=new BatchInfoServiceImpl();
 		String startDate = request.getParameter("batch_start_date");
 		String endDate = request.getParameter("batch_end_date");
+		int codeToInsertOrUpdate=Integer.parseInt(request.getParameter("codeToInsertOrUpdate"));
+		System.out.println("code for insert "+codeToInsertOrUpdate);
 		if (endDate.contentEquals(""))
 			endDate = "2019-12-31";
 
@@ -48,11 +50,12 @@ try {
 		String quarter = tokens[1];
 
 	
-			String result = batchInfoServiceImpl.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status);
+			String result = batchInfoServiceImpl.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status,codeToInsertOrUpdate);
 			printWriter.println(result);
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
+			exception.printStackTrace();
 		}
 
 	}

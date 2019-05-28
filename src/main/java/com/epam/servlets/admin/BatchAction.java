@@ -36,14 +36,24 @@ public class BatchAction extends HttpServlet {
 		String startDate=request.getParameter("startDate");
 		String endDate=request.getParameter("endDate");
 		String status=request.getParameter("status");
+		String serialNo=request.getParameter("serialNo");
 		request.setAttribute("action", actionVal);
 		request.setAttribute("batchId", batchId);
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
 		request.setAttribute("status", status);
+		request.setAttribute("serialNo", serialNo);
+		System.out.println("action value is "+actionVal+ status);
+		if(("view".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("not started"))||("view".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("in progress"))||("view".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("completed"))) {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_VIEW_ACTION);
+		}
+		else if("edit".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("not started")){
+			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_EDIT_ACTION);	
+		}
+		
 		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 		request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+		
 		request.setAttribute("pageState", "BATCH INFO");
 			request.getRequestDispatcher(pageUrl).forward(request, response);
 		}catch(Exception exception) {

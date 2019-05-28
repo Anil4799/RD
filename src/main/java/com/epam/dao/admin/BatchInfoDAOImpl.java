@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +19,30 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 	Connection connection = null;
 	String dbbatchId="Batch_Id";
 	private static final Logger LOGGER = Logger.getLogger(BatchInfoDAOImpl.class);
+	DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	DateFormat sdfOriginal = new SimpleDateFormat("MM-dd-yyyy");
+	
+	
 	public String generateBatchId(String startDate) {
 		String batchId = null;
 		try {
 			connection = DBManager.getConnection();
 			statement = connection.prepareCall("{call batch_id_proc(?,?)}");
-			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
-			statement.setDate("Start_Date", stDate);
+			System.out.println("date received is "+startDate);
+			//java.sql.Date stDate = java.sql.Date.valueOf(startDate);
+						
+			String formattedDate = sdf.format(sdfOriginal.parse(startDate));
+			
+			java.sql.Date sqlStartDate = java.sql.Date.valueOf(formattedDate);
+			
+			
+			statement.setDate("Start_Date", sqlStartDate);
 			statement.registerOutParameter(dbbatchId, Types.VARCHAR);
 			statement.execute();
 			batchId = statement.getString(dbbatchId);
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
+			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}
@@ -38,26 +52,44 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 	
 	
 	public String saveBatchInfo(int batchNumber, String batchId, int year, String quarter,
-			String startDate, String endDate, String status) throws SQLException{
+			String startDate, String endDate, String status,int codeToInsertOrUpdate) throws SQLException{
 		
 		int rowsCount = 0;
 		try {
 			connection = DBManager.getConnection();
-			statement = connection.prepareCall("{call insert_procedure(?,?,?,?,?,?,?)}");
+			
+			
+			
+			statement = connection.prepareCall("{call insert_procedure(?,?,?,?,?,?,?,?)}");
 			statement.setInt("Batch_Num", batchNumber);
 			statement.setString(dbbatchId, batchId);
 			statement.setInt("Year_Num", year);
 			statement.setString("Quarter_Num", quarter);
-			java.sql.Date stDate = java.sql.Date.valueOf(startDate);
-			java.sql.Date edDate = java.sql.Date.valueOf(endDate);
-			statement.setDate("Start_Date", stDate);
-			statement.setDate("End_Date", edDate);
+			statement.setInt("codeToInsertOrUpdate",codeToInsertOrUpdate);
+			
+			
+			String formattedStartDate = sdf.format(sdfOriginal.parse(startDate));
+			java.sql.Date sqlStartDate = java.sql.Date.valueOf(formattedStartDate);
+			
+			String formattedEndDate = sdf.format(sdfOriginal.parse(endDate));
+			java.sql.Date sqlEndDate = java.sql.Date.valueOf(formattedEndDate);
+			
+			
+			
+			statement.setDate("Start_Date", sqlStartDate);
+			statement.setDate("End_Date", sqlEndDate);
 			statement.setString("Status", status);
+			
+			System.out.println("batch id is "+batchId+"code is "+codeToInsertOrUpdate);
 			rowsCount = statement.executeUpdate();
+			
+			
+			
 			
 		} catch (Exception exception) 
 		{
 			LOGGER.error(exception.getMessage());
+			exception.printStackTrace();
 		} 
 		finally {
 			statement.close();
@@ -67,7 +99,11 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 		if (rowsCount ==0)
 			return "Unsuccessful insertion";
 		else
-			return "Batch Saved successfully";
+			
+			if (codeToInsertOrUpdate==-1) 
+			return "Batch Saved Successfully";
+			else
+			return "Batch Updated Successfully";
 
 	}
 

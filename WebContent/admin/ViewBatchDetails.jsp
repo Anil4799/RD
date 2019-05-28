@@ -10,7 +10,7 @@
 	</div>
 	<div style="font-family: 'Oswald', sans-serif; text-transform : none; font-size: 15px; background-color: #ECF0F1; margin: 0px 3px 0px 3px;">
 	<div>
-				<div>	
+				<div style="background-color: #EBEBEB">	
 					<table class="getwidth">
 						<tr>
 							<td align="right">
@@ -33,7 +33,7 @@
 								 </c:choose>
 							
 							
-							<!-- 	<span class="editbutton"  style=" background-color:#5CB85C ; font-size=14px; color: #FFF" onClick="editBatchForm()">EDIT</span>-->
+							
 								<span class="backbutton" style="font-size=14px;" onClick="batchInfoLandingPgae()">BACK</span>
 							</td>
 						</tr>

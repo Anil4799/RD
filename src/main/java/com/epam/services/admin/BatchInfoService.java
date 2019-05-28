@@ -6,5 +6,5 @@ public interface BatchInfoService {
 	 String generateBatchId(String startDate);
 
 	 String saveBatchInfo(int batchNumber, String batchId, int year, String quarter, String startDate,
-			String endDate, String status) throws SQLException;
+			String endDate, String status,int codeToInsertOrUpdate) throws SQLException;
 }
