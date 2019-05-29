@@ -43,13 +43,10 @@ public class BatchAction extends HttpServlet {
 		request.setAttribute("endDate", endDate);
 		request.setAttribute("status", status);
 		request.setAttribute("serialNo", serialNo);
-		System.out.println("action value is "+actionVal+ status);
 		if(("view".equalsIgnoreCase(actionVal))) {
-			System.out.println("In view ");
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_VIEW_ACTION);
 		}
 		else if("edit".equalsIgnoreCase(actionVal)){
-			System.out.println("In Edit ");
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_EDIT_ACTION);	
 		}
 		
