@@ -85,7 +85,7 @@
 			
 			</div>
 			
-			<div style="background-color: #EBEBEB">l
+			<div style="background-color: #EBEBEB">
 				<div>	
 					<table class="getwidth" style="">
 						<tr>

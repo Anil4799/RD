@@ -47,7 +47,7 @@ public class BatchAction extends HttpServlet {
 		if(("view".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("not started"))||("view".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("in progress"))||("view".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("completed"))) {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_VIEW_ACTION);
 		}
-		else if("edit".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("not started")){
+		else if("edit".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("not started")||"edit".equalsIgnoreCase(actionVal)&& status.equalsIgnoreCase("in progress")){
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_EDIT_ACTION);	
 		}
 		

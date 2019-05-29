@@ -72,4 +72,5 @@
     <param-name>RESULT_PAGE_FOR_BATCH_INFO_SEARCH</param-name>
     <param-value>/admin/SearchBatchDetails.jsp</param-value>
   </context-param>
+  
 </web-app>
