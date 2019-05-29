@@ -45,7 +45,7 @@
 			    display: inline-block;
 			    font-weight: 400;
 			    color: #A9A9A9;
-			    width: 200px;
+			    width: 150px;
 			    height: 35px;
 			    text-decoration: none;
 			    text-align: center;
@@ -72,6 +72,10 @@
 			    border-color: #28a745;
 			    text-decoration: none;
 			}
+			a:hover{
+				color: #fff;
+				background-color: #228B22;
+			}
    	
    </style>
    
@@ -94,16 +98,16 @@
    		
    if(startDate==""){
 	  
-	   msg+="Start Date ";}
+	   msg+="From Date ";}
    	
    	
    if(endDate==""){
 	   
-   	msg+="End Date";
+   	msg+="To Date";
    	
    }
    if(startDate=="" && endDate==""){
-   	msg="Start Date and End Date";
+   	msg="From Date and To Date";
    	
    }
    
@@ -168,13 +172,10 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 				<table class="table" >
 					<tr style="float:left">
 						<td >
-								<input class="border-right-0 form-control form-control-sm" placeholder="Start Date" id="startDate" name="startDate" readonly/>
-		 
-						 </td>
+							<input class="border-right-0 form-control form-control-sm" placeholder="From Date" id="startDate" name="startDate" value="${startDate}" readonly/>
+						</td>
 						 <td>		 	
-		 						<input class="border-right-0 form-control form-control-sm" placeholder="End Date" id="endDate" name="endDate" readonly/>
-		  						
-		  		 
+		 					<input class="border-right-0 form-control form-control-sm" placeholder="To Date" id="endDate" name="endDate" value="${endDate}" readonly/>
 						</td>
 						 <td>
 			 
@@ -224,7 +225,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
  		<c:choose>
  
 			 <c:when test="${searchResult == 'a'}">
-			                																						
+			        
 	   				<span id="recordsFound" style="text-transform:none;padding-left:10px;color: #909497;">	
 							
 							<c:out value='${resultSize}'/> records found
@@ -270,7 +271,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 										  
 										                 	 	<c:when test="${actionStatus == action.statusName}">
 										                																						
-								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
+								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}&serialNo=${batch.serialNo}" class="dropdown-item" >${action.action}</a></li>
 								   									
 								   							    </c:when>
 								   							    <c:otherwise>
@@ -333,6 +334,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 										                 		 <c:choose>
 										  
 										                 	 			<c:when test="${actionStatus == action.statusName}">
+
 								   											 <c:choose>
 													                 	 			<c:when test="${action.action == 'Start Progress'}">																	
 											   										 <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-action="${action.action}" data-id="${batch.batchid}" data-backdrop="static" data-keyboard="false" class="commentId dropdown-item" >${action.action}</a></li>
@@ -341,7 +343,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 											   							   			 	<li><a href="#" data-toggle="modal" data-target="#exampleModal" data-action="${action.action}" data-id="${batch.batchid}" data-backdrop="static" data-keyboard="false" class="dropdown-item" >${action.action}</a></li>
 											   							   			 </c:when>
 											   							   			 <c:otherwise>
-																		    		  		<li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="commentId dropdown-item" >${action.action}</a></li>
+								   															 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}&serialNo=${batch.serialNo}" class="dropdown-item" >${action.action}</a></li>
 																		 			 </c:otherwise>
 																		    </c:choose>
 								   											

@@ -43,6 +43,7 @@
 		$("#batch_start_date").change(function(){
 			  if($(this).value){}
 			 	 $(this).removeClass('txtbrcolr');
+			 	$(this).css('border-color','');
 			});
 	
 		
@@ -53,14 +54,18 @@
 		
 		$('#batch_status').attr("disabled", true);
 		
-		$("#batch_start_date").change(function(){
+		
+			
+		$("#batch_start_date").focusout(function(){
 			var v =document.getElementById('batch_start_date').value;
+			 
+			//alert("start date is "+v);
 			var xhttp;
 			
 			if (window.XMLHttpRequest) {
 			    xhttp = new XMLHttpRequest();
 			  } else {
-			    // code for IE6, IE5
+			   
 			    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			  }
 			
@@ -74,7 +79,8 @@
 			  xhttp.send();
 					
 		});	
-		
+
+	 
 	</script>
 	<script>
 		$("#firstName").keypress(function(){

@@ -51,10 +51,8 @@
   <context-param>
     <param-name>ADD_PAGE_FOR_MENTOR_INFO</param-name>
     <param-value>/admin/AddMentorInfo.jsp</param-value>
-
-
   </context-param>
-   <context-param>
+  <context-param>
     <param-name>RESULT_PAGE_FOR_MENTOR_VIEW_STUDENT_INFO</param-name>
     <param-value>/mentor/Mentor_ViewStudentDetail.jsp</param-value>
   </context-param>
@@ -62,16 +60,17 @@
     <param-name>RESULT_PAGE_FOR_VIEW_STUDENT_INFO</param-name>
     <param-value>/admin/AdminViewStudentDetail.jsp</param-value>
   </context-param>
-
   <context-param>
     <param-name>RESULT_PAGE_FOR_VIEW_ACTION</param-name>
     <param-value>/admin/ViewBatchDetails.jsp</param-value>
   </context-param>
   <context-param>
+    <param-name>RESULT_PAGE_FOR_EDIT_ACTION</param-name>
+    <param-value>/admin/EditBatchDetails.jsp</param-value>
+  </context-param>
+  <context-param>
     <param-name>RESULT_PAGE_FOR_BATCH_INFO_SEARCH</param-name>
     <param-value>/admin/SearchBatchDetails.jsp</param-value>
   </context-param>
-
-
-
+  
 </web-app>

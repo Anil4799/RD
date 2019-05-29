@@ -9,10 +9,15 @@
 			    document.getElementById("batch_info_form").submit();
 			}
 		
-			function batchValidateForm() {
+	function batchValidateForm() {
+				
 				var message = "";
+				var codeToInsertOrUpdate=document.getElementById("insertUpdateCode").value;
 				var batch_id=document.forms["batch_info_form"]["batch_id"].value;
-				var batch_start_date=document.getElementById("batch_start_date").value;
+				var batch_start_date=document.getElementsByName("batch_start_date")[0].value;
+				
+				//var batch_start_date=document.getElementById("batch_start_date").value;
+				alert("Hello"+batch_start_date);
 				var batch_end_date=document.getElementById("batch_end_date").value;
 				var batch_status=document.getElementById("batch_status").value;
 				var default_id="";
@@ -20,9 +25,12 @@
 			if(batch_start_date == null || batch_start_date == ""){
 					message += "Start Date cannot be empty" + "<br>";
 					$("#batch_start_date").addClass('txtbrcolr');
-				}
+					
+					$('.start_date').css('border-color','red');
+				}	
 			else{
 					$("#batch_start_date").removeClass('txtbrcolr');
+					
 				}
 			if(batch_id == default_id)
 			{
@@ -41,8 +49,8 @@
 				}	
 				else
 					{						
-						
-						saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status);
+					
+						saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status,codeToInsertOrUpdate);
 						
 					}
 				
@@ -84,9 +92,9 @@
 		        }
 
 			
-		function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status) {
+		function saveAsynchronous(batch_id, batch_start_date, batch_end_date, batch_status,codeToInsertOrUpdate) {
 			var params = "?batch_id="+ batch_id+ "&batch_start_date="+batch_start_date + "&batch_end_date=" + batch_end_date
-			  + "&batch_status="+batch_status;
+			  + "&batch_status="+batch_status+ "&codeToInsertOrUpdate="+codeToInsertOrUpdate;
 			var xhttp;
 	
 			if (window.XMLHttpRequest) {

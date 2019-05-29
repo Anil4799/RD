@@ -8,6 +8,7 @@ public class Batch {
 	
 	private static final Logger LOGGER = Logger.getLogger( Batch.class);
 	
+	private int serialNo;
 	private int batchnum;
 	private String batchid;
 	private int yearnum;
@@ -19,6 +20,20 @@ public class Batch {
 	
 	
 	
+	public int getSerialNo() {
+		return serialNo;
+	}
+
+
+
+
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
+	}
+
+
+
+
 	public int getBatchnum() {
 		return batchnum;
 	}

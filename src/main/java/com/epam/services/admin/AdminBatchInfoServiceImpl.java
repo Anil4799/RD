@@ -81,6 +81,7 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 		while(rs.next())
 		{
 			Batch batch=new Batch();
+			batch.setSerialNo(rs.getInt("Serial_Num"));
 			batch.setBatchid(rs.getString("batch_id"));
 			batch.setBatchnum(rs.getInt("batch_num"));
 			batch.setEnddate(rs.getString("end_date"));

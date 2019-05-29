@@ -625,11 +625,18 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN Batch_Num INT, IN Batch_Id nvarchar(200), IN  Year_Num INT, IN Quarter_Num nvarchar(200),IN Start_Date DATE, IN End_Date DATE,IN Status nvarchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_procedure`( IN Batch_Num INT, IN Batch_Id nvarchar(200), IN  Year_Num INT, IN Quarter_Num nvarchar(200),IN Start_Date DATE, IN End_Date DATE,IN Status nvarchar(200),IN codeToInsertOrUpdate INT)
 BEGIN
 
+IF (codeToInsertOrUpdate = -1) THEN 
 insert into batch_info(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Status) values(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Status);
-END ;;
+SELECT "im in insert";
+ELSE
+  update batch_info set Start_Date=Start_Date ,  End_Date=End_Date , Batch_Id=Batch_id, Year_Num=Year_Num, Quarter_Num=Quarter_Num,  Batch_Num=Batch_num , Status=Status where Serial_Num=codeToInsertOrUpdate;
+  SELECT "im in update";
+END IF;
+
+END;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;

@@ -61,7 +61,8 @@ public class AdminBatchInfoListWithInDateRange extends HttpServlet {
 					request.setAttribute("pageState", "BATCH INFO");
 					request.setAttribute("resultSize", batchList.size());
 					request.setAttribute("searchResult", "a");
-					
+					request.setAttribute("startDate", startDate);
+					request.setAttribute("endDate", endDate);
 					goToURL(request, response, pageUrl);
 
 
