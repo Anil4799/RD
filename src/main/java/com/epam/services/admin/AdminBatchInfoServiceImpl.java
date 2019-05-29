@@ -128,4 +128,27 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 		}
 		return result;
 	}
+
+
+
+
+
+	@Override
+	public int updateCompleteStatus(Connection con, String comment, String batchId) {
+		String sql="call completeStatus('"+batchId+"','"+comment+"');";
+		int result=0;
+
+		try(CallableStatement cs=con.prepareCall(sql);)
+		{
+			result=cs.executeUpdate();
+					
+		}
+		catch(Exception e)
+		{
+			result=0;
+			LOGGER.error(e.getMessage());
+		
+		}
+		return result;
+	}
 }

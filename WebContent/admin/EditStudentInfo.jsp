@@ -362,21 +362,14 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
-$("#lastName").keyup(function(){
-    if($(this).val().length >0){
-$("#lastName").removeClass("txtbrcolr");
-}    
-});
-
 $("#dateOfBirth").change(function(){
     if($(this).val().length >0){
 $("#dateOfBirth").removeClass("txtbrcolr");
 }    
 });
-
-$("#dateOfJoining").change(function(){
+$("#personalLocation").keyup(function(){
     if($(this).val().length >0){
-$("#dateOfJoining").removeClass("txtbrcolr");
+$("#personalLocation").removeClass("txtbrcolr");
 }    
 });
         

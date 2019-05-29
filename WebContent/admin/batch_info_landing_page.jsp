@@ -14,6 +14,7 @@
 <!--     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
    
    <style>
+   
    	.button, select {
 			    text-transform: none;
 			    width: 30px;
@@ -310,62 +311,54 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 						      <th scope="col">ACTION</th>
 						    </tr>
 			  			</thead>
-			  			<tbody>
-			  
-			  
-			  				<c:forEach items="${batchs}" var="batch" >
-			  
-							   			<tr>
-										      <th scope="row">${batch.batchid}</th>
-										      <td>${batch.startdate}</td>
-										      <td>${batch.enddate}</td>
-										      <td>${batch.status}</td>
-										      <td>
-										      		<div class="btn-group" >
-										            
-									            	<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
-									          
-									                 <ul class="dropdown-menu ddmf" role="menu">
-									                 
-									 
-									                 	
-										                 	 <c:forEach items="${actions}" var="action" >
-										                 		 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
-										                 		 <c:choose>
-										  
-										                 	 			<c:when test="${actionStatus == action.statusName}">
 
-								   											 <c:choose>
-													                 	 			<c:when test="${action.action == 'Start Progress'}">																	
-											   										 <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-action="${action.action}" data-id="${batch.batchid}" data-backdrop="static" data-keyboard="false" class="commentId dropdown-item" >${action.action}</a></li>
-											   							   			 </c:when>
-											   							   			 <c:when test="${action.action == 'Mark Complete'}">
-											   							   			 	<li><a href="#" data-toggle="modal" data-target="#exampleModal" data-action="${action.action}" data-id="${batch.batchid}" data-backdrop="static" data-keyboard="false" class="dropdown-item" >${action.action}</a></li>
-											   							   			 </c:when>
-											   							   			 <c:otherwise>
-								   															 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}&serialNo=${batch.serialNo}" class="dropdown-item" >${action.action}</a></li>
-																		 			 </c:otherwise>
-																		    </c:choose>
-								   											
-								   							   			 </c:when>
-								   							   			 <c:otherwise>
-															    		  
-															    	
-															 			 </c:otherwise>
-															    </c:choose>
-								    						
-															</c:forEach>
-							
-												              				               					             
-												       </ul>
-												   	 </div>
-										    	</td>
-							   			 </tr>
+			  			<tbody>					
+			  				<c:forEach items="${batchs}" var="batch" >			  
+					   			<tr>
+							      <th scope="row">${batch.batchid}</th>
+							      <td>${batch.startdate}</td>
+							      <td>${batch.enddate}</td>
+							      <td>${batch.status}</td>
+							      <td>
+						      		<div class="btn-group" >
+						            
+					            	<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
+					          
+					                 <ul class="dropdown-menu ddmf" role="menu">
+					 
+					                 	 <c:forEach items="${actions}" var="action" >
+					                 		 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
+					                 		 <c:choose>
+					  
+				                 	 			<c:when test="${actionStatus == action.statusName}">
+		   											 <c:choose>
+							                 	 			<c:when test="${action.action == 'Start Progress'}">
+							                 	 											
+					   										 <li><a href="#" data-toggle="modal" data-action="${action.action}" data-id="${batch.batchid}"  data-target="#commentModal" class="batchdetail dropdown-item" >${action.action}</a></li>
+					   										 
+					   							   			 </c:when>
+					   							   			 <c:when test="${action.action == 'Mark Complete'}">
+					   							   			 	<li><a href="#" data-toggle="modal" data-action="${action.action}" data-id="${batch.batchid}"  data-target="#commentModal" class="batchdetail dropdown-item" >${action.action}</a></li>
+					   							   			 </c:when>
+					   							   			 <c:otherwise>
+								   									<li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}&serialNo=${batch.serialNo}" class="dropdown-item" >${action.action}</a></li>
+												 			 </c:otherwise>
+												    </c:choose>
+		   											
+		   							   			 </c:when>
+		   							   			 <c:otherwise>									    		  
+									    	
+									 			 </c:otherwise>
+										    </c:choose>				    						
+										</c:forEach>											              				               					            
+								       </ul>
+								   	 </div>
+						    	</td>
+					   			 </tr>
 							         
-			  						</c:forEach>
+		  						</c:forEach>
 						  	</tbody>
-					</table>	
-			
+					</table>				
 			</div>	
 								    		  
 								    	
@@ -375,49 +368,58 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 
  </div>
  
- 
-<script type="text/javascript">
 
 
-$(document).ready(function(){
-    $('.commentId').on('click',function(){
-        var dataId = $(this).attr('data-id');
-        var dataAction = $(this).attr('data-action');
-//         $('.modal-body').load(dataURL,function(){
-//             $('#myModal').modal({show:true});
-//         });
-	console.log(dataAction);
-    if(dataAction=="Start Progress"){
-   			 $('#exampleModalLabel').text(dataAction);
-   			$('#batchNo').val(dataId);
+ <script type="text/javascript">
+ $('.batchdetail').click(function () { 
+	 if (typeof $(this).data('id') !== 'undefined') {
+	      data_id = $(this).data('id');
+	    }
+	 if (typeof $(this).data('action') !== 'undefined') {
+	      action = $(this).data('action');
+	    }
+	if((action)=='Mark Complete'){
+		$('#commentModalLabel').text('COMPLETE BATCH');
+	} else {
+		$('#commentModalLabel').text('START BATCH');
 	}
-    else if(dataAction=="Mark Complete"){
-    		$('#exampleModalLabel').text('Complete');
-    }
-		
-    }); 
-});
-
+	$('#batchNo').val(data_id);
+	$('#action').val(action);
+	
+	});
 </script>
  
  
+ 
  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="commentModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="commentModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <div class="modal-header header-style">
+        <h5 class="modal-title" id="commentModalLabel"></h5>
+        
       </div>
+      <form id="batch_comment_form">
       <div class="modal-body">
-        <form action="StartProgressServlet" method="post">
-        	<label class="form-control">Comment : </label>
-        	<textarea rows="5" cols="5" class="form-control" name="comment"></textarea> 
-        	<input type="hidden" id="batchNo" name="batchId" value=""> 
-        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-        	<button type="submit" class="btn btn-primary">Save</button>
-        </form>
+        
+        <div>
+        	<span class="label-comment">Comments: </span>
+        	<div class="text-style">
+        	 <input type="text" name="comment" class="form-control"  aria-describedby="inputGroup-sizing-sm">
+        	 <input type="hidden" id="batchNo" name="batchId" value="">
+        	  <input type="hidden" id="action" name="action" value="">
+        </div>
+        </div>
+       
+       
+        
       </div>
-     
+       <div class="modal-footer footer-style">
+       <span class="backbutton" data-dismiss="modal" >BACK</span>
+       <span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" onClick="commentSubmitForm()">SAVE</span>
+      </div>
+       </form>
     </div>
   </div>
 </div>

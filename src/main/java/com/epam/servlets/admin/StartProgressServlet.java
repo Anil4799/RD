@@ -34,19 +34,37 @@ public class StartProgressServlet extends HttpServlet {
 		String pageUrl = null;
 		String batchId=request.getParameter("batchId");
 		String comment=request.getParameter("comment");
+		String action=request.getParameter("action");
 		
 		try
 		{
 			Connection con=DBManager.getConnection();
 			
-			if(batchInfoListService.updateStartProgressStatus(con,comment,batchId)==1)
+			if(action.equals("Start Progress"))	
 			{
-				request.setAttribute(RESULT,"Successfully updated");
+				if(batchInfoListService.updateStartProgressStatus(con,comment,batchId)==1)
+				{
+					request.setAttribute(RESULT,"Successfully updated");
+				}
+				else
+				{
+					request.setAttribute(RESULT,"Error in updating");
+				}
 			}
-			else
+			
+			else if(action.equals("Mark Complete"))
 			{
-				request.setAttribute(RESULT,"Error in updating");
+				if(batchInfoListService.updateCompleteStatus(con,comment,batchId)==1)
+				{
+					request.setAttribute(RESULT,"Successfully updated");
+				}
+				else
+				{
+					request.setAttribute(RESULT,"Error in updating");
+				}
 			}
+			
+			
 			
 			pageUrl = "batchInfo";
 			goToURL(request, response,pageUrl);
