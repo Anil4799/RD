@@ -263,28 +263,33 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 									            <button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
 									          
 									                 <ul class="dropdown-menu ddmf" role="menu">
-									                 
-									 
-									                 	
-										                 <c:forEach items="${actions}" var="action" >
-										                 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
-										                 	 <c:choose>
-										  
-										                 	 	<c:when test="${actionStatus == action.statusName}">
-										                																						
-								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}&serialNo=${batch.serialNo}" class="dropdown-item" >${action.action}</a></li>
-								   									
-								   							    </c:when>
-								   							    <c:otherwise>
-															    		  
-															    	
-															 	</c:otherwise>
-															 </c:choose>
-								    						
-														</c:forEach>
-							
-												              				               					             
-												      </ul>
+					 
+								                 	 <c:forEach items="${actions}" var="action" >
+								                 		 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
+								                 		 <c:choose>
+								  
+							                 	 			<c:when test="${actionStatus == action.statusName}">
+					   											 <c:choose>
+										                 	 			<c:when test="${action.action == 'Start Progress'}">
+										                 	 											
+								   										 <li><a href="#" data-toggle="modal" data-action="${action.action}" data-id="${batch.batchid}"  data-target="#commentModal" class="batchdetail dropdown-item" >${action.action}</a></li>
+								   										 
+								   							   			 </c:when>
+								   							   			 <c:when test="${action.action == 'Mark Complete'}">
+								   							   			 	<li><a href="#" data-toggle="modal" data-action="${action.action}" data-id="${batch.batchid}"  data-target="#commentModal" class="batchdetail dropdown-item" >${action.action}</a></li>
+								   							   			 </c:when>
+								   							   			 <c:otherwise>
+											   									<li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}&serialNo=${batch.serialNo}" class="dropdown-item" >${action.action}</a></li>
+															 			 </c:otherwise>
+															    </c:choose>
+					   											
+					   							   			 </c:when>
+					   							   			 <c:otherwise>									    		  
+												    	
+												 			 </c:otherwise>
+													    </c:choose>				    						
+													</c:forEach>											              				               					            
+											       </ul>
 										    </div>
 								      </td>
 							        </tr>
