@@ -48,6 +48,11 @@ public class AdminStudentSearchServlet extends HttpServlet {
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String batchID = request.getParameter("batchid");
+		
+		request.setAttribute("firstname", firstName);
+		request.setAttribute("lastname", lastName);
+		request.setAttribute("batchid", batchID);
+		
 		request.setAttribute("result", true);
 		request.setAttribute("batchIDs", batchIDList);
 		request.setAttribute(ConstantsUtility.MENU_LIST, menuList);

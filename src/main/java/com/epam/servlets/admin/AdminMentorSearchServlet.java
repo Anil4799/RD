@@ -44,9 +44,13 @@ public class AdminMentorSearchServlet extends HttpServlet {
 		request.setAttribute("technologies", technologyStreamList);	
 		request.setAttribute("pageState", "MENTOR INFO");
 		request.setAttribute("result",true);
+		
 		String pageUrl=null;
 		String searchMentor = request.getParameter("mentorname");
 		String searchtechnology = request.getParameter("technologystream");
+		
+		request.setAttribute("mentorname",searchMentor);
+		request.setAttribute("technologystream",searchtechnology);
 		
 		try{	
 		if(searchMentor.length()!=0 || searchtechnology.length()!=0) {
