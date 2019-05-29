@@ -104,4 +104,27 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 		
 		return java.sql.Date.valueOf(formattedDate);
 	}
+
+
+
+
+
+	@Override
+	public int updateStartProgressStatus(Connection con, String comment, String batchId) {
+		String sql="call startProgressStatus('"+batchId+"','"+comment+"');";
+		int result=0;
+
+		try(CallableStatement cs=con.prepareCall(sql);)
+		{
+			result=cs.executeUpdate();
+					
+		}
+		catch(Exception e)
+		{
+			result=0;
+			LOGGER.error(e.getMessage());
+		
+		}
+		return result;
+	}
 }

@@ -333,9 +333,18 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 										                 		 <c:choose>
 										  
 										                 	 			<c:when test="${actionStatus == action.statusName}">
-										                																						
-								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
-								   									
+								   											 <c:choose>
+													                 	 			<c:when test="${action.action == 'Start Progress'}">																	
+											   										 <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-action="${action.action}" data-id="${batch.batchid}" data-backdrop="static" data-keyboard="false" class="commentId dropdown-item" >${action.action}</a></li>
+											   							   			 </c:when>
+											   							   			 <c:when test="${action.action == 'Mark Complete'}">
+											   							   			 	<li><a href="#" data-toggle="modal" data-target="#exampleModal" data-action="${action.action}" data-id="${batch.batchid}" data-backdrop="static" data-keyboard="false" class="dropdown-item" >${action.action}</a></li>
+											   							   			 </c:when>
+											   							   			 <c:otherwise>
+																		    		  		<li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="commentId dropdown-item" >${action.action}</a></li>
+																		 			 </c:otherwise>
+																		    </c:choose>
+								   											
 								   							   			 </c:when>
 								   							   			 <c:otherwise>
 															    		  
@@ -363,5 +372,52 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 
 
  </div>
+ 
+ 
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+    $('.commentId').on('click',function(){
+        var dataId = $(this).attr('data-id');
+        var dataAction = $(this).attr('data-action');
+//         $('.modal-body').load(dataURL,function(){
+//             $('#myModal').modal({show:true});
+//         });
+	console.log(dataAction);
+    if(dataAction=="Start Progress"){
+   			 $('#exampleModalLabel').text(dataAction);
+   			$('#batchNo').val(dataId);
+	}
+    else if(dataAction=="Mark Complete"){
+    		$('#exampleModalLabel').text('Complete');
+    }
+		
+    }); 
+});
+
+</script>
+ 
+ 
+ <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <form action="StartProgressServlet" method="post">
+        	<label class="form-control">Comment : </label>
+        	<textarea rows="5" cols="5" class="form-control" name="comment"></textarea> 
+        	<input type="hidden" id="batchNo" name="batchId" value=""> 
+        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+        	<button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
  
 <%@ include file="/common/footer.jspf"%>

@@ -9,5 +9,6 @@ public interface AdminBatchInfoService {
 	
 	public List<Batch> getAllBatchsList(Connection con);
 	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate);
+	public int updateStartProgressStatus(Connection con, String comment, String batchId);
 
 }
