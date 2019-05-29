@@ -80,7 +80,7 @@
 					<div>
 						Contact Number:
 						<span style="float:right;width:34%">
-						<input name="contactNumber" id="contactNumber" type="text" class="form-control form-control-sm" />
+						<input name="contactNumber" id="contactNumber"  type="tel" pattern="[0-9]{10}" class="form-control form-control-sm" />
 						</span>
 					</div>
 					<br>

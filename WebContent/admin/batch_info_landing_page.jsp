@@ -376,7 +376,10 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 
 
  <script type="text/javascript">
+ 
  $('.batchdetail').click(function () { 
+	 $('#batch_comment_form').trigger('reset');
+	 
 	 if (typeof $(this).data('id') !== 'undefined') {
 	      data_id = $(this).data('id');
 	    }
@@ -390,6 +393,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 	}
 	$('#batchNo').val(data_id);
 	$('#action').val(action);
+	
 	
 	});
 </script>
@@ -415,10 +419,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
         	 <input type="hidden" id="batchNo" name="batchId" value="">
         	  <input type="hidden" id="action" name="action" value="">
         </div>
-        </div>
-       
-       
-        
+        </div> 
       </div>
        <div class="modal-footer footer-style">
        <span class="backbutton" data-dismiss="modal" >BACK</span>
