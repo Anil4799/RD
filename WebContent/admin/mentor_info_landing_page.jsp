@@ -123,20 +123,20 @@
 						      <td>${mentor.mentorStatus}</td>		    
 						      <td>
 						      	<div class="btn-group">
-						      		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" >
+						      		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button> 
 									    <ul class="dropdown-menu ddmf" role="menu">
-									    	<c:forEach items="${actions}" var="action" >
-									            <c:set var = "actionStatus" value = "${fn:toLowerCase(mentor.mentorStatus)}" />
-						                 	 	<c:choose>
-							                 	 	<c:when test="${actionStatus ==  action.statusName}">
-					   									<li><a class="dropdown-item" href="#">${action.action}</a></li>
-					   							    </c:when>
-					   							 	<c:otherwise>
-												 	</c:otherwise>
-												</c:choose>						    						
-											</c:forEach>
-										</ul>
-								   </button>     
+			                 	<c:forEach items="${actions}" var="action" >
+			                 	 	 <c:set var = "actionStatus" value = "${fn:toLowerCase(mentor.mentorStatus)}" />
+				                 	 <c:choose>
+				                 	 	<c:when test="${actionStatus ==  action.statusName}">
+				                			<li><a href="MentorMenuServlet?actionview=${action.action}&id=${mentor.emailid}&status=${mentor.mentorStatus}" class="dropdown-item" >${action.action}</a></li>				
+		   							    </c:when>
+		   							    <c:otherwise>
+									 	</c:otherwise>
+									 </c:choose>
+								</c:forEach>
+					        </ul>
+								      
 								</div>
 							  </td>
 							</tr>  

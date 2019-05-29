@@ -49,14 +49,16 @@ DROP TABLE IF EXISTS `batch_info`;
 CREATE TABLE `batch_info` (
   `Serial_Num` int(11) NOT NULL AUTO_INCREMENT,
   `Batch_Num` int(11) DEFAULT NULL,
-  `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Batch_Id` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `Year_Num` int(11) DEFAULT NULL,
   `Quarter_Num` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Start_Date` date DEFAULT NULL,
   `End_Date` date DEFAULT NULL,
   `Status` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`Serial_Num`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Comment` longtext,
+  PRIMARY KEY (`Batch_Id`),
+  UNIQUE KEY `Serial_Num_UNIQUE` (`Serial_Num`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +67,7 @@ CREATE TABLE `batch_info` (
 
 LOCK TABLES `batch_info` WRITE;
 /*!40000 ALTER TABLE `batch_info` DISABLE KEYS */;
-INSERT INTO `batch_info` VALUES (20,6,'RD-Q2-2019-B6',2019,'Q2','2019-05-07','2019-05-09','In Progress'),(21,7,'RD-Q2-2019-B7',2019,'Q2','2019-05-31','2019-05-21','Completed'),(22,8,'RD-Q2-2019-B8',2019,'Q2','2019-06-01','2019-12-31','Not Started');
+INSERT INTO `batch_info` VALUES (24,5,'RD-Q2-2019-B5',2019,'Q2','2019-05-07','2019-05-09','Completed','ccccctttteeee'),(20,6,'RD-Q2-2019-B6',2019,'Q2','2019-05-07','2019-05-09','Completed','rrrggggwww'),(21,7,'RD-Q2-2019-B7',2019,'Q2','2019-05-31','2019-06-21','Completed',NULL),(22,8,'RD-Q2-2019-B8',2019,'Q2','2019-06-01','2019-12-10','Completed','abcdefuuu'),(23,1,'RD-Q3-2019-B1',2019,'Q3','2019-09-02','2019-12-31','Completed','xxxxxggg');
 /*!40000 ALTER TABLE `batch_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +179,7 @@ CREATE TABLE `mentor_info` (
   `Status` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`Email_Id`),
   UNIQUE KEY `SerialNo_UNIQUE` (`SerialNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +188,7 @@ CREATE TABLE `mentor_info` (
 
 LOCK TABLES `mentor_info` WRITE;
 /*!40000 ALTER TABLE `mentor_info` DISABLE KEYS */;
-INSERT INTO `mentor_info` VALUES (15,' ',' ','0000-00-00','0000-00-00',NULL,NULL,NULL),(14,'SSS','sss@sss.com','2019-05-07','2019-05-24',12,'Java','active'),(12,'test','test_mentor1@epam.com','2019-05-06','2019-05-31',10,'Java','active');
+INSERT INTO `mentor_info` VALUES (15,' ',' ','0000-00-00','0000-00-00',NULL,NULL,NULL),(16,'Jagadeesh_Dandu','Jagadeesh_Dandu@epam.com','2019-05-09','2019-06-01',6,'SDET - Software Development Engineer in Testing','inactive'),(17,'Karthik','Karthik_Kota@gmail.com','2019-05-07','2019-05-30',7,'SDET - Software Development Engineer in Testing','active'),(20,'Karthik','Karthi_Kota@epam.com','2019-05-07','2019-05-31',7,'Java','active'),(14,'SSS','sss@sss.com','2019-05-07','2019-05-24',12,'Java','active'),(19,'Sudheer','Sudheer_Surya@epam.com','2019-05-07','2019-05-23',6,'.Net','onhold'),(12,'test','test_mentor1@epam.com','2019-05-06','2019-05-31',10,'Java','active');
 /*!40000 ALTER TABLE `mentor_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +341,7 @@ CREATE TABLE `student__additional_info` (
   PRIMARY KEY (`SerialNo`),
   KEY `Email_Id` (`Email_Id`),
   CONSTRAINT `student__additional_info_ibfk_1` FOREIGN KEY (`Email_Id`) REFERENCES `student_personal_info` (`Email_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +350,7 @@ CREATE TABLE `student__additional_info` (
 
 LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
-INSERT INTO `student__additional_info` VALUES (8,'a@a.a','RD-Q2-2019-B6','FTE','Python','','','0012-05-11',' ','Hyderbad','Yes','Active'),(9,'bb@bb.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11','test_mentor1@epam.com','Hyderbad','Yes','Active'),(10,'rr@rr.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11',' ','Hyderbad','Yes','Active'),(11,'WER','RD-Q2-2019-B6','FTE','Python','','','0013-01-08','','Hyderbad','Yes','Active'),(12,'vvv@vvv.vvv','RD-Q2-2019-B6','FTE','Python','','','2019-05-29','sss@sss.com','Hyderbad','Yes','Active');
+INSERT INTO `student__additional_info` VALUES (8,'a@a.a','RD-Q2-2019-B6','FTE','Python','','','0012-05-11',' ','Hyderbad','Yes','Active'),(9,'bb@bb.com','RD-Q2-2019-B6','FTE','Python','Java','Big-Data','0012-07-11','test_mentor1@epam.com','Hyderbad','Yes','Active'),(10,'rr@rr.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11',' ','Hyderbad','Yes','Active'),(11,'WER','RD-Q2-2019-B6','FTE','Python','Java','.Net','0013-01-08','test_mentor1@epam.com','Hyderbad','No','Resigned as Intern'),(12,'vvv@vvv.vvv','RD-Q2-2019-B6','FTE','Python','.Net','','2019-05-29','sss@sss.com','Hyderbad','Yes','Terminated'),(13,'epam@epam','RD-Q2-2019-B7','Internship','Java','Java','.Net','2019-05-21','test_mentor1@epam.com','Hyderbad','Yes','Active'),(14,'ewrtqwe@gmail.com','RD-Q2-2019-B6','FTE','Java','Java','','2019-05-24','test_mentor1@epam.com','Hyderbad','Yes','Resigned as FTE'),(15,'revathi_anu@epam.com','RD-Q2-2019-B6','FTE','Java','','','2019-01-01',' ','Hyderbad','No','Active');
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,7 +409,7 @@ CREATE TABLE `student_educational_info` (
 
 LOCK TABLES `student_educational_info` WRITE;
 /*!40000 ALTER TABLE `student_educational_info` DISABLE KEYS */;
-INSERT INTO `student_educational_info` VALUES ('a@a.a','','','','',0,0,0,0),('bb@bb.com','','','','',0,0,0,0),('qqq@qqq.com','','','','',0,0,0,0),('rr@rr.com','','','','',0,0,0,0),('vvv@vvv.vvv','','','','',0,0,0,0),('WER','','','','',0,0,0,0);
+INSERT INTO `student_educational_info` VALUES ('a@a.a','','','','',0,0,0,0),('bb@bb.com','BVRIT','HYD','2012','CSE',2015,75,75,78),('epam@epam','BVRIT','hyd','mtech','IT',2367,167,365,457),('ewrtqwe@gmail.com','Chitkara','','','',2011,0,444,665),('qqq@qqq.com','','','','',0,0,0,0),('revathi_anu@epam.com','','','','',0,0,0,0),('rr@rr.com','','','','',0,0,0,0),('vvv@vvv.vvv','','','','',0,0,0,0),('WER','','','','',0,0,0,0);
 /*!40000 ALTER TABLE `student_educational_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,7 +431,7 @@ CREATE TABLE `student_personal_info` (
   `Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`Email_Id`),
   UNIQUE KEY `SerialNo_UNIQUE` (`SerialNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -438,7 +440,7 @@ CREATE TABLE `student_personal_info` (
 
 LOCK TABLES `student_personal_info` WRITE;
 /*!40000 ALTER TABLE `student_personal_info` DISABLE KEYS */;
-INSERT INTO `student_personal_info` VALUES (44,'a','a','0010-12-10','a@a.a','Male',1,'a'),(45,'xx','ee','0010-12-10','bb@bb.com','Male',0,'rrr'),(48,'qqq','qqq','2019-05-06','qqq@qqq.com','Male',0,'fff'),(46,'rr','rr','0011-02-09','rr@rr.com','Male',0,'rrr'),(49,'vvvv','vvvv','2019-05-06','vvv@vvv.vvv','Male',0,'vvv'),(47,'QWER','WER','0011-01-09','WER','Male',1,'Hyd');
+INSERT INTO `student_personal_info` VALUES (44,'a','a','0010-12-10','a@a.a','Male',1,'a'),(45,'xx','ee','2011-03-02','bb@bb.com','Male',0,'hyderabad'),(50,'epam27','sc','2019-04-29','epam@epam','Male',123,'kc'),(51,'gsdkd','sds','2019-05-08','ewrtqwe@gmail.com','Male',9876543210,'Hyd'),(48,'qqq','qqq','2019-05-06','qqq@qqq.com','Male',0,'fff'),(52,'Revathi','Anumola','1988-03-12','revathi_anu@epam.com','Female',0,'Hyderabad'),(46,'rr','rr','0011-02-09','rr@rr.com','Male',0,'rrr'),(49,'vvvv','vvvv','2019-05-06','vvv@vvv.vvv','Male',0,'vvv'),(47,'QWER','WER','2011-01-11','WER','Male',1,'Hyd');
 /*!40000 ALTER TABLE `student_personal_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -577,6 +579,26 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `completeStatus` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `completeStatus`(in batchid varchar(200),in commentText longtext)
+BEGIN
+	UPDATE batch_info SET Status = 'Completed', Comment = IFNULL (CONCAT( Comment , commentText ), commentText)
+	WHERE Batch_Id = batchid;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `get_all_batchID` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -608,7 +630,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_technology_stream`()
 BEGIN
-SELECT Distinct(Technology_Stream)as technology FROM Mentor_Info order by technology;
+SELECT Distinct(Technology_Stream)as technology FROM Mentor_Info where Technology_Stream is not null order by technology;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -630,13 +652,13 @@ BEGIN
 
 IF (codeToInsertOrUpdate = -1) THEN 
 insert into batch_info(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Status) values(Batch_Num,Batch_Id,Year_Num,Quarter_Num,Start_Date,End_Date,Status);
-SELECT "im in insert";
+
 ELSE
   update batch_info set Start_Date=Start_Date ,  End_Date=End_Date , Batch_Id=Batch_id, Year_Num=Year_Num, Quarter_Num=Quarter_Num,  Batch_Num=Batch_num , Status=Status where Serial_Num=codeToInsertOrUpdate;
-  SELECT "im in update";
+ 
 END IF;
 
-END;;
+END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -715,8 +737,8 @@ BEGIN
 	SELECT * 
 	FROM Mentor_Info 
 	WHERE 
-	Mentor_Name LIKE  IFNULL(CONCAT(mentorname , '%'),'')
-	AND Technology_Stream LIKE  IFNULL(CONCAT(technologystream , '%'),'');
+	Mentor_Name LIKE  IFNULL(CONCAT('%',mentorname , '%'),'')
+	AND Technology_Stream LIKE  IFNULL(CONCAT('%',technologystream , '%'),'');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -749,8 +771,8 @@ student__additional_info,
 mentor_info 
 where student_personal_info.email_id = student__additional_info.email_id  
 and mentor_info.email_id = student__additional_info.mentor_name 
-and student_personal_info.first_name like IFNULL(CONCAT(first_name , '%'),'')
-and student_personal_info.last_name  like IFNULL(CONCAT(last_name , '%'),'')
+and student_personal_info.first_name like IFNULL(CONCAT('%',first_name , '%'),'')
+and student_personal_info.last_name  like IFNULL(CONCAT('%',last_name , '%'),'')
 and student__additional_info.batch_id like IFNULL(CONCAT('%',batch_id,'%'),'')
 ORDER BY 
 student_personal_info.first_name;
@@ -782,11 +804,31 @@ select
         from student_personal_info, student__additional_info inner join mentor_info on student__additional_info.mentor_name=email 
         where mentor_info.email_id=student__additional_info.mentor_Name 
         and student__additional_info.email_id=student_personal_info.email_id
-        and student_personal_info.first_name like IFNULL(CONCAT(first_name , '%'),'')
-		and student_personal_info.last_name  like IFNULL(CONCAT(last_name , '%'),'')
+        and student_personal_info.first_name like IFNULL(CONCAT('%',first_name , '%'),'')
+		and student_personal_info.last_name  like IFNULL(CONCAT('%',last_name , '%'),'')
 		and student__additional_info.batch_id like IFNULL(CONCAT('%',batch_id,'%'),'')
 		ORDER BY 
 		student_personal_info.first_name;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `startProgressStatus` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `startProgressStatus`(in batchid varchar(200),in commentText longtext)
+BEGIN
+	UPDATE batch_info SET Status = 'In Progress', Comment = IFNULL (CONCAT( Comment , commentText ), commentText)
+	WHERE Batch_Id = batchid;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -840,9 +882,9 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `viewStudent`(in email nvarchar(200))
 BEGIN
 select 
-student_personal_info.first_name,student_personal_info.last_name, DATE_FORMAT(student_personal_info.Date_Of_Birth, '%d-%m-%Y') as Date_Of_Birth ,student_personal_info.Email_Id,student_personal_info.Gender,student_personal_info.Contact,student_personal_info.Location,
+student_personal_info.first_name,student_personal_info.last_name, DATE_FORMAT(student_personal_info.Date_Of_Birth, '%m-%d-%Y') as Date_Of_Birth ,student_personal_info.Email_Id,student_personal_info.Gender,student_personal_info.Contact,student_personal_info.Location,
 student_educational_info.College_Name,student_educational_info.College_Loc,student_educational_info.Graduation,student_educational_info.Graduation_Stream,student_educational_info.Passed_Out_Year,student_educational_info.Graduation_Marks,student_educational_info.Inter_Marks,student_educational_info.Ssc_Marks,
-student__additional_info.Batch_Id,student__additional_info.Emp_Type,student__additional_info.Core_Skill,student__additional_info.Preferred_Student_Stream,student__additional_info.Assigned_Stream,DATE_FORMAT(student__additional_info.Date_Of_Joining, '%d-%m-%Y') as Date_Of_Joining,student__additional_info.Assigned_Location,student__additional_info.Relocation,student__additional_info.Status,
+student__additional_info.Batch_Id,student__additional_info.Emp_Type,student__additional_info.Core_Skill,student__additional_info.Preferred_Student_Stream,student__additional_info.Assigned_Stream,DATE_FORMAT(student__additional_info.Date_Of_Joining, '%m-%d-%Y') as Date_Of_Joining,student__additional_info.Assigned_Location,student__additional_info.Relocation,student__additional_info.Status,
 mentor_info.Mentor_Name
 
 from 
@@ -872,4 +914,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-26 14:50:10
+-- Dump completed on 2019-05-29 16:16:55
