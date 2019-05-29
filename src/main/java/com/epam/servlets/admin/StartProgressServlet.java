@@ -24,7 +24,7 @@ public class StartProgressServlet extends HttpServlet {
 	private static final Logger LOGGER = Logger.getLogger(AdminAddBatchServlet.class);
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	
-	private static final String RESULT="";
+	private static final String RESULT="RESULT";
 
 
        
@@ -57,15 +57,14 @@ public class StartProgressServlet extends HttpServlet {
 				if(batchInfoListService.updateCompleteStatus(con,comment,batchId)==1)
 				{
 					request.setAttribute(RESULT,"Successfully updated");
-				}
+				}	
 				else
 				{
 					request.setAttribute(RESULT,"Error in updating");
 				}
 			}
 			
-			
-			
+
 			pageUrl = "batchInfo";
 			goToURL(request, response,pageUrl);
 			

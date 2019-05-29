@@ -6,6 +6,40 @@
 <%@ include file="/common/header.jspf" %> 
 <script type="text/javascript" src="/admin-portal/js/date.js"></script>
 
+<c:choose>
+			                 	 	<c:when test="${RESULT ==  'Successfully updated'}">
+			                
+	   										 <div style="text-transform: none;padding: 7px 15px 10px 20px;border-radius: 5px 5px 5px 5px;background-color: #DFF0D8;color: #008000;display: block;position: absolute;left: 500px;top: 80px;z-index: 10;">	
+	   										 	Batch status updated successfully
+											</div>
+											<script>
+												function gotoBatchInfo(){
+													window.location = "/admin-portal/batchInfo";
+												}
+												setTimeout(gotoBatchInfo, 1000);
+											</script>
+											
+	   									
+	   							    </c:when>
+	   							    <c:when test="${RESULT ==  'Error in updating'}">
+			                
+	   										 <div style="text-transform: none;padding: 7px 15px 10px 20px;border-radius: 5px 5px 5px 5px;background-color: red;color: #008000;display: block;position: absolute;left: 500px;top: 80px;z-index: 10;">
+													Error in updating status
+											</div>
+											<script>
+												function gotoBatchInfo(){
+													window.location = "/admin-portal/batchInfo";
+												}
+												setTimeout(gotoBatchInfo, 1000);
+											</script>
+											
+	   							    </c:when>
+	   							    
+	   							  
+	   							    <c:otherwise>
+								    	
+								 	</c:otherwise>
+								 </c:choose>
 
 
 <!--     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script> -->
