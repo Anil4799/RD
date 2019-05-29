@@ -13,6 +13,7 @@ function studentValidateForm() {
     var relocation = $("#relocation").val();
     var status = $("#status").val();
     var date_of_joining=document.forms["add_student_info"]["dateOfJoining"].value;
+    var regExprDate = /^(0[1-9]|1[0-2])([/+-])(0[1-9]|1[0-9]|2[0-9]|3[0,1])([/+-])(19|20)[0-9]{2}$/;
     
     if(first_name == null || first_name == ""){
         message += "First Name cannot be empty<br/>" + "\n";
@@ -34,6 +35,12 @@ function studentValidateForm() {
         message += "Date of Birth cannot be empty<br/>" + "\n";
         $("#dateOfBirth").addClass('txtbrcolr');
     }   else{
+    	if(!regExprDate.test(date_of_birth)){
+          	 message += "Date of Birth is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
+          	 $("#dateOfBirth").addClass('txtbrcolr');
+          	 $('.date-of-birth').css('border-color','red');
+          	 document.forms["add_student_info"]["dateOfBirth"].classList.add("txtbrcolr");
+          }
         $("#dateOfBirth").removeClass('txtbrcolr');
     }
     
@@ -79,12 +86,18 @@ function studentValidateForm() {
         message += "Status cannot be empty<br/>" + "\n";
         document.forms["add_student_info"]["status"].classList.add("txtbrcolr");
     }
-    
+         
     if(date_of_joining == null || date_of_joining == ""){
         message += "Date of Joining cannot be empty<br/>" + "\n";
         $("#dateOfJoining").addClass('txtbrcolr');
     }
     else{
+    	if(!regExprDate.test(date_of_joining)){
+       	 message += "Date of Joining is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
+       	 $("#dateOfJoining").addClass('txtbrcolr');
+       	 $('.date-of-joining').css('border-color','red');
+       	 document.forms["add_student_info"]["dateOfJoining"].classList.add("txtbrcolr");
+       }
         $("#dateOfJoining").removeClass('txtbrcolr');
     }
     if(message.length > 0 ){    
@@ -152,6 +165,7 @@ function studentUpadte(){
 	    var relocation = $("#relocation").val();
 	    var status = $("#status").val();
 	    var date_of_joining=document.forms["add_student_info"]["dateOfJoining"].value;
+	    var regExprDate = /^(0[1-9]|1[0-2])([/+-])(0[1-9]|1[0-9]|2[0-9]|3[0,1])([/+-])(19|20)[0-9]{2}$/;
 	    
 	    if(first_name == null || first_name == ""){
 	        message += "First Name cannot be empty<br/>" + "\n";
@@ -173,6 +187,12 @@ function studentUpadte(){
 	        message += "Date of Birth cannot be empty<br/>" + "\n";
 	        $("#dateOfBirth").addClass('txtbrcolr');
 	    }   else{
+	    	if(!regExprDate.test(date_of_birth)){
+	          	 message += "Date of Birth is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
+	          	 $("#dateOfBirth").addClass('txtbrcolr');
+	          	 $('.date-of-birth').css('border-color','red');
+	          	 document.forms["add_student_info"]["dateOfBirth"].classList.add("txtbrcolr");
+	          }
 	        $("#dateOfBirth").removeClass('txtbrcolr');
 	    }
 	    

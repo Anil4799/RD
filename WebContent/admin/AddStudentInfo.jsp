@@ -14,9 +14,7 @@
 <div class=" container-custom" >
  
   <!---Body--->  
- 		
- 
-	
+
 	<div id="alert_popup" class="alert_popup">	
 			<div style="margin: 10px 0px 20px 10px;">
 				RD Portal Says
@@ -55,7 +53,7 @@
 					<div>
 						Date of Birth:<span class="required">*</span>
 						<span style="float:right;width:34%">
-						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth"/>
+						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth" class="date-of-birth"/>
 						 
 						</span>
 					</div>
@@ -262,8 +260,8 @@ padding-left: 1%;">
 						<div>
 						Date of Joining:<span class="required">*</span>
 						<span style="float:right;width:34%" >
-						<input class="border-right-0 form-control-sm" id="dateOfJoining" name="dateOfJoining"/>
-						<!-- <input name="dateOfJoining" id="dateOfJoining"  type="date" class="form-control form-control-sm"  />-->
+						<input class="border-right-0 form-control-sm" id="dateOfJoining" name="dateOfJoining" class="date-of-joining"/>
+						
 						</span>
 						</div>
 						
@@ -322,7 +320,11 @@ padding-left: 1%;">
 	</div>
 </div>
 <script>
-
+$("#firstName").keyup(function(){
+    if($(this).val().length >0){
+$("#firstName").removeClass("txtbrcolr");
+}    
+});
 
 $("#lastName").keyup(function(){
     if($(this).val().length >0){
@@ -336,10 +338,62 @@ $("#dateOfBirth").removeClass("txtbrcolr");
 }    
 });
 
+$("#email").keyup(function(){
+    if($(this).val().length >0){
+$("#email").removeClass("txtbrcolr");
+}    
+});
+
 $("#dateOfJoining").change(function(){
     if($(this).val().length >0){
 $("#dateOfJoining").removeClass("txtbrcolr");
 }    
+});
+
+$("#personalLocation").keyup(function(){
+    if($(this).val().length >0){
+$("#personalLocation").removeClass("txtbrcolr");
+}    
+});
+
+$("#gender").change(function(){
+	$('select').on('change', function() {
+		if($(this).value!="no_value"){
+			$("#gender").removeClass("txtbrcolr");
+			}   
+		}); 
+});
+
+$("#batchId").change(function(){
+	$('select').on('change', function() {
+		if($(this).value!="no_value"|| $(this).value!="NULL"){
+			$("#batchId").removeClass("txtbrcolr");
+			}   
+		}); 
+});
+
+$("#employeeType").change(function(){
+	$('select').on('change', function() {
+		if($(this).value!="no_value"|| $(this).value!="NULL"){
+			$("#employeeType").removeClass("txtbrcolr");
+			}   
+		}); 
+});
+
+$("#coreSkill").change(function(){
+	$('select').on('change', function() {
+		if($(this).value!="no_value"|| $(this).value!="NULL"){
+			$("#coreSkill").removeClass("txtbrcolr");
+			}   
+		}); 
+});
+
+$("#relocation").change(function(){
+	$('select').on('change', function() {
+		if($(this).value!="no_value"){
+			$("#relocation").removeClass("txtbrcolr");
+			}   
+		}); 
 });
 
 

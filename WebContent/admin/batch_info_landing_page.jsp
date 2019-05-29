@@ -14,6 +14,7 @@
 <!--     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
    
    <style>
+   
    	.button, select {
 			    text-transform: none;
 			    width: 30px;
@@ -309,52 +310,53 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 						      <th scope="col">ACTION</th>
 						    </tr>
 			  			</thead>
-			  			<tbody>
-			  
-			  
-			  				<c:forEach items="${batchs}" var="batch" >
-			  
-							   			<tr>
-										      <th scope="row">${batch.batchid}</th>
-										      <td>${batch.startdate}</td>
-										      <td>${batch.enddate}</td>
-										      <td>${batch.status}</td>
-										      <td>
-										      		<div class="btn-group" >
-										            
-									            	<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
-									          
-									                 <ul class="dropdown-menu ddmf" role="menu">
-									                 
-									 
-									                 	
-										                 	 <c:forEach items="${actions}" var="action" >
-										                 		 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
-										                 		 <c:choose>
-										  
-										                 	 			<c:when test="${actionStatus == action.statusName}">
-										                																						
-								   										 <li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
-								   									
-								   							   			 </c:when>
-								   							   			 <c:otherwise>
-															    		  
-															    	
-															 			 </c:otherwise>
-															    </c:choose>
-								    						
-															</c:forEach>
-							
-												              				               					             
-												       </ul>
-												   	 </div>
-										    	</td>
-							   			 </tr>
+			  			<tbody>					
+			  				<c:forEach items="${batchs}" var="batch" >			  
+					   			<tr>
+							      <th scope="row">${batch.batchid}</th>
+							      <td>${batch.startdate}</td>
+							      <td>${batch.enddate}</td>
+							      <td>${batch.status}</td>
+							      <td>
+						      		<div class="btn-group" >
+						            
+					            	<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button>     
+					          
+					                 <ul class="dropdown-menu ddmf" role="menu">
+					 
+					                 	 <c:forEach items="${actions}" var="action" >
+					                 		 <c:set var = "actionStatus" value = "${fn:toLowerCase(batch.status)}" />
+					                 		 <c:choose>
+					  
+				                 	 			<c:when test="${actionStatus == action.statusName}">
+		   											 <c:choose>
+							                 	 			<c:when test="${action.action == 'Start Progress'}">
+							                 	 											
+					   										 <li><a href="#" data-toggle="modal" data-id="${action.action}"  data-target="#commentModal" class="batchdetail dropdown-item" >${action.action}</a></li>
+					   										 
+					   							   			 </c:when>
+					   							   			 <c:when test="${action.action == 'Mark Complete'}">
+					   							   			 	<li><a href="#" data-toggle="modal"  data-id="${action.action}"  data-target="#commentModal" class="batchdetail dropdown-item" >${action.action}</a></li>
+					   							   			 </c:when>
+					   							   			 <c:otherwise>
+											    		  		<li><a href="/admin-portal/BatchAction?action=${action.action}&batchid=${batch.batchid}&startDate=${batch.startdate}&endDate=${batch.enddate}&status=${batch.status}" class="dropdown-item" >${action.action}</a></li>
+												 			 </c:otherwise>
+												    </c:choose>
+		   											
+		   							   			 </c:when>
+		   							   			 <c:otherwise>									    		  
+									    	
+									 			 </c:otherwise>
+										    </c:choose>				    						
+										</c:forEach>											              				               					            
+								       </ul>
+								   	 </div>
+						    	</td>
+					   			 </tr>
 							         
-			  						</c:forEach>
+		  						</c:forEach>
 						  	</tbody>
-					</table>	
-			
+					</table>				
 			</div>	
 								    		  
 								    	
@@ -363,5 +365,50 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 
 
  </div>
+ 
+ <script type="text/javascript">
+ $('.batchdetail').click(function () { 
+	 if (typeof $(this).data('id') !== 'undefined') {
+	      data_id = $(this).data('id');
+	    }
+	if((data_id)=='Mark Complete'){
+		$('#commentModalLabel').text('COMPLETE BATCH');
+	} else {
+		$('#commentModalLabel').text('START BATCH');
+	}
+	});
+</script>
+ 
+ 
+ 
+ <!-- Modal -->
+<div class="modal fade" id="commentModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="commentModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header header-style">
+        <h5 class="modal-title" id="commentModalLabel"></h5>
+        
+      </div>
+      <div class="modal-body">
+        <form name="batch_comment_form">
+        <div>
+        	<span class="label-comment">Comments: </span>
+        	<div class="text-style">
+        	 <input type="text" class="form-control"  aria-describedby="inputGroup-sizing-sm">
+        </div>
+        </div>
+       
+        </form>
+        
+      </div>
+       <div class="modal-footer footer-style">
+       <span class="backbutton" data-dismiss="modal" >BACK</span>
+       <span class="savebutton" style="background-color:#5CB85C ; color: #FFF;" onClick="commentSubmitForm()">SAVE</span>
+      </div>
+      
+    </div>
+  </div>
+</div>
  
 <%@ include file="/common/footer.jspf"%>
