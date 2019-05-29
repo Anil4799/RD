@@ -130,7 +130,7 @@ public class StudentServlet extends HttpServlet {
 					
 				} else  if(result == 0){
 					request.setAttribute("result", "fail");
-				}
+				} 
 			  
 			  request.getRequestDispatcher("admin/student_added_successfully.jsp").forward(request, response);
 				

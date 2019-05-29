@@ -31,10 +31,8 @@ public class StudentServiceImpl implements StudentService {
 	private static final  String MENTORNAME="Mentor_Name";
 	private static final  String EMAILID="Email_Id";
 
-
-	 
 	String query = null;
-	
+	int existing_email=0;
 	public  int addPersonalInfo(StudentBean studentBean){
 		try {
 			   connection = DBManager.getConnection();
@@ -43,6 +41,7 @@ public class StudentServiceImpl implements StudentService {
 			   resultSet = preparedStatement.executeQuery();
 			   if(resultSet.next())
 			   {
+				   existing_email = 1;
 				   numberOfRowsInserted = 0;
 				   return numberOfRowsInserted;
 			   }
@@ -146,9 +145,12 @@ public class StudentServiceImpl implements StudentService {
              if(numberofrow!=0){
             	  numberofrow1=addEducationalInfo(studentBean);
 	              numberofrow2=addAddtionalInfo(studentBean);
-             }	             	            
+             }	
+             if(existing_email == 1) {
+            	 result = 2;
+             }
              if((numberofrow>0)&& (numberofrow1>0)&& (numberofrow2>0)) {	             
-		    	result = 1;			  
+		    	result = 1;		
              }
              else{             
 		    	result = 0;	
