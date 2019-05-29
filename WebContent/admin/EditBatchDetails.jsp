@@ -65,6 +65,12 @@
 				border: 1px solid #ced4da;
 				border-radius: 4px 2px 2px 4px;
 			}
+			.start_date_disable{
+				pointer-events: none;
+    			//opacity: 0.4;
+    			border: 1px solid #ced4da;
+				border-radius: 4px 2px 2px 4px;				
+			}
 			
 		</style>
 		
@@ -100,29 +106,48 @@
 				<div class="batch_info_form">
 					<form id="batch_info_form" name="batch_info_form">
 						<table>
-							
 							<tr>
 							  	<td class="form_lable">Start Date: <span class="required">*</span></td>
-								<td><div class="start_date"><input class="border-right-0 form-control form-control-sm" id="batch_start_date" name="batch_start_date" value='<c:out value="${requestScope.startDate}"></c:out>'/></div></td>							
+								<td>
+									
+										<c:set var = "actionStatus" value = "${fn:toLowerCase(status)}" />
+										<c:set var = "notstarted" value = "not started" />
+										<c:set var = "inprogress" value = "in progress" />
+										<c:if test="${actionStatus eq notstarted}">
+										<div class="start_date">
+												<input class="border-right-0 form-control form-control-sm" id="batch_start_date" name="batch_start_date" value='<c:out value="${requestScope.startDate}"></c:out>'/>
+										</div>																						
+										</c:if>
+										<c:if test="${actionStatus eq inprogress}">
+											<div class="start_date_disable">
+												<input class="border-right-0 form-control form-control-sm" style="background-color: #dddddd;" id="batch_start_date_disabled" name="batch_start_date" value='<c:out value="${requestScope.startDate}"></c:out>'/>
+											</div>										
+										</c:if>
+										
+								</td>							
 							</tr>
 							<tr>
 								<td class="form_lable">End Date: </td>
 								<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="batch_end_date" name="batch_end_date" value='<c:out value="${requestScope.endDate}"></c:out>'/></div>
 								</td>
 							</tr>  
-														<tr>
+							<tr>
 								<td class="form_lable">BatchId: <span class="required">*</span></td>
 								<td><input type="text" id="batch_id" name="batch_id" class="form-control form-control-sm" size="30" required readonly placeholder="AUTO-GENERATED" value='<c:out value="${requestScope.batchId}"></c:out>'/></td>
 							</tr>
-							
 							<tr>
 								<td class="form_lable">Status: <span class="required">*</span></td>
 								<td>
 									<select name="batch_status" id="batch_status" class="form-control form-control-sm" required>
-
-										<option value="Not Started" >Not Started</option>
-										<option value="In Progress">In progress</option>
-
+										
+										<c:if test="${actionStatus eq notstarted}">
+										<option selected='selected'>Not Started</option>
+										<option >In progress</option>
+										</c:if>
+										<c:if test="${actionStatus eq inprogress}">
+										<option>Not Started</option>
+										<option selected='selected'>In progress</option>
+										</c:if>
 										<option value="Completed">Completed</option>
 									</select>
 								</td>
@@ -134,16 +159,23 @@
 			</div>			
 		</div>
 		<script>
-		 $('#batch_start_date').datepicker({
+		 $('#batch_start_date').datepicker({			
 			
-			id: 'start_date',
             uiLibrary: 'bootstrap4',
 
             iconsLibrary: 'fontawesome',
 
 			format: 'mm-dd-yyyy',
 			        });
-		
+		$('#batch_start_date_disabled').datepicker({
+			
+		   uiLibrary: 'bootstrap4',
+
+            iconsLibrary: 'fontawesome',
+
+			format: 'mm-dd-yyyy',			
+			
+			        });
 		
         $('#batch_end_date').datepicker({
 	
@@ -156,9 +188,7 @@
 			format: 'mm-dd-yyyy',     
 
         }); 
-
-		
-		</script>
+</script>
 		
 		<%@ include file="/common/footer.jspf"%>
 	

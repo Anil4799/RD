@@ -172,13 +172,10 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 				<table class="table" >
 					<tr style="float:left">
 						<td >
-								<input class="border-right-0 form-control form-control-sm" placeholder="From Date" id="startDate" name="startDate" readonly/>
-		 
-						 </td>
+							<input class="border-right-0 form-control form-control-sm" placeholder="From Date" id="startDate" name="startDate" value="${startDate}" readonly/>
+						</td>
 						 <td>		 	
-		 						<input class="border-right-0 form-control form-control-sm" placeholder="To Date" id="endDate" name="endDate" readonly/>
-		  						
-		  		 
+		 					<input class="border-right-0 form-control form-control-sm" placeholder="To Date" id="endDate" name="endDate" value="${endDate}" readonly/>
 						</td>
 						 <td>
 			 
@@ -228,7 +225,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
  		<c:choose>
  
 			 <c:when test="${searchResult == 'a'}">
-			                																						
+			        
 	   				<span id="recordsFound" style="text-transform:none;padding-left:10px;color: #909497;">	
 							
 							<c:out value='${resultSize}'/> records found
