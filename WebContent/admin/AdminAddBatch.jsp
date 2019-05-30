@@ -103,7 +103,10 @@
 							
 							<tr>
 							  	<td class="form_lable">Start Date: <span class="required">*</span></td>
-								<td><div class="start_date"><input class="border-right-0 form-control form-control-sm" id="batch_start_date" name="batch_start_date"/></div></td>							
+								<td><div class="start_date">
+								<input class="border-right-0 form-control form-control-sm" id="batch_start_date" name="batch_start_date"/>
+								<input type="hidden" id="testBatchStartDate" value='<c:out value="${requestScope.startDate}"></c:out>'/>
+								</div></td>							
 							</tr>
 							<tr>
 								<td class="form_lable">End Date: </td>
