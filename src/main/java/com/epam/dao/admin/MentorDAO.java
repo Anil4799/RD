@@ -111,9 +111,9 @@ public class MentorDAO {
 			ps.setString(1, mentor.getName());
 			ps.setDate(2, new java.sql.Date((mentor.getMentorStartDate().getTime())));
 			if(mentor.getMentorEndDate()==null)
-				ps.setDate(4, null);
+				ps.setDate(3, null);
 			else
-				ps.setDate(4, new java.sql.Date((mentor.getMentorEndDate().getTime())));
+				ps.setDate(3, new java.sql.Date((mentor.getMentorEndDate().getTime())));
 			ps.setInt(4, mentor.getMaxNoOfMentees());
 			ps.setString(5, mentor.getTechnologyStream());
 			ps.setString(6, mentor.getStatus());
