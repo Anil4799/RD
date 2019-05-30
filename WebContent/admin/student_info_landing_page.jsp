@@ -8,7 +8,7 @@
 </div>
 <div class="container">
 		<c:if test="${result eq false}">
-			<form action="adminStudentSearch" method="post">
+			<form action="SearchServlet" method="post">
 				<table class="table">
 					<tr>
 						<td><input type="text" class="form-control" placeholder="First Name" name="firstname"></td>
@@ -46,20 +46,20 @@
 		  		<tbody>
 			  	 	<c:forEach items="${students}" var="student" >
 			     		<tr>
-					      <th scope="row">${student.studentName}</th>
-					      <td>${student.studentBatch}</td>
-					      <td>${student.studentCoreSkill}</td>
-					      <td>${student.studentMentor}</td>
-					      <td>${student.studentStatus}</td>
+					      <th scope="row">${student.firstName} ${student.lastName}</th>
+					      <td>${student.batchId}</td>
+					      <td>${student.coreSkill}</td>
+					      <td>${student.mentorName}</td>
+					      <td>${student.status}</td>
 					      <td>
 					      		<div class="btn-group dropdown">     
 					        		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" > </button> 
 						                 <ul class="dropdown-menu ddmf" role="menu">
 						                 	 <c:forEach items="${actions}" var="action" >
-						                 	 	<c:set var = "actionStatus" value = "${fn:toLowerCase(student.studentStatus)}" />
+						                 	 	<c:set var = "actionStatus" value = "${fn:toLowerCase(student.status)}" />
 							                 	 	<c:choose>
 							                 	 		<c:when test="${actionStatus ==  action.statusName}">
-							             				 	<li><a class="dropdown-item" href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.studentEmailId}">${action.action}</a></li>   									
+							             				 	<li><a class="dropdown-item" href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.email}">${action.action}</a></li>   									
 					   							    	</c:when>
 												 	</c:choose> 	
 											</c:forEach>
@@ -73,7 +73,7 @@
 			</table>
 		</c:if>
 		<c:if test="${result eq true}">
-			<form action="adminStudentSearch" method="post">
+			<form action="SearchServlet" method="post">
 				<table class="table">
 					<tr>
 						<td><input type="text" class="form-control" placeholder="First Name" name="firstname" value="${firstname}"></td>
@@ -125,20 +125,20 @@
 			  		<tbody>
 				  	 	<c:forEach items="${students}" var="student" >
 				     		<tr>
-						      <th scope="row">${student.studentName}</th>
-						      <td>${student.studentBatch}</td>
-						      <td>${student.studentCoreSkill}</td>
-						      <td>${student.studentMentor}</td>
-						      <td>${student.studentStatus}</td>
+						      <th scope="row">${student.firstName} ${student.lastName}</th>
+						      <td>${student.batchId}</td>
+						      <td>${student.coreSkill}</td>
+						      <td>${student.mentorName}</td>
+						      <td>${student.status}</td>
 						      <td>
 						      		<div class="btn-group dropdown">     
 						        		<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 							                 <ul class="dropdown-menu ddmf" role="menu">
 							                 	 <c:forEach items="${actions}" var="action" >
-							                 	 	<c:set var = "actionStatus" value = "${fn:toLowerCase(student.studentStatus)}" />
+							                 	 	<c:set var = "actionStatus" value = "${fn:toLowerCase(student.status)}" />
 								                 	 	<c:choose>
 								                 	 		<c:when test="${actionStatus ==  action.statusName}">
-								             				 	<li><a class="dropdown-item" href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.studentEmailId}">${action.action}</a></li>   									
+								             				 	<li><a class="dropdown-item" href="AdminStudentActionServlet?actionView=${action.action}&email_id=${student.email}">${action.action}</a></li>   									
 						   							    	</c:when>
 													 	</c:choose> 	
 												</c:forEach>
