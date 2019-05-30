@@ -51,12 +51,24 @@ public class StudentServlet extends HttpServlet {
 		
 		student.setCollegeLocation(collegeLocation);
 
-		student.setGraduation(graduation);		
+		student.setGraduation(graduation);	
+		
 		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 		request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 		
 		request.setAttribute("pageState", "STUDENT INFO");
-		addStudentAndRedirect(request, response, student);
+		
+		if((request.getParameter("action")).equals("save"))
+		{
+			addStudentAndRedirect(request, response, student);
+		}
+		else if((request.getParameter("action")).equals("edit"))
+		{
+			editStudentAndRedirect(request, response, student);
+		}
+		
+		
+		
 		LOGGER.debug("Exit from StudentServlet Class...............");
 	}
 	private Date formatDate(String dob) {
@@ -111,6 +123,29 @@ public class StudentServlet extends HttpServlet {
 		}
 		catch( Exception e)
 		{			 
+			 LOGGER.debug(e.getMessage());
+		      
+		}
+	}
+	
+	private void editStudentAndRedirect(HttpServletRequest request, HttpServletResponse response,
+			StudentBean studentBean) {
+		int result;
+		try {
+			  result = studentService.editStudentDetails(studentBean);
+			  
+			  if(result == 1) {
+				    request.setAttribute("result", "success");
+					
+				} else  if(result == 0){
+					request.setAttribute("result", "fail");
+				}
+			  
+			  request.getRequestDispatcher("admin/studentEditedSuccessfully.jsp").forward(request, response);
+				
+		}
+		catch( Exception e)
+		{			
 			 LOGGER.debug(e.getMessage());
 		      
 		}

@@ -106,7 +106,7 @@ function studentValidateForm() {
 			elements[i].disabled = true;
 		}
     } else{
-    	document.getElementById("add_student_info").action="/admin-portal/StudentServlet";
+    	document.getElementById("add_student_info").action="/admin-portal/StudentServlet?action=save";
 	    document.getElementById("add_student_info").method = "POST";
 	    document.getElementById("add_student_info").submit();
     }   
@@ -249,7 +249,7 @@ function studentUpadte(){
 				elements[i].disabled = true;
 			}
 	    } else{
-	    	document.getElementById("add_student_info").action="/admin-portal/EditStudentServlet";
+	    	document.getElementById("add_student_info").action="/admin-portal/StudentServlet?action=edit";
 		    document.getElementById("add_student_info").method = "POST";
 		    document.getElementById("add_student_info").submit();
 	    }   	

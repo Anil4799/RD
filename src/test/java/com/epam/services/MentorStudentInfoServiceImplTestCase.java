@@ -4,14 +4,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 class MentorStudentInfoServiceImplTestCase {
 
-	@Test
+	@Ignore
 	void testMentorStudentDetails() {
 		//fail("Not yet implemented");
 	}
 
-	@Test
+	@Ignore
 	void testMentorViewStudentDetails() {
 		
 	}

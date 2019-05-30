@@ -23,7 +23,7 @@
 			</div>
 			<span class="ok_button" style="background-color:#5CB85C ; color: #FFF;" onClick="closeAlertPopup()">OK</span>		
 		</div>
-	<form action ="StudentServlet" name="add_student_info" id="add_student_info" method="post">
+	<form action ="StudentServlet?action=save" name="add_student_info" id="add_student_info" method="post">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad" style="background-color: rgb(235,235,235); ">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopad"  style="padding-right:3.5%;">
 			<span class="savebutton" style="background-color:#5CB85C ; color: #FFF;"  onClick="studentValidateForm()">SAVE</span>
