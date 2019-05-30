@@ -179,11 +179,11 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
    else
    	{
    	
-	   
-   	var params="?startDate="+startDate+"&endDate="+endDate;
+	  var testSearchOrNot="ok"; 
+   	var params="?startDate="+startDate+"&endDate="+endDate+"&testSearchOrNot="+testSearchOrNot;
    	
   
-   document.getElementById("batchDetailsSearch").action="/admin-portal/AdminBatchInfoListWithInDateRange"+params;
+   document.getElementById("batchDetailsSearch").action="./batchInfo"+params;
    document.getElementById("batchDetailsSearch").method = "post";
    document.getElementById("batchDetailsSearch").submit();
    
@@ -259,7 +259,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 			
  		<c:choose>
  
-			 <c:when test="${searchResult == 'a'}">
+			 <c:when test="${searchedOrNot == 'a'}">
 			        
 	   				<span id="recordsFound" style="text-transform:none;padding-left:10px;color: #909497;">	
 							
@@ -286,7 +286,7 @@ var EDateParsed=new Date(EDate[2], EDate[0] - 1, EDate[1]);
 						       </c:otherwise>
 						       </c:choose>
 					       <tbody>
-							   <c:forEach items="${batchs}" var="batch" >
+							   <c:forEach items="${batchsRange}" var="batch" >
 							     <tr>
 							      <th scope="row">${batch.batchid}</th>
 							      <td>${batch.startdate}</td>

@@ -43,12 +43,6 @@ try {
 		String batchId = request.getParameter("batch_id");
 		tokens = batchId.split("-");
 
-	//	char ch = tokens[3].charAt(1);
-	//	int batchNumber = Character.getNumericValue(ch);
-	//	int year = Integer.parseInt(tokens[2]);
-	//	String quarter = tokens[1];
-		
-			//String result = batchInfoServiceImpl.saveBatchInfo(batchNumber, batchId, year, quarter, startDate, endDate, status,codeToInsertOrUpdate);
 			String result = batchInfoServiceImpl.saveBatchInfo(tokens, batchId, startDate, endDate, status,codeToInsertOrUpdate);
 			printWriter.println(result);
 			

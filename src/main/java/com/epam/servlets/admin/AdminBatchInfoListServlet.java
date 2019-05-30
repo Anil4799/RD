@@ -34,21 +34,52 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Entered into Servlet...............");
 		List<Batch> batchList =null;
+		List<Batch> batchListRange =null;
 		List<MenuAction> actionList =null;
 		String pageUrl = null;
 		try
 		{
+			
+			
+			String testSearchOrNot=request.getParameter("testSearchOrNot");
+			
 			Connection con=DBManager.getConnection();
 			int role= (int) request.getSession(true).getAttribute("role");
 			actionList=menuActionItemService.getMenuActionList(con,role);
+			
 			batchList=batchInfoListService.getAllBatchsList(con);
+			
+			
+			if(testSearchOrNot.equals("ok")) {
+				String startDate=request.getParameter("startDate");
+				String endDate=request.getParameter("endDate");
+				
+			batchListRange=batchInfoListService.getAllBatchListWithInDateRange(con, startDate, endDate);
+			
+			request.setAttribute("batchsRange", batchListRange);
+			request.setAttribute("searchedOrNot", "a");
+			request.setAttribute("startDate", startDate);
+			request.setAttribute("endDate", endDate);
+			request.setAttribute("resultSize", batchListRange.size());
+			
+			}
+			
+			
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.RESULT_PAGE_FOR_BATCH_INFO);
 			request.setAttribute("batchs", batchList);
+			
 			request.setAttribute("actions", actionList);
+			
 			List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+			
 			request.setAttribute("pageState", "BATCH INFO");
+			
 			request.setAttribute("searchResult", "");
+			
+			
+			
+			
 			goToURL(request, response, pageUrl);
 
 
@@ -58,6 +89,7 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
+			e.printStackTrace();
 			goToURL(request, response, pageUrl);
 
 		}
