@@ -89,7 +89,6 @@ public class AdminBatchInfoListServlet extends HttpServlet {
 			pageUrl = request.getServletContext().getInitParameter(ConstantsUtility.ERROR_PAGE);
 			request.setAttribute("errorMsg", e.getMessage());
 			LOGGER.error(e.getMessage());
-			e.printStackTrace();
 			goToURL(request, response, pageUrl);
 
 		}

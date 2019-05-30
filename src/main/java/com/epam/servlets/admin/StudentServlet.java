@@ -1,27 +1,20 @@
 package com.epam.servlets.admin;
 
 import java.io.IOException;
-
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.dao.admin.StudentBean;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
-import com.epam.services.login.Menu;
-import com.epam.services.login.MenuItemsSingleton;
-import com.epam.utils.ConstantsUtility;
-
-import org.apache.log4j.Logger;
 
 @WebServlet("/StudentServlet")
 public class StudentServlet extends HttpServlet {
