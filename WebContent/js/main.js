@@ -111,3 +111,13 @@
 	 		 xhttp.open("GET", "/admin-portal/SaveBatchInfoServlet"+ params, true);
 	  		xhttp.send();
 		}
+		
+		
+		
+		
+		
+		function commentSubmitForm(){
+			document.getElementById("batch_comment_form").action="StartProgressServlet";
+		    document.getElementById("batch_comment_form").method = "POST";
+		    document.getElementById("batch_comment_form").submit();
+		}
