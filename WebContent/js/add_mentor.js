@@ -39,7 +39,7 @@ function validateForm() {
 		$('.start_date').css('border-color','red');
 		document.forms["mentor_info_form"]["mentorship_start_date"].classList.add("txtbrcolr");
 	}	
-	if(mentorship_end_date != ""){
+	if(mentorship_end_date == null ||mentorship_end_date != ""){
 		if(!regExprDate.test(mentorship_end_date)){
 			message += "Mentorship End Date is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
 			$("#mentorship_end_date").addClass('txtbrcolr');
@@ -47,13 +47,13 @@ function validateForm() {
 			document.forms["mentor_info_form"]["mentorship_end_date"].classList.add("txtbrcolr");
 		}
 	}
-	if(mentorship_start_date!='' && mentorship_start_date > mentorship_end_date)
+	/*if(mentorship_start_date!='' && mentorship_start_date > mentorship_end_date)
     {
    // alert("Please ensure that the End Date is greater than or equal to the Start Date.");
-    message += "Please ensure that the End Date is greater than the Start Date.<br/>" + "\n";
+    message += "Mentorship_End_Date is greater than the Mentorship_Start_Date.<br/>" + "\n";
     $("#mentorship_end_date").addClass('txtbrcolr');
 	$('.end_date').css('border-color','red');
-    }
+    }*/
 	
 	
 	if(max_no_of_mentees == null || max_no_of_mentees == "")
@@ -148,7 +148,7 @@ function validateEditForm() {
 		document.forms["mentor_info_form"]["mentorship_start_date"].classList.add("txtbrcolr");
 	}	
 	
-	if(mentorship_end_date != ""){	
+	if(mentorship_end_date == null ||mentorship_end_date != ""){	
 		if(!regExprDate.test(mentorship_end_date)){
 			message += "Mentorship End Date is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
 			$("#mentorship_end_date").addClass('txtbrcolr');
@@ -156,13 +156,13 @@ function validateEditForm() {
 			document.forms["mentor_info_form"]["mentorship_end_date"].classList.add("txtbrcolr");
 		}
 	}
-		if(mentorship_start_date!='' && mentorship_start_date > mentorship_end_date)
+		/*if(mentorship_start_date!='' && mentorship_start_date > mentorship_end_date)
 	    {
-		message += "Please ensure that the End Date is greater than the Start Date.<br/>" + "\n";
+		message += "Mentorship_End_Date is greater than the Mentorship_Start_Date.<br/>" + "\n";
 	    $("#mentorship_end_date").addClass('txtbrcolr');
 		$('.end_date').css('border-color','red');
 	    }
-		
+		*/
 	if(max_no_of_mentees == null || max_no_of_mentees == "")
 	{
 		message += "Max no.of Mentees cannot be empty<br/>" + "\n";

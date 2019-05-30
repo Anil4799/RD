@@ -160,13 +160,21 @@
 			</div>			
 		</div>
 		<script>
+		
+		
+
+		
 		 $('#batch_start_date').datepicker({
-			
+			id: 'start_date',
             uiLibrary: 'bootstrap4',
 
             iconsLibrary: 'fontawesome',
 
 			format: 'mm-dd-yyyy',
+			change: function (e) {
+				generatorID();
+	             // alert("hi");
+	           }
 			
 			        });
 		$('#batch_start_date_disabled').datepicker({
@@ -175,7 +183,8 @@
 
             iconsLibrary: 'fontawesome',
 
-			format: 'mm-dd-yyyy',			
+			format: 'mm-dd-yyyy',	
+			
 			
 			        });
 		

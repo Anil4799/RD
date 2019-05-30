@@ -90,7 +90,7 @@ public class MentorEditServlet extends HttpServlet {
 		String  mentorenddate=request.getParameter("mentorship_end_date");
 		String[] date2=mentorenddate.split("-");
 		String mentorenddatesql=date2[2]+"-"+date2[0]+"-"+date2[1];
-		
+	
 		java.util.Date mysqlmentorenddate=sdf.parse(mentorenddatesql);
 		
 		mentor.setMentorStartDate(mysqlmentorstartdate);
