@@ -14,7 +14,7 @@
 											</div>
 											<script>
 												function gotoBatchInfo(){
-													window.location = "/admin-portal/batchInfo";
+													window.location = "/admin-portal/batchInfo?testSearchOrNot='no'";
 												}
 												setTimeout(gotoBatchInfo, 1000);
 											</script>

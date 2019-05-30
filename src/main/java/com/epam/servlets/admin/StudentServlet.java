@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -16,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.epam.dao.admin.StudentBean;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
+import com.epam.utils.ConstantsUtility;
 
 import org.apache.log4j.Logger;
 
@@ -49,6 +53,7 @@ public class StudentServlet extends HttpServlet {
 		}
 		
 		student.setCollegeLocation(collegeLocation);
+
 		student.setGraduation(graduation);		
 		addStudentAndRedirect(request, response, student);
 		LOGGER.debug("Exit from StudentServlet Class...............");
