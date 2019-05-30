@@ -28,8 +28,6 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 		try {
 			connection = DBManager.getConnection();
 			statement = connection.prepareCall("{call batch_id_proc(?,?)}");
-			System.out.println("date received is "+startDate);
-			//java.sql.Date stDate = java.sql.Date.valueOf(startDate);
 						
 			String formattedDate = sdf.format(sdfOriginal.parse(startDate));
 			
@@ -43,7 +41,6 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
-			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}
@@ -81,7 +78,6 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			statement.setDate("End_Date", sqlEndDate);
 			statement.setString("Status", status);
 			
-			System.out.println("batch id is "+batchId+"code is "+codeToInsertOrUpdate);
 			rowsCount = statement.executeUpdate();
 			
 			
@@ -90,7 +86,6 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 		} catch (Exception exception) 
 		{
 			LOGGER.error(exception.getMessage());
-			exception.printStackTrace();
 		} 
 		finally {
 			statement.close();
@@ -102,9 +97,13 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 		else
 			
 			if (codeToInsertOrUpdate==-1) 
+			{
 			return "Batch Saved Successfully";
+			}
 			else
+			{
 			return "Batch Updated Successfully";
+			}
 
 	}
 
