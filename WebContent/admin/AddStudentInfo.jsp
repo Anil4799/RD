@@ -52,7 +52,7 @@
 					<br>
 					<div>
 						Date of Birth:<span class="required">*</span>
-						<span style="float:right;width:34%">
+						<span class="dob-style" style="float:right;width:34%">
 						<input type="text" class="border-right-0 form-control-sm" id="dateOfBirth" name="dateOfBirth" class="date-of-birth"/>
 						 
 						</span>
@@ -335,6 +335,7 @@ $("#lastName").removeClass("txtbrcolr");
 $("#dateOfBirth").change(function(){
     if($(this).val().length >0){
 $("#dateOfBirth").removeClass("txtbrcolr");
+$('.dob-style').css('border-color','#ced4da');
 }    
 });
 

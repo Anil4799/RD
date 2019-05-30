@@ -1,5 +1,6 @@
 package com.epam.servlets.mentor;
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MentorServlet extends HttpServlet {
 				MentorBean mentor = addMentor(req);
 				MentorService service=new MentorService();
 				String status = service.addMentor(mentor);
-			
+				
 				if(status.equals("success")) {
 					List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
 					req.setAttribute(ConstantsUtility.MENU_LIST, menuList);
@@ -76,24 +77,35 @@ public class MentorServlet extends HttpServlet {
 		mentor.setName(req.getParameter("mentor_name"));
 		mentor.setEmail(req.getParameter("mentor_email"));
 		mentor.setStatus(req.getParameter("mentor_status"));
+		mentor.setMaxNoOfMentees(Integer.parseInt(req.getParameter("max_noof_mentees")));
+		mentor.setTechnologyStream(req.getParameter("mentor_technology"));
 		
 		String mentorstartdate=req.getParameter("mentorship_start_date");
 		String[] date1=mentorstartdate.split("-");
 		String mentorstartdatesql=date1[2]+"-"+date1[0]+"-"+date1[1];
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date mysqlmentorstartdate=sdf.parse(mentorstartdatesql);
-		
+		mentor.setMentorStartDate(mysqlmentorstartdate);
 	
 		String  mentorenddate=req.getParameter("mentorship_end_date");
+		
+		if(mentorenddate.length()>0) {
+		
 		String[] date2=mentorenddate.split("-");
 		String mentorenddatesql=date2[2]+"-"+date2[0]+"-"+date2[1];
 		
 		java.util.Date mysqlmentorenddate=sdf.parse(mentorenddatesql);
 		
-		mentor.setMentorStartDate(mysqlmentorstartdate);
+		
 		mentor.setMentorEndDate(mysqlmentorenddate);
-		mentor.setMaxNoOfMentees(Integer.parseInt(req.getParameter("max_noof_mentees")));
-		mentor.setTechnologyStream(req.getParameter("mentor_technology"));
+		}
+		else {
+		mentor.setMentorEndDate(null);
+
+			
+			
+		}
+		
 		
 		return mentor;
 		

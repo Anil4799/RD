@@ -116,6 +116,7 @@
 										<c:if test="${actionStatus eq notstarted}">
 										<div class="start_date">
 												<input class="border-right-0 form-control form-control-sm" id="batch_start_date" name="batch_start_date" value='<c:out value="${requestScope.startDate}"></c:out>'/>
+												<input type="hidden" id="testBatchStartDate" value='<c:out value="${requestScope.startDate}"></c:out>'/>
 										</div>																						
 										</c:if>
 										<c:if test="${actionStatus eq inprogress}">
@@ -159,13 +160,22 @@
 			</div>			
 		</div>
 		<script>
-		 $('#batch_start_date').datepicker({			
-			
+		
+		
+
+		
+		 $('#batch_start_date').datepicker({
+			id: 'start_date',
             uiLibrary: 'bootstrap4',
 
             iconsLibrary: 'fontawesome',
 
 			format: 'mm-dd-yyyy',
+			change: function (e) {
+				generatorID();
+	             // alert("hi");
+	           }
+			
 			        });
 		$('#batch_start_date_disabled').datepicker({
 			
@@ -173,7 +183,8 @@
 
             iconsLibrary: 'fontawesome',
 
-			format: 'mm-dd-yyyy',			
+			format: 'mm-dd-yyyy',	
+			
 			
 			        });
 		

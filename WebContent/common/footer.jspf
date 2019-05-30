@@ -1,8 +1,16 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    
     
      <footer class=footer>
 
@@ -43,7 +51,7 @@
 		$("#batch_start_date").change(function(){
 			  if($(this).value){}
 			 	 $(this).removeClass('txtbrcolr');
-			 	$(this).css('border-color','');
+			 	
 			});
 	
 		
@@ -54,12 +62,43 @@
 		
 		$('#batch_status').attr("disabled", true);
 		
-		
+		/*	
+		$("#batch_start_date").change(function(){	
+			alert("dsdsgdsgfds");
+		});
 			
-		$("#batch_start_date").focusout(function(){
-			var v =document.getElementById('batch_start_date').value;
-			 
-			//alert("start date is "+v);
+		*/
+		//$("#batch_start_date").focusout(function(){
+			function generatorID(){
+			var StartDateNew =document.getElementById('batch_start_date').value;
+			
+			var StartDateOld =document.getElementById('testBatchStartDate').value;
+			//alert(StartDateNew+"   "+StartDateOld+"jhgjhg")
+			var OldBatchId=document.getElementById('batch_id').value;
+			var SDateNew=StartDateNew.split("-");
+  			var SDateOld=StartDateOld.split("-");
+
+			var SDateNewParsed=new Date(SDateNew[2], SDateNew[0]-1, SDateNew[1]);
+			var SDateOldParsed=new Date(SDateOld[2], SDateOld[0]-1, SDateOld[1]);
+			
+			var monthOld=SDateOldParsed.getMonth()+1;
+			var monthNew=SDateNewParsed.getMonth()+1;
+			
+			var quarterOld=Math.ceil(monthOld/3);
+			var quarterNew=Math.ceil(monthNew/3);
+				
+			
+			var YearNew=SDateNewParsed.getFullYear();
+			var YearOld=SDateOldParsed.getFullYear();
+			
+			if((quarterOld==quarterNew) &&(YearNew==YearOld) ){
+				
+				document.getElementById('batch_id').value = OldBatchId;
+			}
+			
+			else{	
+				//alert(Math.ceil(monthOld/3)+"   "+Math.ceil(monthNew/3)+"  "+SDateNewParsed.getFullYear() );
+			
 			var xhttp;
 			
 			if (window.XMLHttpRequest) {
@@ -73,12 +112,16 @@
 			    if (this.readyState == 4 && this.status == 200) {
 			      document.getElementById('batch_id').value = this.responseText;
 			      $("#batch_id").removeClass('txtbrcolr');
+			      $("#batch_start_date").removeClass('txtbrcolr');
 			    }
 			  };
-			  xhttp.open("GET", "/admin-portal/BatchInfoServlet?batch_start_date="+v, true);
+			  xhttp.open("GET", "/admin-portal/BatchInfoServlet?batch_start_date="+StartDateNew, true);
 			  xhttp.send();
-					
-		});	
+			}
+		}
+		//});	
+
+	 
 
 	 
 	</script>

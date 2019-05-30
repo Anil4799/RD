@@ -105,7 +105,7 @@
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
-							<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"/></div></td>
+							<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" value="" name="mentorship_end_date"/></div></td>
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>

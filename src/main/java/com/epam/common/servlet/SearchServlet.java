@@ -35,6 +35,7 @@ public class SearchServlet extends HttpServlet {
 		Connection con = DBManager.getConnection();
 		List<StudentBean> mentorStudentList =null;
 		List<StudentBean> adminStudentList =null;
+
 		List<MenuAction> actionList =null;
 		List<String> batchIDList= batchInfoDAO.getAllBatchID(con);
 		List<Menu> menuList = MenuItemsSingleton.getInstance().getMenuItems();
