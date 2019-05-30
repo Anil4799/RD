@@ -3,6 +3,7 @@ package com.epam.dao.admin;
 
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -62,7 +63,15 @@ public class MentorDAO {
 			mentor.setTechnologyStream(rs.getString(7));
 			mentor.setStatus(rs.getString(8));
 			mentor.setMentorStartDate(rs.getDate(4));
-			mentor.setMentorEndDate(rs.getDate(5));
+			Date d1=new Date(0);
+			if(rs.getDate(5)!=null)
+			{
+				mentor.setMentorEndDate(rs.getDate(5));
+			}
+			else
+			{
+				mentor.setMentorEndDate(d1);
+			}
 			
 			return mentor;
 			
@@ -101,7 +110,10 @@ public class MentorDAO {
 			
 			ps.setString(1, mentor.getName());
 			ps.setDate(2, new java.sql.Date((mentor.getMentorStartDate().getTime())));
-			ps.setDate(3, new java.sql.Date((mentor.getMentorEndDate().getTime())));
+			if(mentor.getMentorEndDate()==null)
+				ps.setDate(4, null);
+			else
+				ps.setDate(4, new java.sql.Date((mentor.getMentorEndDate().getTime())));
 			ps.setInt(4, mentor.getMaxNoOfMentees());
 			ps.setString(5, mentor.getTechnologyStream());
 			ps.setString(6, mentor.getStatus());

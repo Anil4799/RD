@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,18 +86,24 @@ public class MentorEditServlet extends HttpServlet {
 		String mentorstartdatesql=date1[2]+"-"+date1[0]+"-"+date1[1];
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date mysqlmentorstartdate=sdf.parse(mentorstartdatesql);
-		
+		mentor.setMaxNoOfMentees(Integer.parseInt(request.getParameter("max_noof_mentees")));
+		mentor.setTechnologyStream(request.getParameter("mentor_technology"));
+		mentor.setMentorStartDate(mysqlmentorstartdate);
 	
 		String  mentorenddate=request.getParameter("mentorship_end_date");
+		if(mentorenddate.length()>0) {
 		String[] date2=mentorenddate.split("-");
 		String mentorenddatesql=date2[2]+"-"+date2[0]+"-"+date2[1];
 	
 		java.util.Date mysqlmentorenddate=sdf.parse(mentorenddatesql);
-		
-		mentor.setMentorStartDate(mysqlmentorstartdate);
 		mentor.setMentorEndDate(mysqlmentorenddate);
-		mentor.setMaxNoOfMentees(Integer.parseInt(request.getParameter("max_noof_mentees")));
-		mentor.setTechnologyStream(request.getParameter("mentor_technology"));
+		}
+		else
+		{
+			mentor.setMentorEndDate(null);
+		}
+		
+		
 		
 		return mentor;
 		

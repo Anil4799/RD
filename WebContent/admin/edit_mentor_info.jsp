@@ -92,7 +92,12 @@
 						</tr>
 						<tr>
 							<td class="form_lable">Mentorship Start Date:<span class="required">*</span></td>
-							<%SimpleDateFormat sdf=new SimpleDateFormat("MM-dd-yyyy");
+							<%
+							
+							
+							
+							
+							SimpleDateFormat sdf=new SimpleDateFormat("MM-dd-yyyy");
 							String mysqlmentorstartdate=sdf.format(mentor.getMentorStartDate());
 							
 							%>
@@ -102,9 +107,22 @@
 						<tr>
 							<td class="form_lable">Mentorship End Date: </td>
 							<%
-							String mysqlmentorenddate=sdf.format(mentor.getMentorEndDate());
-							%>
-							<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"  value=<%=mysqlmentorenddate %>></div></td>
+							String mysqlmentorenddate="";
+							SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
+							java.util.Date newDate=sdf1.parse("1970-01-01");
+							int year=newDate.getYear();
+							if(mentor.getMentorEndDate().getYear()==(year))
+							{%>
+								<td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" value="" name="mentorship_end_date"/></div></td>
+							<%}
+							else
+							{
+							 mysqlmentorenddate=sdf.format(mentor.getMentorEndDate());%>
+							 <td><div class="end_date"><input class="border-right-0 form-control form-control-sm" id="mentorship_end_date" name="mentorship_end_date"  value=<%=mysqlmentorenddate %>></div></td>			 
+							<% }%>
+						
+								
+							
 						</tr>
 						<tr>
 							<td class="form_lable">Max No.of Mentees:<span class="required">*</span></td>

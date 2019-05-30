@@ -75,7 +75,18 @@
 							<td class="form_lable">Mentorship End Date: </td>
 							<td class="form_value">
 							<%
-							String mysqlmentorenddate=sdf.format(mentor.getMentorEndDate());
+							String mysqlmentorenddate="";
+							SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
+							java.util.Date newDate=sdf1.parse("1970-01-01");
+							int year=newDate.getYear();
+							if(mentor.getMentorEndDate().getYear()==(year))
+							{
+								mysqlmentorenddate="";
+							}
+							else
+							{
+							 mysqlmentorenddate=sdf.format(mentor.getMentorEndDate());
+							}
 							%>
 							<%=mysqlmentorenddate %>	
 							

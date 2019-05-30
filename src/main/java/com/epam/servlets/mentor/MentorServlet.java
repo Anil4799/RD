@@ -1,6 +1,5 @@
 package com.epam.servlets.mentor;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -82,9 +81,12 @@ public class MentorServlet extends HttpServlet {
 		
 		String mentorstartdate=req.getParameter("mentorship_start_date");
 		String[] date1=mentorstartdate.split("-");
-		String mentorstartdatesql=date1[2]+"-"+date1[0]+"-"+date1[1];
+		String mentorstartdatesql=date1[2]+"-"+date1[0]+"-"+date1[1];//1970-01-01
+
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date mysqlmentorstartdate=sdf.parse(mentorstartdatesql);
+	
+
 		mentor.setMentorStartDate(mysqlmentorstartdate);
 	
 		String  mentorenddate=req.getParameter("mentorship_end_date");
