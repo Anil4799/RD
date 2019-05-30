@@ -16,7 +16,8 @@ class TestBachInfoDAOImp {
 	@Ignore
 	void test() throws Exception {
      String result="Batch Saved successfully";
-     String actual=batchindodao.saveBatchInfo(1, "RD-Q1-2020-B1",2020, "abc", "2019-07-07","2019-06-06", "string",2);
+     String[] tokens= {"test string", "test2"};
+     String actual=batchindodao.saveBatchInfo(tokens, "RD-Q1-2020-B1", "2019-07-07","2019-06-06", "string",2);
      assertEquals(result, actual);
 	}
 

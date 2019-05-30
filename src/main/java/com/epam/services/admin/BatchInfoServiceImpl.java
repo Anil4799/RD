@@ -12,10 +12,10 @@ public class BatchInfoServiceImpl implements BatchInfoService {
 		return batchInfoDAOImpl.generateBatchId(startDate);
 	}
 	
-	public String saveBatchInfo(int batchNumber,String batchId,int year,String quarter,String startDate,String endDate,String status,int codeToInsertOrUpdate)throws SQLException {
+	public String saveBatchInfo(String[] tokens,String batchId,String startDate,String endDate,String status,int codeToInsertOrUpdate)throws SQLException {
 		 
 		batchInfoDAOImpl=new BatchInfoDAOImpl();
-		return batchInfoDAOImpl.saveBatchInfo(batchNumber,batchId,year,quarter,startDate,endDate,status,codeToInsertOrUpdate);
+		return batchInfoDAOImpl.saveBatchInfo(tokens, batchId,startDate,endDate,status,codeToInsertOrUpdate);
 	}
 	
 }

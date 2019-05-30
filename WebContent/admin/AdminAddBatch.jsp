@@ -145,7 +145,13 @@
             iconsLibrary: 'fontawesome',
 
 			format: 'mm-dd-yyyy',
-			        });
+			change: function (e) {
+				generatorID();
+	             // alert("hi");
+	           }
+			      });
+		
+		
 		
 		
         $('#batch_end_date').datepicker({
@@ -156,7 +162,8 @@
 
             iconsLibrary: 'fontawesome',     
 
-			format: 'mm-dd-yyyy',     
+			format: 'mm-dd-yyyy', 
+			    
 
         }); 
 

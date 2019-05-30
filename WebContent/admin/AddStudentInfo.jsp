@@ -335,6 +335,7 @@ $("#lastName").removeClass("txtbrcolr");
 $("#dateOfBirth").change(function(){
     if($(this).val().length >0){
 $("#dateOfBirth").removeClass("txtbrcolr");
+	
 }    
 });
 

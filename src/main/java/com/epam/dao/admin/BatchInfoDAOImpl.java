@@ -49,14 +49,17 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 	}
 	
 	
-	public String saveBatchInfo(int batchNumber, String batchId, int year, String quarter,
+	public String saveBatchInfo(String[] tokens,String batchId,
 			String startDate, String endDate, String status,int codeToInsertOrUpdate) throws SQLException{
 		
 		int rowsCount = 0;
 		try {
 			connection = DBManager.getConnection();
 			
-			
+			char ch = tokens[3].charAt(1);
+			int batchNumber = Character.getNumericValue(ch);
+			int year = Integer.parseInt(tokens[2]);
+			String quarter = tokens[1];
 			
 			statement = connection.prepareCall("{call insert_procedure(?,?,?,?,?,?,?,?)}");
 			statement.setInt("Batch_Num", batchNumber);
@@ -97,13 +100,17 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 		else
 			
 			if (codeToInsertOrUpdate==-1) 
+
 			{
 			return "Batch Saved Successfully";
 			}
+
 			else
+
 			{
 			return "Batch Updated Successfully";
 			}
+
 
 	}
 
