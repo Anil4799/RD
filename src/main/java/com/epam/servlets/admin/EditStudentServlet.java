@@ -3,6 +3,7 @@ package com.epam.servlets.admin;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,9 @@ import org.apache.log4j.Logger;
 import com.epam.dao.admin.StudentBean;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
+import com.epam.services.login.Menu;
+import com.epam.services.login.MenuItemsSingleton;
+import com.epam.utils.ConstantsUtility;
 
 /**
  * Servlet implementation class EditStudentServlet
@@ -102,6 +106,10 @@ LOGGER.debug("Entered into EditStudentServlet Class...............");
 		student.setRelocation(request.getParameter("relocation"));
 		student.setStatus(request.getParameter("status"));
 				
+		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
+		request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
+		request.setAttribute("pageState", "STUDENT INFO");
+		
 		editStudentAndRedirect(request, response, student);
 		LOGGER.debug("Exit from EditStudentServlet Class...............");
 		
