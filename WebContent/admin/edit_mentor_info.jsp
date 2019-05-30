@@ -84,7 +84,7 @@
 					<table width="38%" style="margin-left: 0%;">
 						<tr>
 							<td class="form_lable">Name:<span class="required">*</span></td>
-							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required value=<%=mentor.getName()%> /></td>								
+							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required value='<%=mentor.getName()%>'/></td>								
 						</tr>
 						<tr>
 							<td class="form_lable">Email:<span class="required">*</span> </td>
@@ -169,7 +169,13 @@
 							$("#mentorship_start_date").removeClass("txtbrcolr");							
 							$('.start_date').css('border-color','#ced4da');
 						} 
-					});   
+					});  
+					
+					$("#mentorship_end_date").change(function(){
+						    	if($(this).val().length >0){								
+									$('.end_date').css('border-color','#ced4da');
+								}   
+					});  
     			</script>
 			</div>				
 			</div>							
