@@ -1,30 +1,27 @@
 package com.epam.services;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
+import com.epam.common.servlet.StudentInfoServiceImpl;
 import com.epam.dao.mentor.MentorStudent;
-import com.epam.services.mentor.MentorStudentInfoServiceImpl;
 import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 class MentorStudentListTest {
 	static DBManager db;
-	static MentorStudentInfoServiceImpl mentorstudent;
+	static StudentInfoServiceImpl mentorstudent;
 	static Connection con=null;
 	List<MentorStudent> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
-		mentorstudent=new MentorStudentInfoServiceImpl();
+		mentorstudent=new StudentInfoServiceImpl();
 		db=new DBManager();
 	}
      

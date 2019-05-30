@@ -1,11 +1,9 @@
 package com.epam.servlets.mentor;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.io.IOException;
 
@@ -16,15 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.services.mentor.MentorStudentInfoServiceImpl;
+import com.epam.common.servlet.StudentInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
 
-import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 
 class MentorStudentActionServletTest {
@@ -47,7 +44,7 @@ class MentorStudentActionServletTest {
 	
 	/** The service. */
 	@Mock
-	private MentorStudentInfoServiceImpl mentorinfoservice;
+	private StudentInfoServiceImpl mentorinfoservice;
 	
 	/** The servlet. */
 	@InjectMocks

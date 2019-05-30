@@ -17,7 +17,6 @@
 	}
 </script>
 
-
 <div class="page_info">
 	<p class="page_title">Student Info - Landing Page</p>
 </div>
@@ -39,11 +38,7 @@
 					<td>
 						<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
 					</td>
-					<td>
-						<div class="button">		
-							<a href="addStudent" class="btn btn-success"> ADD NEW STUDENT</a>
-						</div>
-					</td> 
+					
 				</tr>
 			</table>
 		</form>
@@ -58,21 +53,21 @@
 			    </tr>
 			</thead>
   			<tbody>
- 				<c:forEach items="${students}" var="ms" >
+ 				<c:forEach items="${students}" var="student" >
    					<tr>
-						<th scope="row">${ms.mentorStudentName}</th>
-					    <td>${ms.mentorStudentBatch}</td>
-					    <td>${ms.mentorStudentCoreSkill}</td>
-					    <td>${ms.mentorStudentStatus}</td>
+						<th scope="row">${student.firstName} ${student.lastName}</th>
+					    <td>${student.batchId}</td>
+					    <td>${student.coreSkill}</td>
+					    <td>${student.status}</td>
 						<td>
 						<div class="btn-group">    
 							<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 							<ul class="dropdown-menu ddmf" role="menu">
 								<c:forEach items="${actions}" var="action" >
-									<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.mentorStudentStatus)}" />
+									<c:set var = "actionStatus" value = "${fn:toLowerCase(student.status)}" />
 									<c:choose>
 										<c:when test="${actionStatus == action.statusName}">
-											<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');">${action.action}</a></li>
+											<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${student.email}');">${action.action}</a></li>
 										</c:when>
 										<c:otherwise>
 										</c:otherwise>
@@ -111,11 +106,7 @@
 					<td>
 						<button type=submit class="fa fa-search searchIcon searchBox"  style="color:#bebebe" aria-hidden="true"></button>
 					</td>
-					<td>
-						<div class="button">		
-							<a href="addStudent" class="btn btn-success"> ADD NEW STUDENT</a>
-						</div>
-					</td> 
+				
 				</tr>
 			</table>
 		</form>
@@ -136,21 +127,21 @@
 					    </tr>
 					</thead>
 	  				<tbody>
-		 				<c:forEach items="${students}" var="ms" >
+		 				<c:forEach items="${students}" var="student" >
 		   					<tr>
-								<th scope="row">${ms.mentorStudentName}</th>
-							      <td>${ms.mentorStudentBatch}</td>
-							      <td>${ms.mentorStudentCoreSkill}</td>
-							      <td>${ms.mentorStudentStatus}</td>
+								<th scope="row">${student.firstName} ${student.lastName}</th>
+							      <td>${student.batchId}</td>
+							      <td>${student.coreSkill}</td>
+							      <td>${student.status}</td>
 								<td>
 									<div class="btn-group">    
 										<button type="button" style="color:grey" class="btn btn-light fa fa-cog dropdown-toggle xyz" data-toggle="dropdown" ></button>
 										<ul class="dropdown-menu ddmf" role="menu">
 											<c:forEach items="${actions}" var="action" >
-												<c:set var = "actionStatus" value = "${fn:toLowerCase(ms.mentorStudentStatus)}" />
+												<c:set var = "actionStatus" value = "${fn:toLowerCase(student.status)}" />
 												<c:choose>
 													<c:when test="${actionStatus == action.statusName}">
-														<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${ms.mentorStudentEmailId}');">${action.action}</a></li>
+														<li><a class="dropdown-item" href="javascript:checkImplementation('${action.action}','${student.email}');">${action.action}</a></li>
 													</c:when>
 													<c:otherwise>
 													</c:otherwise>
@@ -167,6 +158,4 @@
 		</c:choose>
 	</c:if>
 </div>
-
-
 <%@ include file="/common/footer.jspf"%>

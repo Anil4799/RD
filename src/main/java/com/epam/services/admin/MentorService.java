@@ -16,12 +16,13 @@ public class MentorService {
 	{
 		String result="";
 		try {
-			if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMentorEndDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null||mentor.getTechnologyStream()==null)
+			if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null||mentor.getTechnologyStream()==null)
 			{
 				result= ERROR;	
 			}
 			else
 			{
+				
 				MentorDAO mdao=new MentorDAO();
 				int value=mdao.createMentor(mentor);
 				if(value>0)
@@ -60,7 +61,7 @@ public class MentorService {
 	{
 		String result="";
 		try {
-			if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMentorEndDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null||mentor.getTechnologyStream()==null)
+			if(mentor==null||mentor.getEmail()==null||mentor.getName()==null||mentor.getMentorStartDate()==null||mentor.getMaxNoOfMentees()<0||mentor.getStatus()==null||mentor.getTechnologyStream()==null)
 			{
 				result= ERROR;	
 			}

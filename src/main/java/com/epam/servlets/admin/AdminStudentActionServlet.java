@@ -3,15 +3,18 @@ package com.epam.servlets.admin;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
+
+import com.epam.common.servlet.StudentInfoService;
+import com.epam.common.servlet.StudentInfoServiceImpl;
 import com.epam.dao.admin.StudentBean;
-import com.epam.services.admin.AdminStudentInfoService;
-import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.services.admin.StudentService;
 import com.epam.services.admin.StudentServiceImpl;
 import com.epam.services.login.Menu;
@@ -22,7 +25,7 @@ import com.epam.utils.DBManager;
 @WebServlet("/AdminStudentActionServlet")
 public class AdminStudentActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 private final AdminStudentInfoService studentInfoService = new AdminStudentInfoServiceImpl();
+	 private final StudentInfoService studentInfoService = new StudentInfoServiceImpl();
 	 private static final Logger LOGGER = Logger.getLogger( AdminStudentListServlet.class);
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
