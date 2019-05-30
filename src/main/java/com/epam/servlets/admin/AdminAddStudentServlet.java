@@ -73,8 +73,6 @@ public class AdminAddStudentServlet extends HttpServlet {
 			request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
 			goToURL(request, response, pageUrl);
 
-			
-
 		}
 		catch(Exception e1)
 		{

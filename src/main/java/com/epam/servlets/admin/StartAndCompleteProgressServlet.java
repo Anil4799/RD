@@ -19,12 +19,13 @@ import com.epam.utils.DBManager;
  * Servlet implementation class StartProgressServlet
  */
 @WebServlet("/StartProgressServlet")
-public class StartProgressServlet extends HttpServlet {
+public class StartAndCompleteProgressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(AdminAddBatchServlet.class);
 	private final AdminBatchInfoService batchInfoListService = new AdminBatchInfoServiceImpl();
 	
 	private static final String RESULT="RESULT";
+	private static final String ERROR="Error in updating";
 
 
        
@@ -48,7 +49,7 @@ public class StartProgressServlet extends HttpServlet {
 				}
 				else
 				{
-					request.setAttribute(RESULT,"Error in updating");
+					request.setAttribute(RESULT,ERROR);
 				}
 			}
 			
@@ -60,7 +61,7 @@ public class StartProgressServlet extends HttpServlet {
 				}	
 				else
 				{
-					request.setAttribute(RESULT,"Error in updating");
+					request.setAttribute(RESULT,ERROR);
 				}
 			}
 			
@@ -72,7 +73,7 @@ public class StartProgressServlet extends HttpServlet {
 		catch(Exception e)
 		{
 			pageUrl = "batchInfo";
-			request.setAttribute("resultMsg","Error in updating");
+			request.setAttribute("resultMsg",ERROR);
 			LOGGER.error(e.getMessage());
 			goToURL(request, response,pageUrl);
 		}

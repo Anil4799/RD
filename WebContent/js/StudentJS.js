@@ -34,14 +34,13 @@ function studentValidateForm() {
     if(date_of_birth == null || date_of_birth == ""){
         message += "Date of Birth cannot be empty<br/>" + "\n";
         $("#dateOfBirth").addClass('txtbrcolr');
-    }   else{
-    	if(!regExprDate.test(date_of_birth)){
+        $('.dob-style').css('border-color','red');	
+    }   else if(!regExprDate.test(date_of_birth)){
           	 message += "Date of Birth is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
-          	 $("#dateOfBirth").addClass('txtbrcolr');
-          	 $('.date-of-birth').css('border-color','red');
-          	 document.forms["add_student_info"]["dateOfBirth"].classList.add("txtbrcolr");
-          }
-        $("#dateOfBirth").removeClass('txtbrcolr');
+          	$('.dob-style').css('border-color','red');	
+          	$("#dateOfBirth").addClass('txtbrcolr');
+        } else{
+    	$("#dateOfBirth").removeClass('txtbrcolr');
     }
     
     if(gender == null || gender == "no_value" || gender =="NULL")
@@ -90,15 +89,13 @@ function studentValidateForm() {
     if(date_of_joining == null || date_of_joining == ""){
         message += "Date of Joining cannot be empty<br/>" + "\n";
         $("#dateOfJoining").addClass('txtbrcolr');
-    }
-    else{
-    	if(!regExprDate.test(date_of_joining)){
+    }  else if(!regExprDate.test(date_of_joining)){
        	 message += "Date of Joining is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
        	 $("#dateOfJoining").addClass('txtbrcolr');
        	 $('.date-of-joining').css('border-color','red');
        	 document.forms["add_student_info"]["dateOfJoining"].classList.add("txtbrcolr");
-       }
-        $("#dateOfJoining").removeClass('txtbrcolr');
+       } else {
+    	$("#dateOfJoining").removeClass('txtbrcolr');
     }
     if(message.length > 0 ){    
     	document.getElementById("blank_popup").style.display = "block";
@@ -186,14 +183,11 @@ function studentUpadte(){
 	    if(date_of_birth == null || date_of_birth == ""){
 	        message += "Date of Birth cannot be empty<br/>" + "\n";
 	        $("#dateOfBirth").addClass('txtbrcolr');
-	    }   else{
-	    	if(!regExprDate.test(date_of_birth)){
+	    }   else if(!regExprDate.test(date_of_birth)){
 	          	 message += "Date of Birth is incorrect. Please enter date in MM-DD-YYYY format<br/>" + "\n";
-	          	 $("#dateOfBirth").addClass('txtbrcolr');
-	          	 $('.date-of-birth').css('border-color','red');
-	          	 document.forms["add_student_info"]["dateOfBirth"].classList.add("txtbrcolr");
-	          }
-	        $("#dateOfBirth").removeClass('txtbrcolr');
+	          	$("#dateOfBirth").addClass('txtbrcolr');
+	        } else{
+	    	$("#dateOfBirth").removeClass('txtbrcolr');
 	    }
 	    
 	    if(gender == null || gender == "no_value" || gender =="NULL")
