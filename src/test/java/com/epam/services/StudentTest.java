@@ -1,35 +1,32 @@
 package com.epam.services;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.sql.Connection;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
-import com.epam.dao.admin.Student;
-import com.epam.services.admin.AdminStudentInfoServiceImpl;
+import com.epam.common.servlet.StudentInfoServiceImpl;
+import com.epam.dao.admin.StudentBean;
 import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 class StudentTest {
 	static DBManager db;
-	static AdminStudentInfoServiceImpl student;
+	static StudentInfoServiceImpl student;
 	static Connection con=null;
-	List<Student> lsactual=null;
+	List<StudentBean> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
-		student=new AdminStudentInfoServiceImpl();
+		student=new StudentInfoServiceImpl();
 		db=new DBManager();
 	}
      
 	@Ignore
 	void Studenttest() throws Exception {
 		lsactual =student.getAllStudentDetails(DBManager.getConnection());
-		Student s= lsactual.get(1);
+		StudentBean s= lsactual.get(1);
 		String name=null;
 		String batch=null;
 		String coreSkill=null;

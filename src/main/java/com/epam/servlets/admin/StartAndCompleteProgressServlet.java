@@ -66,13 +66,13 @@ public class StartAndCompleteProgressServlet extends HttpServlet {
 			}
 			
 
-			pageUrl = "batchInfo";
+			pageUrl = "batchInfo?testSearchOrNot='no'";
 			goToURL(request, response,pageUrl);
 			
 		}
 		catch(Exception e)
 		{
-			pageUrl = "batchInfo";
+			pageUrl = "batchInfo?testSearchOrNot='no'";
 			request.setAttribute("resultMsg",ERROR);
 			LOGGER.error(e.getMessage());
 			goToURL(request, response,pageUrl);

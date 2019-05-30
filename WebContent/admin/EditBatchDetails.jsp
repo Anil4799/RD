@@ -1,10 +1,9 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/common/header.jspf" %> 
-<script type="text/javascript" src="/admin-portal/js/date.js"></script>
+
 
 		<style type="text/css">
 			.batch_info_form td{
@@ -164,7 +163,8 @@
 		
 
 		
-		 $('#batch_start_date').datepicker({
+ $('#batch_start_date').datepicker({
+			
 			id: 'start_date',
             uiLibrary: 'bootstrap4',
 
@@ -175,8 +175,8 @@
 				generatorID();
 	             // alert("hi");
 	           }
-			
-			        });
+			      });
+		
 		$('#batch_start_date_disabled').datepicker({
 			
 		   uiLibrary: 'bootstrap4',
@@ -199,6 +199,15 @@
 			format: 'mm-dd-yyyy',     
 
         }); 
+
+
+$("#batch_start_date").change(function(){
+	    	if($(this).val().length >0){
+				$("#batch_start_date").removeClass("txtbrcolr");							
+				$('.start_date').css('border-color','#ced4da');
+			}   
+		}); 
+
 </script>
 		
 		<%@ include file="/common/footer.jspf"%>

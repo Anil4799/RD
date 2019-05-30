@@ -3,36 +3,28 @@ package com.epam.common.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
-
 import com.epam.dao.admin.BatchInfoDAO;
 import com.epam.dao.admin.BatchInfoDAOImpl;
 import com.epam.dao.admin.MenuAction;
-import com.epam.dao.admin.Student;
-import com.epam.dao.mentor.MentorStudent;
+import com.epam.dao.admin.StudentBean;
 import com.epam.services.MenuActionItemService;
 import com.epam.services.MenuActionItemServiceImpl;
-import com.epam.services.admin.AdminStudentInfoService;
-import com.epam.services.admin.AdminStudentInfoServiceImpl;
 import com.epam.services.login.Menu;
 import com.epam.services.login.MenuItemsSingleton;
-import com.epam.services.mentor.MentorStudentInfoService;
-import com.epam.services.mentor.MentorStudentInfoServiceImpl;
 import com.epam.utils.ConstantsUtility;
 import com.epam.utils.DBManager;
 
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final AdminStudentInfoService adminStudentInfoService = new AdminStudentInfoServiceImpl();
-	private static final MentorStudentInfoService mentorStudentInfoService = new MentorStudentInfoServiceImpl();
+	private final StudentInfoService adminStudentInfoService = new StudentInfoServiceImpl();
+	private static final StudentInfoService mentorStudentInfoService = new StudentInfoServiceImpl();
 	private static final Logger LOGGER = Logger.getLogger( SearchServlet.class); 
 	private final MenuActionItemService menuActionItemService = new MenuActionItemServiceImpl();
 	private final BatchInfoDAO batchInfoDAO = new BatchInfoDAOImpl();
@@ -41,8 +33,9 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.debug("Enter into SearchServlet......");
 		Connection con = DBManager.getConnection();
-		List<MentorStudent> mentorStudentList =null;
-		List<Student> adminStudentList =null;
+		List<StudentBean> mentorStudentList =null;
+		List<StudentBean> adminStudentList =null;
+
 		List<MenuAction> actionList =null;
 		List<String> batchIDList= batchInfoDAO.getAllBatchID(con);
 		List<Menu> menuList = MenuItemsSingleton.getInstance().getMenuItems();

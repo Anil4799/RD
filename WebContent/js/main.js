@@ -3,8 +3,9 @@
  */
 
 	function batchInfoLandingPgae(){
-				
-				document.getElementById("batch_info_form").action="/admin-portal/batchInfo";
+				var testSearchOrNot="no";
+			
+				document.getElementById("batch_info_form").action="./batchInfo?testSearchOrNot="+testSearchOrNot;
 			    document.getElementById("batch_info_form").method = "POST";
 			    document.getElementById("batch_info_form").submit();
 			}
@@ -105,7 +106,9 @@
 	
 		  xhttp.onreadystatechange = function() {
 	   	 if (this.readyState == 4 && this.status == 200) {
-	       		customAlertIdAdded(this.responseText);
+	   			
+	   		 customAlertIdAdded(this.responseText);
+	       		
 	   	 }
 	  };
 	 		 xhttp.open("GET", "/admin-portal/SaveBatchInfoServlet"+ params, true);

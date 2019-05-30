@@ -6,11 +6,21 @@ public class StudentBean {
 	
 	private String firstName;
 	private String lastName;
-	private Date dob;
 	private String dateOfBirth;
 	private String email;
 	private String gender;
-	private long contactNumber;
+	private String batchId;
+	private String employeeType;
+	private String coreSkill;
+	private String preferredStudentStream;
+	private String assignedStream;
+	private String mentorName;
+	private String assignedLocation;
+	private String relocation;
+	private String status;
+	private String strDob;
+	private String strDateOfJoining;
+	private String doj;
 	private String personalLocation;
 	private String collegeName;
 	private String collegeLocation;
@@ -20,12 +30,10 @@ public class StudentBean {
 	private int graduationMarks;
 	private int twelveth;
 	private int tenth;
-	private String batchId;
-	private String employeeType;
-	private String coreSkill;
-	private String preferredStudentStream;
-	private String assignedStream;
+	private long contactNumber;
 	private Date dateOfJoining;
+	private Date dob;
+	
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -38,15 +46,6 @@ public class StudentBean {
 	public void setDoj(String doj) {
 		this.doj = doj;
 	}
-	private String doj;
-	private String mentorName;
-	private String assignedLocation;
-	private String relocation;
-	private String status;
-	private String strDob;
-	private String strDateOfJoining;
-	
-
 	public String getStrDateOfJoining() {
 		return strDateOfJoining;
 	}

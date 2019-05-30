@@ -48,12 +48,16 @@
 			  if($(this).val().length>=1){}
 			 	 $(this).removeClass('txtbrcolr');
 			});
-		$("#batch_start_date").change(function(){
-			  if($(this).value){}
-			 	 $(this).removeClass('txtbrcolr');
-			 	
-			});
+		
 	
+		$("#batch_start_date").change(function(){
+			    	if($(this).val().length >0){
+						$("#batch_start_date").removeClass("txtbrcolr");							
+						$('.start_date').css('border-color','#ced4da');
+					}   
+				}); 
+		
+		
 		
 		$("#batch_status").change(function(){
 			  if($(this).val()){}
@@ -62,12 +66,7 @@
 		
 		$('#batch_status').attr("disabled", true);
 		
-		/*	
-		$("#batch_start_date").change(function(){	
-			alert("dsdsgdsgfds");
-		});
-			
-		*/
+		
 		//$("#batch_start_date").focusout(function(){
 			function generatorID(){
 			var StartDateNew =document.getElementById('batch_start_date').value;

@@ -64,6 +64,7 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
+			exception.printStackTrace();
 		} finally {
 			DBManager.closeConnection(connection);
 		}

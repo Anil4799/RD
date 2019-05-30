@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,23 +29,12 @@ public class StudentServlet extends HttpServlet {
 	private final StudentService studentService = new StudentServiceImpl();
 	private static final Logger LOGGER = Logger.getLogger(StudentServlet.class);
 
-       
-       public StudentServlet() {
-        super();
-    }
-
-       @Override
+    @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	LOGGER.debug("Entered into StudentServlet Class+++++++++");
 		
 		StudentBean student = new StudentBean();
-		student.setFirstName(request.getParameter("firstName"));
-		student.setLastName(request.getParameter("lastName"));
-		student.setDob(formatDate(request.getParameter("dateOfBirth")));
-		student.setEmail(request.getParameter("email"));
-		student.setGender(request.getParameter("gender"));
-		student.setContactNumber(mobileValidation(request.getParameter("contactNumber")));
-		student.setPersonalLocation(request.getParameter("personalLocation"));
+		student = setParameters(student,request);
 		String collegeNameAndLocation = request.getParameter("collegeName");
 		String collegeName = "";
 		collegeName = extractCollegeName(collegeNameAndLocation, collegeName);
@@ -63,33 +53,8 @@ public class StudentServlet extends HttpServlet {
 		}
 		
 		student.setCollegeLocation(collegeLocation);
-		student.setGraduation(graduation);
-		student.setGraduationSpeciality(checkNull(request.getParameter("graduationSpeciality")));
-		
-		int yearOfPassedOut1 = marksValidation(request.getParameter("yearOfPassedOut"));
-		int graduationMarks1 = marksValidation( request.getParameter("graduationMarks"));	
-		int twelvethMarks = marksValidation(request.getParameter("twelveth"));
-		int tenthMarks = marksValidation(request.getParameter("tenth"));
-		
-		student.setYearOfPassedOut(yearOfPassedOut1);
-		student.setGraduationMarks(graduationMarks1);
-		student.setTwelveth(twelvethMarks);
-		student.setTenth(tenthMarks);
-		student.setBatchId(request.getParameter("batchId"));
-		student.setEmployeeType(request.getParameter("employeeType"));
-		student.setCoreSkill(request.getParameter("coreSkill"));
-		student.setPreferredStudentStream(checkNull(request.getParameter("preferredStudentStream")));
-		student.setAssignedStream(checkNull(request.getParameter("assignedStream")));
-		student.setDateOfJoining(formatDate(request.getParameter("dateOfJoining")));
-		student.setMentorName(checkNull(request.getParameter("mentorName")));
-		student.setAssignedLocation(request.getParameter("assignedLocation"));
-		student.setRelocation(request.getParameter("relocation"));
-		student.setStatus(request.getParameter("status"));
-		
-		List<Menu> menuList=MenuItemsSingleton.getInstance().getMenuItems();
-		request.setAttribute(ConstantsUtility.MENU_LIST, menuList);
-		request.setAttribute("pageState", "STUDENT INFO");
-				
+
+		student.setGraduation(graduation);		
 		addStudentAndRedirect(request, response, student);
 		LOGGER.debug("Exit from StudentServlet Class...............");
 	}
@@ -179,6 +144,35 @@ public class StudentServlet extends HttpServlet {
 			
 		}
 		return totalMarks;
+	}
+	public StudentBean setParameters(StudentBean student, HttpServletRequest request) {
+		student.setFirstName(request.getParameter("firstName"));
+		student.setLastName(request.getParameter("lastName"));
+		student.setDob(formatDate(request.getParameter("dateOfBirth")));
+		student.setEmail(request.getParameter("email"));
+		student.setGender(request.getParameter("gender"));
+		student.setContactNumber(mobileValidation(request.getParameter("contactNumber")));
+		student.setPersonalLocation(request.getParameter("personalLocation"));
+		student.setGraduationSpeciality(checkNull(request.getParameter("graduationSpeciality")));
+		int yearOfPassedOut1 = marksValidation(request.getParameter("yearOfPassedOut"));
+		int graduationMarks1 = marksValidation( request.getParameter("graduationMarks"));	
+		int twelvethMarks = marksValidation(request.getParameter("twelveth"));
+		int tenthMarks = marksValidation(request.getParameter("tenth"));
+		student.setYearOfPassedOut(yearOfPassedOut1);
+		student.setGraduationMarks(graduationMarks1);
+		student.setTwelveth(twelvethMarks);
+		student.setTenth(tenthMarks);
+		student.setBatchId(request.getParameter("batchId"));
+		student.setEmployeeType(request.getParameter("employeeType"));
+		student.setCoreSkill(request.getParameter("coreSkill"));
+		student.setPreferredStudentStream(checkNull(request.getParameter("preferredStudentStream")));
+		student.setAssignedStream(checkNull(request.getParameter("assignedStream")));
+		student.setDateOfJoining(formatDate(request.getParameter("dateOfJoining")));
+		student.setMentorName(checkNull(request.getParameter("mentorName")));
+		student.setAssignedLocation(request.getParameter("assignedLocation"));
+		student.setRelocation(request.getParameter("relocation"));
+		student.setStatus(request.getParameter("status"));
+		return student;
 	}
 	
 }

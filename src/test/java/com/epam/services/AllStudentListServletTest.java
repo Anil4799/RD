@@ -11,21 +11,21 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 
-import com.epam.dao.admin.Student;
-import com.epam.services.admin.AdminStudentInfoServiceImpl;
+import com.epam.common.servlet.StudentInfoServiceImpl;
+import com.epam.dao.admin.StudentBean;
 import com.epam.utils.DBManager;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 class AllStudentListServletTest {
 	static DBManager db;
-	static AdminStudentInfoServiceImpl student;
+	static StudentInfoServiceImpl student;
 	static Connection con=null;
-	List<Student> lsactual=null;
+	List<StudentBean> lsactual=null;
 	@BeforeAll
 	static void  initializer()
 	{
-		student=new AdminStudentInfoServiceImpl();
+		student=new StudentInfoServiceImpl();
 		db=new DBManager();
 	}
      
@@ -62,7 +62,7 @@ class AllStudentListServletTest {
 	@Ignore
 	void test2()
 	{   lsactual =student.getAllStudentDetails(DBManager.getConnection());
-	Student s= lsactual.get(1);
+	StudentBean s= lsactual.get(1);
 	String name=null;
 	String batch=null;
 	String coreSkill=null;
