@@ -169,7 +169,13 @@
 							$("#mentorship_start_date").removeClass("txtbrcolr");							
 							$('.start_date').css('border-color','#ced4da');
 						} 
-					});   
+					});  
+					
+					$("#mentorship_end_date").change(function(){
+						    	if($(this).val().length >0){								
+									$('.end_date').css('border-color','#ced4da');
+								}   
+					});  
     			</script>
 			</div>				
 			</div>							

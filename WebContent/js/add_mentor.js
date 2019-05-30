@@ -50,7 +50,7 @@ function validateForm() {
 	if(mentorship_start_date!='' && mentorship_start_date > mentorship_end_date)
     {
    // alert("Please ensure that the End Date is greater than or equal to the Start Date.");
-    message += "Please ensure that the End Date is greater than or equal to the Start Date.<br/>" + "\n";
+    message += "Please ensure that the End Date is greater than the Start Date.<br/>" + "\n";
     $("#mentorship_end_date").addClass('txtbrcolr');
 	$('.end_date').css('border-color','red');
     }
@@ -158,7 +158,7 @@ function validateEditForm() {
 	}
 		if(mentorship_start_date!='' && mentorship_start_date > mentorship_end_date)
 	    {
-		message += "Please ensure that the End Date is greater than or equal to the Start Date.<br/>" + "\n";
+		message += "Please ensure that the End Date is greater than the Start Date.<br/>" + "\n";
 	    $("#mentorship_end_date").addClass('txtbrcolr');
 		$('.end_date').css('border-color','red');
 	    }

@@ -151,39 +151,30 @@
 					</table>
 				</form>
 				<script>     
-			        $('#mentorship_start_date').datepicker({
-			
-						id: 'start_date',
-			            uiLibrary: 'bootstrap4',
-			
-			            iconsLibrary: 'fontawesome',
-			
-						format: 'mm-dd-yyyy',        
-			
+			        $('#mentorship_start_date').datepicker({			
+						uiLibrary: 'bootstrap4',			
+			            iconsLibrary: 'fontawesome',			
+						format: 'mm-dd-yyyy',       			
 			        });
 			
-			        $('#mentorship_end_date').datepicker({
-				
-						id: 'end_date',
-			
-			            uiLibrary: 'bootstrap4',
-			
-			            iconsLibrary: 'fontawesome',     
-			
-						format: 'mm-dd-yyyy',     
-			
+			        $('#mentorship_end_date').datepicker({			
+			            uiLibrary: 'bootstrap4',			
+			            iconsLibrary: 'fontawesome',     			
+						format: 'mm-dd-yyyy',     			
 			        }); 
 			
 					$("#mentorship_start_date").change(function(){
-
 				    	if($(this).val().length >0){
-
-							$("#mentorship_start_date").removeClass("txtbrcolr");
-							
+							$("#mentorship_start_date").removeClass("txtbrcolr");							
 							$('.start_date').css('border-color','#ced4da');
 						}   
-
-					});   
+					}); 
+					
+					$("#mentorship_end_date").change(function(){
+						    	if($(this).val().length >0){
+									$('.end_date').css('border-color','#ced4da');
+								}   
+					});     
 					
     			</script>
 			</div>				
