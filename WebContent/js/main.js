@@ -16,8 +16,6 @@
 				var batch_id=document.forms["batch_info_form"]["batch_id"].value;
 				var batch_start_date=document.getElementsByName("batch_start_date")[0].value;
 				
-				//var batch_start_date=document.getElementById("batch_start_date").value;
-				alert("Hello"+batch_start_date);
 				var batch_end_date=document.getElementById("batch_end_date").value;
 				var batch_status=document.getElementById("batch_status").value;
 				var default_id="";

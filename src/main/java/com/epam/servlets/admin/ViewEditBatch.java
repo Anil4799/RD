@@ -21,6 +21,7 @@ public class ViewEditBatch extends HttpServlet {
        
 	private static final Logger LOGGER = Logger.getLogger(ViewEditBatch.class);
   
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		

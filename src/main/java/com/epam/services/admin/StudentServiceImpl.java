@@ -32,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
 	private static final  String EMAILID="Email_Id";
 
 	String query = null;
-	int existing_email=0;
+	int existingEmail=0;
 	public  int addPersonalInfo(StudentBean studentBean){
 		try {
 			   connection = DBManager.getConnection();
@@ -41,7 +41,7 @@ public class StudentServiceImpl implements StudentService {
 			   resultSet = preparedStatement.executeQuery();
 			   if(resultSet.next())
 			   {
-				   existing_email = 1;
+				   existingEmail = 1;
 				   numberOfRowsInserted = 0;
 				   return numberOfRowsInserted;
 			   }
@@ -146,7 +146,7 @@ public class StudentServiceImpl implements StudentService {
             	  numberofrow1=addEducationalInfo(studentBean);
 	              numberofrow2=addAddtionalInfo(studentBean);
              }	
-             if(existing_email == 1) {
+             if(existingEmail == 1) {
             	 result = 2;
              }
              if((numberofrow>0)&& (numberofrow1>0)&& (numberofrow2>0)) {	             
