@@ -40,6 +40,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 			statement.registerOutParameter(dbbatchId, Types.VARCHAR);
 			statement.execute();
 			batchId = statement.getString(dbbatchId);
+			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
 			exception.printStackTrace();

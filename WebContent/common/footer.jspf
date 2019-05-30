@@ -54,12 +54,43 @@
 		
 		$('#batch_status').attr("disabled", true);
 		
-		
+		/*	
+		$("#batch_start_date").change(function(){	
+			alert("dsdsgdsgfds");
+		});
 			
+		*/
 		$("#batch_start_date").focusout(function(){
-			var v =document.getElementById('batch_start_date').value;
-			 
-			//alert("start date is "+v);
+			
+			var StartDateNew =document.getElementById('batch_start_date').value;
+			
+			var StartDateOld =document.getElementById('testBatchStartDate').value;
+			//alert(StartDateNew+"   "+StartDateOld+"jhgjhg")
+			var OldBatchId=document.getElementById('batch_id').value;
+			var SDateNew=StartDateNew.split("-");
+  			var SDateOld=StartDateOld.split("-");
+
+			var SDateNewParsed=new Date(SDateNew[2], SDateNew[0]-1, SDateNew[1]);
+			var SDateOldParsed=new Date(SDateOld[2], SDateOld[0]-1, SDateOld[1]);
+			
+			var monthOld=SDateOldParsed.getMonth()+1;
+			var monthNew=SDateNewParsed.getMonth()+1;
+			
+			var quarterOld=Math.ceil(monthOld/3);
+			var quarterNew=Math.ceil(monthNew/3);
+				
+			
+			var YearNew=SDateNewParsed.getFullYear();
+			var YearOld=SDateOldParsed.getFullYear();
+			
+			if((quarterOld==quarterNew) &&(YearNew==YearOld) ){
+				
+				document.getElementById('batch_id').value = OldBatchId;
+			}
+			
+			else{	
+				//alert(Math.ceil(monthOld/3)+"   "+Math.ceil(monthNew/3)+"  "+SDateNewParsed.getFullYear() );
+			
 			var xhttp;
 			
 			if (window.XMLHttpRequest) {
@@ -75,9 +106,9 @@
 			      $("#batch_id").removeClass('txtbrcolr');
 			    }
 			  };
-			  xhttp.open("GET", "/admin-portal/BatchInfoServlet?batch_start_date="+v, true);
+			  xhttp.open("GET", "/admin-portal/BatchInfoServlet?batch_start_date="+StartDateNew, true);
 			  xhttp.send();
-					
+			}
 		});	
 
 	 
