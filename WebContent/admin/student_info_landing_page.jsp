@@ -8,7 +8,7 @@
 </div>
 <div class="container">
 		<c:if test="${result eq false}">
-			<form action="adminStudentSearch" method="post">
+			<form action="SearchServlet" method="post">
 				<table class="table">
 					<tr>
 						<td><input type="text" class="form-control" placeholder="First Name" name="firstname"></td>
@@ -73,7 +73,7 @@
 			</table>
 		</c:if>
 		<c:if test="${result eq true}">
-			<form action="adminStudentSearch" method="post">
+			<form action="SearchServlet" method="post">
 				<table class="table">
 					<tr>
 						<td><input type="text" class="form-control" placeholder="First Name" name="firstname" value="${firstname}"></td>
