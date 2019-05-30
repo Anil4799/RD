@@ -84,7 +84,7 @@
 					<table width="38%" style="margin-left: 0%;">
 						<tr>
 							<td class="form_lable">Name:<span class="required">*</span></td>
-							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required value=<%=mentor.getName()%> /></td>								
+							<td><input type="text" id="mentor_name" name="mentor_name" class="form-control form-control-sm" size="30" required value='<%=mentor.getName()%>'/></td>								
 						</tr>
 						<tr>
 							<td class="form_lable">Email:<span class="required">*</span> </td>
