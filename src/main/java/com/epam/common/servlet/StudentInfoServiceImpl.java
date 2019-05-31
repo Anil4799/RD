@@ -3,6 +3,7 @@ package com.epam.common.servlet;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +26,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();){
 			while(rs.next()){
 				StudentBean student=new StudentBean();
-				student.setFirstName(rs.getString(FIRSTNAME));
-				student.setLastName(rs.getString(LASTNAME));
-				student.setEmail(rs.getString(EMAILID));
-				student.setBatchId(rs.getString(BATCHID));
-				student.setCoreSkill(rs.getString(CORESKILL));
+				setStudentInfo(rs, student);
 				student.setMentorName(rs.getString(MENTORNAME));
-				student.setStatus(rs.getString(STATUS));
 				studentList.add(student);
 			}
 		}catch(Exception e){
@@ -39,6 +35,15 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			e.getMessage();
 		}
 		return studentList;
+	}
+
+	private void setStudentInfo(ResultSet rs, StudentBean student) throws SQLException {
+		student.setFirstName(rs.getString(FIRSTNAME));
+		student.setLastName(rs.getString(LASTNAME));
+		student.setEmail(rs.getString(EMAILID));
+		student.setBatchId(rs.getString(BATCHID));
+		student.setCoreSkill(rs.getString(CORESKILL));
+		student.setStatus(rs.getString(STATUS));
 	}
 
 	@Override
@@ -52,13 +57,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			try (ResultSet rs = cs.executeQuery();){
 			while(rs.next()){
 				StudentBean student=new StudentBean();
-				student.setFirstName(rs.getString(FIRSTNAME));
-				student.setLastName(rs.getString(LASTNAME));
-				student.setEmail(rs.getString(EMAILID));
-				student.setBatchId(rs.getString(BATCHID));
-				student.setCoreSkill(rs.getString(CORESKILL));
+				setStudentInfo(rs, student);
 				student.setMentorName(rs.getString(MENTORNAME));
-				student.setStatus(rs.getString(STATUS));
 				studentList.add(student);
 			}
 			}
@@ -83,12 +83,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();
-					student.setFirstName(rs.getString(FIRSTNAME));
-					student.setLastName(rs.getString(LASTNAME));
-					student.setEmail(rs.getString(EMAILID));
-					student.setBatchId(rs.getString(BATCHID));
-					student.setCoreSkill(rs.getString(CORESKILL));
-					student.setStatus(rs.getString(STATUS));	
+					setStudentInfo(rs, student);	
 					studentList.add(student);
 				}
 			}
@@ -107,11 +102,9 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			try(ResultSet rs = cs.executeQuery();)
 			{
 			while(rs.next()){
-				StudentBean student=new StudentBean();					 
-				 student.setFirstName(rs.getString(FIRSTNAME));
-				 student.setLastName(rs.getString(LASTNAME));
+				StudentBean student=new StudentBean();	
+				setStudentInfo(rs, student);
 				 student.setDateOfBirth(rs.getString("date_of_birth")); 
-				 student.setEmail(rs.getString(EMAILID));
 				 student.setGender(rs.getString("gender"));
 				 student.setContactNumber(rs.getLong("contact"));
 				 student.setPersonalLocation(rs.getString("location"));
@@ -123,16 +116,13 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 				 student.setGraduationMarks(rs.getInt("Graduation_Marks"));
 				 student.setTwelveth(rs.getInt("Inter_Marks"));
 				 student.setTenth(rs.getInt("SSc_Marks"));
-				 student.setBatchId(rs.getString("Batch_id"));
 				 student.setEmployeeType(rs.getString("Emp_type"));
-				 student.setCoreSkill(rs.getString(CORESKILL));
 				 student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
 				 student.setAssignedStream(rs.getString("Assigned_Stream"));
 				 student.setDoj(rs.getString("Date_Of_Joining"));
 				 student.setMentorName(rs.getString(MENTORNAME));
 				 student.setAssignedLocation(rs.getString("Assigned_location"));
 				 student.setRelocation(rs.getString("relocation"));
-				 student.setStatus(rs.getString(STATUS));
 				 studentList.add(student);									
 			}
 			}
@@ -153,12 +143,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();
-					student.setFirstName(rs.getString(FIRSTNAME));
-					student.setLastName(rs.getString(LASTNAME));
-					student.setEmail(rs.getString(EMAILID));
-					student.setBatchId(rs.getString(BATCHID));
-					student.setCoreSkill(rs.getString(CORESKILL));
-					student.setStatus(rs.getString(STATUS));	
+					setStudentInfo(rs, student);	
 					studentList.add(student);
 				}
 			}
@@ -178,10 +163,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();
-					student.setFirstName(rs.getString(FIRSTNAME));
-					student.setLastName(rs.getString(LASTNAME));
+					setStudentInfo(rs, student);
 					student.setDateOfBirth(rs.getString("date_of_birth")); 
-					student.setEmail(rs.getString(EMAILID));
 					student.setGender(rs.getString("gender"));
 					student.setContactNumber(rs.getLong("contact"));
 					student.setPersonalLocation(rs.getString("location"));
@@ -193,16 +176,13 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 					student.setGraduationMarks(rs.getInt("Graduation_Marks"));
 					student.setTwelveth(rs.getInt("Inter_Marks"));
 					student.setTenth(rs.getInt("SSc_Marks"));
-					student.setBatchId(rs.getString("Batch_id"));
 					student.setEmployeeType(rs.getString("Emp_type"));
-					student.setCoreSkill(rs.getString(CORESKILL));
 					student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
 					student.setAssignedStream(rs.getString("Assigned_Stream"));
 					student.setDoj(rs.getString("Date_Of_Joining"));
 					student.setMentorName(rs.getString(MENTORNAME));
 					student.setAssignedLocation(rs.getString("Assigned_location"));
 					student.setRelocation(rs.getString("relocation"));
-					student.setStatus(rs.getString(STATUS));
 					studentList.add(student);
 				}
 			}
