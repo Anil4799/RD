@@ -103,26 +103,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			{
 			while(rs.next()){
 				StudentBean student=new StudentBean();	
-				setStudentInfo(rs, student);
-				 student.setDateOfBirth(rs.getString("date_of_birth")); 
-				 student.setGender(rs.getString("gender"));
-				 student.setContactNumber(rs.getLong("contact"));
-				 student.setPersonalLocation(rs.getString("location"));
-				 student.setCollegeName(rs.getString("college_name"));
-				 student.setCollegeLocation(rs.getString("college_loc"));
-				 student.setGraduation(rs.getString("graduation"));
-				 student.setGraduationSpeciality(rs.getString("graduation_stream"));
-				 student.setYearOfPassedOut(rs.getInt("Passed_out_year"));
-				 student.setGraduationMarks(rs.getInt("Graduation_Marks"));
-				 student.setTwelveth(rs.getInt("Inter_Marks"));
-				 student.setTenth(rs.getInt("SSc_Marks"));
-				 student.setEmployeeType(rs.getString("Emp_type"));
-				 student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
-				 student.setAssignedStream(rs.getString("Assigned_Stream"));
-				 student.setDoj(rs.getString("Date_Of_Joining"));
-				 student.setMentorName(rs.getString(MENTORNAME));
-				 student.setAssignedLocation(rs.getString("Assigned_location"));
-				 student.setRelocation(rs.getString("relocation"));
+				 setRemainingStudentInfo(rs, student);
 				 studentList.add(student);									
 			}
 			}
@@ -131,6 +112,29 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			e.getMessage();
 		}
 		return studentList;
+	}
+
+	private void setRemainingStudentInfo(ResultSet rs, StudentBean student) throws SQLException {
+		setStudentInfo(rs, student);
+		 student.setDateOfBirth(rs.getString("date_of_birth")); 
+		 student.setGender(rs.getString("gender"));
+		 student.setContactNumber(rs.getLong("contact"));
+		 student.setPersonalLocation(rs.getString("location"));
+		 student.setCollegeName(rs.getString("college_name"));
+		 student.setCollegeLocation(rs.getString("college_loc"));
+		 student.setGraduation(rs.getString("graduation"));
+		 student.setGraduationSpeciality(rs.getString("graduation_stream"));
+		 student.setYearOfPassedOut(rs.getInt("Passed_out_year"));
+		 student.setGraduationMarks(rs.getInt("Graduation_Marks"));
+		 student.setTwelveth(rs.getInt("Inter_Marks"));
+		 student.setTenth(rs.getInt("SSc_Marks"));
+		 student.setEmployeeType(rs.getString("Emp_type"));
+		 student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
+		 student.setAssignedStream(rs.getString("Assigned_Stream"));
+		 student.setDoj(rs.getString("Date_Of_Joining"));
+		 student.setMentorName(rs.getString(MENTORNAME));
+		 student.setAssignedLocation(rs.getString("Assigned_location"));
+		 student.setRelocation(rs.getString("relocation"));
 	}
 	
 	
@@ -163,26 +167,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();
-					setStudentInfo(rs, student);
-					student.setDateOfBirth(rs.getString("date_of_birth")); 
-					student.setGender(rs.getString("gender"));
-					student.setContactNumber(rs.getLong("contact"));
-					student.setPersonalLocation(rs.getString("location"));
-					student.setCollegeName(rs.getString("college_name"));
-					student.setCollegeLocation(rs.getString("college_loc"));
-					student.setGraduation(rs.getString("graduation"));
-					student.setGraduationSpeciality(rs.getString("graduation_stream"));
-					student.setYearOfPassedOut(rs.getInt("Passed_out_year"));
-					student.setGraduationMarks(rs.getInt("Graduation_Marks"));
-					student.setTwelveth(rs.getInt("Inter_Marks"));
-					student.setTenth(rs.getInt("SSc_Marks"));
-					student.setEmployeeType(rs.getString("Emp_type"));
-					student.setPreferredStudentStream(rs.getString("Preferred_Student_Stream"));
-					student.setAssignedStream(rs.getString("Assigned_Stream"));
-					student.setDoj(rs.getString("Date_Of_Joining"));
-					student.setMentorName(rs.getString(MENTORNAME));
-					student.setAssignedLocation(rs.getString("Assigned_location"));
-					student.setRelocation(rs.getString("relocation"));
+					setRemainingStudentInfo(rs, student);
 					studentList.add(student);
 				}
 			}
