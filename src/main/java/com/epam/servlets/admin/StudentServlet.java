@@ -25,6 +25,9 @@ public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final StudentService studentService = new StudentServiceImpl();
 	private static final Logger LOGGER = Logger.getLogger(StudentServlet.class);
+	
+	private static final String RESULT = "result";
+	 
 
     @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -112,10 +115,10 @@ public class StudentServlet extends HttpServlet {
 			  result = studentService.addStudentDetails(studentBean);
 			  
 			  if(result == 1) {
-				    request.setAttribute("result", "success");
+				    request.setAttribute(RESULT, "success");
 					
 				} else  if(result == 0){
-					request.setAttribute("result", "fail");
+					request.setAttribute(RESULT, "fail");
 				} 
 			  
 			  request.getRequestDispatcher("admin/student_added_successfully.jsp").forward(request, response);
@@ -135,10 +138,10 @@ public class StudentServlet extends HttpServlet {
 			  result = studentService.editStudentDetails(studentBean);
 			  
 			  if(result == 1) {
-				    request.setAttribute("result", "success");
+				    request.setAttribute(RESULT, "success");
 					
 				} else  if(result == 0){
-					request.setAttribute("result", "fail");
+					request.setAttribute(RESULT, "fail");
 				}
 			  
 			  request.getRequestDispatcher("admin/studentEditedSuccessfully.jsp").forward(request, response);
