@@ -1,4 +1,5 @@
 package com.epam.services.admin;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,75 +13,55 @@ import org.apache.log4j.Logger;
 import com.epam.dao.admin.Batch;
 import com.epam.utils.DBManager;
 
-
-public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
+public class AdminBatchInfoServiceImpl implements AdminBatchInfoService {
 	private static final Logger LOGGER = Logger.getLogger(AdminBatchInfoServiceImpl.class);
+
 	@Override
 	public List<Batch> getAllBatchsList(Connection con) {
-		String sql="call batch();";
+		String sql = "call batch();";
 		List<Batch> batchList = new ArrayList<>();
 
-
-		try(CallableStatement cs=con.prepareCall(sql);ResultSet rs=cs.executeQuery();)
-		{
+		try (CallableStatement cs = con.prepareCall(sql); ResultSet rs = cs.executeQuery();) {
 
 			processResultSet(batchList, rs);
-			
-						
+
+		} catch (Exception e) {
+			batchList = null;
+
 		}
-		catch(Exception e)
-		{
-			batchList=null;
-		
-		}
-		
+
 		return batchList;
 	}
-	
-	
-	
-	
-	
-	public List<Batch> getAllBatchListWithInDateRange(Connection connection,String startDate,String endDate){
 
-		
+	public List<Batch> getAllBatchListWithInDateRange(Connection connection, String startDate, String endDate) {
+
 		List<Batch> batchList = new ArrayList<>();
 
-		try(CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");) {
+		try (CallableStatement statement = connection.prepareCall("{call batchListWithInDateRange(?,?)}");) {
 
-			
 			java.sql.Date sqlStartDate = formatToSqlDate(startDate);
 			java.sql.Date sqlEndDate = formatToSqlDate(endDate);
-						
+
 			statement.setDate("startDate", sqlStartDate);
 			statement.setDate("endDate", sqlEndDate);
-			
-						
-			ResultSet rs=statement.executeQuery();
-			
+
+			ResultSet rs = statement.executeQuery();
 
 			processResultSet(batchList, rs);
 
-			
 		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage());
 		} finally {
 			DBManager.closeConnection(connection);
 		}
-		
 
 		return batchList;
-		
+
 	}
 
-
-
-
-
 	private void processResultSet(List<Batch> batchList, ResultSet rs) throws SQLException {
-		while(rs.next())
-		{
-			Batch batch=new Batch();
+		while (rs.next()) {
+			Batch batch = new Batch();
 			batch.setSerialNo(rs.getInt("Serial_Num"));
 			batch.setBatchid(rs.getString("batch_id"));
 			batch.setBatchnum(rs.getInt("batch_num"));
@@ -89,70 +70,44 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 			batch.setStartdate(rs.getString("start_date"));
 			batch.setStatus(rs.getString("status"));
 			batch.setYearnum(rs.getInt("year_num"));
-			
+
 			batchList.add(batch);
 		}
 	}
-
-
-
-
 
 	private java.sql.Date formatToSqlDate(String startDate) throws ParseException {
 		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		DateFormat sdfOriginal = new SimpleDateFormat("MM-dd-yyyy");
 		String formattedDate = sdf.format(sdfOriginal.parse(startDate));
-		
+
 		return java.sql.Date.valueOf(formattedDate);
 	}
 
-
-
-
-
 	@Override
 	public int updateStartProgressStatus(Connection con, String comment, String batchId) {
-		String sql="call startProgressStatus(?,?);";
-		int result=0;
+		String sql = "call startProgressStatus(?,?);";
+		return updateBatchStatus(con, comment, batchId, sql);
+	}
 
-		try(CallableStatement cs=con.prepareCall(sql);)
-		{
+	private int updateBatchStatus(Connection con, String comment, String batchId, String sql) {
+		int result = 0;
+
+		try (CallableStatement cs = con.prepareCall(sql);) {
 			cs.setString(1, batchId);
 			cs.setString(2, comment);
-			result=cs.executeUpdate();
-					
-		}
-		catch(Exception e)
-		{
-			result=0;
+			result = cs.executeUpdate();
+
+		} catch (Exception e) {
+			result = 0;
 			LOGGER.error(e.getMessage());
-		
+
 		}
 		return result;
 	}
 
-
-
-
-
 	@Override
 	public int updateCompleteStatus(Connection con, String comment, String batchId) {
-		String sql="call completeStatus(?,?);";
-		int result=0;
-
-		try(CallableStatement cs=con.prepareCall(sql);)
-		{
-			cs.setString(1, batchId);
-			cs.setString(2, comment);
-			result=cs.executeUpdate();
-					
-		}
-		catch(Exception e)
-		{
-			result=0;
-			LOGGER.error(e.getMessage());
-		
-		}
-		return result;
+		String sql = "call completeStatus(?,?);";
+		return updateBatchStatus(con, comment, batchId, sql);
 	}
 }
