@@ -44,8 +44,12 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 	@Override
 	public List<StudentBean> getAllSearchStudentDetails(Connection con, String firstNamedb,String lastNamedb,String batchIDdb) {
 		List<StudentBean> studentList = new ArrayList<>();
-		String sql="call search_admin_student('"+firstNamedb+"','"+lastNamedb+"','"+batchIDdb+"');";
-		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();){
+		String sql="call search_admin_student(?,?,?);";
+		try(CallableStatement cs= con.prepareCall(sql);	){
+			cs.setString(1, firstNamedb);
+			cs.setString(2, lastNamedb);
+			cs.setString(3, batchIDdb);
+			try (ResultSet rs = cs.executeQuery();){
 			while(rs.next()){
 				StudentBean student=new StudentBean();
 				student.setFirstName(rs.getString(FIRSTNAME));
@@ -57,6 +61,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 				student.setStatus(rs.getString(STATUS));
 				studentList.add(student);
 			}
+			}
+			
 		}catch(Exception e){
 			studentList=null;
 		}
@@ -68,8 +74,12 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			String batchIDdb) {
 		
 		List<StudentBean> studentList = new ArrayList<>();
-		String sql="call search_mentor_student('"+mentorEmailId+"','"+firstNamedb+"','"+lastNamedb+"','"+batchIDdb+"');";
+		String sql="call search_mentor_student(?,?,?,?);";
 		try(CallableStatement cs= con.prepareCall(sql);){
+			cs.setString(1, mentorEmailId);
+			cs.setString(2, firstNamedb);
+			cs.setString(3, lastNamedb);
+			cs.setString(4, batchIDdb);
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();
@@ -91,8 +101,11 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 	@Override
 	public List<StudentBean> adminStudentDetails(Connection con, String studentEmailId) {
 		List<StudentBean> studentList = new ArrayList<>();
-		String sql="call viewStudent('"+studentEmailId+"');";
-		try(CallableStatement cs= con.prepareCall(sql);	ResultSet rs = cs.executeQuery();){
+		String sql="call viewStudent(?);";
+		try(CallableStatement cs= con.prepareCall(sql);){
+			cs.setString(1, studentEmailId);
+			try(ResultSet rs = cs.executeQuery();)
+			{
 			while(rs.next()){
 				StudentBean student=new StudentBean();					 
 				 student.setFirstName(rs.getString(FIRSTNAME));
@@ -122,6 +135,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 				 student.setStatus(rs.getString(STATUS));
 				 studentList.add(student);									
 			}
+			}
 		}catch(Exception e){
 			studentList=null;
 			e.getMessage();
@@ -133,8 +147,9 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 	@Override
 	public List<StudentBean> mentorStudentDetails(Connection con, String mentorEmailId) {
 		List<StudentBean> studentList = new ArrayList<>();
-		String sql = "call mentorStudent('"+mentorEmailId+"');";
+		String sql = "call mentorStudent(?);";
 		try(CallableStatement cs= con.prepareCall(sql);){
+			cs.setString(1, mentorEmailId);
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();
@@ -157,8 +172,9 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 	@Override
 	public List<StudentBean> mentorViewStudentDetails(Connection con, String emailId) {
 		List<StudentBean> studentList = new ArrayList<>();
-		String sql = "call viewStudent('"+emailId+"');";
+		String sql = "call viewStudent(?);";
 		try(CallableStatement cs= con.prepareCall(sql);){
+			cs.setString(1, emailId);
 			try(ResultSet rs = cs.executeQuery();){
 				while(rs.next()){
 					StudentBean student=new StudentBean();

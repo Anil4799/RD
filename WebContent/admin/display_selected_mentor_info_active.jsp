@@ -9,7 +9,7 @@
 				border: 0px;
 			}
 			.form_value{			
-			color: #6E6E6E;
+			color: #000;
 			}	
 		</style>	
 		

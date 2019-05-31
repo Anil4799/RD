@@ -112,11 +112,13 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 
 	@Override
 	public int updateStartProgressStatus(Connection con, String comment, String batchId) {
-		String sql="call startProgressStatus('"+batchId+"','"+comment+"');";
+		String sql="call startProgressStatus(?,?);";
 		int result=0;
 
 		try(CallableStatement cs=con.prepareCall(sql);)
 		{
+			cs.setString(1, batchId);
+			cs.setString(2, comment);
 			result=cs.executeUpdate();
 					
 		}
@@ -135,11 +137,13 @@ public class AdminBatchInfoServiceImpl  implements AdminBatchInfoService {
 
 	@Override
 	public int updateCompleteStatus(Connection con, String comment, String batchId) {
-		String sql="call completeStatus('"+batchId+"','"+comment+"');";
+		String sql="call completeStatus(?,?);";
 		int result=0;
 
 		try(CallableStatement cs=con.prepareCall(sql);)
 		{
+			cs.setString(1, batchId);
+			cs.setString(2, comment);
 			result=cs.executeUpdate();
 					
 		}

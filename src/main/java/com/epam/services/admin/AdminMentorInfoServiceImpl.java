@@ -55,14 +55,18 @@ public class AdminMentorInfoServiceImpl implements AdminMentorInfoService {
 	public List<Mentor> searchMentors(Connection con, String mentorname, String technology) {
 		List<Mentor> mentorList = new ArrayList<>();
 		if(mentorname.length()!=0||technology.length()!=0) {
-			String sql="call search_admin_mentor('"+mentorname+"','"+technology+"');";
-			try(CallableStatement  cs= con.prepareCall(sql);ResultSet rs=cs.executeQuery(sql) ){
+			String sql="call search_admin_mentor(?,?);";
+			try(CallableStatement  cs= con.prepareCall(sql); ){
+				cs.setString(1, mentorname);
+				cs.setString(2, technology);
+				try(ResultSet rs=cs.executeQuery()) {
 				if(rs!=null){
 					while(rs.next()){   
 						Mentor mentor=mentorORM(rs);
 						mentorList.add(mentor);
 					}
 				}	
+				}
 			}catch(Exception e){
 				LOGGER.error("Exception occured in MentorInfo = {}", e);
 			}

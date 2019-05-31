@@ -58,7 +58,7 @@ CREATE TABLE `batch_info` (
   `Comment` longtext,
   PRIMARY KEY (`Batch_Id`),
   UNIQUE KEY `Serial_Num_UNIQUE` (`Serial_Num`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `batch_info` (
 
 LOCK TABLES `batch_info` WRITE;
 /*!40000 ALTER TABLE `batch_info` DISABLE KEYS */;
-INSERT INTO `batch_info` VALUES (24,5,'RD-Q2-2019-B5',2019,'Q2','2019-05-07','2019-05-09','Completed','ccccctttteeee'),(20,6,'RD-Q2-2019-B6',2019,'Q2','2019-05-07','2019-05-09','Completed','rrrggggwww'),(21,7,'RD-Q2-2019-B7',2019,'Q2','2019-05-31','2019-06-21','Completed',NULL),(22,8,'RD-Q2-2019-B8',2019,'Q2','2019-06-01','2019-12-10','Completed','abcdefuuu'),(23,1,'RD-Q3-2019-B1',2019,'Q3','2019-09-02','2019-12-31','Completed','xxxxxggg');
+INSERT INTO `batch_info` VALUES (50,1,'RD-Q1-2019-B1',2019,'Q1','2019-01-16','2019-09-27','Not Started',NULL),(53,2,'RD-Q1-2019-B2',2019,'Q1','2019-01-28','2019-08-30','Completed','assddsdad'),(49,1,'RD-Q2-2019-B1',2019,'Q2','2019-04-17','2019-06-21','Not Started',NULL),(51,2,'RD-Q2-2019-B2',2019,'Q2','2019-05-02','2019-05-30','Not Started',NULL),(52,3,'RD-Q2-2019-B3',2019,'Q2','2019-05-02','2019-05-24','In progress','sadsaa'),(54,1,'RD-Q3-2019-B1',2019,'Q3','2019-07-01','2019-11-30','Completed','saddsasadsad');
 /*!40000 ALTER TABLE `batch_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `mentor_info` (
   `Status` varchar(400) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`Email_Id`),
   UNIQUE KEY `SerialNo_UNIQUE` (`SerialNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +188,7 @@ CREATE TABLE `mentor_info` (
 
 LOCK TABLES `mentor_info` WRITE;
 /*!40000 ALTER TABLE `mentor_info` DISABLE KEYS */;
-INSERT INTO `mentor_info` VALUES (15,' ',' ','0000-00-00','0000-00-00',NULL,NULL,NULL),(16,'Jagadeesh_Dandu','Jagadeesh_Dandu@epam.com','2019-05-09','2019-06-01',6,'SDET - Software Development Engineer in Testing','inactive'),(17,'Karthik','Karthik_Kota@gmail.com','2019-05-07','2019-05-30',7,'SDET - Software Development Engineer in Testing','active'),(20,'Karthik','Karthi_Kota@epam.com','2019-05-07','2019-05-31',7,'Java','active'),(14,'SSS','sss@sss.com','2019-05-07','2019-05-24',12,'Java','active'),(19,'Sudheer','Sudheer_Surya@epam.com','2019-05-07','2019-05-23',6,'.Net','onhold'),(12,'test','test_mentor1@epam.com','2019-05-06','2019-05-31',10,'Java','active');
+INSERT INTO `mentor_info` VALUES (15,' ',' ','0000-00-00','0000-00-00',NULL,NULL,NULL),(25,'3SKR','3skr@jjj.com','2019-05-01',NULL,1,'Java','active'),(26,'4skr','asd@asd.lll','2019-05-15','2019-05-31',1,'Java','active'),(24,'sss','dsad@asd.cim','2019-04-29',NULL,1,'','active'),(23,'wert','gty@e.ghi','2019-05-02','2019-05-05',3,'DEP - [Digital Experience Practice]','active'),(16,'Jagadeesh_Dandu','Jagadeesh_Dandu@epam.com','2019-05-09','2019-06-01',6,'SDET - Software Development Engineer in Testing','inactive'),(17,'Karthik','Karthik_Kota@gmail.com','2019-05-07','2019-05-30',7,'SDET - Software Development Engineer in Testing','active'),(20,'Karthik','Karthi_Kota@epam.com','2019-05-07','2019-05-31',22,'Big-Data','inactive'),(14,'SSS','sss@sss.com','2019-05-07','2019-05-24',12,'Java','active'),(19,'Sudheer','Sudheer_Surya@epam.com','2019-05-07','2019-05-23',6,'.Net','onhold'),(12,'test','test_mentor1@epam.com','2019-05-06','2019-05-31',10,'Java','active'),(22,'Test Mentor2','Test_Mentor2@epam.com','2019-08-01','2019-10-31',12,'DEP - [Digital Experience Practice]','active');
 /*!40000 ALTER TABLE `mentor_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +213,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'STUDENT INFO','studentList'),(2,'MENTOR INFO','mentorList'),(3,'BATCH INFO','batchInfo'),(4,'REPORTS','reports'),(5,'STUDENT INFO','mentorstudentList'),(6,'FEEDBACK','jsp/timesheet.jsp'),(7,'TIMESHEET','jsp/timesheet.jsp');
+INSERT INTO `menu` VALUES (1,'STUDENT INFO','studentList'),(2,'MENTOR INFO','mentorList'),(3,'BATCH INFO','batchInfo?testSearchOrNot=\"no\"'),(4,'REPORTS','reports'),(5,'STUDENT INFO','mentorstudentList'),(6,'FEEDBACK','jsp/timesheet.jsp'),(7,'TIMESHEET','jsp/timesheet.jsp');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,7 +341,7 @@ CREATE TABLE `student__additional_info` (
   PRIMARY KEY (`SerialNo`),
   KEY `Email_Id` (`Email_Id`),
   CONSTRAINT `student__additional_info_ibfk_1` FOREIGN KEY (`Email_Id`) REFERENCES `student_personal_info` (`Email_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,7 +350,7 @@ CREATE TABLE `student__additional_info` (
 
 LOCK TABLES `student__additional_info` WRITE;
 /*!40000 ALTER TABLE `student__additional_info` DISABLE KEYS */;
-INSERT INTO `student__additional_info` VALUES (8,'a@a.a','RD-Q2-2019-B6','FTE','Python','','','0012-05-11',' ','Hyderbad','Yes','Active'),(9,'bb@bb.com','RD-Q2-2019-B6','FTE','Python','Java','Big-Data','0012-07-11','test_mentor1@epam.com','Hyderbad','Yes','Active'),(10,'rr@rr.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11',' ','Hyderbad','Yes','Active'),(11,'WER','RD-Q2-2019-B6','FTE','Python','Java','.Net','0013-01-08','test_mentor1@epam.com','Hyderbad','No','Resigned as Intern'),(12,'vvv@vvv.vvv','RD-Q2-2019-B6','FTE','Python','.Net','','2019-05-29','sss@sss.com','Hyderbad','Yes','Terminated'),(13,'epam@epam','RD-Q2-2019-B7','Internship','Java','Java','.Net','2019-05-21','test_mentor1@epam.com','Hyderbad','Yes','Active'),(14,'ewrtqwe@gmail.com','RD-Q2-2019-B6','FTE','Java','Java','','2019-05-24','test_mentor1@epam.com','Hyderbad','Yes','Resigned as FTE'),(15,'revathi_anu@epam.com','RD-Q2-2019-B6','FTE','Java','','','2019-01-01',' ','Hyderbad','No','Active');
+INSERT INTO `student__additional_info` VALUES (8,'a@a.a','RD-Q2-2019-B6','FTE','Python','','','0012-05-11',' ','Hyderbad','Yes','Active'),(9,'bb@bb.com','RD-Q2-2019-B6','FTE','Python','Java','Big-Data','0012-07-11','test_mentor1@epam.com','Hyderbad','Yes','Active'),(10,'rr@rr.com','RD-Q2-2019-B6','FTE','Python','','','0012-07-11',' ','Hyderbad','Yes','Active'),(11,'WER','RD-Q2-2019-B6','FTE','Python','Java','.Net','0013-01-08','test_mentor1@epam.com','Hyderbad','No','Resigned as Intern'),(12,'vvv@vvv.vvv','RD-Q2-2019-B6','FTE','Python','.Net','','2019-05-29','sss@sss.com','Hyderbad','Yes','Terminated'),(13,'epam@epam','RD-Q2-2019-B7','Internship','Java','Java','.Net','2019-05-21','test_mentor1@epam.com','Hyderbad','Yes','Active'),(14,'ewrtqwe@gmail.com','RD-Q2-2019-B6','FTE','Java','Java','','2019-05-24','test_mentor1@epam.com','Hyderbad','Yes','Resigned as FTE'),(15,'revathi_anu@epam.com','RD-Q2-2019-B6','FTE','Java','','','2019-01-01',' ','Hyderbad','No','Active'),(16,'Srikanth_Tigapuram@sss.com','RD-Q2-2019-B6','FTE','Python','','','2019-05-09',' ','Hyderbad','Yes','Active'),(17,'sasdfdsf','RD-Q2-2019-B6','FTE','Python','','','2019-05-22',' ','Hyderbad','Yes','Active'),(18,'revathi_anumola2@epam.com','RD-Q2-2019-B1','FTE','Java','','','2019-06-28','test_mentor1@epam.com','Hyderbad','No','Active'),(19,'Revathi_Anumola3@epam.com','RD-Q2-2019-B5','FTE','.Net','','','2019-05-01',' ','Hyderbad','No','Active'),(20,'mana@epam','RD-Q2-2019-B2','Internship','Java','','','2019-05-29',' ','Hyderbad','No','Active'),(21,'Revathi_Anumola4@epam.com','RD-Q2-2019-B3','FTE','Python','','','2020-08-05',' ','Hyderbad','Yes','Active'),(22,'Revathi_Anumola5@epam.com','RD-Q2-2019-B5','Internship','Python','','','2019-07-01','test_mentor1@epam.com','Hyderbad','No','Active'),(23,'ravi@epam','RD-Q2-2019-B3','FTE','Java','Java','Java','2019-06-01','Jagadeesh_Dandu@epam.com','Hyderbad','Yes','Active'),(24,'a@epam.com','RD-Q2-2019-B2','Internship','.Net','','','2019-05-29',' ','Hyderbad','Yes','Active'),(25,'xyz@xyz.xyz','RD-Q2-2019-B2','FTE','PHP','','','2019-05-14',' ','Hyderbad','No','Resigned as Intern'),(26,'rev@epam','RD-Q1-2019-B1','Internship','Python','Java','Java','2019-05-29','Jagadeesh_Dandu@epam.com','Hyderbad','Yes','Active'),(27,'adsa@fdguf.dgsfdh','RD-Q1-2019-B1','Internship','JavaScript','','','2019-05-22',' ','Hyderbad','No','Resigned as FTE'),(28,'sd','RD-Q2-2019-B1','Internship','Python','','','2019-05-30',' ','Hyderbad','Yes','Active'),(29,'sssssssssssssss','RD-Q1-2019-B1','FTE','.Net','','','2019-05-23',' ','Hyderbad','No','Resigned as FTE'),(30,'vani@epam','RD-Q2-2019-B1','FTE','Python','.Net','Java','2019-05-30','Jagadeesh_Dandu@epam.com','Hyderbad','Yes','Active'),(31,'fff','RD-Q2-2019-B1','FTE','Python','Java','','2019-05-31',' ','Hyderbad','Yes','Active'),(32,'ds','RD-Q1-2019-B1','Internship','Java','','','2019-05-31',' ','Hyderbad','Yes','Active'),(33,'ads','RD-Q2-2019-B1','FTE','Python','','','2019-05-17','test_mentor1@epam.com','Hyderbad','Yes','Active'),(34,'asd@eeehh..gh2','RD-Q2-2019-B1','FTE','Python','','','2019-05-29',' ','Hyderbad','Yes','Active'),(35,'asd','RD-Q2-2019-B1','FTE','Python','','','2019-05-30',' ','Hyderbad','Yes','Active'),(36,'ddd','RD-Q2-2019-B1','FTE','Python','','','2019-05-30',' ','Hyderbad','Yes','Active'),(37,'ccc','RD-Q2-2019-B1','FTE','Python','','','2019-05-30',' ','Hyderbad','Yes','Active');
 /*!40000 ALTER TABLE `student__additional_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +409,7 @@ CREATE TABLE `student_educational_info` (
 
 LOCK TABLES `student_educational_info` WRITE;
 /*!40000 ALTER TABLE `student_educational_info` DISABLE KEYS */;
-INSERT INTO `student_educational_info` VALUES ('a@a.a','','','','',0,0,0,0),('bb@bb.com','BVRIT','HYD','2012','CSE',2015,75,75,78),('epam@epam','BVRIT','hyd','mtech','IT',2367,167,365,457),('ewrtqwe@gmail.com','Chitkara','','','',2011,0,444,665),('qqq@qqq.com','','','','',0,0,0,0),('revathi_anu@epam.com','','','','',0,0,0,0),('rr@rr.com','','','','',0,0,0,0),('vvv@vvv.vvv','','','','',0,0,0,0),('WER','','','','',0,0,0,0);
+INSERT INTO `student_educational_info` VALUES ('a@a.a','','','','',0,0,0,0),('a@epam.com','','','','',0,0,0,0),('ads','','','','',0,0,0,0),('adsa@fdguf.dgsfdh','','','','',0,0,0,0),('asd','','','','',0,0,0,0),('asd@eeehh..gh2','','','','',0,0,0,0),('bb@bb.com','BVRIT','HYD','2012','CSE',2015,75,75,78),('ccc','','','','',0,0,0,0),('ddd','','','','',0,0,0,0),('ds','','','','',0,0,0,0),('epam@epam','BVRIT','hyd','mtech','IT',2367,167,365,457),('ewrtqwe@gmail.com','Chitkara','','','',2011,0,444,665),('fff','','','','',0,0,0,0),('mana@epam','','','','',0,0,0,0),('qqq@qqq.com','','','','',0,0,0,0),('ravi@epam','VNRIT','bachupally','mtech','CSE',21,344,455,77),('rev@epam','BVRIT','dfg','fdg','ECE',34,12,543,54643),('revathi_anu@epam.com','','','','',0,0,0,0),('revathi_anumola2@epam.com','','','','',0,0,0,0),('Revathi_Anumola3@epam.com','','','','',0,0,0,0),('Revathi_Anumola4@epam.com','','','','',0,0,0,0),('Revathi_Anumola5@epam.com','','','','',0,0,0,0),('rr@rr.com','','','','',0,0,0,0),('sasdfdsf','','','','',0,0,0,0),('sd','','','','',0,0,0,0),('Srikanth_Tigapuram@sss.com','','','','',0,20,0,0),('sssssssssssssss','','','','',0,0,0,0),('vani@epam','BVRIT','hy','mt','ECE',12,211,3123,321),('vvv@vvv.vvv','','','','',0,0,0,0),('WER','','','','',0,0,0,0),('xyz@xyz.xyz','','','','',0,0,0,0);
 /*!40000 ALTER TABLE `student_educational_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -431,7 +431,7 @@ CREATE TABLE `student_personal_info` (
   `Location` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`Email_Id`),
   UNIQUE KEY `SerialNo_UNIQUE` (`SerialNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -440,7 +440,7 @@ CREATE TABLE `student_personal_info` (
 
 LOCK TABLES `student_personal_info` WRITE;
 /*!40000 ALTER TABLE `student_personal_info` DISABLE KEYS */;
-INSERT INTO `student_personal_info` VALUES (44,'a','a','0010-12-10','a@a.a','Male',1,'a'),(45,'xx','ee','2011-03-02','bb@bb.com','Male',0,'hyderabad'),(50,'epam27','sc','2019-04-29','epam@epam','Male',123,'kc'),(51,'gsdkd','sds','2019-05-08','ewrtqwe@gmail.com','Male',9876543210,'Hyd'),(48,'qqq','qqq','2019-05-06','qqq@qqq.com','Male',0,'fff'),(52,'Revathi','Anumola','1988-03-12','revathi_anu@epam.com','Female',0,'Hyderabad'),(46,'rr','rr','0011-02-09','rr@rr.com','Male',0,'rrr'),(49,'vvvv','vvvv','2019-05-06','vvv@vvv.vvv','Male',0,'vvv'),(47,'QWER','WER','2011-01-11','WER','Male',1,'Hyd');
+INSERT INTO `student_personal_info` VALUES (44,'a','a','0010-12-10','a@a.a','Male',1,'a'),(61,'fd','fd','2019-05-03','a@epam.com','Female',0,'kukatpally'),(70,'2222222222','222222','2019-05-09','ads','Male',0,'dsf'),(64,'adadsfs','sgdfhg','2019-04-29','adsa@fdguf.dgsfdh','Male',0,'fgjuhytk'),(72,'asdds','asd','2019-05-08','asd','Female',0,'asd'),(71,'asdad','asdsa','2019-04-29','asd@eeehh..gh2','Male',0,'sad'),(45,'xx','ee','2011-03-02','bb@bb.com','Male',0,'hyderabad'),(74,'cccc','ccc','2019-04-29','ccc','Female',0,'cccc'),(73,'dddddd','dddddd','2019-04-29','ddd','Female',0,'dddd'),(69,'vani','b','2019-04-29','ds','Male',0,'fde'),(50,'epam27','sc','2019-04-29','epam@epam','Male',123,'kc'),(51,'gsdkd','sds','2019-05-08','ewrtqwe@gmail.com','Male',9876543210,'Hyd'),(68,'san','dg','2019-04-30','fff','Female',0,'ff'),(57,'nb','vb','2019-05-10','mana@epam','Female',0,'d'),(48,'qqq','qqq','2019-05-06','qqq@qqq.com','Male',0,'fff'),(60,'ravi','kanth','1902-04-29','ravi@epam','Male',1234,'fds'),(63,'rev','th','1902-03-30','rev@epam','Female',12123,'hyfder'),(52,'Revathi','Anumola','1988-03-12','revathi_anu@epam.com','Female',0,'Hyderabad'),(55,'Revathi','Anumola2','2000-05-23','revathi_anumola2@epam.com','Female',0,'Hyderabad'),(56,'Revathi','Anumola3','2001-10-22','Revathi_Anumola3@epam.com','Female',0,'Chennai'),(58,'Revathi','Anumola4','1999-12-27','Revathi_Anumola4@epam.com','Female',0,'Pune'),(59,'Revathi','Anumola5','1995-10-24','Revathi_Anumola5@epam.com','Female',0,'Culcutta'),(46,'rr','rr','0011-02-09','rr@rr.com','Male',0,'rrr'),(54,'sdfsdf','sdfdsf','2019-05-07','sasdfdsf','Male',0,'werer'),(65,'d','s','2019-04-30','sd','Male',0,'sd'),(53,'Srikanth_Tigapuram','RAA','2019-05-06','Srikanth_Tigapuram@sss.com','Male',111111,'eee'),(66,'sssssssssssssssss','sssssssssssssssyugjkhk,','2019-04-30','sssssssssssssss','Female',0,'dfhfgj'),(67,'vani','b','2019-04-29','vani@epam','Male',12345,'hyd'),(49,'vvvv','vvvv','2019-05-06','vvv@vvv.vvv','Male',0,'vvv'),(47,'QWER','WER','2011-01-11','WER','Male',1,'Hyd'),(62,'xyz','xyz','2019-04-30','xyz@xyz.xyz','Male',5364747675,'fjghkhjl');
 /*!40000 ALTER TABLE `student_personal_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -914,4 +914,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-29 16:16:55
+-- Dump completed on 2019-05-31  9:50:37
